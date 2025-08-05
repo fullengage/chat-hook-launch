@@ -4,7 +4,6 @@ import HowItWorks from "@/components/HowItWorks";
 import PlansSection from "@/components/PlansSection";
 import BenefitsSection from "@/components/BenefitsSection";
 import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
 
 const Index = () => {
   return (
@@ -19,7 +18,6 @@ const Index = () => {
         <BenefitsSection />
       </div>
       <Footer />
-      <WhatsAppButton />
     </div>
   );
 };
