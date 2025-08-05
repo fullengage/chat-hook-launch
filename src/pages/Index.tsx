@@ -1,3 +1,4 @@
+import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import HowItWorks from "@/components/HowItWorks";
 import PlansSection from "@/components/PlansSection";
@@ -7,11 +8,16 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
+      <Header />
       <HeroSection />
-      <HowItWorks />
+      <div id="how-it-works">
+        <HowItWorks />
+      </div>
       <PlansSection />
-      <BenefitsSection />
+      <div id="benefits-section">
+        <BenefitsSection />
+      </div>
       <Footer />
       <WhatsAppButton />
     </div>
