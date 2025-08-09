@@ -78,7 +78,7 @@ const BenefitsSection = () => {
               Pronto para revolucionar seus atendimentos?
             </h3>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Junte-se a milhares de empresas que já transformaram seus resultados com o Chathook
+              Junte-se a centenas de empresas que já transformaram seus resultados com o Chathook
             </p>
             
             {/* Features List */}

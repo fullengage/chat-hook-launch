@@ -9,7 +9,7 @@ const PlansSection = () => {
       badge: "Começando",
       description: "Ideal para quem está começando com automação",
       price: "R$ 90",
-      period: "/mês por 3 meses",
+      period: "/mês",
       originalPrice: null,
       features: [
         "1 número de WhatsApp",
