@@ -18,8 +18,8 @@ const PlansSection = () => {
         "Suporte por WhatsApp (30 dias humanos + IA)",
         "Sem fidelidade"
       ],
-      ctaPrimary: "Compre agora",
-      ctaSecondary: "Teste grátis por 7 dias",
+      ctaPrimary: "Fale com vendas",
+      ctaSecondary: null,
       highlight: false,
       icon: Zap
     },
@@ -38,8 +38,8 @@ const PlansSection = () => {
         "Centralização da comunicação",
         "Suporte especializado"
       ],
-      ctaPrimary: "Compre agora",
-      ctaSecondary: "Fale com vendas",
+      ctaPrimary: "Fale com vendas",
+      ctaSecondary: null,
       highlight: true,
       icon: Star
     },
@@ -88,7 +88,7 @@ const PlansSection = () => {
 
   const handleContactSales = () => {
     // Trigger WhatsApp contact
-    window.open("https://wa.me/5511999999999?text=Olá! Gostaria de falar sobre os planos do Chathook.", "_blank");
+    window.open("https://wa.me/5517997915318?text=Olá! Gostaria de falar sobre os planos do Chathook.", "_blank");
   };
 
   const handleFreeTrial = () => {
