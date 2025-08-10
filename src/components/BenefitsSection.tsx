@@ -98,7 +98,10 @@ const BenefitsSection = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-8 py-4 bg-gradient-primary text-primary-foreground rounded-lg font-semibold shadow-button hover:shadow-card-hover transform hover:scale-105 transition-all duration-300">
+              <button 
+                onClick={() => window.open("https://wa.me/5517997915318?text=Olá! Gostaria de começar um teste grátis do Chathook.", "_blank")}
+                className="px-8 py-4 bg-gradient-primary text-primary-foreground rounded-lg font-semibold shadow-button hover:shadow-card-hover transform hover:scale-105 transition-all duration-300"
+              >
                 Começar teste grátis
               </button>
               <button className="px-8 py-4 border-2 border-primary text-primary rounded-lg font-semibold hover:bg-primary hover:text-primary-foreground transition-all duration-300">
