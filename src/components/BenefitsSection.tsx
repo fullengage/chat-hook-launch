@@ -85,7 +85,7 @@ const BenefitsSection = () => {
             <div className="grid md:grid-cols-3 gap-6 mb-8 text-left">
               <div className="flex items-center gap-3">
                 <div className="w-2 h-2 bg-primary rounded-full"></div>
-                <span className="text-muted-foreground">Setup em 10 minutos</span>
+                <span className="text-muted-foreground">Setup em 24h com suporte</span>
               </div>
               <div className="flex items-center gap-3">
                 <div className="w-2 h-2 bg-primary rounded-full"></div>
