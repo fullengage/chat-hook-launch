@@ -33,6 +33,7 @@ const PlansSection = () => {
       features: [
         "1 a 5 números de WhatsApp",
         "1 Agente IA básico",
+        "1 Agente IA Avançado",
         "Análises básicas de performance",
         "Centralização da comunicação",
         "Suporte especializado"
@@ -50,8 +51,9 @@ const PlansSection = () => {
       period: "/mês",
       originalPrice: null,
       features: [
-        "1 a 5 números de WhatsApp",
-        "1 Agente IA básico",
+        "1 a 15 números de WhatsApp",
+        "2 Agente IA básico",
+        "2 Agente IA avançado",
         "Criação de testes com chatbot",
         "Métricas de qualificação de leads",
         "Integração com marketing e vendas",
