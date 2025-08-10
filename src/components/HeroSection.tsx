@@ -8,8 +8,8 @@ const HeroSection = () => {
   };
 
   const startFreeTrial = () => {
-    // Scroll to plans section for free trial
-    scrollToPlans();
+    // Open WhatsApp for free trial
+    window.open("https://wa.me/5517997915318?text=Olá! Gostaria de começar um teste grátis por 7 dias do Chathook.", "_blank");
   };
 
   return (
