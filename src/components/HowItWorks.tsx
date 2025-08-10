@@ -74,7 +74,7 @@ const HowItWorks = () => {
         {/* Bottom CTA */}
         <div className="text-center mt-16">
           <p className="text-lg text-muted-foreground mb-6">
-            Pronto para começar? Configure tudo em menos de 10 minutos.
+            Pronto para começar? fazemos sua primeira configuração Gratis.
           </p>
           <div className="inline-flex items-center gap-2 px-6 py-3 bg-primary/10 rounded-full border border-primary/20">
             <span className="w-3 h-3 bg-primary rounded-full animate-ping"></span>
