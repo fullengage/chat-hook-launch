@@ -78,7 +78,7 @@ const HowItWorks = () => {
           </p>
           <div className="inline-flex items-center gap-2 px-6 py-3 bg-primary/10 rounded-full border border-primary/20">
             <span className="w-3 h-3 bg-primary rounded-full animate-ping"></span>
-            <span className="text-primary font-medium">Mais de 1000+ empresas já usam</span>
+            <span className="text-primary font-medium">Ganhe agilidade, padronização e produtividade com automação</span>
           </div>
         </div>
       </div>
