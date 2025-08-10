@@ -104,7 +104,10 @@ const BenefitsSection = () => {
               >
                 Começar teste grátis
               </button>
-              <button className="px-8 py-4 border-2 border-primary text-primary rounded-lg font-semibold hover:bg-primary hover:text-primary-foreground transition-all duration-300">
+              <button 
+                onClick={() => window.open("https://wa.me/5517997915318?text=Olá! Gostaria de falar com um especialista do Chathook.", "_blank")}
+                className="px-8 py-4 border-2 border-primary text-primary rounded-lg font-semibold hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+              >
                 Falar com especialista
               </button>
             </div>
