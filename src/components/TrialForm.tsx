@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/select";
 import { toast } from "sonner";
 import { CheckCircle2, Loader2, MessageSquare, Zap, Shield } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 const formSchema = z.object({
   name: z.string().min(2, "O nome deve ter pelo menos 2 caracteres."),
@@ -45,33 +46,23 @@ const TrialForm = () => {
     },
   });
 
-  const EDGE_FUNCTION_URL =
-    "https://zzehxqgyberjewihsliu.supabase.co/functions/v1/capture-lead";
-
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setIsSubmitting(true);
     try {
-      const res = await fetch(EDGE_FUNCTION_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: values.name,
-          email: values.email,
-          whatsapp: values.whatsapp,
-          companySize: values.companySize,
-          source: "free_trial_landing_page",
-          page: window.location.pathname,
-          userAgent: navigator.userAgent,
-        }),
+      const { error } = await supabase.from("chathook_trial_leads").insert({
+        name: values.name,
+        email: values.email,
+        whatsapp: values.whatsapp,
+        company_size: values.companySize,
+        source: "free_trial_landing_page",
+        page: window.location.pathname,
+        user_agent: navigator.userAgent,
       });
 
-      if (!res.ok) {
-        const errBody = await res.text();
-        console.error("Edge Function error:", res.status, errBody);
-        throw new Error(`Edge Function returned ${res.status}`);
+      if (error) {
+        console.error("Supabase insert error:", error);
+        throw new Error(error.message);
       }
 
       setIsSuccess(true);
@@ -132,7 +123,7 @@ const TrialForm = () => {
     <div className="p-1">
       <div className="mb-8 relative">
         <div className="bg-primary/10 text-primary text-[10px] font-black px-3 py-1 rounded-full w-fit mb-4 uppercase tracking-tighter">
-           7 Dias Grátis & Sem Cartão
+           7 Dias Grátis &amp; Sem Cartão
         </div>
         <h3 className="text-3xl font-black text-foreground mb-3 tracking-tighter italic">Liberar meu <span className="text-primary">CRM Inteligente</span></h3>
         <p className="text-sm text-muted-foreground leading-relaxed">Preencha abaixo para receber seu acesso e o bônus de implantação em 48h.</p>
