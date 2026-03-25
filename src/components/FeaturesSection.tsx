@@ -69,8 +69,8 @@ const FeaturesSection = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
           {features.map((feature, index) => (
             <Card key={index} className="p-8 border border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6 border border-primary/20 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                <feature.icon className="w-6 h-6" />
+              <div className="w-12 h-12 rounded-xl bg-cta/5 flex items-center justify-center mb-6 border border-cta/10 group-hover:bg-cta group-hover:text-cta-foreground transition-colors">
+                <feature.icon className="w-6 h-6 text-cta group-hover:text-cta-foreground" />
               </div>
               <h3 className="text-lg font-bold mb-3 text-foreground leading-tight">{feature.title}</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">

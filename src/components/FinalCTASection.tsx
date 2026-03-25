@@ -8,27 +8,28 @@ const FinalCTASection = () => {
   };
 
   return (
-    <section className="py-24 bg-primary relative overflow-hidden">
+    <section className="py-24 bg-background border-t border-white/5 relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10 text-center">
-        <h2 className="text-3xl md:text-5xl font-bold text-primary-foreground mb-8 max-w-4xl mx-auto leading-tight">
-          Pronto para transformar seu WhatsApp em uma operação organizada de atendimento e vendas?
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-8 max-w-4xl mx-auto leading-tight">
+          Pronto para transformar seu WhatsApp em uma{" "}
+          <span className="text-cta">operação organizada</span> de atendimento e vendas?
         </h2>
-        <p className="text-xl text-primary-foreground/80 mb-12 max-w-2xl mx-auto font-medium">
+        <p className="text-xl text-white/70 mb-12 max-w-2xl mx-auto font-medium">
           Diga adeus à bagunça e comece hoje mesmo a usar o CRM que vive dentro do seu WhatsApp.
         </p>
         
         <div className="flex flex-col sm:flex-row gap-6 justify-center">
            <Button 
              size="xl" 
-             variant="secondary"
-             className="text-primary font-bold px-12 h-16 text-lg hover:scale-105 transition-transform"
+             variant="cta"
+             className="px-12 h-16 text-lg"
              onClick={handleAction}
            >
              Implantar meu atendimento agora
            </Button>
         </div>
         
-        <p className="mt-8 text-sm text-primary-foreground/60 font-medium">Implantação guiada por especialistas incluída.</p>
+        <p className="mt-8 text-sm text-white/50 font-medium">Implantação guiada por especialistas incluída.</p>
       </div>
       
       {/* Decorative Orbs */}

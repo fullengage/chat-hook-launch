@@ -42,14 +42,14 @@ const PlansSection = () => {
               key={index} 
               className={`relative p-8 rounded-2xl border-2 transition-all duration-300 hover:-translate-y-2 hover:shadow-card-hover group ${
                 plan.highlight 
-                  ? 'border-primary shadow-card-hover bg-gradient-card scale-105' 
-                  : 'border-border shadow-card bg-gradient-card hover:border-primary/50'
+                  ? 'border-cta shadow-button bg-gradient-card scale-105' 
+                  : 'border-border shadow-card bg-gradient-card hover:border-cta/50'
               }`}
             >
               {/* Highlight Badge */}
               {plan.highlight && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <div className="bg-gradient-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-semibold shadow-button">
+                  <div className="bg-gradient-cta text-cta-foreground px-4 py-2 rounded-full text-sm font-semibold shadow-button">
                     ⭐ {plan.badge}
                   </div>
                 </div>
@@ -76,7 +76,7 @@ const PlansSection = () => {
               {/* Price */}
               <div className="mb-8">
                 <div className="flex items-baseline gap-2">
-                  <span className="text-3xl font-bold text-foreground">
+                  <span className={`text-3xl font-bold ${plan.highlight ? 'text-cta' : 'text-foreground'}`}>
                     {plan.price}
                   </span>
                   <span className="text-muted-foreground">

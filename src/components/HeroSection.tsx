@@ -29,14 +29,14 @@ const HeroSection = () => {
       <div className="relative z-10 container mx-auto px-4 py-20">
         <div className="max-w-4xl mx-auto text-center">
           {/* Badge */}
-          <div className="inline-flex items-center px-4 py-2 mb-8 bg-gradient-primary/10 border border-primary/20 rounded-full">
-            <span className="text-primary font-medium">🚀 CRM Inteligente para WhatsApp</span>
+          <div className="inline-flex items-center px-4 py-2 mb-8 bg-cta/10 border border-cta/20 rounded-full">
+            <span className="text-cta font-bold tracking-wide">🚀 CRM Inteligente para WhatsApp</span>
           </div>
  
           {/* Main Heading */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 text-white animate-fade-in">
             Transforme seu WhatsApp em um{" "}
-            <span className="text-primary">CRM inteligente</span> de atendimento e vendas
+            <span className="text-cta">CRM inteligente</span> de atendimento e vendas
           </h1>
 
           {/* Subtitle */}
