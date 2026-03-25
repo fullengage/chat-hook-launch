@@ -34,13 +34,13 @@ const HeroSection = () => {
           </div>
  
           {/* Main Heading */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent animate-fade-in">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 text-white animate-fade-in">
             Transforme seu WhatsApp em um{" "}
             <span className="text-primary">CRM inteligente</span> de atendimento e vendas
           </h1>
 
           {/* Subtitle */}
-          <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed animate-fade-in">
+          <p className="text-xl md:text-2xl text-white/80 mb-12 max-w-3xl mx-auto leading-relaxed animate-fade-in">
             Organize conversas, acompanhe oportunidades no Kanban, automatize rotinas e use IA para responder mais rápido e vender melhor.
           </p>
 

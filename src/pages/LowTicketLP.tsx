@@ -40,10 +40,10 @@ const LowTicketLP = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-               <Button onClick={goToOffer} className="h-16 px-10 text-xl font-black rounded-2xl shadow-[0_0_40px_-10px_rgba(31,166,102,0.6)] hover:scale-105 transition-transform group">
-                 QUERO MINHA CONTA AGORA
-                 <Zap className="ml-2 w-5 h-5 fill-current" />
-               </Button>
+                <Button variant="cta" onClick={goToOffer} className="h-16 px-10 text-xl font-black rounded-2xl group">
+                  QUERO MINHA CONTA AGORA
+                  <Zap className="ml-2 w-5 h-5 fill-current" />
+                </Button>
                <p className="text-sm text-muted-foreground flex items-center gap-2">
                  <CreditCard className="w-4 h-4" />
                  Ativação imediata via WhatsApp
@@ -94,7 +94,7 @@ const LowTicketLP = () => {
                        <span className="text-xl text-muted-foreground">/mês</span>
                     </div>
                     
-                    <Button onClick={goToOffer} className="w-full h-16 text-xl font-black rounded-2xl mb-6">
+                    <Button variant="cta" onClick={goToOffer} className="w-full h-16 text-xl font-black rounded-2xl mb-6">
                        APROVEITAR AGORA
                     </Button>
                     <p className="text-xs text-muted-foreground">Cancele quando quiser. Sem letras miúdas.</p>

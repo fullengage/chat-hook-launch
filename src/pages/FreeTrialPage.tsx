@@ -40,8 +40,9 @@ const FreeTrialPage = () => {
                         Falar com Consultor
                      </Button>
                      <Button
+                        variant="cta"
                         size="sm"
-                        className="rounded-full font-bold shadow-lg shadow-primary/20 text-sm h-11 px-6"
+                        className="rounded-full font-bold text-sm h-11 px-6"
                         onClick={scrollToForm}
                      >
                         Começar Teste Grátis
@@ -81,9 +82,9 @@ const FreeTrialPage = () => {
                         </div>
 
                         <div className="flex flex-col sm:flex-row items-center gap-4 lg:hidden">
-                           <Button size="lg" className="w-full h-14 rounded-2xl font-bold shadow-xl shadow-primary/20" onClick={scrollToForm}>
-                              Ativar Teste Grátis
-                           </Button>
+                            <Button variant="cta" size="lg" className="w-full h-14 rounded-2xl font-bold" onClick={scrollToForm}>
+                               Ativar Teste Grátis
+                            </Button>
                            <Button variant="outline" size="lg" className="w-full h-14 rounded-2xl font-bold" onClick={() => window.open("https://wa.me/5511955501090", "_blank")}>
                               Falar com Consultor
                            </Button>
