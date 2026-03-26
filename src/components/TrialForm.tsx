@@ -86,7 +86,7 @@ const TrialForm = () => {
         <div className="space-y-3">
           <h3 className="text-3xl font-black text-foreground tracking-tight">Quase tudo pronto!</h3>
           <p className="text-muted-foreground text-sm leading-relaxed">
-            Seu pedido de teste foi recebido. Um de nossos especialistas em implantação entrará em contato em menos de <span className="text-foreground font-bold">15 minutos</span> (em horário comercial) para liberar seu acesso.
+            Seu pedido foi recebido. Um de nossos especialistas em implantação entrará em contato em menos de <span className="text-foreground font-bold">15 minutos</span> (em horário comercial) para liberar seu acesso.
           </p>
         </div>
         
