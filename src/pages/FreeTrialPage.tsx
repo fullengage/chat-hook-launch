@@ -3,6 +3,7 @@ import TrialForm from "@/components/TrialForm";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import PlansSection from "@/components/PlansSection";
 
 const FreeTrialPage = () => {
    const navigate = useNavigate();
@@ -333,6 +334,9 @@ const FreeTrialPage = () => {
                   </div>
                </div>
             </section>
+
+            {/* Plans Section */}
+            <PlansSection />
 
             {/* FAQ Section */}
             <section className="py-24 bg-muted/10">

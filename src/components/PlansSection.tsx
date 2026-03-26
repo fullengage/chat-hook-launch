@@ -6,20 +6,101 @@ import { useNavigate } from "react-router-dom";
 const PlansSection = () => {
   const navigate = useNavigate();
   const plans = [
-    // ... items remain same
+    {
+      name: "Starter",
+      badge: "Inicial",
+      icon: Zap,
+      price: "R$ 47",
+      period: "/1º mês",
+      renewalPrice: "Depois R$ 297/mês",
+      description: "Ideal para pequenos negócios que estão começando no digital.",
+      features: [
+        "1 número de WhatsApp",
+        "Até 3 atendentes",
+        "Kanban de Vendas",
+        "Captain IA",
+        "Relatórios básicos"
+      ],
+      ctaPrimary: "Assinar Agora",
+      ctaSecondary: "Teste grátis por 7 dias",
+      checkoutUrl: "https://pay.kiwify.com.br/2r4Dj3f",
+      highlight: false
+    },
+    {
+      name: "Pro",
+      badge: "Avançado",
+      icon: Star,
+      price: "R$ 59",
+      period: "/1º mês",
+      renewalPrice: "Depois R$ 597/mês",
+      description: "Para empresas que precisam de mais escala e suporte profissional.",
+      features: [
+        "Até 3 números",
+        "Até 10 atendentes",
+        "Kanban de Vendas",
+        "Captain IA",
+        "Relatórios básicos",
+        "Suporte e treinamento"
+      ],
+      ctaPrimary: "Assinar Agora",
+      ctaSecondary: "Teste grátis por 7 dias",
+      checkoutUrl: "https://pay.kiwify.com.br/om4DJy6",
+      highlight: false
+    },
+    {
+      name: "Business",
+      badge: "Mais Escolhido",
+      icon: Crown,
+      price: "R$ 197",
+      period: "/1º mês",
+      renewalPrice: "Depois R$ 1.197/mês",
+      description: "A solução completa para operações robustas e múltiplos times.",
+      features: [
+        "20 números",
+        "20 atendentes",
+        "Kanban de Vendas",
+        "Captain IA",
+        "Relatórios básicos",
+        "Suporte, treinamento e instalação"
+      ],
+      ctaPrimary: "Assinar Agora",
+      ctaSecondary: "Teste grátis por 7 dias",
+      checkoutUrl: "https://pay.kiwify.com.br/v1E0AXc",
+      highlight: true
+    },
+    {
+      name: "Personalizado",
+      badge: "Corporativo",
+      icon: Check,
+      price: "Sob Consulta",
+      period: "",
+      renewalPrice: "",
+      description: "Soluções sob medida para grandes operações e ONGs.",
+      features: [
+        "Solução sob medida para ONGs",
+        "Empresas com alto faturamento",
+        "Múltiplas filiais e PDVs"
+      ],
+      ctaPrimary: "Fale com vendas",
+      ctaSecondary: null,
+      highlight: false
+    }
   ];
 
   const handleContactSales = () => {
-    navigate("/teste-gratis");
+    window.open("https://api.whatsapp.com/send/?phone=5511955501090&text&type=phone_number&app_absent=0", "_blank");
   };
 
   const handleFreeTrial = () => {
     navigate("/teste-gratis");
   };
 
-  const handlePurchase = (planName: string) => {
-    // Redirect to purchase flow
-    alert(`Redirecionando para compra do plano ${planName}...`);
+  const handlePurchase = (url: string) => {
+    if (url) {
+      window.open(url, "_blank");
+    } else {
+      handleContactSales();
+    }
   };
 
   return (
@@ -76,13 +157,18 @@ const PlansSection = () => {
               {/* Price */}
               <div className="mb-8">
                 <div className="flex items-baseline gap-2">
-                  <span className={`text-3xl font-bold ${plan.highlight ? 'text-cta' : 'text-foreground'}`}>
+                  <span className={`text-4xl font-black ${plan.highlight ? 'text-cta' : 'text-foreground'}`}>
                     {plan.price}
                   </span>
-                  <span className="text-muted-foreground">
+                  <span className="text-muted-foreground font-medium">
                     {plan.period}
                   </span>
                 </div>
+                {plan.renewalPrice && (
+                  <p className="text-xs text-muted-foreground mt-1 font-medium italic">
+                    {plan.renewalPrice}
+                  </p>
+                )}
               </div>
 
               {/* Features */}
@@ -107,7 +193,7 @@ const PlansSection = () => {
                     if (plan.ctaPrimary === "Fale com vendas") {
                       handleContactSales();
                     } else {
-                      handlePurchase(plan.name);
+                      handlePurchase(plan.checkoutUrl);
                     }
                   }}
                 >
