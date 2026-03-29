@@ -86,21 +86,35 @@ const Footer = () => {
             <h3 className="font-semibold text-foreground mb-4">Legal</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">
+                <a href="/termos-de-uso" className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">
                   Termos de Uso
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">
+                <a href="/privacidade" className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">
                   Política de Privacidade
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">
-                  LGPD
-                </a>
+                <span className="text-[10px] uppercase tracking-widest text-muted-foreground/50 font-bold">
+                  LGPD Compliance
+                </span>
               </li>
             </ul>
+          </div>
+        </div>
+
+        <div className="mt-12 pt-8 border-t border-border/50">
+          <div className="grid md:grid-cols-2 gap-8 items-center text-center md:text-left">
+            <div className="space-y-1">
+              <p className="text-xs text-muted-foreground font-bold">CHATHOOK CRM - SOFTWARE E TECNOLOGIA LTDA</p>
+              <p className="text-[10px] text-muted-foreground/70">CNPJ: 53.214.856/0001-90 | Av. Paulista, 1106 - São Paulo, SP</p>
+            </div>
+            <div className="flex justify-center md:justify-end">
+              <p className="text-[10px] text-muted-foreground/50">
+                O uso deste site e plataforma está sujeito aos nossos termos e políticas vigentes.
+              </p>
+            </div>
           </div>
         </div>
 

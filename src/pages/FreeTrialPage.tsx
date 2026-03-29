@@ -4,6 +4,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import PlansSection from "@/components/PlansSection";
+import Footer from "@/components/Footer";
 
 const FreeTrialPage = () => {
    const navigate = useNavigate();
@@ -383,24 +384,7 @@ const FreeTrialPage = () => {
             </section>
          </main>
 
-         {/* Footer */}
-         <footer className="py-20 border-t border-border/10">
-            <div className="container mx-auto px-4 text-center space-y-8">
-               <div className="flex justify-center">
-                  <img src="/icons.png" alt="Logo" className="w-32 h-32 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} />
-               </div>
-               <p className="text-sm text-muted-foreground max-w-xs mx-auto">
-                  ChatHook CRM - Produtividade e Inteligência para suas vendas no WhatsApp.
-               </p>
-               <div className="flex justify-center gap-6">
-                  <Button variant="link" className="text-muted-foreground hover:text-primary transition-colors">Termos de Uso</Button>
-                  <Button variant="link" className="text-muted-foreground hover:text-primary transition-colors">Privacidade</Button>
-               </div>
-               <p className="text-xs text-muted-foreground">
-                  © 2026 ChatHook CRM - Todos os direitos reservados.
-               </p>
-            </div>
-         </footer>
+         <Footer />
       </div>
    );
 };

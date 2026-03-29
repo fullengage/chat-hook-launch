@@ -22,6 +22,8 @@ import {
 import { toast } from "sonner";
 import { CheckCircle2, Loader2, MessageSquare, Zap, Shield } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Link } from "react-router-dom";
 
 const formSchema = z.object({
   name: z.string().min(2, "O nome deve ter pelo menos 2 caracteres."),
@@ -29,6 +31,9 @@ const formSchema = z.object({
   whatsapp: z.string().min(10, "Informe um WhatsApp válido."),
   companySize: z.string({
     required_error: "Selecione o tamanho da empresa.",
+  }),
+  termsAccepted: z.boolean().refine((val) => val === true, {
+    message: "Você deve aceitar os Termos de Uso e Política de Privacidade.",
   }),
 });
 
@@ -43,6 +48,7 @@ const TrialForm = () => {
       email: "",
       whatsapp: "",
       companySize: "",
+      termsAccepted: false,
     },
   });
 
@@ -190,6 +196,26 @@ const TrialForm = () => {
                   </SelectContent>
                 </Select>
                 <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="termsAccepted"
+            render={({ field }) => (
+              <FormItem className="flex flex-row items-start space-x-3 space-y-0 p-1">
+                <FormControl>
+                  <Checkbox
+                    checked={field.value}
+                    onCheckedChange={field.onChange}
+                  />
+                </FormControl>
+                <div className="space-y-1 mt-1 leading-tight">
+                  <FormLabel className="text-[11px] text-muted-foreground font-medium cursor-pointer">
+                    Li e aceito os <Link to="/termos-de-uso" className="text-primary hover:underline font-bold" target="_blank">Termos de Uso</Link> e a <Link to="/privacidade" className="text-primary hover:underline font-bold" target="_blank">Política de Privacidade</Link>.
+                  </FormLabel>
+                </div>
               </FormItem>
             )}
           />

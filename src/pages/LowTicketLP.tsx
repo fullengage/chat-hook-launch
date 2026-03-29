@@ -1,5 +1,6 @@
 import { CheckCircle2, Zap, LayoutDashboard, Bot, CreditCard, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Footer from "@/components/Footer";
 
 const LowTicketLP = () => {
   const goToOffer = () => {
@@ -116,11 +117,7 @@ const LowTicketLP = () => {
         </section>
       </main>
 
-      <footer className="py-12 border-t border-border/10 text-center">
-        <p className="text-[10px] text-muted-foreground uppercase font-bold tracking-widest">
-          © 2026 ChatHook CRM - O segredo das operações que escalam no WhatsApp.
-        </p>
-      </footer>
+      <Footer />
     </div>
   );
 };

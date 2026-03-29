@@ -12,6 +12,8 @@ import FreeTrialPage from "./pages/FreeTrialPage";
 import LowTicketLP from "./pages/LowTicketLP";
 
 import WebhookSettings from "./pages/WebhookSettings";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfUse from "./pages/TermsOfUse";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +31,8 @@ const App = () => (
             <Route path="/webhooks/new" element={<WebhookSettings />} />
             <Route path="/teste-gratis" element={<FreeTrialPage />} />
             <Route path="/oferta-especial" element={<LowTicketLP />} />
+            <Route path="/privacidade" element={<PrivacyPolicy />} />
+            <Route path="/termos-de-uso" element={<TermsOfUse />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
