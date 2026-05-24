@@ -23,7 +23,7 @@ import { toast } from "sonner";
 import { CheckCircle2, Loader2, MessageSquare, Zap, Shield } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // URL da Edge Function que aciona o webhook do ChatHook
 const EDGE_FUNCTION_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/capture-lead`;
@@ -41,8 +41,8 @@ const formSchema = z.object({
 });
 
 const TrialForm = () => {
+  const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -87,27 +87,15 @@ const TrialForm = () => {
         throw new Error(errBody?.error ?? "Erro ao enviar cadastro.");
       }
 
-      setIsSuccess(true);
       toast.success("Solicitação enviada com sucesso!");
       console.log("Lead captured and webhook triggered for:", values.name);
 
-      // Disparar eventos de conversão de tráfego pago
-      if (typeof window !== "undefined") {
-        const anyWindow = window as any;
-        
-        // Facebook Pixel Lead event
-        if (typeof anyWindow.fbq === "function") {
-          anyWindow.fbq("track", "Lead");
-        }
-        
-        // Google Ads Conversion event
-        if (typeof anyWindow.gtag === "function") {
-          const conversionLabel = import.meta.env.VITE_GOOGLE_ADS_CONVERSION_LABEL || "teste-gratis";
-          anyWindow.gtag("event", "conversion", {
-            send_to: `AW-18050299093/${conversionLabel}`,
-          });
-        }
-      }
+      navigate("/obrigado", {
+        state: {
+          name: values.name,
+          whatsapp: values.whatsapp,
+        },
+      });
     } catch (error) {
       console.error("Erro ao capturar lead:", error);
       toast.error("Ocorreu um erro. Por favor, tente novamente.");
@@ -115,49 +103,6 @@ const TrialForm = () => {
       setIsSubmitting(false);
     }
   };
-
-  if (isSuccess) {
-    return (
-      <div className="bg-card border border-border p-10 rounded-[32px] shadow-2xl text-center space-y-8 animate-in fade-in zoom-in duration-700 relative overflow-hidden">
-        <div className="absolute top-0 left-0 right-0 h-1.5 bg-green-500" />
-        <div className="w-20 h-20 bg-green-500/10 rounded-full flex items-center justify-center mx-auto ring-8 ring-green-500/5">
-          <CheckCircle2 className="w-10 h-10 text-green-500" />
-        </div>
-        <div className="space-y-3">
-          <h3 className="text-3xl font-black text-foreground tracking-tight">Quase tudo pronto!</h3>
-          <p className="text-muted-foreground text-sm leading-relaxed">
-            Seu pedido foi recebido. Um de nossos especialistas em implantação entrará em contato em menos de <span className="text-foreground font-bold">15 minutos</span> (em horário comercial) para liberar seu acesso.
-          </p>
-        </div>
-        
-        <div className="bg-muted/50 p-6 rounded-2xl border border-border/50 text-left space-y-3">
-           <p className="text-[10px] font-bold uppercase tracking-widest text-primary">Próximos Passos:</p>
-           <ul className="space-y-2">
-              <li className="flex items-start gap-2 text-xs font-medium">
-                 <div className="w-4 h-4 rounded-full bg-primary/20 text-primary flex items-center justify-center text-[10px] mt-0.5 shrink-0">1</div>
-                 Receba o contato via WhatsApp
-              </li>
-              <li className="flex items-start gap-2 text-xs font-medium">
-                 <div className="w-4 h-4 rounded-full bg-primary/20 text-primary flex items-center justify-center text-[10px] mt-0.5 shrink-0">2</div>
-                 Conecte seu número com nossa ajuda
-              </li>
-              <li className="flex items-start gap-2 text-xs font-medium">
-                 <div className="w-4 h-4 rounded-full bg-primary/20 text-primary flex items-center justify-center text-[10px] mt-0.5 shrink-0">3</div>
-                 Comece a vender com Kanban e IA
-              </li>
-           </ul>
-        </div>
-
-        <Button 
-          className="w-full h-14 text-lg font-black gap-2 shadow-xl shadow-primary/20 rounded-2xl"
-          onClick={() => window.open(`https://wa.me/5511955501090?text=Olá! Acabei de solicitar o teste de 7 dias para ${form.getValues('name')} e gostaria de acelerar minha implantação.`, "_blank")}
-        >
-          <MessageSquare className="w-5 h-5 fill-current" />
-          Falar com Especialista Agora
-        </Button>
-      </div>
-    );
-  }
 
   return (
     <div className="p-1">
