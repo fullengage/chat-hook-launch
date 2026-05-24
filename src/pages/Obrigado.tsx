@@ -43,8 +43,14 @@ const Obrigado = () => {
   const navigate = useNavigate();
   const nextDayInfo = getNextBusinessDayDetails();
 
-  // Recupera o nome e whatsapp passados pelo estado da rota
-  const { name, whatsapp } = (location.state as { name?: string; whatsapp?: string }) || {};
+  // Recupera o nome e whatsapp passados pelo estado da rota ou do localStorage (fallback para caso de F5/refresh)
+  const state = (location.state as { name?: string; whatsapp?: string }) || {};
+  const [name, setName] = useState<string>(() => {
+    return state.name || localStorage.getItem("chathook_lead_name") || "";
+  });
+  const [whatsapp, setWhatsapp] = useState<string>(() => {
+    return state.whatsapp || localStorage.getItem("chathook_lead_whatsapp") || "";
+  });
 
   // Lista de horários padrão para agendamento
   const timeSlots = [
@@ -90,7 +96,9 @@ const Obrigado = () => {
 
   const handleWhatsAppRedirect = () => {
     const encodedText = encodeURIComponent(personalizedText);
-    window.open(`https://wa.me/5511955501090?text=${encodedText}`, "_blank");
+    // Usamos window.location.href para redirecionar na mesma aba. Isso evita páginas em branco 
+    // e abre diretamente o aplicativo nativo do WhatsApp no celular/computador.
+    window.location.href = `https://wa.me/5511955501090?text=${encodedText}`;
   };
 
   return (

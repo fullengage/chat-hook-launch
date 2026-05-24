@@ -90,6 +90,10 @@ const TrialForm = () => {
       toast.success("Solicitação enviada com sucesso!");
       console.log("Lead captured and webhook triggered for:", values.name);
 
+      // Persiste no localStorage para evitar perda de dados em caso de refresh na página de obrigado
+      localStorage.setItem("chathook_lead_name", values.name);
+      localStorage.setItem("chathook_lead_whatsapp", values.whatsapp);
+
       navigate("/obrigado", {
         state: {
           name: values.name,
