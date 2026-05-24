@@ -4,18 +4,27 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "next-themes";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
-import BlogDashboard from "./pages/BlogDashboard";
-import Auth from "./pages/Auth";
-import FreeTrialPage from "./pages/FreeTrialPage";
-import LowTicketLP from "./pages/LowTicketLP";
+import { lazy, Suspense } from "react";
 
-import WebhookSettings from "./pages/WebhookSettings";
-import PrivacyPolicy from "./pages/PrivacyPolicy";
-import TermsOfUse from "./pages/TermsOfUse";
+// Lazy-loaded pages
+const Index = lazy(() => import("./pages/Index"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const BlogDashboard = lazy(() => import("./pages/BlogDashboard"));
+const Auth = lazy(() => import("./pages/Auth"));
+const FreeTrialPage = lazy(() => import("./pages/FreeTrialPage"));
+const LowTicketLP = lazy(() => import("./pages/LowTicketLP"));
+const WebhookSettings = lazy(() => import("./pages/WebhookSettings"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
+const TermsOfUse = lazy(() => import("./pages/TermsOfUse"));
 
 const queryClient = new QueryClient();
+
+// Loading component for Suspense fallback
+const LoadingFallback = () => (
+  <div className="flex items-center justify-center min-h-screen bg-background text-foreground">
+    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+  </div>
+);
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -24,18 +33,20 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/auth" element={<Auth />} />
-            <Route path="/blog/dashboard" element={<BlogDashboard />} />
-            <Route path="/webhooks/new" element={<WebhookSettings />} />
-            <Route path="/teste-gratis" element={<FreeTrialPage />} />
-            <Route path="/oferta-especial" element={<LowTicketLP />} />
-            <Route path="/privacidade" element={<PrivacyPolicy />} />
-            <Route path="/termos-de-uso" element={<TermsOfUse />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <Suspense fallback={<LoadingFallback />}>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/auth" element={<Auth />} />
+              <Route path="/blog/dashboard" element={<BlogDashboard />} />
+              <Route path="/webhooks/new" element={<WebhookSettings />} />
+              <Route path="/teste-gratis" element={<FreeTrialPage />} />
+              <Route path="/oferta-especial" element={<LowTicketLP />} />
+              <Route path="/privacidade" element={<PrivacyPolicy />} />
+              <Route path="/termos-de-uso" element={<TermsOfUse />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
         </BrowserRouter>
       </TooltipProvider>
     </ThemeProvider>

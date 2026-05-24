@@ -25,6 +25,9 @@ import { supabase } from "@/integrations/supabase/client";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Link } from "react-router-dom";
 
+// URL da Edge Function que aciona o webhook do ChatHook
+const EDGE_FUNCTION_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/capture-lead`;
+
 const formSchema = z.object({
   name: z.string().min(2, "O nome deve ter pelo menos 2 caracteres."),
   email: z.string().email("E-mail inválido."),
@@ -56,24 +59,55 @@ const TrialForm = () => {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setIsSubmitting(true);
     try {
-      const { error } = await supabase.from("chathook_trial_leads").insert({
-        name: values.name,
-        email: values.email,
-        whatsapp: values.whatsapp,
-        company_size: values.companySize,
-        source: "free_trial_landing_page",
-        page: window.location.pathname,
-        user_agent: navigator.userAgent,
+      // Chama a Edge Function — ela salva no banco E dispara o webhook do ChatHook
+      const { data: { session } } = await supabase.auth.getSession();
+      const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string;
+
+      const res = await fetch(EDGE_FUNCTION_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${session?.access_token ?? anonKey}`,
+          "apikey": anonKey,
+        },
+        body: JSON.stringify({
+          name: values.name,
+          email: values.email,
+          whatsapp: values.whatsapp,
+          companySize: values.companySize,
+          source: "free_trial_landing_page",
+          page: window.location.pathname,
+          userAgent: navigator.userAgent,
+        }),
       });
 
-      if (error) {
-        console.error("Supabase insert error:", error);
-        throw new Error(error.message);
+      if (!res.ok) {
+        const errBody = await res.json().catch(() => ({}));
+        console.error("Edge function error:", errBody);
+        throw new Error(errBody?.error ?? "Erro ao enviar cadastro.");
       }
 
       setIsSuccess(true);
       toast.success("Solicitação enviada com sucesso!");
-      console.log("Lead captured:", values);
+      console.log("Lead captured and webhook triggered for:", values.name);
+
+      // Disparar eventos de conversão de tráfego pago
+      if (typeof window !== "undefined") {
+        const anyWindow = window as any;
+        
+        // Facebook Pixel Lead event
+        if (typeof anyWindow.fbq === "function") {
+          anyWindow.fbq("track", "Lead");
+        }
+        
+        // Google Ads Conversion event
+        if (typeof anyWindow.gtag === "function") {
+          const conversionLabel = import.meta.env.VITE_GOOGLE_ADS_CONVERSION_LABEL || "teste-gratis";
+          anyWindow.gtag("event", "conversion", {
+            send_to: `AW-18050299093/${conversionLabel}`,
+          });
+        }
+      }
     } catch (error) {
       console.error("Erro ao capturar lead:", error);
       toast.error("Ocorreu um erro. Por favor, tente novamente.");
