@@ -65,7 +65,7 @@ const WhatsAppButton = () => {
   return (
     <>
       {/* Floating Button */}
-      <div className="fixed bottom-6 right-6 z-50">
+      <div className="fixed bottom-6 left-6 z-50">
         <Button
           onClick={() => setIsOpen(!isOpen)}
           className="w-16 h-16 rounded-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 border-4 border-white"
@@ -86,7 +86,7 @@ const WhatsAppButton = () => {
 
       {/* Chat Widget */}
       {isOpen && (
-        <Card className="fixed bottom-24 right-6 w-80 sm:w-96 z-50 shadow-2xl border-2 border-border bg-gradient-card">
+        <Card className="fixed bottom-24 left-6 w-80 sm:w-96 z-50 shadow-2xl border-2 border-border bg-gradient-card">
           {/* Header */}
           <div className="bg-gradient-to-r from-green-500 to-green-600 p-4 rounded-t-lg">
             <div className="flex items-center gap-3">

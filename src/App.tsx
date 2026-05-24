@@ -17,6 +17,8 @@ const WebhookSettings = lazy(() => import("./pages/WebhookSettings"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const TermsOfUse = lazy(() => import("./pages/TermsOfUse"));
 const Obrigado = lazy(() => import("./pages/Obrigado"));
+const LgpdCompliance = lazy(() => import("./pages/LgpdCompliance"));
+import CookieConsent from "./components/CookieConsent";
 
 const queryClient = new QueryClient();
 
@@ -44,10 +46,12 @@ const App = () => (
               <Route path="/oferta-especial" element={<LowTicketLP />} />
               <Route path="/privacidade" element={<PrivacyPolicy />} />
               <Route path="/termos-de-uso" element={<TermsOfUse />} />
+              <Route path="/lgpd" element={<LgpdCompliance />} />
               <Route path="/obrigado" element={<Obrigado />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
+            <CookieConsent />
           </Suspense>
         </BrowserRouter>
       </TooltipProvider>

@@ -1,4 +1,5 @@
 import { MessageCircle, Mail, Phone, MapPin } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -32,22 +33,22 @@ const Footer = () => {
             <h3 className="font-semibold text-foreground mb-4">Plataforma</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#kanban" className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">
+                <a href="/#kanban" className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">
                   CRM & Kanban
                 </a>
               </li>
               <li>
-                <a href="#captain-ia" className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">
+                <a href="/#captain-ia" className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">
                   Captain IA
                 </a>
               </li>
               <li>
-                <a href="#features" className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">
+                <a href="/#features" className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">
                   Funcionalidades
                 </a>
               </li>
               <li>
-                <a href="#security" className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">
+                <a href="/#security" className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">
                   Segurança & LGPD
                 </a>
               </li>
@@ -59,17 +60,17 @@ const Footer = () => {
             <h3 className="font-semibold text-foreground mb-4">Recursos</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#how-it-works" className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">
+                <a href="/#how-it-works" className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">
                   Como funciona
                 </a>
               </li>
               <li>
-                <a href="#implementation" className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">
+                <a href="/#implementation" className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">
                   Implantação
                 </a>
               </li>
               <li>
-                <a href="#plans-section" className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">
+                <a href="/#plans-section" className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">
                   Planos e Preços
                 </a>
               </li>
@@ -84,21 +85,21 @@ const Footer = () => {
           {/* Legal */}
           <div>
             <h3 className="font-semibold text-foreground mb-4">Legal</h3>
-            <ul className="space-y-3">
+            <ul className="space-y-3 flex flex-col">
               <li>
-                <a href="/termos-de-uso" className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">
+                <Link to="/termos-de-uso" className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">
                   Termos de Uso
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/privacidade" className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">
+                <Link to="/privacidade" className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">
                   Política de Privacidade
-                </a>
+                </Link>
               </li>
               <li>
-                <span className="text-[10px] uppercase tracking-widest text-muted-foreground/50 font-bold">
+                <Link to="/lgpd" className="text-[10px] uppercase tracking-widest text-muted-foreground/60 hover:text-primary transition-colors duration-200 font-bold">
                   LGPD Compliance
-                </span>
+                </Link>
               </li>
             </ul>
           </div>
