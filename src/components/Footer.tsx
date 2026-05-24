@@ -1,17 +1,20 @@
-import { MessageCircle, Mail, Phone, MapPin } from "lucide-react";
+import { MessageCircle, Mail, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-b from-muted/30 to-muted border-t border-border">
-      <div className="container mx-auto px-4 py-16">
+    <footer className="w-full bg-background pt-8 pb-16 px-4">
+      <div className="container mx-auto max-w-6xl bg-gradient-to-b from-muted/40 to-muted/20 backdrop-blur-xl border border-border/80 rounded-[32px] p-8 md:p-12 shadow-2xl relative overflow-hidden">
+        {/* Internal glow for premium aesthetics */}
+        <div className="absolute top-0 right-0 w-80 h-80 bg-primary/5 rounded-full blur-[100px] -z-10" />
+        
         <div className="grid md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="md:col-span-1">
             <div className="flex items-center mb-6">
               <img src="/icons.png" alt="Logo" className="w-20 h-20" />
             </div>
-            <p className="text-muted-foreground mb-6 leading-relaxed">
+            <p className="text-muted-foreground mb-6 text-sm leading-relaxed">
               O CRM inteligente que transforma seu WhatsApp em uma operação profissional de vendas e atendimento.
             </p>
             
@@ -105,24 +108,18 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-border/50">
-          <div className="grid md:grid-cols-2 gap-8 items-center text-center md:text-left">
-            <div className="space-y-1">
-              <p className="text-xs text-muted-foreground font-bold">CHATHOOK CRM - SOFTWARE E TECNOLOGIA LTDA</p>
-              <p className="text-[10px] text-muted-foreground/70">CNPJ: 53.214.856/0001-90 | Av. Paulista, 1106 - São Paulo, SP</p>
-            </div>
-            <div className="flex justify-center md:justify-end">
-              <p className="text-[10px] text-muted-foreground/50">
-                O uso deste site e plataforma está sujeito aos nossos termos e políticas vigentes.
-              </p>
-            </div>
+        {/* Unified Bottom Section - All inside the same box */}
+        <div className="mt-12 pt-8 border-t border-border/30 flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+          <div className="space-y-1">
+            <p className="text-xs text-muted-foreground font-bold">FLAVIA BRAZ PORTELA (FULLWEB)</p>
+            <p className="text-[10px] text-muted-foreground/70">CNPJ: 19.904.935/0001-20 | Mogi das Cruzes - SP</p>
+            <p className="text-[10px] text-muted-foreground/50 leading-relaxed">
+              O uso deste site e plataforma está sujeito aos nossos termos e políticas vigentes.
+            </p>
           </div>
-        </div>
-
-        {/* Bottom Bar */}
-        <div className="border-t border-border mt-12 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-muted-foreground text-sm">
+          
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 w-full md:w-auto">
+            <p className="text-muted-foreground text-xs">
               © {new Date().getFullYear()} Chathook. Todos os direitos reservados.
             </p>
             

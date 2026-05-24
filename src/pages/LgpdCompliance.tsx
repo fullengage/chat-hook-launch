@@ -30,7 +30,7 @@ const LgpdCompliance = () => {
         </div>
 
         <p className="text-lg text-muted-foreground mb-12 leading-relaxed">
-          Esta declaração descreve como o **Chathook CRM** (CHATHOOK CRM - SOFTWARE E TECNOLOGIA LTDA) se posiciona em relação à **Lei Geral de Proteção de Dados Pessoais (LGPD - Lei nº 13.709/2018)**, nossos compromissos com a segurança e os direitos de nossos usuários.
+          Esta declaração descreve como o **Chathook CRM** (desenvolvido por **FLAVIA BRAZ PORTELA - FULLWEB**, sob o CNPJ **19.904.935/0001-20**, com sede em Mogi das Cruzes - SP) se posiciona em relação à **Lei Geral de Proteção de Dados Pessoais (LGPD - Lei nº 13.709/2018)**, nossos compromissos com a segurança e os direitos de nossos usuários.
         </p>
         
         <div className="space-y-12">
