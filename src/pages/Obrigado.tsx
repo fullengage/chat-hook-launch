@@ -221,6 +221,25 @@ const Obrigado = () => {
               </div>
             </div>
 
+            {/* CRM PDF Bonus Download Section */}
+            <div className="bg-gradient-to-r from-primary/10 to-primary/5 border border-primary/20 p-6 rounded-2xl text-left space-y-4 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-primary/10 rounded-full blur-xl -z-10" />
+              <div className="flex items-center gap-2 text-primary font-bold text-base">
+                <span>🎁 Seu Bônus Especial Liberado!</span>
+              </div>
+              <p className="text-muted-foreground text-xs leading-relaxed">
+                Aqui está o seu <strong>Guia Completo CRM ChatHook WhatsApp</strong> para acelerar seus resultados comerciais. Clique no botão abaixo para baixar agora:
+              </p>
+              <Button 
+                variant="outline" 
+                size="sm"
+                className="w-full h-11 border-primary/30 hover:border-primary text-primary hover:bg-primary hover:text-primary-foreground font-bold rounded-xl transition-all flex items-center justify-center gap-2"
+                onClick={() => window.open("https://zzehxqgyberjewihsliu.supabase.co/storage/v1/object/public/pdfs/ChatHook_WhatsApp_CRM.pdf", "_blank")}
+              >
+                Baixar PDF do CRM WhatsApp
+              </Button>
+            </div>
+
             {/* Call to Action Button */}
             <div className="space-y-3">
               <Button 

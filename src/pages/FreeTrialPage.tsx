@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { CheckCircle2, Zap, LayoutDashboard, Bot, ShieldCheck, Clock, AlertCircle, MessageSquareOff, UserMinus, BarChart3, Users, HelpCircle, ChevronDown, Check, Star, Rocket, Target, Shield, ZapIcon, Code } from "lucide-react";
 import TrialForm from "@/components/TrialForm";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -5,9 +6,27 @@ import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import PlansSection from "@/components/PlansSection";
 import Footer from "@/components/Footer";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 
 const FreeTrialPage = () => {
    const navigate = useNavigate();
+   const [showExitPopup, setShowExitPopup] = useState(false);
+   const [hasShownExit, setHasShownExit] = useState(false);
+
+   useEffect(() => {
+      const handleMouseLeave = (e: MouseEvent) => {
+         // Detect if cursor leaves from the top (clientY < 50)
+         if (e.clientY < 50 && !hasShownExit) {
+            setShowExitPopup(true);
+            setHasShownExit(true);
+         }
+      };
+
+      document.addEventListener("mouseleave", handleMouseLeave);
+      return () => {
+         document.removeEventListener("mouseleave", handleMouseLeave);
+      };
+   }, [hasShownExit]);
 
    const scrollToForm = () => {
       const formElement = document.getElementById('trial-form-section');
@@ -385,6 +404,54 @@ const FreeTrialPage = () => {
          </main>
 
          <Footer />
+
+         <Dialog open={showExitPopup} onOpenChange={setShowExitPopup}>
+            <DialogContent className="sm:max-w-[500px] border border-primary/20 bg-card p-6 md:p-8 rounded-[32px] text-center space-y-6">
+               <DialogHeader>
+                  <div className="mx-auto w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-2 animate-bounce">
+                     <Zap className="w-8 h-8 text-primary fill-current" />
+                  </div>
+                  <DialogTitle className="text-3xl font-black text-foreground tracking-tight text-center italic">
+                     ESPERE! NÃO SAIA SEM SEU BÔNUS! 🎁
+                  </DialogTitle>
+                  <DialogDescription className="text-muted-foreground text-sm text-center leading-relaxed">
+                     Ao iniciar seu teste grátis de 7 dias do ChatHook hoje, você ganha acesso exclusivo ao nosso <strong>Guia Completo de CRM WhatsApp</strong>.
+                  </DialogDescription>
+               </DialogHeader>
+
+               <div className="bg-muted/30 border border-border/50 p-4 rounded-2xl flex flex-col md:flex-row items-center gap-4 text-left">
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                     <CheckCircle2 className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                     <p className="text-sm font-bold text-foreground">Guia Exclusivo CRM WhatsApp</p>
+                     <p className="text-xs text-muted-foreground">Táticas práticas para dobrar suas conversões e organizar sua equipe.</p>
+                  </div>
+               </div>
+
+               <div className="flex flex-col gap-3">
+                  <Button
+                     variant="cta"
+                     className="w-full h-14 rounded-2xl font-black text-base shadow-lg shadow-primary/20 bg-primary text-primary-foreground hover:opacity-90"
+                     onClick={() => {
+                        setShowExitPopup(false);
+                        scrollToForm();
+                     }}
+                  >
+                     QUERO GARANTIR MEU TESTE + BÔNUS
+                  </Button>
+                  <button
+                     onClick={() => {
+                        setShowExitPopup(false);
+                        window.open("https://zzehxqgyberjewihsliu.supabase.co/storage/v1/object/public/pdfs/ChatHook_WhatsApp_CRM.pdf", "_blank");
+                     }}
+                     className="text-xs font-bold text-primary hover:underline transition-all"
+                  >
+                     Ou apenas baixar o PDF diretamente
+                  </button>
+               </div>
+            </DialogContent>
+         </Dialog>
       </div>
    );
 };
