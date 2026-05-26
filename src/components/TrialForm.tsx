@@ -209,7 +209,7 @@ const TrialForm = () => {
               <><Loader2 className="mr-2 h-6 w-6 animate-spin" /> Configurando...</>
             ) : (
               <span className="flex items-center gap-2">
-                 COMEÇAR AGORA
+                 COMEÇAR TESTE GRÁTIS SEM CARTÃO
                  <Zap className="w-5 h-5 fill-current" />
               </span>
             )}

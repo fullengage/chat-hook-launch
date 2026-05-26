@@ -142,3 +142,26 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 }
+
+/* Esconder a bolinha (launcher) padrão do Chatwoot */
+.woot-widget-bubble,
+.woot--bubble-holder,
+.woot-elements--right,
+.woot-elements--left,
+iframe.woot-widget-bubble,
+div.woot-widget-bubble,
+#chatwoot-widget-bubble {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Garantir que o painel do chat (widget holder) funcione e apareça normalmente ao clicar no botão do topo */
+.woot-widget-holder,
+iframe.woot-widget-holder {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}

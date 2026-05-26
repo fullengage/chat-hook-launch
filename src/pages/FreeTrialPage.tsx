@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { CheckCircle2, Zap, LayoutDashboard, Bot, ShieldCheck, Clock, AlertCircle, MessageSquareOff, UserMinus, BarChart3, Users, HelpCircle, ChevronDown, Check, Star, Rocket, Target, Shield, ZapIcon, Code } from "lucide-react";
+import { CheckCircle2, Zap, LayoutDashboard, Bot, ShieldCheck, Clock, AlertCircle, MessageSquareOff, UserMinus, BarChart3, Users, HelpCircle, ChevronDown, Check, Star, Rocket, Target, Shield, ZapIcon, Code, X } from "lucide-react";
 import TrialForm from "@/components/TrialForm";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
@@ -33,16 +33,24 @@ const FreeTrialPage = () => {
       formElement?.scrollIntoView({ behavior: 'smooth' });
    };
 
+   const handleOpenChatwoot = () => {
+      if (typeof window !== "undefined" && (window as any).$chatwoot) {
+         (window as any).$chatwoot.toggle("open");
+      } else {
+         window.open("https://wa.me/5511955501090", "_blank");
+      }
+   };
+
    return (
       <div className="min-h-screen bg-background text-foreground font-sans selection:bg-primary/30 scroll-smooth">
          {/* Header / Logo */}
          <header className="py-3 lg:py-4 border-b border-border/10 bg-background/50 backdrop-blur-md sticky top-0 z-50">
             <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
                <div className="flex items-center gap-3">
-                  <img 
-                     src="/icons.png" 
-                     alt="Logo" 
-                     className="w-16 h-16 md:w-20 md:h-20 object-contain cursor-pointer hover:scale-105 transition-transform" 
+                  <img
+                     src="/icons.png"
+                     alt="Logo"
+                     className="w-24 h-24 md:w-32 md:h-32 object-contain cursor-pointer hover:scale-105 transition-transform"
                      onClick={() => navigate("/")}
                   />
                </div>
@@ -56,7 +64,7 @@ const FreeTrialPage = () => {
                         variant="outline"
                         size="sm"
                         className="rounded-full font-bold border-primary/20 hover:bg-primary/5 transition-all text-sm h-11"
-                        onClick={() => window.open("https://wa.me/5511955501090", "_blank")}
+                        onClick={handleOpenChatwoot}
                      >
                         Falar com Consultor
                      </Button>
@@ -66,7 +74,7 @@ const FreeTrialPage = () => {
                         className="rounded-full font-bold text-sm h-11 px-6"
                         onClick={scrollToForm}
                      >
-                        Começar Teste Grátis
+                        Começar teste grátis sem cartão
                      </Button>
                   </div>
                </div>
@@ -82,31 +90,27 @@ const FreeTrialPage = () => {
                      <div className="lg:w-3/5 text-center lg:text-left space-y-8">
 
                         <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[0.9] text-foreground mt-0 pt-0">
-                           Pare de perder vendas no <span className="text-primary italic text-shadow-glow">caos do WhatsApp.</span>
+                           Pare de perder vendas no WhatsApp e substitua <span className="text-primary italic text-shadow-glow">5 ferramentas</span> por uma só.
                         </h1>
 
                         <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                           Leve sua operação para o <span className="text-foreground font-bold">próximo nível</span> com o CRM ChatHook. Organize mensagens, automatize respostas com IA e tenha visão total do seu funil.
+                           O ChatHook centraliza atendimento, CRM, funil, IA, automação e equipe comercial no WhatsApp — com implantação guiada em até 48h.
                         </p>
 
                         <div className="flex flex-col sm:flex-row items-center gap-4">
-                           <div className="flex items-center -space-x-3">
-                              {[1, 2, 3, 4].map(i => (
-                                 <div key={i} className="w-10 h-10 rounded-full border-2 border-background bg-muted flex items-center justify-center overflow-hidden">
-                                    <img src={`https://i.pravatar.cc/100?u=${i}`} alt="user" />
-                                 </div>
-                              ))}
+                           <div className="flex items-center gap-3 bg-primary/5 px-4 py-3 rounded-2xl border border-primary/10">
+                              <CheckCircle2 className="w-5 h-5 text-primary shrink-0" />
+                              <p className="text-sm text-muted-foreground font-medium">
+                                 Implantação feita pela nossa equipe em até <span className="text-foreground font-bold">48 horas</span>
+                              </p>
                            </div>
-                           <p className="text-sm text-muted-foreground font-medium">
-                              Muitos empresários já descobriram o jeito mais inteligente de usar o WhatsApp na empresa.
-                           </p>
                         </div>
 
                         <div className="flex flex-col sm:flex-row items-center gap-4 lg:hidden">
-                            <Button variant="cta" size="lg" className="w-full h-14 rounded-2xl font-bold" onClick={scrollToForm}>
-                               Ativar Teste Grátis
-                            </Button>
-                           <Button variant="outline" size="lg" className="w-full h-14 rounded-2xl font-bold" onClick={() => window.open("https://wa.me/5511955501090", "_blank")}>
+                           <Button variant="cta" size="lg" className="w-full h-14 rounded-2xl font-bold" onClick={scrollToForm}>
+                              Começar teste grátis sem cartão
+                           </Button>
+                           <Button variant="outline" size="lg" className="w-full h-14 rounded-2xl font-bold" onClick={handleOpenChatwoot}>
                               Falar com Consultor
                            </Button>
                         </div>
@@ -155,14 +159,9 @@ const FreeTrialPage = () => {
                            <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-primary" />
                            <TrialForm />
                         </div>
-                        <div className="mt-8 flex flex-col items-center gap-4 text-center">
-                           <div className="flex items-center gap-1 text-yellow-500">
-                              {[1, 2, 3, 4, 5].map(i => <Star key={i} className="w-4 h-4 fill-current" />)}
-                           </div>
-                           <p className="text-xs text-muted-foreground leading-relaxed italic">
-                              "O ChatHook mudou nossa forma de vender. Saímos do caos para o controle total em 48h."
-                              <br />
-                              <span className="text-foreground font-bold not-italic">— Ricardo S., Diretor Comercial</span>
+                        <div className="mt-6 flex flex-col items-center gap-2 text-center">
+                           <p className="text-xs text-muted-foreground leading-relaxed">
+                              Chega de ficar esperando. Implantação imediata — nossa equipe configura tudo com você no mesmo dia.
                            </p>
                         </div>
                      </div>
@@ -173,26 +172,61 @@ const FreeTrialPage = () => {
                <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[120px] -z-10" />
             </section>
 
+            {/* Substitution Section */}
+            <section className="py-20 border-y border-border/10">
+               <div className="container mx-auto px-4 max-w-4xl">
+                  <div className="text-center mb-12">
+                     <h2 className="text-3xl md:text-4xl font-black tracking-tighter mb-4">
+                        Uma assinatura no lugar de <span className="text-primary italic">cinco</span>
+                     </h2>
+                     <p className="text-muted-foreground text-lg">Veja o que você para de pagar ao centralizar tudo no ChatHook.</p>
+                  </div>
+                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 mb-10">
+                     {[
+                        { name: "Kommo / Pipedrive", sub: "CRM externo" },
+                        { name: "Manychat / Typebot", sub: "Chatbot isolado" },
+                        { name: "Blip / Zenvia", sub: "Multiatendimento" },
+                        { name: "RD Station / Mlabs", sub: "Marketing separado" },
+                        { name: "Planilha de leads", sub: "Google Sheets / Excel" },
+                     ].map((item, i) => (
+                        <div key={i} className="flex flex-col gap-1 p-4 rounded-2xl border border-border/40 bg-muted/20 opacity-60 relative overflow-hidden">
+                           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                              <div className="w-full h-px bg-destructive/50 rotate-[-8deg]" />
+                           </div>
+                           <p className="text-sm font-bold text-foreground line-through decoration-destructive/60">{item.name}</p>
+                           <p className="text-[11px] text-muted-foreground">{item.sub}</p>
+                        </div>
+                     ))}
+                  </div>
+                  <div className="text-center p-6 rounded-3xl bg-primary/5 border border-primary/20">
+                     <p className="text-base font-bold text-foreground">
+                        Com o ChatHook, sua empresa tem atendimento, CRM, funil, automação, IA e inteligência comercial —{" "}
+                        <span className="text-primary">no mesmo lugar que seu cliente já está: o WhatsApp.</span>
+                     </p>
+                  </div>
+               </div>
+            </section>
+
             {/* Benefits Section (Quickly) */}
-            <section className="py-24 bg-muted/20 border-y border-border/10">
+            <section className="py-24 bg-muted/20 border-b border-border/10">
                <div className="container mx-auto px-4">
                   <div className="text-center mb-16">
-                     <h2 className="text-3xl font-black mb-4">Por que migrar hoje?</h2>
-                     <p className="text-muted-foreground">A diferença entre vender e perder o cliente está na agilidade e organização.</p>
+                     <h2 className="text-3xl font-black mb-4">Operando em outro patamar em 48 horas</h2>
+                     <p className="text-muted-foreground">Sua equipe já conhece o WhatsApp. O ChatHook transforma ele em sistema comercial.</p>
                   </div>
 
                   <div className="grid md:grid-cols-3 gap-8">
                      <div className="p-8 rounded-3xl bg-background border border-border/50 hover:shadow-2xl transition-all">
-                        <h3 className="text-xl font-bold mb-4">Implantação Express</h3>
-                        <p className="text-muted-foreground">Em até 2 dias sua empresa está operando com Kanban, Multi-atendentes e IA configurada.</p>
+                        <h3 className="text-xl font-bold mb-4">Implantação assistida</h3>
+                        <p className="text-muted-foreground">Nossa equipe configura Kanban, multi-atendentes e IA junto com você. Você não fica sozinho nenhum momento.</p>
                      </div>
                      <div className="p-8 rounded-3xl bg-background border border-border/50 hover:shadow-2xl transition-all">
-                        <h3 className="text-xl font-bold mb-4">Central de Verdade</h3>
-                        <p className="text-muted-foreground">Conecte vários números em um só lugar. Tenha histórico total e controle de quem atende o quê.</p>
+                        <h3 className="text-xl font-bold mb-4">Todos os números em um só lugar</h3>
+                        <p className="text-muted-foreground">Conecte vários números do WhatsApp em uma central unificada. Histórico completo, sem informação espalhada em celulares pessoais.</p>
                      </div>
                      <div className="p-8 rounded-3xl bg-background border border-border/50 hover:shadow-2xl transition-all">
-                        <h3 className="text-xl font-bold mb-4">Produtividade Máxima</h3>
-                        <p className="text-muted-foreground">Reduza tarefas repetitivas em 80% usando o Captain IA para qualificar leads e responder FAQs.</p>
+                        <h3 className="text-xl font-bold mb-4">80% menos tarefas repetitivas</h3>
+                        <p className="text-muted-foreground">O Captain IA qualifica leads, responde dúvidas frequentes e agenda — liberando seu time para focar no fechamento.</p>
                      </div>
                   </div>
                </div>
@@ -231,8 +265,8 @@ const FreeTrialPage = () => {
             <section className="py-24 relative overflow-hidden">
                <div className="container mx-auto px-4">
                   <div className="text-center mb-20">
-                     <h2 className="text-3xl md:text-5xl font-black mb-6 tracking-tighter">Sua operação em <span className="text-primary italic text-shadow-glow">outro patamar</span></h2>
-                     <p className="text-muted-foreground text-lg max-w-2xl mx-auto">Uma ferramenta completa para quem não quer apenas atender, mas sim vender em escala.</p>
+                     <h2 className="text-3xl md:text-5xl font-black mb-6 tracking-tighter">Tudo que sua operação precisa, <span className="text-primary italic text-shadow-glow">no mesmo lugar</span></h2>
+                     <p className="text-muted-foreground text-lg max-w-2xl mx-auto">Do primeiro contato ao fechamento — sem sair do WhatsApp, sem abrir outra aba.</p>
                   </div>
 
                   <div className="space-y-32">
@@ -332,7 +366,7 @@ const FreeTrialPage = () => {
             {/* Who is it for */}
             <section className="py-24">
                <div className="container mx-auto px-4 text-center">
-                  <h2 className="text-3xl md:text-5xl font-black mb-16 tracking-tighter italic">Ideal para quem busca <span className="text-primary">resultados</span></h2>
+                  <h2 className="text-3xl md:text-5xl font-black mb-16 tracking-tighter italic">Para quem o WhatsApp é o <span className="text-primary">principal canal de vendas</span></h2>
                   <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
                      {[
                         { t: "Clínicas & Saúde", i: Shield },
@@ -356,6 +390,17 @@ const FreeTrialPage = () => {
             </section>
 
             {/* Plans Section */}
+            <section className="py-4 bg-muted/10 border-t border-border/10">
+               <div className="container mx-auto px-4 text-center mb-8">
+                  <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-3">Quanto você gasta hoje?</p>
+                  <h2 className="text-2xl md:text-3xl font-black tracking-tighter mb-3">
+                     CRM + chatbot + multiatendimento + planilha = <span className="text-destructive line-through decoration-2">R$ 800–1.500/mês</span>
+                  </h2>
+                  <p className="text-muted-foreground text-base max-w-xl mx-auto">
+                     Com o ChatHook você centraliza tudo isso em um único plano — e ainda sobra equipe para vender mais.
+                  </p>
+               </div>
+            </section>
             <PlansSection />
 
             {/* FAQ Section */}
@@ -387,15 +432,15 @@ const FreeTrialPage = () => {
 
                   <div className="mt-20 p-10 rounded-[40px] bg-primary text-primary-foreground text-center relative overflow-hidden group">
                      <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-20 transition-opacity" />
-                     <h3 className="text-3xl font-black mb-6 italic tracking-tight">Pronto para organizar seu comercial?</h3>
-                     <p className="mb-10 text-primary-foreground/90 text-lg">Inicie seus 7 dias grátis agora e veja a mágica acontecer.</p>
+                     <h3 className="text-3xl font-black mb-6 italic tracking-tight">Pronto para centralizar tudo em uma única operação?</h3>
+                     <p className="mb-10 text-primary-foreground/90 text-lg">Comece os 7 dias grátis agora. Nossa equipe configura tudo com você em até 48 horas.</p>
                      <Button
                         size="lg"
                         variant="secondary"
                         className="h-14 px-10 rounded-full font-black text-lg gap-2 shadow-xl hover:scale-105 transition-transform"
                         onClick={scrollToForm}
                      >
-                        Começar Teste Agora
+                        Começar teste grátis sem cartão
                         <Zap className="w-5 h-5 fill-current" />
                      </Button>
                   </div>
@@ -408,14 +453,14 @@ const FreeTrialPage = () => {
          <Dialog open={showExitPopup} onOpenChange={setShowExitPopup}>
             <DialogContent className="sm:max-w-[500px] border border-primary/20 bg-card p-6 md:p-8 rounded-[32px] text-center space-y-6">
                <DialogHeader>
-                  <div className="mx-auto w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-2 animate-bounce">
-                     <Zap className="w-8 h-8 text-primary fill-current" />
+                  <div className="mx-auto w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-2">
+                     <CheckCircle2 className="w-8 h-8 text-primary" />
                   </div>
-                  <DialogTitle className="text-3xl font-black text-foreground tracking-tight text-center italic">
-                     ESPERE! NÃO SAIA SEM SEU BÔNUS! 🎁
+                  <DialogTitle className="text-2xl font-black text-foreground tracking-tight text-center">
+                     Antes de sair — um material gratuito para você
                   </DialogTitle>
                   <DialogDescription className="text-muted-foreground text-sm text-center leading-relaxed">
-                     Ao iniciar seu teste grátis de 7 dias do ChatHook hoje, você ganha acesso exclusivo ao nosso <strong>Guia Completo de CRM WhatsApp</strong>.
+                     Preparamos um guia prático sobre como estruturar uma operação comercial inteligente no WhatsApp. Sem enrolação — direto ao ponto.
                   </DialogDescription>
                </DialogHeader>
 
@@ -424,8 +469,8 @@ const FreeTrialPage = () => {
                      <CheckCircle2 className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                     <p className="text-sm font-bold text-foreground">Guia Exclusivo CRM WhatsApp</p>
-                     <p className="text-xs text-muted-foreground">Táticas práticas para dobrar suas conversões e organizar sua equipe.</p>
+                     <p className="text-sm font-bold text-foreground">Guia: CRM WhatsApp para equipes comerciais</p>
+                     <p className="text-xs text-muted-foreground">Como organizar funil, follow-up e atendimento sem depender de planilha.</p>
                   </div>
                </div>
 
@@ -438,7 +483,7 @@ const FreeTrialPage = () => {
                         scrollToForm();
                      }}
                   >
-                     QUERO GARANTIR MEU TESTE + BÔNUS
+                     Iniciar teste grátis + baixar o guia
                   </Button>
                   <button
                      onClick={() => {
@@ -447,7 +492,7 @@ const FreeTrialPage = () => {
                      }}
                      className="text-xs font-bold text-primary hover:underline transition-all"
                   >
-                     Ou apenas baixar o PDF diretamente
+                     Só quero o PDF por enquanto
                   </button>
                </div>
             </DialogContent>

@@ -113,7 +113,7 @@ const Obrigado = () => {
           <img 
             src="/icons.png" 
             alt="Logo" 
-            className="w-16 h-16 md:w-20 md:h-20 object-contain cursor-pointer hover:scale-105 transition-transform" 
+            className="w-24 h-24 md:w-32 md:h-32 object-contain cursor-pointer hover:scale-105 transition-transform" 
             onClick={() => navigate("/")}
           />
           <div className="flex items-center gap-2 text-[10px] md:text-sm text-muted-foreground bg-muted/30 px-4 py-2 rounded-full border border-border/10">
