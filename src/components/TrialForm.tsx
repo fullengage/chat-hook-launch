@@ -32,9 +32,6 @@ const formSchema = z.object({
   name: z.string().min(2, "O nome deve ter pelo menos 2 caracteres."),
   email: z.string().email("E-mail inválido."),
   whatsapp: z.string().min(10, "Informe um WhatsApp válido."),
-  companySize: z.string({
-    required_error: "Selecione o tamanho da empresa.",
-  }),
   termsAccepted: z.boolean().refine((val) => val === true, {
     message: "Você deve aceitar os Termos de Uso e Política de Privacidade.",
   }),
@@ -50,7 +47,6 @@ const TrialForm = () => {
       name: "",
       email: "",
       whatsapp: "",
-      companySize: "",
       termsAccepted: false,
     },
   });
@@ -74,7 +70,7 @@ const TrialForm = () => {
           name: values.name,
           email: values.email,
           whatsapp: values.whatsapp,
-          companySize: values.companySize,
+          companySize: "Não informado",
           source: "free_trial_landing_page",
           page: window.location.pathname,
           userAgent: navigator.userAgent,
@@ -138,9 +134,9 @@ const TrialForm = () => {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>E-mail Corporativo</FormLabel>
+                <FormLabel>Melhor E-mail</FormLabel>
                 <FormControl>
-                  <Input placeholder="email@empresa.com" {...field} className="h-12 bg-background/50 border-white/10 focus:border-primary/50" />
+                  <Input placeholder="seu@email.com" {...field} className="h-12 bg-background/50 border-white/10 focus:border-primary/50" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -155,29 +151,6 @@ const TrialForm = () => {
                 <FormControl>
                   <Input placeholder="(00) 00000-0000" {...field} className="h-12 bg-background/50 border-white/10 focus:border-primary/50" />
                 </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="companySize"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Tamanho da Equipe</FormLabel>
-                <Select onValueChange={field.onChange} defaultValue={field.value}>
-                  <FormControl>
-                    <SelectTrigger className="h-12 bg-background/50 border-white/10 focus:border-primary/50">
-                      <SelectValue placeholder="Selecione..." />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    <SelectItem value="1-3">1 a 3 pessoas</SelectItem>
-                    <SelectItem value="4-10">4 a 10 pessoas</SelectItem>
-                    <SelectItem value="11-50">11 a 50 pessoas</SelectItem>
-                    <SelectItem value="50+">Mais de 50 pessoas</SelectItem>
-                  </SelectContent>
-                </Select>
                 <FormMessage />
               </FormItem>
             )}
