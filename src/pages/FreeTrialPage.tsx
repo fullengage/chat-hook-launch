@@ -155,7 +155,7 @@ const FreeTrialPage = () => {
                      {/* Form Section */}
                      <div id="trial-form-section" className="lg:w-2/5 w-full max-w-md mx-auto relative scroll-mt-32">
                         <div className="absolute -inset-4 bg-primary/20 rounded-[40px] blur-3xl -z-10 animate-pulse" />
-                        <div className="bg-card border border-primary/50 rounded-[32px] p-6 md:p-8 shadow-2xl relative overflow-hidden">
+                        <div className="bg-[#0f172a]/90 backdrop-blur-md border border-primary/50 rounded-[32px] p-6 md:p-8 shadow-2xl relative overflow-hidden">
                            <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-primary" />
                            <TrialForm />
                         </div>

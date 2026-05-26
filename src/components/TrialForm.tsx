@@ -176,7 +176,7 @@ const TrialForm = () => {
             )}
           />
 
-          <Button type="submit" variant="cta" className="w-full h-16 text-xl font-black mt-6 shadow-button group relative overflow-hidden rounded-2xl" disabled={isSubmitting}>
+          <Button type="submit" variant="cta" className="w-full h-16 text-[13px] sm:text-base font-black mt-6 shadow-button group relative overflow-hidden rounded-2xl" disabled={isSubmitting}>
              <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-20 transition-opacity" />
             {isSubmitting ? (
               <><Loader2 className="mr-2 h-6 w-6 animate-spin" /> Configurando...</>
