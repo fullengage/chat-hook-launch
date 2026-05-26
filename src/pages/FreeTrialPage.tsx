@@ -94,7 +94,7 @@ const FreeTrialPage = () => {
                         </h1>
 
                         <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                           O ChatHook centraliza atendimento, CRM, funil, IA, automação e equipe comercial no WhatsApp — com implantação guiada hoje mesmo.
+                           Com o ChatHook você vai ter mais vendas, mais clientes, mais faturamento, atendimento com IA , CRM, funil, veja o que sua equipe comercial esta falando no WhatsApp, comece hoje mesmo.
                         </p>
 
                         <div className="flex flex-col sm:flex-row items-center gap-4">
