@@ -128,7 +128,9 @@ const Footer = () => {
             {/* Social Links */}
             <div className="flex items-center gap-4">
               <a 
-                href="#" 
+                href="https://www.linkedin.com/in/richardportela/" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors duration-200"
                 aria-label="LinkedIn"
               >
@@ -137,7 +139,9 @@ const Footer = () => {
                 </svg>
               </a>
               <a 
-                href="#" 
+                href="https://www.instagram.com/chathook/" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors duration-200"
                 aria-label="Instagram"
               >
@@ -146,7 +150,9 @@ const Footer = () => {
                 </svg>
               </a>
               <a 
-                href="#" 
+                href="https://www.youtube.com/@Chathook-e4z" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors duration-200"
                 aria-label="YouTube"
               >
