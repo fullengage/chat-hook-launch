@@ -111,7 +111,7 @@ const TrialForm = () => {
            7 Dias Grátis &amp; Sem Cartão
         </div>
         <h3 className="text-3xl font-black text-foreground mb-3 tracking-tighter italic">Liberar meu <span className="text-primary">CRM Inteligente</span></h3>
-        <p className="text-sm text-muted-foreground leading-relaxed">Preencha abaixo para receber seu acesso e o bônus de implantação hoje mesmo.</p>
+        <p className="text-sm text-slate-200 leading-relaxed font-semibold">Preencha abaixo para receber seu acesso e o bônus de implantação hoje mesmo.</p>
       </div>
 
       <Form {...form}>
@@ -123,7 +123,7 @@ const TrialForm = () => {
               <FormItem>
                 <FormLabel className="text-xs font-black text-foreground uppercase tracking-wider">Nome Completo</FormLabel>
                 <FormControl>
-                  <Input placeholder="Seu nome" {...field} className="h-12 bg-background border-white/20 text-foreground placeholder:text-muted-foreground/60 focus:border-primary focus:ring-1 focus:ring-primary focus-visible:ring-primary/20 transition-all font-medium" />
+                  <Input placeholder="Seu nome" {...field} className="h-12 bg-background border-white/25 text-foreground placeholder:text-slate-400 focus:border-primary focus:ring-1 focus:ring-primary focus-visible:ring-primary/20 transition-all font-medium" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -136,7 +136,7 @@ const TrialForm = () => {
               <FormItem>
                 <FormLabel className="text-xs font-black text-foreground uppercase tracking-wider">Melhor E-mail</FormLabel>
                 <FormControl>
-                  <Input placeholder="seu@email.com" {...field} className="h-12 bg-background border-white/20 text-foreground placeholder:text-muted-foreground/60 focus:border-primary focus:ring-1 focus:ring-primary focus-visible:ring-primary/20 transition-all font-medium" />
+                  <Input placeholder="seu@email.com" {...field} className="h-12 bg-background border-white/25 text-foreground placeholder:text-slate-400 focus:border-primary focus:ring-1 focus:ring-primary focus-visible:ring-primary/20 transition-all font-medium" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -149,7 +149,7 @@ const TrialForm = () => {
               <FormItem>
                 <FormLabel className="text-xs font-black text-foreground uppercase tracking-wider">WhatsApp com DDD</FormLabel>
                 <FormControl>
-                  <Input placeholder="(00) 00000-0000" {...field} className="h-12 bg-background border-white/20 text-foreground placeholder:text-muted-foreground/60 focus:border-primary focus:ring-1 focus:ring-primary focus-visible:ring-primary/20 transition-all font-medium" />
+                  <Input placeholder="(00) 00000-0000" {...field} className="h-12 bg-background border-white/25 text-foreground placeholder:text-slate-400 focus:border-primary focus:ring-1 focus:ring-primary focus-visible:ring-primary/20 transition-all font-medium" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -168,8 +168,8 @@ const TrialForm = () => {
                   />
                 </FormControl>
                 <div className="space-y-1 mt-1 leading-tight">
-                  <FormLabel className="text-[11px] text-muted-foreground font-medium cursor-pointer">
-                    Li e aceito os <Link to="/termos-de-uso" className="text-primary hover:underline font-bold" target="_blank">Termos de Uso</Link> e a <Link to="/privacidade" className="text-primary hover:underline font-bold" target="_blank">Política de Privacidade</Link>.
+                  <FormLabel className="text-[12px] text-slate-300 font-semibold cursor-pointer">
+                    Li e aceito os <Link to="/termos-de-uso" className="text-green-400 hover:underline font-extrabold" target="_blank">Termos de Uso</Link> e a <Link to="/privacidade" className="text-green-400 hover:underline font-extrabold" target="_blank">Política de Privacidade</Link>.
                   </FormLabel>
                 </div>
               </FormItem>
@@ -188,8 +188,8 @@ const TrialForm = () => {
             )}
           </Button>
 
-          <div className="flex items-center justify-center gap-4 mt-6 grayscale opacity-50">
-             <Shield className="w-4 h-4" />
+          <div className="flex items-center justify-center gap-4 mt-6 text-slate-300 opacity-90">
+             <Shield className="w-4 h-4 text-green-400" />
              <span className="text-[10px] font-bold uppercase tracking-widest">Protocolo SSL Seguro</span>
           </div>
         </form>
