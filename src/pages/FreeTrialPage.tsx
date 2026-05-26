@@ -89,7 +89,7 @@ const FreeTrialPage = () => {
                      {/* Content */}
                      <div className="lg:w-3/5 text-center lg:text-left space-y-8">
 
-                        <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[0.9] text-foreground mt-0 pt-0">
+                        <h1 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-[0.9] text-foreground mt-0 pt-0">
                            Pare de perder vendas no WhatsApp e substitua <span className="text-primary italic text-shadow-glow">5 ferramentas</span> por uma só.
                         </h1>
 
