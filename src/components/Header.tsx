@@ -25,7 +25,7 @@ const Header = () => {
               CRM & Kanban
             </button>
             <button onClick={() => scrollToSection('captain-ia')} className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-              Captain IA
+              Agendamento com IA
             </button>
             <button onClick={() => scrollToSection('how-it-works')} className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
               Como funciona

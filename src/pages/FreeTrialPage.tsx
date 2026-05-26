@@ -94,14 +94,14 @@ const FreeTrialPage = () => {
                         </h1>
 
                         <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                           O ChatHook centraliza atendimento, CRM, funil, IA, automação e equipe comercial no WhatsApp — com implantação guiada em até 48h.
+                           O ChatHook centraliza atendimento, CRM, funil, IA, automação e equipe comercial no WhatsApp — com implantação guiada hoje mesmo.
                         </p>
 
                         <div className="flex flex-col sm:flex-row items-center gap-4">
                            <div className="flex items-center gap-3 bg-primary/5 px-4 py-3 rounded-2xl border border-primary/10">
                               <CheckCircle2 className="w-5 h-5 text-primary shrink-0" />
                               <p className="text-sm text-muted-foreground font-medium">
-                                 Implantação feita pela nossa equipe em até <span className="text-foreground font-bold">48 horas</span>
+                                 Implantação feita pela nossa equipe <span className="text-foreground font-bold">hoje mesmo</span>
                               </p>
                            </div>
                         </div>
@@ -130,7 +130,7 @@ const FreeTrialPage = () => {
                                  <Bot className="w-6 h-6 text-primary" />
                               </div>
                               <div>
-                                 <p className="text-sm font-black text-foreground">Captain IA 24/7</p>
+                                 <p className="text-sm font-black text-foreground">Agente de agendamento com IA 24/7</p>
                                  <p className="text-[12px] text-muted-foreground">Respostas inteligentes sem atrasos.</p>
                               </div>
                            </div>
@@ -143,7 +143,7 @@ const FreeTrialPage = () => {
                            </div>
                            <div className="flex items-center gap-2 bg-primary/5 px-4 py-2 rounded-xl border border-primary/10">
                               <Clock className="w-4 h-4 text-primary" />
-                              <span className="font-bold text-[11px] uppercase tracking-wider">implantação do sistema em 48h</span>
+                              <span className="font-bold text-[11px] uppercase tracking-wider">implantação do sistema hoje mesmo</span>
                            </div>
                            <div className="flex items-center gap-2 bg-primary/5 px-4 py-2 rounded-xl border border-primary/10">
                               <ShieldCheck className="w-4 h-4 text-primary" />
@@ -211,7 +211,7 @@ const FreeTrialPage = () => {
             <section className="py-24 bg-muted/20 border-b border-border/10">
                <div className="container mx-auto px-4">
                   <div className="text-center mb-16">
-                     <h2 className="text-3xl font-black mb-4">Operando em outro patamar em 48 horas</h2>
+                     <h2 className="text-3xl font-black mb-4">Operando em outro patamar hoje mesmo</h2>
                      <p className="text-muted-foreground">Sua equipe já conhece o WhatsApp. O ChatHook transforma ele em sistema comercial.</p>
                   </div>
 
@@ -226,7 +226,7 @@ const FreeTrialPage = () => {
                      </div>
                      <div className="p-8 rounded-3xl bg-background border border-border/50 hover:shadow-2xl transition-all">
                         <h3 className="text-xl font-bold mb-4">80% menos tarefas repetitivas</h3>
-                        <p className="text-muted-foreground">O Captain IA qualifica leads, responde dúvidas frequentes e agenda — liberando seu time para focar no fechamento.</p>
+                        <p className="text-muted-foreground">O agente de agendamento com IA qualifica leads, responde dúvidas frequentes e agenda — liberando seu time para focar no fechamento.</p>
                      </div>
                   </div>
                </div>
@@ -305,7 +305,7 @@ const FreeTrialPage = () => {
                      <div className="flex flex-col lg:flex-row-reverse items-center gap-16">
                         <div className="lg:w-1/2 space-y-6">
                            <div className="bg-primary/10 text-primary px-4 py-2 rounded-full w-fit font-bold text-xs uppercase tracking-widest">Inteligência Artificial</div>
-                           <h3 className="text-4xl font-black leading-tight">Captain IA: Atendimento 24/7 de alta qualidade</h3>
+                           <h3 className="text-4xl font-black leading-tight">Agente de agendamento com IA: Atendimento 24/7 de alta qualidade</h3>
                            <p className="text-muted-foreground text-lg leading-relaxed">
                               Nossa IA aprende sobre seu negócio e qualifica seus leads automaticamente. Ela responde dúvidas frequentes e prepara o terreno para sua equipe fechar o negócio.
                            </p>
@@ -366,7 +366,7 @@ const FreeTrialPage = () => {
             {/* Who is it for */}
             <section className="py-24">
                <div className="container mx-auto px-4 text-center">
-                  <h2 className="text-3xl md:text-5xl font-black mb-16 tracking-tighter italic">Para quem o WhatsApp é o <span className="text-primary">principal canal de vendas</span></h2>
+                  <h2 className="text-3xl md:text-5xl font-black mb-16 tracking-tighter italic">Transforme seu WhatsApp no <span className="text-primary">principal canal de vendas</span></h2>
                   <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
                      {[
                         { t: "Clínicas & Saúde", i: Shield },
@@ -414,9 +414,9 @@ const FreeTrialPage = () => {
                   <Accordion type="single" collapsible className="space-y-4">
                      {[
                         { q: "Precisa de cartão de crédito para os 7 dias?", a: "Não! Você pode começar seu teste gratuito agora mesmo sem cadastrar nenhum cartão. Queremos que você veja o valor antes de qualquer compromisso." },
-                        { q: "Como funciona a implantação em 48h?", a: "Assim que você inicia o teste, nossa equipe de onboarding entra em contato para mapear seu processo e configurar sua conta para que você já comece a vender no novo formato em tempo recorde." },
+                        { q: "Como funciona a implantação hoje mesmo?", a: "Assim que você inicia o teste, nossa equipe de onboarding entra em contato para mapear seu processo e configurar sua conta para que você já comece a vender no novo formato em tempo recorde." },
                         { q: "Pode usar vários números de WhatsApp?", a: "Com certeza. O ChatHook foi feito para centralizar vários canais e números em um único painel, permitindo que sua equipe gerencie tudo de forma unificada." },
-                        { q: "A IA é difícil de configurar?", a: "De forma alguma. O Captain IA já vem com modelos baseados em melhores práticas de vendas. Você só precisa alimentar as informações do seu negócio e ele começa a aprender." },
+                        { q: "A IA é difícil de configurar?", a: "De forma alguma. O agente de agendamento com IA já vem com modelos baseados em melhores práticas de vendas. Você só precisa alimentar as informações do seu negócio e ele começa a aprender." },
                         { q: "Posso cancelar a qualquer momento?", a: "Sim. Nossos planos são sem fidelidade. Você tem total liberdade para continuar ou encerrar quando desejar, sem multas." }
                      ].map((item, i) => (
                         <AccordionItem key={i} value={`item-${i}`} className="bg-background border border-border/50 rounded-2xl px-6 py-2 overflow-hidden shadow-sm">
@@ -433,7 +433,7 @@ const FreeTrialPage = () => {
                   <div className="mt-20 p-10 rounded-[40px] bg-primary text-primary-foreground text-center relative overflow-hidden group">
                      <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-20 transition-opacity" />
                      <h3 className="text-3xl font-black mb-6 italic tracking-tight">Pronto para centralizar tudo em uma única operação?</h3>
-                     <p className="mb-10 text-primary-foreground/90 text-lg">Comece os 7 dias grátis agora. Nossa equipe configura tudo com você em até 48 horas.</p>
+                     <p className="mb-10 text-primary-foreground/90 text-lg">Comece os 7 dias grátis agora. Nossa equipe configura tudo com você hoje mesmo.</p>
                      <Button
                         size="lg"
                         variant="secondary"

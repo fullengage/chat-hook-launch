@@ -16,7 +16,7 @@ const PlansSection = () => {
         "1 número de WhatsApp",
         "Até 3 atendentes",
         "Kanban de Vendas",
-        "Captain IA",
+        "Agente de agendamento com IA",
         "Relatórios básicos"
       ],
       bonuses: [
@@ -42,7 +42,7 @@ const PlansSection = () => {
         "Até 3 números",
         "Até 10 atendentes",
         "Kanban de Vendas",
-        "Captain IA",
+        "Agente de agendamento com IA",
         "Relatórios básicos",
         "Suporte e treinamento"
       ],
@@ -69,7 +69,7 @@ const PlansSection = () => {
         "20 números",
         "20 atendentes",
         "Kanban de Vendas",
-        "Captain IA",
+        "Agente de agendamento com IA",
         "Relatórios básicos",
         "Suporte, treinamento e instalação"
       ],

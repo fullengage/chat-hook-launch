@@ -42,7 +42,7 @@ const Footer = () => {
               </li>
               <li>
                 <a href="/#captain-ia" className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">
-                  Captain IA
+                  Agendamento com IA
                 </a>
               </li>
               <li>

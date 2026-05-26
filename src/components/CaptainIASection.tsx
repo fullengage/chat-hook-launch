@@ -5,7 +5,7 @@ const CaptainIASection = () => {
     {
       icon: Sparkles,
       title: "Respostas em Tempo Real",
-      description: "O Captain IA responde dúvidas frequentes 24/7, garantindo que nenhum cliente fique esperando."
+      description: "O agente de agendamento com IA responde dúvidas frequentes 24/7, garantindo que nenhum cliente fique esperando."
     },
     {
       icon: Brain,
@@ -33,7 +33,7 @@ const CaptainIASection = () => {
             <div className="p-4 rounded-3xl bg-muted/50 border border-border shadow-2xl relative z-10">
                <img 
                  src="/images/captain_system.png" 
-                 alt="Configuração do Captain IA" 
+                 alt="Configuração do agente de agendamento com IA" 
                  className="w-full rounded-2xl border border-border"
                />
             </div>
@@ -42,7 +42,7 @@ const CaptainIASection = () => {
             <div className="absolute -bottom-10 -left-10 w-80 p-3 rounded-2xl bg-background border border-border shadow-2xl hidden md:block z-20">
                <img 
                  src="/images/captain_messages.png" 
-                 alt="Captain IA em Ação" 
+                 alt="Agente de agendamento com IA em Ação" 
                  className="w-full rounded-xl"
                />
                <p className="mt-2 text-[10px] text-center text-muted-foreground font-medium uppercase tracking-widest">IA Respondendo em Tempo Real</p>
@@ -62,7 +62,7 @@ const CaptainIASection = () => {
               Respostas <span className="text-primary">inteligentes</span> na hora certa
             </h2>
             <p className="text-xl text-muted-foreground mb-12 leading-relaxed">
-              O Captain IA não é apenas um bot. Ele ajuda a responder perguntas recorrentes, apoiar atendentes e acelerar o atendimento com base na inteligência do seu negócio.
+              O agente de agendamento com IA não é apenas um bot. Ele ajuda a responder perguntas recorrentes, apoiar atendentes e acelerar o atendimento com base na inteligência do seu negócio.
             </p>
 
             <div className="grid sm:grid-cols-2 gap-8">

@@ -115,7 +115,7 @@ const TrialForm = () => {
            7 Dias Grátis &amp; Sem Cartão
         </div>
         <h3 className="text-3xl font-black text-foreground mb-3 tracking-tighter italic">Liberar meu <span className="text-primary">CRM Inteligente</span></h3>
-        <p className="text-sm text-muted-foreground leading-relaxed">Preencha abaixo para receber seu acesso e o bônus de implantação em 48h.</p>
+        <p className="text-sm text-muted-foreground leading-relaxed">Preencha abaixo para receber seu acesso e o bônus de implantação hoje mesmo.</p>
       </div>
 
       <Form {...form}>

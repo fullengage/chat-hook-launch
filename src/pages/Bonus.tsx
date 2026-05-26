@@ -102,7 +102,7 @@ const Bonus = () => {
                 </div>
               </div>
               <div className="pt-6 border-t border-border/20 mt-6 flex items-center justify-between text-xs font-semibold text-primary">
-                <span>Implantação guiada em 48h</span>
+                <span>Implantação guiada hoje mesmo</span>
                 <span className="bg-primary/10 px-2 py-1 rounded-md">Valor: R$ 297,00</span>
               </div>
             </div>

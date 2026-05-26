@@ -11,7 +11,7 @@ const LowTicketLP = () => {
     <div className="min-h-screen bg-[#050505] text-foreground font-sans selection:bg-primary/30 scroll-smooth">
       {/* Top Banner - Scarcity */}
       <div className="bg-primary text-primary-foreground py-2 text-center text-xs font-black tracking-widest uppercase">
-        Oferta de Lançamento: Implantação Grátis em 48h (Válido para hoje)
+        Oferta de Lançamento: Implantação Grátis Hoje Mesmo
       </div>
 
       <header className="py-6 container mx-auto px-4 flex justify-between items-center">
@@ -37,7 +37,7 @@ const LowTicketLP = () => {
             </h1>
             
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-12 max-w-2xl mx-auto">
-              Toda a potência do CRM ChatHook por um valor menor que um cafezinho por dia. Kanban, multi-atendentes e IA configurada em <span className="text-foreground font-bold underline decoration-primary">apenas 48h</span>.
+              Toda a potência do CRM ChatHook por um valor menor que um cafezinho por dia. Kanban, multi-atendentes e IA configurada <span className="text-foreground font-bold underline decoration-primary">hoje mesmo</span>.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -68,7 +68,7 @@ const LowTicketLP = () => {
                          { icon: LayoutDashboard, t: "Kanban Ilimitado", d: "Visualize seu funil e mova leads com um clique." },
                          { icon: Bot, t: "Captain IA Basic", d: "Automação inteligente para perguntas repetitivas." },
                          { icon: Zap, t: "Multi-atendentes", d: "Equipe inteira em um só número oficial." },
-                         { icon: CheckCircle2, t: "Implantação em 48h", d: "Deixamos tudo pronto para você começar." }
+                         { icon: CheckCircle2, t: "Implantação Hoje Mesmo", d: "Deixamos tudo pronto para você começar." }
                        ].map((item, i) => (
                          <li key={i} className="flex gap-4">
                             <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
