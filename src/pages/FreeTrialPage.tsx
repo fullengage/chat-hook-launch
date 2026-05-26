@@ -52,6 +52,8 @@ const FreeTrialPage = () => {
                      alt="Logo"
                      className="w-24 h-24 md:w-32 md:h-32 object-contain cursor-pointer hover:scale-105 transition-transform"
                      onClick={() => navigate("/")}
+                     width={128}
+                     height={128}
                   />
                </div>
                <div className="flex flex-wrap items-center justify-center md:justify-end gap-3 md:gap-6">
@@ -298,6 +300,8 @@ const FreeTrialPage = () => {
                               alt="Kanban System"
                               className="rounded-[32px] border border-border/50 shadow-2xl relative z-10 hover:scale-[1.02] transition-transform duration-500"
                               loading="lazy"
+                              width={600}
+                              height={375}
                            />
                         </div>
                      </div>
@@ -330,6 +334,8 @@ const FreeTrialPage = () => {
                               alt="IA System"
                               className="rounded-[32px] border border-border/50 shadow-2xl relative z-10 hover:scale-[1.02] transition-transform duration-500"
                               loading="lazy"
+                              width={600}
+                              height={375}
                            />
                         </div>
                      </div>

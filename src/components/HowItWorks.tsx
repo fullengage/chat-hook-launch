@@ -88,6 +88,8 @@ const HowItWorks = () => {
              alt="Interface de Conexão WhatsApp" 
              className="w-full rounded-2xl border border-border shadow-2xl transition-transform duration-500 group-hover:scale-[1.01]"
              loading="lazy"
+             width={1000}
+             height={600}
            />
         </div>
 

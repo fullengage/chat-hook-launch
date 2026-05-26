@@ -16,7 +16,7 @@ const LowTicketLP = () => {
 
       <header className="py-6 container mx-auto px-4 flex justify-between items-center">
         <div className="flex items-center gap-3">
-           <img src="/icons.png" alt="Logo" className="w-24 h-auto object-contain" />
+           <img src="/icons.png" alt="Logo" className="w-24 h-auto object-contain" width={96} height={96} />
         </div>
         <Button variant="outline" size="sm" className="border-white/10 text-white/60 hover:text-white" onClick={goToOffer}>
           Entrar agora

@@ -12,7 +12,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="md:col-span-1">
             <div className="flex items-center mb-6">
-              <img src="/icons.png" alt="Logo" className="w-20 h-auto object-contain" />
+              <img src="/icons.png" alt="Logo" className="w-20 h-auto object-contain" width={80} height={80} />
             </div>
             <p className="text-muted-foreground mb-6 text-sm leading-relaxed">
               O CRM inteligente que transforma seu WhatsApp em uma operação profissional de vendas e atendimento.

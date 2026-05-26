@@ -115,6 +115,8 @@ const Obrigado = () => {
             alt="Logo" 
             className="w-24 h-24 md:w-32 md:h-32 object-contain cursor-pointer hover:scale-105 transition-transform" 
             onClick={() => navigate("/")}
+            width={128}
+            height={128}
           />
           <div className="flex items-center gap-2 text-[10px] md:text-sm text-muted-foreground bg-muted/30 px-4 py-2 rounded-full border border-border/10">
             <ShieldCheck className="w-4 h-4 text-primary" />

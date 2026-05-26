@@ -58,6 +58,8 @@ const ImplementationSection = () => {
                    alt="Configuração de Agentes e Atendimento" 
                    className="w-full rounded-2xl border border-border"
                    loading="lazy"
+                   width={600}
+                   height={375}
                  />
               </div>
               <div className="p-8 rounded-2xl bg-cta text-cta-foreground text-center shadow-2xl relative overflow-hidden">

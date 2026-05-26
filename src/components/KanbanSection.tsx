@@ -47,6 +47,8 @@ const KanbanSection = () => {
                 alt="Kanban Board ChatHook" 
                 className="w-full rounded-2xl border border-border"
                 loading="lazy"
+                width={600}
+                height={375}
               />
             </div>
             
@@ -57,6 +59,8 @@ const KanbanSection = () => {
                  alt="Quick Action Modal" 
                  className="w-full rounded-xl"
                  loading="lazy"
+                 width={288}
+                 height={180}
                />
                <p className="mt-2 text-[10px] text-center text-muted-foreground font-medium uppercase tracking-widest">Ações Rápidas no Funil</p>
             </div>

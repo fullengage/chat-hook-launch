@@ -36,6 +36,8 @@ const CaptainIASection = () => {
                  alt="Configuração do agente de agendamento com IA" 
                  className="w-full rounded-2xl border border-border"
                  loading="lazy"
+                 width={600}
+                 height={375}
                />
             </div>
             
@@ -46,6 +48,8 @@ const CaptainIASection = () => {
                  alt="Agente de agendamento com IA em Ação" 
                  className="w-full rounded-xl"
                  loading="lazy"
+                 width={320}
+                 height={160}
                />
                <p className="mt-2 text-[10px] text-center text-muted-foreground font-medium uppercase tracking-widest">IA Respondendo em Tempo Real</p>
             </div>
