@@ -390,17 +390,20 @@ const FreeTrialPage = () => {
             </section>
 
             {/* Plans Section */}
-            <section className="py-4 bg-muted/10 border-t border-border/10">
-               <div className="container mx-auto px-4 text-center mb-8">
-                  <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-3">Quanto você gasta hoje?</p>
-                  <h2 className="text-2xl md:text-3xl font-black tracking-tighter mb-3">
-                     CRM + chatbot + multiatendimento + planilha = <span className="text-destructive line-through decoration-2">R$ 800–1.500/mês</span>
-                  </h2>
-                  <p className="text-muted-foreground text-base max-w-xl mx-auto">
-                     Com o ChatHook você centraliza tudo isso em um único plano — e ainda sobra equipe para vender mais.
-                  </p>
-               </div>
-            </section>
+            <section className="py-8 bg-muted/10 border-t border-border/10">
+                <div className="container mx-auto px-4 text-center mb-8 max-w-3xl">
+                   <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-3">Quanto sua empresa gasta hoje com ferramentas separadas?</p>
+                   <h2 className="text-2xl md:text-3xl font-black tracking-tighter mb-4 leading-tight">
+                      CRM + chatbot + multiatendimento + planilhas podem facilmente passar de <span className="text-destructive line-through decoration-2">R$ 800</span>, <span className="text-destructive line-through decoration-2">R$ 1.500</span> ou até <span className="text-destructive line-through decoration-2">R$ 5.000</span> por mês.
+                   </h2>
+                   <p className="text-muted-foreground text-base mb-2">
+                      Com o ChatHook, você centraliza tudo em um único plano: atendimento, funil, automação, IA e gestão comercial no WhatsApp.
+                   </p>
+                   <p className="text-primary font-bold text-sm uppercase tracking-wider">
+                      Menos ferramentas. Mais controle. Mais vendas.
+                   </p>
+                </div>
+             </section>
             <PlansSection />
 
             {/* FAQ Section */}
