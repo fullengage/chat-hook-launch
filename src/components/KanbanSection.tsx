@@ -46,6 +46,7 @@ const KanbanSection = () => {
                 src="/images/kanban_board.png" 
                 alt="Kanban Board ChatHook" 
                 className="w-full rounded-2xl border border-border"
+                loading="lazy"
               />
             </div>
             
@@ -55,6 +56,7 @@ const KanbanSection = () => {
                  src="/images/kanban_quick_modal.png" 
                  alt="Quick Action Modal" 
                  className="w-full rounded-xl"
+                 loading="lazy"
                />
                <p className="mt-2 text-[10px] text-center text-muted-foreground font-medium uppercase tracking-widest">Ações Rápidas no Funil</p>
             </div>

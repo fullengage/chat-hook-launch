@@ -57,6 +57,7 @@ const ImplementationSection = () => {
                    src="/images/agents_setup.png" 
                    alt="Configuração de Agentes e Atendimento" 
                    className="w-full rounded-2xl border border-border"
+                   loading="lazy"
                  />
               </div>
               <div className="p-8 rounded-2xl bg-cta text-cta-foreground text-center shadow-2xl relative overflow-hidden">

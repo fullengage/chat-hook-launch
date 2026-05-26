@@ -59,6 +59,7 @@ const TeamSection = () => {
                   src="/images/teams_setup.png" 
                   alt="Configuração de Equipes" 
                   className="w-full rounded-2xl border border-border"
+                  loading="lazy"
                 />
              </div>
              {/* Floating Info */}

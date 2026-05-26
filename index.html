@@ -11,6 +11,9 @@
     <link rel="preconnect" href="https://www.googletagmanager.com">
     <link rel="preconnect" href="https://connect.facebook.net">
     <link rel="preconnect" href="https://chat.chathook.com.br">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://connect.facebook.net">
+    <link rel="dns-prefetch" href="https://chat.chathook.com.br">
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -58,21 +61,25 @@
       window.chatwootSettings = {
         showLauncher: false
       };
-      (function(d,t) {
-        var BASE_URL="https://chat.chathook.com.br";
-        var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-        g.src=BASE_URL+"/packs/js/sdk.js";
-        g.defer = true;
-        g.async = true;
-        s.parentNode.insertBefore(g,s);
-        g.onload=function(){
-          window.chatwootSDK.run({
-            websiteToken: 'XTKQWkUTsRWnYqL1miYfXULj',
-            baseUrl: BASE_URL,
-            showLauncher: false
-          })
-        }
-      })(document,"script");
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          (function(d,t) {
+            var BASE_URL="https://chat.chathook.com.br";
+            var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src=BASE_URL+"/packs/js/sdk.js";
+            g.defer = true;
+            g.async = true;
+            s.parentNode.insertBefore(g,s);
+            g.onload=function(){
+              window.chatwootSDK.run({
+                websiteToken: 'XTKQWkUTsRWnYqL1miYfXULj',
+                baseUrl: BASE_URL,
+                showLauncher: false
+              })
+            }
+          })(document,"script");
+        }, 3000);
+      });
     </script>
   </body>
 </html>

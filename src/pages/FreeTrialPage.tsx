@@ -297,6 +297,7 @@ const FreeTrialPage = () => {
                               src="/images/kanban_board.png"
                               alt="Kanban System"
                               className="rounded-[32px] border border-border/50 shadow-2xl relative z-10 hover:scale-[1.02] transition-transform duration-500"
+                              loading="lazy"
                            />
                         </div>
                      </div>
@@ -328,6 +329,7 @@ const FreeTrialPage = () => {
                               src="/images/captain_system.png"
                               alt="IA System"
                               className="rounded-[32px] border border-border/50 shadow-2xl relative z-10 hover:scale-[1.02] transition-transform duration-500"
+                              loading="lazy"
                            />
                         </div>
                      </div>

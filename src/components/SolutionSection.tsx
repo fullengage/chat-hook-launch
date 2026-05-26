@@ -62,6 +62,7 @@ const SolutionSection = () => {
                  src="/images/kanban_quick_icon.png" 
                  alt="Interface CRM ChatHook" 
                  className="w-full rounded-2xl transition-transform duration-700 group-hover:scale-105"
+                 loading="lazy"
                />
                <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent"></div>
             </div>

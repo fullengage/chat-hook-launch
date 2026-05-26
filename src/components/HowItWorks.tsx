@@ -87,6 +87,7 @@ const HowItWorks = () => {
              src="/images/connections_waha.png" 
              alt="Interface de Conexão WhatsApp" 
              className="w-full rounded-2xl border border-border shadow-2xl transition-transform duration-500 group-hover:scale-[1.01]"
+             loading="lazy"
            />
         </div>
 
