@@ -121,9 +121,9 @@ const TrialForm = () => {
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Nome Completo</FormLabel>
+                <FormLabel className="text-xs font-black text-foreground uppercase tracking-wider">Nome Completo</FormLabel>
                 <FormControl>
-                  <Input placeholder="Seu nome" {...field} className="h-12 bg-background/50 border-white/10 focus:border-primary/50" />
+                  <Input placeholder="Seu nome" {...field} className="h-12 bg-background border-white/20 text-foreground placeholder:text-muted-foreground/60 focus:border-primary focus:ring-1 focus:ring-primary focus-visible:ring-primary/20 transition-all font-medium" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -134,9 +134,9 @@ const TrialForm = () => {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Melhor E-mail</FormLabel>
+                <FormLabel className="text-xs font-black text-foreground uppercase tracking-wider">Melhor E-mail</FormLabel>
                 <FormControl>
-                  <Input placeholder="seu@email.com" {...field} className="h-12 bg-background/50 border-white/10 focus:border-primary/50" />
+                  <Input placeholder="seu@email.com" {...field} className="h-12 bg-background border-white/20 text-foreground placeholder:text-muted-foreground/60 focus:border-primary focus:ring-1 focus:ring-primary focus-visible:ring-primary/20 transition-all font-medium" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -147,9 +147,9 @@ const TrialForm = () => {
             name="whatsapp"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>WhatsApp com DDD</FormLabel>
+                <FormLabel className="text-xs font-black text-foreground uppercase tracking-wider">WhatsApp com DDD</FormLabel>
                 <FormControl>
-                  <Input placeholder="(00) 00000-0000" {...field} className="h-12 bg-background/50 border-white/10 focus:border-primary/50" />
+                  <Input placeholder="(00) 00000-0000" {...field} className="h-12 bg-background border-white/20 text-foreground placeholder:text-muted-foreground/60 focus:border-primary focus:ring-1 focus:ring-primary focus-visible:ring-primary/20 transition-all font-medium" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -176,7 +176,7 @@ const TrialForm = () => {
             )}
           />
 
-          <Button type="submit" className="w-full h-16 text-xl font-black mt-6 shadow-button group relative overflow-hidden rounded-2xl" disabled={isSubmitting}>
+          <Button type="submit" variant="cta" className="w-full h-16 text-xl font-black mt-6 shadow-button group relative overflow-hidden rounded-2xl" disabled={isSubmitting}>
              <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-20 transition-opacity" />
             {isSubmitting ? (
               <><Loader2 className="mr-2 h-6 w-6 animate-spin" /> Configurando...</>

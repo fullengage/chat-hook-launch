@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import Footer from "@/components/Footer";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import TrialForm from "@/components/TrialForm";
 
 const FreeTrialPage = () => {
     const navigate = useNavigate();
@@ -163,36 +164,10 @@ const FreeTrialPage = () => {
                             {/* Form Section */}
                             <div id="trial-form-section" className="lg:w-2/5 w-full max-w-md mx-auto relative scroll-mt-32">
                                 <div className="absolute -inset-4 bg-primary/20 rounded-[40px] blur-3xl -z-10 animate-pulse" />
-                                <div className="bg-card border border-border/50 rounded-[32px] p-8 shadow-2xl relative overflow-hidden text-center space-y-6">
-                                    <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-primary" />
-                                    <div className="bg-primary/10 text-primary text-[10px] font-black px-3 py-1 rounded-full w-fit mx-auto mb-4 uppercase tracking-tighter">
-                                        7 Dias Grátis &amp; Sem Cartão
-                                    </div>
-                                    <h3 className="text-3xl font-black text-foreground tracking-tighter italic">Liberar meu <span className="text-primary">CRM Inteligente</span></h3>
-                                    <p className="text-sm text-muted-foreground leading-relaxed">
-                                        Inicie seu teste grátis de 7 dias conversando diretamente com nosso assistente comercial no chat.
-                                    </p>
-                                    <Button 
-                                        size="lg" 
-                                        variant="cta"
-                                        className="w-full h-14 rounded-2xl font-bold flex items-center justify-center gap-2 group relative overflow-hidden"
-                                        onClick={() => {
-                                            if ((window as any).$chatwoot) {
-                                                (window as any).$chatwoot.toggle('open');
-                                            } else {
-                                                alert("O chat está carregando. Por favor, tente novamente em alguns segundos.");
-                                            }
-                                        }}
-                                    >
-                                        <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-20 transition-opacity" />
-                                        ABRIR CHAT AGORA
-                                        <Zap className="w-5 h-5 fill-current" />
-                                    </Button>
-                                    <div className="flex items-center justify-center gap-4 mt-6 grayscale opacity-50">
-                                        <Shield className="w-4 h-4" />
-                                        <span className="text-[10px] font-bold uppercase tracking-widest">Protocolo SSL Seguro</span>
-                                    </div>
-                                </div>
+                                <div className="bg-card border border-primary/50 rounded-[32px] p-6 md:p-8 shadow-2xl relative overflow-hidden">
+                                     <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-primary" />
+                                     <TrialForm />
+                                 </div>
                                 <div className="mt-8 flex flex-col items-center gap-4 text-center">
                                     <div className="flex items-center gap-1 text-yellow-500">
                                         {[1, 2, 3, 4, 5].map(i => <Star key={i} className="w-4 h-4 fill-current" />)}
