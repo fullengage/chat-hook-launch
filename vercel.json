@@ -1,4 +1,14 @@
 {
+  "redirects": [
+    { "source": "/conversations", "destination": "/", "permanent": true },
+    { "source": "/conversations/", "destination": "/", "permanent": true },
+    { "source": "/campaigns", "destination": "/", "permanent": true },
+    { "source": "/campaigns/", "destination": "/", "permanent": true },
+    { "source": "/quick-start", "destination": "/", "permanent": true },
+    { "source": "/quick-start/", "destination": "/", "permanent": true },
+    { "source": "/stage", "destination": "/", "permanent": true },
+    { "source": "/stage/", "destination": "/", "permanent": true }
+  ],
   "rewrites": [
     {
       "source": "/(.*)",

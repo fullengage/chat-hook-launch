@@ -18,6 +18,8 @@ const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const TermsOfUse = lazy(() => import("./pages/TermsOfUse"));
 const Obrigado = lazy(() => import("./pages/Obrigado"));
 const LgpdCompliance = lazy(() => import("./pages/LgpdCompliance"));
+const DataDeletion = lazy(() => import("./pages/DataDeletion"));
+const Contact = lazy(() => import("./pages/Contact"));
 import CookieConsent from "./components/CookieConsent";
 
 const queryClient = new QueryClient();
@@ -53,6 +55,8 @@ const App = () => (
               <Route path="/termos-de-uso" element={<TermsOfUse />} />
               <Route path="/lgpd" element={<LgpdCompliance />} />
               <Route path="/obrigado" element={<Obrigado />} />
+              <Route path="/exclusao-de-dados" element={<DataDeletion />} />
+              <Route path="/contato" element={<Contact />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
