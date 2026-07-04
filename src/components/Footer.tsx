@@ -82,6 +82,11 @@ const Footer = () => {
                   Documentação
                 </a>
               </li>
+              <li>
+                <Link to="/contato" className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">
+                  Contato
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -102,6 +107,11 @@ const Footer = () => {
               <li>
                 <Link to="/lgpd" className="text-[10px] uppercase tracking-widest text-muted-foreground/60 hover:text-primary transition-colors duration-200 font-bold">
                   LGPD Compliance
+                </Link>
+              </li>
+              <li>
+                <Link to="/exclusao-de-dados" className="text-[10px] uppercase tracking-widest text-muted-foreground/60 hover:text-primary transition-colors duration-200 font-bold">
+                  Exclusão de Dados
                 </Link>
               </li>
             </ul>
