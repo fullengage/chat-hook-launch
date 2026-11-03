@@ -12,7 +12,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="md:col-span-1">
             <div className="flex items-center mb-6">
-              <img src="/icons.png" alt="Logo" className="w-20 h-auto object-contain" width={80} height={80} />
+              <img src="/logo-deepson.jpg" alt="Deepson Logo" className="h-12 w-auto object-contain rounded" />
             </div>
             <p className="text-muted-foreground mb-6 text-sm leading-relaxed">
               O CRM inteligente que transforma seu WhatsApp em uma operação profissional de vendas e atendimento.
@@ -22,7 +22,7 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-muted-foreground">
                 <Mail className="w-4 h-4 text-primary" />
-                <span className="text-sm">contato@chathook.com.br</span>
+                <span className="text-sm">contato@deepson.com.br</span>
               </div>
               <div className="flex items-center gap-3 text-muted-foreground">
                 <Phone className="w-4 h-4 text-primary" />

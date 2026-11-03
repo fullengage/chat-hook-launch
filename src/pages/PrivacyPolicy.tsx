@@ -61,7 +61,7 @@ const PrivacyPolicy = () => {
           <section className="space-y-4">
             <h2 className="text-2xl font-bold text-foreground">5. Contato</h2>
             <p>
-              Para dúvidas sobre esta política, entre em contato através do e-mail: contato@chathook.com.br
+              Para dúvidas sobre esta política, entre em contato através do e-mail: contato@deepson.com.br
             </p>
           </section>
         </div>

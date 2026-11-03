@@ -86,8 +86,8 @@ const DataDeletion = () => {
               <p className="text-sm text-muted-foreground mb-4">
                 Caso prefira, você também pode enviar um email diretamente para nossa equipe de privacidade:
               </p>
-              <a href="mailto:privacidade@chathook.com.br" className="text-primary font-bold hover:underline">
-                privacidade@chathook.com.br
+              <a href="mailto:privacidade@deepson.com.br" className="text-primary font-bold hover:underline">
+                privacidade@deepson.com.br
               </a>
             </section>
           </div>

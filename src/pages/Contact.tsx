@@ -167,7 +167,7 @@ const Contact = () => {
           <h2 className="text-3xl md:text-4xl font-black italic mb-6">
             Transforme seu atendimento com o Chathook.
           </h2>
-          <Button size="lg" className="text-lg h-14 px-8 font-bold gap-2 group" onClick={() => window.open('https://app.chathook.com.br/trial', '_blank')}>
+          <Button size="lg" className="text-lg h-14 px-8 font-bold gap-2 group" onClick={() => window.open('https://app.deepson.com.br/trial', '_blank')}>
             Solicitar Demonstração
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Button>

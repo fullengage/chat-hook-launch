@@ -128,7 +128,7 @@ const LgpdCompliance = () => {
                 <Mail className="w-4 h-4 text-primary" />
                 <div className="text-xs">
                   <span className="block text-[10px] text-muted-foreground/60 uppercase font-semibold">Contato do DPO</span>
-                  <span className="font-medium text-foreground">privacidade@chathook.com.br</span>
+                  <span className="font-medium text-foreground">privacidade@deepson.com.br</span>
                 </div>
               </div>
               <div className="text-[10px] text-muted-foreground/50 text-center">

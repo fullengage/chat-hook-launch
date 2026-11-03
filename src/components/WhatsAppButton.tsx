@@ -10,7 +10,7 @@ const WhatsAppButton = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
-  const webhookUrl = "https://autowebhook.chathook.com.br/webhook/chat01";
+  const webhookUrl = "https://autowebhook.deepson.com.br/webhook/chat01";
 
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();

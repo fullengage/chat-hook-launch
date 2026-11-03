@@ -2,7 +2,7 @@ import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "jsr:@supabase/supabase-js@2";
 
 // ChatHook (Chatwoot) — API privada usando o token pessoal
-const CHATHOOK_BASE_URL = "https://chat.chathook.com.br";
+const CHATHOOK_BASE_URL = "https://chat.deepson.com.br";
 const CHATHOOK_ACCESS_TOKEN = "f2FvRhfLE6CktrXNBvKvnmLV"; // User Access Token
 const CHATHOOK_ACCOUNT_ID = "1";
 const CHATHOOK_INBOX_ID = 157; // Richard (API Channel / Inbox)

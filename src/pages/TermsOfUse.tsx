@@ -62,7 +62,7 @@ const TermsOfUse = () => {
           <section className="space-y-4">
             <h2 className="text-2xl font-bold text-foreground">6. Contato</h2>
             <p>
-              Para dúvidas sobre nossos termos, entre em contato através do e-mail: contato@chathook.com.br
+              Para dúvidas sobre nossos termos, entre em contato através do e-mail: contato@deepson.com.br
             </p>
           </section>
         </div>
