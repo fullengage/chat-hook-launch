@@ -26,26 +26,12 @@ const WHATSAPP_AJUDA =
   encodeURIComponent("Olá! Tentei criar minha conta de teste da Deepson e não consegui.");
 
 const digitos = (s: string) => s.replace(/\D/g, "");
-// Suporta tanto o CNPJ numérico tradicional quanto o novo CNPJ alfanumérico da Receita Federal (julho/2026)
-const limparCnpj = (s: string) => s.replace(/[^a-zA-Z0-9]/g, "").toUpperCase();
-const cnpjValidoOuVazio = (s: string) => {
-  const limpo = limparCnpj(s);
-  if (limpo.length === 0) return true;
-  return limpo.length === 14 && /^[A-Z0-9]{12}[0-9]{2}$/.test(limpo);
-};
-
 const formSchema = z.object({
   name: z.string().min(2, "O nome deve ter pelo menos 2 caracteres."),
   email: z.string().email("Informe um e-mail corporativo válido."),
   whatsapp: z.string().refine((v) => digitos(v).length >= 10 && digitos(v).length <= 13, "Informe o WhatsApp com DDD."),
-  cnpj: z
-    .string()
-    .optional()
-    .default("")
-    .refine(
-      (v) => cnpjValidoOuVazio(v || ""),
-      "Se preenchido, informe os 14 caracteres do CNPJ (numérico ou alfanumérico)."
-    ),
+  // ponytail: o servidor valida e consulta só CNPJ numérico; aceitar alfanumérico quando a base da Receita tiver
+  cnpj: z.string().refine((v) => digitos(v).length === 14, "Informe o CNPJ da empresa (14 números)."),
   termsAccepted: z.boolean().refine((val) => val === true, {
     message: "Você deve aceitar os Termos de Uso e Política de Privacidade.",
   }),
@@ -62,7 +48,7 @@ const TrialForm = () => {
       email: "",
       whatsapp: "",
       cnpj: "",
-      termsAccepted: false,
+      termsAccepted: true,
     },
   });
 
@@ -78,7 +64,7 @@ const TrialForm = () => {
           nome: values.name.trim(),
           email: values.email.trim(),
           whatsapp: digitos(values.whatsapp),
-          cnpj: limparCnpj(values.cnpj || ""),
+          cnpj: digitos(values.cnpj),
           site: honeypot, // armadilha de robô: vazio para pessoas
           origem: `${params.get("utm_source") || "deepson.com.br"}/${params.get("utm_campaign") || "teste_7_dias"}`,
         }),
@@ -96,7 +82,7 @@ const TrialForm = () => {
           name: values.name,
           email: values.email,
           whatsapp: values.whatsapp,
-          companySize: values.cnpj ? `CNPJ: ${limparCnpj(values.cnpj)}` : "Não informado",
+          companySize: `CNPJ: ${digitos(values.cnpj)}`,
           source: "free_trial_landing_page",
           page: window.location.pathname,
           userAgent: navigator.userAgent,
@@ -182,12 +168,11 @@ const TrialForm = () => {
                   <FormLabel className="text-xs font-black text-foreground uppercase tracking-wider">
                     CNPJ da sua empresa
                   </FormLabel>
-                  <span className="text-[10px] text-slate-400 font-medium">Aceita CNPJ alfanumérico</span>
                 </div>
                 <FormControl>
                   <Input
-                    placeholder="00.000.000/0001-00 (ou informe após o acesso)"
-                    autoCapitalize="characters"
+                    placeholder="00.000.000/0001-00"
+                    inputMode="numeric"
                     {...field}
                     className="h-12 bg-background border-white/25 text-foreground placeholder:text-slate-400 focus:border-primary focus:ring-1 focus:ring-primary focus-visible:ring-primary/20 transition-all font-medium"
                   />
