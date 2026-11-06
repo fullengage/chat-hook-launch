@@ -147,12 +147,16 @@ const Index: React.FC = () => {
               </span>
 
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#0f172a] tracking-tight leading-[1.08] mb-6">
-                Do seu site ao seu<br />
-                <span className="text-[#ff6b00]">próximo cliente B2B.</span>
+                Encontre empresas com<br />
+                <span className="text-[#ff6b00]">maior potencial de comprar de você.</span>
               </h1>
 
-              <p className="text-lg md:text-xl text-[#475569] leading-relaxed max-w-2xl mb-8">
-                Você cola o seu site: a IA da <strong>Deepson</strong> entende o que você vende, monta o seu cliente ideal (ICP e CNAEs), acha as empresas certas com nota e motivo, mostra quem decide, consulta sinais financeiros e escreve a abordagem.
+              <p className="text-lg md:text-xl text-[#475569] leading-relaxed max-w-2xl mb-4">
+                Informe o site da sua empresa. A IA do <strong>Deepson</strong> entende o que você vende, identifica seu cliente ideal e encontra empresas compatíveis, explicando por que cada uma merece a atenção do seu comercial.
+              </p>
+
+              <p className="text-base font-bold text-[#0f172a] border-l-4 border-[#ff6b00] pl-4 mb-8">
+                Seu vendedor passa menos tempo procurando clientes e mais tempo conversando com quem tem potencial de comprar.
               </p>
 
               <div className="flex flex-wrap items-center gap-4 w-full sm:w-auto mb-6">
@@ -197,10 +201,10 @@ const Index: React.FC = () => {
                         <div className="w-2.5 h-2.5 rounded-full bg-red-500"></div>
                         <div className="w-2.5 h-2.5 rounded-full bg-amber-500"></div>
                         <div className="w-2.5 h-2.5 rounded-full bg-emerald-500"></div>
-                        <span className="ml-2 text-xs font-bold text-white/80">Painel Deepson Live</span>
+                        <span className="ml-2 text-xs font-bold text-white/80">Painel Deepson ( Ilustrativo )</span>
                       </div>
                       <span className="text-[11px] uppercase tracking-wider text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded-full border border-emerald-500/30">
-                        Ativo
+                        Demonstração
                       </span>
                     </div>
 

@@ -17,20 +17,35 @@ import { Loader2, Zap, Shield } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Link } from "react-router-dom";
 
-// URL da Edge Function que aciona o webhook do ChatHook (lead continua salvo no Supabase)
+// URL da Edge Function que registra o lead no Supabase
 const EDGE_FUNCTION_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/capture-lead`;
 // Cadastro do teste grátis da Deepson: cria a conta (7 dias, 20 créditos) e devolve o link de entrada já logado
 const CADASTRO_URL = "https://seo.deepson.com.br/api/teste-gratis";
 const WHATSAPP_AJUDA =
   "https://api.whatsapp.com/send?phone=5511955501090&text=" +
   encodeURIComponent("Olá! Tentei criar minha conta de teste da Deepson e não consegui.");
+
 const digitos = (s: string) => s.replace(/\D/g, "");
+// Suporta tanto o CNPJ numérico tradicional quanto o novo CNPJ alfanumérico da Receita Federal (julho/2026)
+const limparCnpj = (s: string) => s.replace(/[^a-zA-Z0-9]/g, "").toUpperCase();
+const cnpjValidoOuVazio = (s: string) => {
+  const limpo = limparCnpj(s);
+  if (limpo.length === 0) return true;
+  return limpo.length === 14 && /^[A-Z0-9]{12}[0-9]{2}$/.test(limpo);
+};
 
 const formSchema = z.object({
   name: z.string().min(2, "O nome deve ter pelo menos 2 caracteres."),
-  email: z.string().email("E-mail inválido."),
+  email: z.string().email("Informe um e-mail corporativo válido."),
   whatsapp: z.string().refine((v) => digitos(v).length >= 10 && digitos(v).length <= 13, "Informe o WhatsApp com DDD."),
-  cnpj: z.string().refine((v) => digitos(v).length === 14, "Informe o CNPJ da sua empresa (14 números)."),
+  cnpj: z
+    .string()
+    .optional()
+    .default("")
+    .refine(
+      (v) => cnpjValidoOuVazio(v || ""),
+      "Se preenchido, informe os 14 caracteres do CNPJ (numérico ou alfanumérico)."
+    ),
   termsAccepted: z.boolean().refine((val) => val === true, {
     message: "Você deve aceitar os Termos de Uso e Política de Privacidade.",
   }),
@@ -63,7 +78,7 @@ const TrialForm = () => {
           nome: values.name.trim(),
           email: values.email.trim(),
           whatsapp: digitos(values.whatsapp),
-          cnpj: digitos(values.cnpj),
+          cnpj: limparCnpj(values.cnpj || ""),
           site: honeypot, // armadilha de robô: vazio para pessoas
           origem: `${params.get("utm_source") || "deepson.com.br"}/${params.get("utm_campaign") || "teste_7_dias"}`,
         }),
@@ -71,7 +86,7 @@ const TrialForm = () => {
       const result = (await res.json().catch(() => ({}))) as { url?: string; erro?: string };
       if (!res.ok || !result.url) throw new Error(result.erro || "Não conseguimos criar sua conta agora.");
 
-      // 2) o lead continua indo para o Supabase/webhook, como antes (sem segurar a entrada)
+      // 2) o lead continua indo para o Supabase/webhook (sem segurar a entrada)
       const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string;
       void fetch(EDGE_FUNCTION_URL, {
         method: "POST",
@@ -81,7 +96,7 @@ const TrialForm = () => {
           name: values.name,
           email: values.email,
           whatsapp: values.whatsapp,
-          companySize: "Não informado",
+          companySize: values.cnpj ? `CNPJ: ${limparCnpj(values.cnpj)}` : "Não informado",
           source: "free_trial_landing_page",
           page: window.location.pathname,
           userAgent: navigator.userAgent,
@@ -112,7 +127,7 @@ const TrialForm = () => {
         </div>
         <h3 className="text-3xl font-black text-foreground mb-3 tracking-tighter italic">Liberar meu <span className="text-primary">Acesso Grátis</span></h3>
         <p className="text-sm text-slate-200 leading-relaxed font-semibold">
-          Preencha abaixo: sua conta é criada na hora e você já entra na plataforma com <span className="text-primary font-bold">20 créditos grátis por 7 dias</span> (dá para ~10 empresas com contato e sinais financeiros).
+          Crie sua conta gratuita e receba <span className="text-primary font-bold">20 créditos por 7 dias</span> para analisar até 10 empresas (contato + sinais financeiros) ou 4 empresas com enriquecimento completo por IA.
         </p>
       </div>
 
@@ -136,9 +151,9 @@ const TrialForm = () => {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-xs font-black text-foreground uppercase tracking-wider">Melhor E-mail</FormLabel>
+                <FormLabel className="text-xs font-black text-foreground uppercase tracking-wider">E-mail Corporativo</FormLabel>
                 <FormControl>
-                  <Input placeholder="seu@email.com" {...field} className="h-12 bg-background border-white/25 text-foreground placeholder:text-slate-400 focus:border-primary focus:ring-1 focus:ring-primary focus-visible:ring-primary/20 transition-all font-medium" />
+                  <Input placeholder="voce@suaempresa.com.br" {...field} className="h-12 bg-background border-white/25 text-foreground placeholder:text-slate-400 focus:border-primary focus:ring-1 focus:ring-primary focus-visible:ring-primary/20 transition-all font-medium" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -151,7 +166,7 @@ const TrialForm = () => {
               <FormItem>
                 <FormLabel className="text-xs font-black text-foreground uppercase tracking-wider">WhatsApp com DDD</FormLabel>
                 <FormControl>
-                  <Input placeholder="(00) 00000-0000" {...field} className="h-12 bg-background border-white/25 text-foreground placeholder:text-slate-400 focus:border-primary focus:ring-1 focus:ring-primary focus-visible:ring-primary/20 transition-all font-medium" />
+                  <Input placeholder="(11) 99999-9999" {...field} className="h-12 bg-background border-white/25 text-foreground placeholder:text-slate-400 focus:border-primary focus:ring-1 focus:ring-primary focus-visible:ring-primary/20 transition-all font-medium" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -163,9 +178,19 @@ const TrialForm = () => {
             name="cnpj"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-xs font-black text-foreground uppercase tracking-wider">CNPJ da sua empresa</FormLabel>
+                <div className="flex items-center justify-between">
+                  <FormLabel className="text-xs font-black text-foreground uppercase tracking-wider">
+                    CNPJ da sua empresa
+                  </FormLabel>
+                  <span className="text-[10px] text-slate-400 font-medium">Aceita CNPJ alfanumérico</span>
+                </div>
                 <FormControl>
-                  <Input placeholder="00.000.000/0001-00" inputMode="numeric" {...field} className="h-12 bg-background border-white/25 text-foreground placeholder:text-slate-400 focus:border-primary focus:ring-1 focus:ring-primary focus-visible:ring-primary/20 transition-all font-medium" />
+                  <Input
+                    placeholder="00.000.000/0001-00 (ou informe após o acesso)"
+                    autoCapitalize="characters"
+                    {...field}
+                    className="h-12 bg-background border-white/25 text-foreground placeholder:text-slate-400 focus:border-primary focus:ring-1 focus:ring-primary focus-visible:ring-primary/20 transition-all font-medium"
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -218,7 +243,7 @@ const TrialForm = () => {
 
           <div className="flex items-center justify-center gap-4 mt-6 text-slate-300 opacity-90">
              <Shield className="w-4 h-4 text-primary" />
-             <span className="text-[10px] font-bold uppercase tracking-widest">Protocolo SSL Seguro</span>
+             <span className="text-[10px] font-bold uppercase tracking-widest">Ambiente Seguro • Sem Cartão de Crédito</span>
           </div>
         </form>
       </Form>

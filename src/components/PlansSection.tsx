@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Check, Crown, Star, Zap, TrendingUp, Coins, ShieldAlert } from "lucide-react";
+import { Check, Crown, Star, Zap, TrendingUp, Coins, ShieldAlert, Info } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const PlansSection = () => {
@@ -16,9 +16,11 @@ const PlansSection = () => {
       icon: Zap,
       description: "Para profissionais e pequenas empresas.",
       features: [
-        "50 créditos incluídos",
+        "50 créditos incluídos/mês",
         "1 usuário",
-        "Para profissionais e pequenas empresas."
+        "Para profissionais e pequenas empresas.",
+        "Limite diário: até 50 créditos/dia",
+        "Recarga avulsa: R$ 1,00/crédito (não expira)"
       ],
       ctaPrimary: "Começar Teste Grátis",
       ctaSecondary: "Falar com Consultor",
@@ -33,9 +35,11 @@ const PlansSection = () => {
       icon: Crown,
       description: "Para pequenas equipes comerciais.",
       features: [
-        "300 créditos incluídos",
+        "300 créditos incluídos/mês",
         "3 usuários",
-        "Para pequenas equipes comerciais."
+        "Para pequenas equipes comerciais.",
+        "Limite diário: até 150 créditos/dia",
+        "Recarga avulsa: R$ 0,90/crédito (não expira)"
       ],
       ctaPrimary: "Começar Teste Grátis",
       ctaSecondary: "Falar com Consultor",
@@ -50,9 +54,11 @@ const PlansSection = () => {
       icon: Star,
       description: "Para operações comerciais em crescimento.",
       features: [
-        "800 créditos incluídos",
+        "800 créditos incluídos/mês",
         "5 usuários",
-        "Para operações comerciais em crescimento."
+        "Para operações comerciais em crescimento.",
+        "Limite diário: até 300 créditos/dia",
+        "Recarga avulsa: R$ 0,80/crédito (não expira)"
       ],
       ctaPrimary: "Começar Teste Grátis",
       ctaSecondary: "Falar com Consultor",
@@ -67,9 +73,11 @@ const PlansSection = () => {
       icon: TrendingUp,
       description: "Para operações de prospecção de maior volume.",
       features: [
-        "2.000 créditos incluídos",
+        "2.000 créditos incluídos/mês",
         "Até 15 usuários",
-        "Para operações de prospecção de maior volume."
+        "Para operações de prospecção de maior volume.",
+        "Limite diário: até 600 créditos/dia",
+        "Recarga avulsa: R$ 0,70/crédito (não expira)"
       ],
       ctaPrimary: "Começar Teste Grátis",
       ctaSecondary: "Falar com Consultor",
@@ -90,17 +98,17 @@ const PlansSection = () => {
     },
     {
       action: "Enriquecer tudo",
-      deliverable: "Contato completo + LinkedIn do decisor + análise da empresa por IA",
+      deliverable: "Contato completo + LinkedIn do decisor + análise e abordagem por IA",
       cost: "5 créditos"
     },
     {
       action: "Baixar lista",
-      deliverable: "Exportação de até 50 empresas do seu funil em planilha",
+      deliverable: "Exportação de até 50 empresas do seu funil em planilha (CSV/Excel)",
       cost: "1 crédito"
     },
     {
       action: "Protesto em cartório",
-      deliverable: "Consulta detalhada de protestos em cartório (liberado sob pedido)",
+      deliverable: "Consulta detalhada de protestos em cartório (habilitado sob pedido)",
       cost: "12 créditos"
     }
   ];
@@ -128,13 +136,13 @@ const PlansSection = () => {
         <div className="text-center mb-14 max-w-4xl mx-auto">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/15 border border-primary/30 text-primary text-xs font-extrabold uppercase tracking-wider mb-4">
             <Coins className="w-3.5 h-3.5" />
-            Planos e Preços Deepson
+            Planos, Créditos e Regras Claras
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-6 text-white uppercase tracking-tight italic">
             Escolha o plano ideal para sua <span className="text-primary">Operação B2B</span>
           </h2>
           <p className="text-base md:text-lg text-slate-300 leading-relaxed">
-            O Deepson é utilizado por mais de 1.000 empresas, desde empreendedores individuais e equipes de vendas até agências de geração de leads e companhias que integram a lista Fortune 500. O plano Base é ideal para ações de prospecção em estágios iniciais; o plano Essencial atende a equipes de vendas em crescimento; já os planos Equipe e Escala foram desenvolvidos para agências e operações de prospecção em grande escala.
+            O plano <strong>Essencial</strong> é ideal para profissionais e empresas que estão estruturando a prospecção B2B; o plano <strong>Profissional</strong> atende pequenas equipes comerciais com rotina diária de abordagem; já os planos <strong>Equipe</strong> e <strong>Escala</strong> foram desenhados para operações comerciais em crescimento e agências de geração de leads de maior volume.
           </p>
         </div>
 
@@ -181,7 +189,7 @@ const PlansSection = () => {
 
                 {/* Features Section */}
                 <div className="mb-8">
-                  <ul className="space-y-4">
+                  <ul className="space-y-3.5">
                     {plan.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-start gap-3">
                         <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
@@ -220,21 +228,52 @@ const PlansSection = () => {
           ))}
         </div>
 
+        {/* How the 20 Free Trial Credits Work */}
+        <div className="max-w-5xl mx-auto mb-10 grid md:grid-cols-3 gap-6">
+          <div className="bg-[#07152e] border border-primary/30 rounded-3xl p-6 text-white">
+            <span className="text-xs font-black uppercase tracking-wider text-primary block mb-2">
+              Oferta de Teste Grátis
+            </span>
+            <h4 className="text-xl font-black mb-2">7 dias grátis • 20 créditos</h4>
+            <p className="text-xs text-slate-300 leading-relaxed">
+              Sem cartão de crédito. A quantidade de empresas analisadas no teste depende das ações que você escolher realizar com seus 20 créditos.
+            </p>
+          </div>
+          <div className="bg-[#07152e] border border-white/10 rounded-3xl p-6 text-white">
+            <span className="text-xs font-black uppercase tracking-wider text-emerald-400 block mb-2">
+              Opção A com 20 créditos
+            </span>
+            <h4 className="text-xl font-black mb-2">Até 10 empresas</h4>
+            <p className="text-xs text-slate-300 leading-relaxed">
+              Liberando <strong>Pesquisa de contato (1 créd.) + Sinais financeiros (1 créd.)</strong> = 2 créditos por empresa qualificada.
+            </p>
+          </div>
+          <div className="bg-[#07152e] border border-white/10 rounded-3xl p-6 text-white">
+            <span className="text-xs font-black uppercase tracking-wider text-amber-400 block mb-2">
+              Opção B com 20 créditos
+            </span>
+            <h4 className="text-xl font-black mb-2">Até 4 empresas completas</h4>
+            <p className="text-xs text-slate-300 leading-relaxed">
+              Usando <strong>Enriquecer tudo (5 créd./empresa)</strong>: contato + LinkedIn do decisor + análise e abordagem por IA.
+            </p>
+          </div>
+        </div>
+
         {/* Credit Cost Table (Obrigatória pelo SPEC) */}
-        <div className="max-w-4xl mx-auto bg-[#07152e] border border-white/10 rounded-3xl p-6 md:p-10 shadow-xl">
+        <div className="max-w-5xl mx-auto bg-[#07152e] border border-white/10 rounded-3xl p-6 md:p-10 shadow-xl">
           <div className="text-center mb-8">
             <span className="text-xs font-black uppercase tracking-widest text-primary block mb-2">
               Custo Claro Antes de Clicar
             </span>
             <h3 className="text-2xl md:text-3xl font-black text-white">
-              Como funcionam os créditos na prática
+              Tabela de créditos por ação e regras de uso
             </h3>
             <p className="text-sm text-slate-300 mt-2">
-              No teste grátis você recebe 20 créditos por 7 dias (dá para ~10 empresas com contato e sinais financeiros). A mesma empresa nunca é cobrada duas vezes pela mesma ação.
+              Todo botão na plataforma exibe o custo antes do clique e seu extrato mostra exatamente para onde foi cada crédito.
             </p>
           </div>
 
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto mb-8">
             <table className="w-full text-left border-collapse">
               <thead>
                 <tr className="border-b border-white/15 text-xs uppercase tracking-wider text-slate-400">
@@ -258,13 +297,31 @@ const PlansSection = () => {
               </tbody>
             </table>
           </div>
+
+          {/* Transparent Rules Grid */}
+          <div className="grid md:grid-cols-2 gap-4 pt-6 border-t border-white/10 text-xs text-slate-300">
+            <div className="flex items-start gap-2.5 bg-white/5 p-4 rounded-2xl">
+              <Info className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+              <div>
+                <strong className="text-white block mb-1">Sem cobrança duplicada e sem pagar por consulta vazia</strong>
+                A mesma empresa nunca gasta créditos duas vezes pela mesma ação na sua conta. Se a pesquisa de contato não localizar telefone ou e-mail válido, o crédito não é descontado (ou é devolvido automaticamente no extrato).
+              </div>
+            </div>
+            <div className="flex items-start gap-2.5 bg-white/5 p-4 rounded-2xl">
+              <Info className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+              <div>
+                <strong className="text-white block mb-1">Validade, exportação e recargas avulsas</strong>
+                Os 20 créditos do teste grátis valem por 7 dias (incluindo exportação do funil por 1 crédito). Nos planos mensais, a cota renova todo mês e <strong>créditos avulsos comprados à parte nunca expiram</strong>.
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Legal Notice on Financial Signals */}
-        <div className="max-w-4xl mx-auto mt-6 p-4 rounded-2xl bg-white/5 border border-white/10 flex items-start gap-3 text-xs text-slate-400">
+        <div className="max-w-5xl mx-auto mt-6 p-4 rounded-2xl bg-white/5 border border-white/10 flex items-start gap-3 text-xs text-slate-400">
           <ShieldAlert className="w-4 h-4 text-primary shrink-0 mt-0.5" />
           <p>
-            <strong>Aviso sobre Sinais Financeiros:</strong> Informações de fontes públicas (Receita Federal, PGFN e cartórios) na data da consulta, exibidas com fonte e data. Não é análise ou recomendação de crédito.
+            <strong>Aviso sobre Sinais Financeiros e LGPD:</strong> Informações cadastrais e fiscais provêm de fontes públicas oficiais (Receita Federal, PGFN e cartórios) na data da consulta, exibidas com fonte e data, e não constituem análise ou recomendação de crédito. Dados corporativos e de decisores são tratados para finalidade legítima de prospecção B2B nos termos da LGPD, com canal direto de revisão e exclusão disponível no rodapé.
           </p>
         </div>
       </div>

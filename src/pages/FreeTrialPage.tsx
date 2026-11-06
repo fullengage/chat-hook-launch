@@ -2,23 +2,14 @@ import { useState, useEffect } from "react";
 import {
    CheckCircle2,
    Zap,
-   LayoutDashboard,
    ShieldCheck,
-   Clock,
-   AlertCircle,
-   BarChart3,
-   Users,
    Check,
-   Rocket,
-   Target,
-   Shield,
-   Code,
-   Search,
-   Database,
-   TrendingUp,
-   Filter,
+   Sparkles,
    Building2,
-   Sparkles
+   Info,
+   FileSpreadsheet,
+   UserCheck,
+   SearchCheck
 } from "lucide-react";
 import TrialForm from "@/components/TrialForm";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -74,9 +65,9 @@ const FreeTrialPage = () => {
                   />
                </div>
                <div className="flex flex-wrap items-center justify-center md:justify-end gap-3 md:gap-6">
-                  <div className="hidden sm:flex items-center gap-2 text-[10px] md:text-sm text-slate-300 bg-white/5 px-4 py-2 rounded-full border border-white/10">
+                  <div className="hidden sm:flex items-center gap-2 text-[10px] md:text-xs text-slate-300 bg-white/5 px-4 py-2 rounded-full border border-white/10">
                      <ShieldCheck className="w-4 h-4 text-primary" />
-                     <span className="font-bold uppercase tracking-widest leading-none">LGPD Compliant</span>
+                     <span className="font-bold uppercase tracking-wider leading-none">Fontes Públicas Oficiais</span>
                   </div>
                   <div className="flex items-center gap-2">
                      <Button
@@ -101,32 +92,69 @@ const FreeTrialPage = () => {
          </header>
 
          <main>
-            {/* Hero Section */}
-            <section className="pt-10 pb-20 lg:pt-14 lg:pb-32 overflow-hidden relative">
+            {/* Hero Section (Primeira Dobra) */}
+            <section className="pt-10 pb-20 lg:pt-14 lg:pb-24 overflow-hidden relative">
                <div className="container mx-auto px-4">
-                  <div className="flex flex-col lg:flex-row items-center lg:items-start gap-16 lg:gap-20">
+                  <div className="flex flex-col lg:flex-row items-center lg:items-start gap-12 lg:gap-16">
                      {/* Content */}
-                     <div className="lg:w-3/5 text-center lg:text-left space-y-8">
+                     <div className="lg:w-3/5 text-center lg:text-left space-y-6">
                         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/15 border border-primary/30 text-primary text-xs font-extrabold uppercase tracking-wider">
                            <Sparkles className="w-3.5 h-3.5" />
-                           Do seu site ao seu próximo cliente B2B
+                           Inteligência e Produtividade Comercial B2B
                         </div>
 
-                        <h1 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-[0.95] text-white mt-0 pt-0">
-                           Do seu site ao seu <span className="text-primary italic text-shadow-glow">próximo cliente B2B</span> em minutos.
+                        <h1 className="text-3xl md:text-5xl lg:text-[54px] font-black tracking-tight leading-[1.05] text-white mt-0 pt-0">
+                           Encontre empresas com <span className="text-primary italic text-shadow-glow">maior potencial</span> de comprar de você.
                         </h1>
 
-                        <p className="text-lg md:text-2xl text-slate-300 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                           Cole o seu site: a IA da <strong>Deepson</strong> entende o que você vende, monta seu cliente ideal (ICP e CNAEs), encontra as empresas certas com <strong>nota de aderência e motivo</strong>, libera contatos, decisores, sinais financeiros e escreve a abordagem comercial.
+                        <p className="text-lg md:text-xl text-slate-200 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                           Informe o site da sua empresa. A IA do <strong>Deepson</strong> entende o que você vende, identifica seu cliente ideal e encontra empresas compatíveis, explicando por que cada uma merece a atenção do seu comercial.
                         </p>
 
-                        <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-                           <div className="flex items-center gap-3 bg-primary/10 px-4 py-3 rounded-2xl border border-primary/20">
-                              <CheckCircle2 className="w-5 h-5 text-primary shrink-0" />
-                              <p className="text-sm text-slate-200 font-medium">
-                                 Você recebe <span className="text-primary font-bold">20 créditos grátis por 7 dias</span>: dá para <span className="text-white font-bold">~10 empresas com contato e sinais financeiros</span>
-                              </p>
+                        <p className="text-base md:text-lg text-slate-300 font-semibold max-w-2xl mx-auto lg:mx-0 border-l-4 border-primary pl-4 text-left">
+                           Seu vendedor passa menos tempo procurando clientes e mais tempo conversando com quem tem potencial de comprar.
+                        </p>
+
+                        {/* Free Trial Value Breakdown */}
+                        <div className="bg-[#07152e] border border-white/10 rounded-3xl p-5 text-left space-y-4">
+                           <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-3">
+                              <div className="flex items-center gap-2">
+                                 <CheckCircle2 className="w-5 h-5 text-primary shrink-0" />
+                                 <span className="font-black text-white text-sm md:text-base">
+                                    7 dias grátis, sem cartão • 20 créditos para experimentar
+                                 </span>
+                              </div>
+                              <span className="text-[11px] font-bold uppercase tracking-wider bg-primary/15 text-primary px-3 py-1 rounded-full border border-primary/30">
+                                 Você escolhe como usar
+                              </span>
                            </div>
+
+                           <div className="grid sm:grid-cols-2 gap-3">
+                              <div className="bg-white/5 rounded-2xl p-3.5 border border-white/10">
+                                 <div className="flex items-center justify-between mb-1">
+                                    <span className="text-xs font-extrabold uppercase tracking-wider text-primary">Opção 1 • 10 empresas</span>
+                                    <span className="text-[11px] text-slate-400 font-bold">2 créd./empresa</span>
+                                 </div>
+                                 <p className="text-xs text-slate-200 leading-relaxed">
+                                    <strong>Contato + sinais financeiros</strong> (telefone, e-mail, sócios, Receita Federal e dívida ativa PGFN).
+                                 </p>
+                              </div>
+
+                              <div className="bg-white/5 rounded-2xl p-3.5 border border-white/10">
+                                 <div className="flex items-center justify-between mb-1">
+                                    <span className="text-xs font-extrabold uppercase tracking-wider text-primary">Opção 2 • 4 empresas</span>
+                                    <span className="text-[11px] text-slate-400 font-bold">5 créd./empresa</span>
+                                 </div>
+                                 <p className="text-xs text-slate-200 leading-relaxed">
+                                    <strong>Enriquecimento completo</strong> (contato + LinkedIn do decisor + análise e abordagem comercial por IA).
+                                 </p>
+                              </div>
+                           </div>
+
+                           <p className="text-[11px] text-slate-400 flex items-center gap-1.5">
+                              <Info className="w-3.5 h-3.5 text-primary shrink-0" />
+                              A quantidade de empresas analisadas depende das ações escolhidas. Se uma consulta não encontrar contato válido, seu crédito não é consumido.
+                           </p>
                         </div>
 
                         <div className="flex flex-col sm:flex-row items-center gap-4 lg:hidden">
@@ -137,42 +165,6 @@ const FreeTrialPage = () => {
                               Falar com Especialista
                            </Button>
                         </div>
-
-                        <div className="grid sm:grid-cols-2 gap-6 py-4 text-left">
-                           <div className="flex items-center gap-4 bg-white/5 p-4 rounded-2xl border border-white/10">
-                              <div className="w-12 h-12 rounded-xl bg-primary/15 flex items-center justify-center shrink-0">
-                                 <Database className="w-6 h-6 text-primary" />
-                              </div>
-                              <div>
-                                 <p className="text-sm font-black text-white">+2,45 Milhões de Empresas</p>
-                                 <p className="text-[12px] text-slate-300">Busca por CNPJ, razão social, porte e segmento.</p>
-                              </div>
-                           </div>
-                           <div className="flex items-center gap-4 bg-white/5 p-4 rounded-2xl border border-white/10">
-                              <div className="w-12 h-12 rounded-xl bg-primary/15 flex items-center justify-center shrink-0">
-                                 <TrendingUp className="w-6 h-6 text-primary" />
-                              </div>
-                              <div>
-                                 <p className="text-sm font-black text-white">Radar de Oportunidades B2B</p>
-                                 <p className="text-[12px] text-slate-300">Segmentações inteligentes e insights de mercado.</p>
-                              </div>
-                           </div>
-                        </div>
-
-                        <div className="flex flex-wrap justify-center lg:justify-start gap-4 pt-2">
-                           <div className="flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-xl border border-primary/20">
-                              <CheckCircle2 className="w-4 h-4 text-primary" />
-                              <span className="font-bold text-[11px] text-white uppercase tracking-wider">7 dias grátis</span>
-                           </div>
-                           <div className="flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-xl border border-primary/20">
-                              <Zap className="w-4 h-4 text-primary" />
-                              <span className="font-bold text-[11px] text-white uppercase tracking-wider">20 créditos liberados na hora</span>
-                           </div>
-                           <div className="flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-xl border border-primary/20">
-                              <ShieldCheck className="w-4 h-4 text-primary" />
-                              <span className="font-bold text-[11px] text-white uppercase tracking-wider">Sem Cartão</span>
-                           </div>
-                        </div>
                      </div>
 
                      {/* Form Section */}
@@ -182,9 +174,9 @@ const FreeTrialPage = () => {
                            <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-primary" />
                            <TrialForm />
                         </div>
-                        <div className="mt-6 flex flex-col items-center gap-2 text-center">
+                        <div className="mt-4 flex flex-col items-center gap-1 text-center">
                            <p className="text-xs text-slate-300 leading-relaxed">
-                              Acesso 100% imediato — preencha os dados acima e entre direto no painel da Deepson já logado.
+                              Cadastro imediato — seus 20 créditos ficam disponíveis assim que sua conta é criada.
                            </p>
                         </div>
                      </div>
@@ -195,221 +187,50 @@ const FreeTrialPage = () => {
                <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px] -z-10" />
             </section>
 
-            {/* Substitution / Evolution Section */}
-            <section className="py-20 border-y border-white/10 bg-[#061329]">
-               <div className="container mx-auto px-4 max-w-5xl">
-                  <div className="text-center mb-12">
-                     <h2 className="text-3xl md:text-4xl font-black tracking-tighter mb-4 text-white">
-                        Substitua a prospecção manual por <span className="text-primary italic">Inteligência B2B</span>
+            {/* How it Works (Trilha Prática em 4 Passos) */}
+            <section className="py-20 bg-[#061329] border-y border-white/10">
+               <div className="container mx-auto px-4">
+                  <div className="text-center mb-14">
+                     <span className="text-xs font-black uppercase tracking-widest text-primary block mb-2">
+                        Jornada Prática na Plataforma
+                     </span>
+                     <h2 className="text-3xl md:text-5xl font-black tracking-tight mb-4 text-white">
+                        Do seu site à abordagem comercial em <span className="text-primary italic">4 passos</span>
                      </h2>
-                     <p className="text-slate-300 text-lg">Veja o que sua operação comercial deixa para trás ao centralizar dados e prospecção na Deepson.</p>
-                  </div>
-                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 mb-10">
-                     {[
-                        { name: "Listas Frias Compradas", sub: "Contatos desatualizados" },
-                        { name: "Busca Manual de CNPJ", sub: "Horas perdidas no Google" },
-                        { name: "Planilhas Soltas", sub: "Dados sem qualificação" },
-                        { name: "Prospecção no Escuro", sub: "Abordagem fora do ICP" },
-                        { name: "Ferramentas Isoladas", sub: "Alto custo operacional" },
-                     ].map((item, i) => (
-                        <div key={i} className="flex flex-col gap-1 p-4 rounded-2xl border border-white/10 bg-white/5 opacity-75 relative overflow-hidden">
-                           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                              <div className="w-full h-px bg-destructive/60 rotate-[-8deg]" />
-                           </div>
-                           <p className="text-sm font-bold text-white line-through decoration-destructive/70">{item.name}</p>
-                           <p className="text-[11px] text-slate-400">{item.sub}</p>
-                        </div>
-                     ))}
-                  </div>
-                  <div className="text-center p-6 rounded-3xl bg-primary/10 border border-primary/25">
-                     <p className="text-base font-bold text-white">
-                        Com a Deepson, sua empresa tem base de empresas B2B, filtros de ICP, listas segmentadas, insights de mercado e automação —{" "}
-                        <span className="text-primary">tudo em uma única plataforma de inteligência comercial.</span>
+                     <p className="text-slate-300 text-lg max-w-2xl mx-auto">
+                        Sem precisar adivinhar códigos CNAE ou cruzar planilhas manualmente: a IA guia cada etapa da sua prospecção.
                      </p>
                   </div>
-               </div>
-            </section>
 
-            {/* Benefits Section */}
-            <section className="py-24 bg-[#040f21] border-b border-white/10">
-               <div className="container mx-auto px-4">
-                  <div className="text-center mb-16">
-                     <h2 className="text-3xl md:text-4xl font-black mb-4 text-white">Inteligência de mercado para vender todos os dias</h2>
-                     <p className="text-slate-300">Dados reais, oportunidades mapeadas e insights acionáveis para sua equipe comercial focar em quem realmente compra.</p>
-                  </div>
-
-                  <div className="grid md:grid-cols-3 gap-8">
-                     <div className="p-8 rounded-3xl bg-[#07152e] border border-white/10 hover:border-primary/40 hover:shadow-2xl transition-all">
-                        <div className="w-12 h-12 rounded-2xl bg-primary/15 flex items-center justify-center mb-5">
-                           <Search className="w-6 h-6 text-primary" />
-                        </div>
-                        <h3 className="text-xl font-bold mb-3 text-white">Busca por CNPJ, Razão Social ou Segmento</h3>
-                        <p className="text-slate-300 text-sm leading-relaxed">Encontre exatamente o perfil de cliente ideal (ICP) filtrando entre mais de 2,45 milhões de empresas mapeadas em todo o Brasil.</p>
-                     </div>
-                     <div className="p-8 rounded-3xl bg-[#07152e] border border-white/10 hover:border-primary/40 hover:shadow-2xl transition-all">
-                        <div className="w-12 h-12 rounded-2xl bg-primary/15 flex items-center justify-center mb-5">
-                           <BarChart3 className="w-6 h-6 text-primary" />
-                        </div>
-                        <h3 className="text-xl font-bold mb-3 text-white">Insights e Top Segmentos em Alta</h3>
-                        <p className="text-slate-300 text-sm leading-relaxed">Descubra quais setores (Indústria, Comércio, Serviços, Agronegócio) apresentam maior crescimento em oportunidades no período.</p>
-                     </div>
-                     <div className="p-8 rounded-3xl bg-[#07152e] border border-white/10 hover:border-primary/40 hover:shadow-2xl transition-all">
-                        <div className="w-12 h-12 rounded-2xl bg-primary/15 flex items-center justify-center mb-5">
-                           <Filter className="w-6 h-6 text-primary" />
-                        </div>
-                        <h3 className="text-xl font-bold mb-3 text-white">Listas e Segmentações por Porte</h3>
-                        <p className="text-slate-300 text-sm leading-relaxed">Segmente microempresas, pequenas, médias e grandes empresas e organize listas qualificadas prontas para sua abordagem comercial.</p>
-                     </div>
-                  </div>
-               </div>
-            </section>
-
-            {/* Pain Points Section */}
-            <section className="py-24 bg-[#061329] relative overflow-hidden">
-               <div className="container mx-auto px-4">
-                  <div className="max-w-3xl mx-auto text-center mb-16 space-y-4">
-                     <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-white">O custo invisível de <span className="text-primary italic">prospectar sem dados</span></h2>
-                     <p className="text-lg text-slate-300">Quando seu time comercial procura clientes manualmente, você perde tempo, energia e vendas todos os dias.</p>
-                  </div>
-
-                  <div className="grid md:grid-cols-3 gap-8">
-                     {[
-                        { icon: AlertCircle, t: "Contatos Desatualizados", d: "Vendedores desperdiçando horas com telefones inexistentes e empresas baixadas." },
-                        { icon: Target, t: "Abordagem Fora do ICP", d: "Reuniões improdutivas com empresas que não têm porte ou orçamento para sua solução." },
-                        { icon: BarChart3, t: "Cegueira de Mercado", d: "Falta de clareza sobre quais segmentos e regiões estão gerando mais oportunidades agora." },
-                        { icon: Clock, t: "Pesquisa Manual Lenta", d: "Seu time gasta mais tempo procurando quem abordar do que efetivamente vendendo." },
-                        { icon: Users, t: "Baixa Qualificação", d: "Listas genéricas que geram baixa taxa de resposta e desmotivam a equipe de vendas." },
-                        { icon: TrendingUp, t: "Pipeline Imprevisível", d: "Sem geração constante de oportunidades qualificadas, o faturamento oscila todo mês." }
-                     ].map((item, i) => (
-                        <div key={i} className="p-8 rounded-[32px] bg-[#040f21] border border-white/10 hover:border-primary/40 transition-all group">
-                           <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center mb-6 group-hover:bg-primary/15 transition-colors">
-                              <item.icon className="w-7 h-7 text-slate-300 group-hover:text-primary transition-colors" />
-                           </div>
-                           <h3 className="text-xl font-bold mb-3 text-white">{item.t}</h3>
-                           <p className="text-slate-300 text-sm leading-relaxed">{item.d}</p>
-                        </div>
-                     ))}
-                  </div>
-               </div>
-            </section>
-
-            {/* Product Showcase */}
-            <section className="py-24 relative overflow-hidden bg-[#040f21]">
-               <div className="container mx-auto px-4">
-                  <div className="text-center mb-20">
-                     <h2 className="text-3xl md:text-5xl font-black mb-6 tracking-tighter text-white">Tudo que sua prospecção B2B precisa, <span className="text-primary italic text-shadow-glow">em um único painel</span></h2>
-                     <p className="text-slate-300 text-lg max-w-2xl mx-auto">Da inteligência de mercado à criação de listas hipersegmentadas — conheça a plataforma Deepson por dentro.</p>
-                  </div>
-
-                  <div className="space-y-28">
-                     {/* Feature 1 */}
-                     <div className="flex flex-col lg:flex-row items-center gap-16">
-                        <div className="lg:w-1/2 space-y-6">
-                           <div className="bg-primary/15 text-primary px-4 py-2 rounded-full w-fit font-bold text-xs uppercase tracking-widest border border-primary/25">Inteligência de Mercado B2B</div>
-                           <h3 className="text-3xl md:text-4xl font-black leading-tight text-white">Visão Geral: Dados, oportunidades e insights em tempo real</h3>
-                           <p className="text-slate-300 text-lg leading-relaxed">
-                              Tenha um raio-x completo do mercado brasileiro com mais de 2.458.317 empresas mapeadas. Acompanhe a evolução de oportunidades, distribuição por porte e os segmentos com maior crescimento.
-                           </p>
-                           <ul className="space-y-4">
-                              {[
-                                 "Mais de 2,45 milhões de empresas mapeadas e atualizadas",
-                                 "Análise de distribuição por porte (Micro, Pequena, Média e Grande)",
-                                 "Top segmentos em oportunidade (Indústria, Comércio, Serviços e Agro)",
-                                 "Insights automáticos da Deepson para direcionar seu foco comercial"
-                              ].map((item, i) => (
-                                 <li key={i} className="flex items-center gap-3 text-slate-200">
-                                    <Check className="w-5 h-5 text-primary shrink-0" />
-                                    <span className="font-medium">{item}</span>
-                                 </li>
-                              ))}
-                           </ul>
-                        </div>
-                        <div className="lg:w-1/2 relative group">
-                           <div className="absolute -inset-4 bg-primary/20 blur-3xl rounded-[40px] opacity-30 group-hover:opacity-50 transition-opacity" />
-                           <img
-                              src="/dashboard-deepson.jpg"
-                              alt="Painel Deepson — Inteligência de Mercado B2B"
-                              className="rounded-[28px] border border-white/15 shadow-2xl relative z-10 hover:scale-[1.02] transition-transform duration-500 w-full h-auto"
-                              loading="lazy"
-                           />
-                        </div>
-                     </div>
-
-                     {/* Feature 2 */}
-                     <div className="flex flex-col lg:flex-row-reverse items-center gap-16">
-                        <div className="lg:w-1/2 space-y-6">
-                           <div className="bg-primary/15 text-primary px-4 py-2 rounded-full w-fit font-bold text-xs uppercase tracking-widest border border-primary/25">Prospecção & Segmentação</div>
-                           <h3 className="text-3xl md:text-4xl font-black leading-tight text-white">Listas segmentadas, novos contatos e qualificação acelerada</h3>
-                           <p className="text-slate-300 text-lg leading-relaxed">
-                              Busque empresas por CNPJ, razão social ou segmento, salve listas personalizadas e utilize automação e integrações para abastecer seu time comercial com leads dentro do seu ICP.
-                           </p>
-                           <ul className="space-y-4">
-                              {[
-                                 "Busca instantânea por CNPJ, razão social, CNAE ou segmento",
-                                 "Criação de listas e segmentações sob medida para campanhas B2B",
-                                 "Módulos integrados de Relatórios, Automação e Integrações",
-                                 "20 créditos liberados na hora no seu teste gratuito de 7 dias"
-                              ].map((item, i) => (
-                                 <li key={i} className="flex items-center gap-3 text-slate-200">
-                                    <Check className="w-5 h-5 text-primary shrink-0" />
-                                    <span className="font-medium">{item}</span>
-                                 </li>
-                              ))}
-                           </ul>
-                           <div className="pt-2">
-                              <Button variant="cta" size="lg" className="h-14 px-8 rounded-full font-black" onClick={scrollToForm}>
-                                 Criar conta grátis com 20 créditos
-                              </Button>
-                           </div>
-                        </div>
-                        <div className="lg:w-1/2 grid grid-cols-2 gap-4">
-                           <div className="p-6 rounded-3xl bg-[#07152e] border border-white/10 space-y-2">
-                              <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Empresas Mapeadas</span>
-                              <p className="text-3xl md:text-4xl font-black text-white">2.458.317</p>
-                              <span className="inline-block text-xs font-bold text-emerald-400">↑ +12,8% vs. período anterior</span>
-                           </div>
-                           <div className="p-6 rounded-3xl bg-gradient-to-br from-[#ff6b00] to-[#ea580c] text-white space-y-2 shadow-xl">
-                              <span className="text-xs font-bold uppercase tracking-wider text-white/90">Oportunidades</span>
-                              <p className="text-3xl md:text-4xl font-black text-white">38.420</p>
-                              <span className="inline-block text-xs font-bold text-white">↑ +9,2% em crescimento</span>
-                           </div>
-                           <div className="p-6 rounded-3xl bg-[#07152e] border border-white/10 space-y-2">
-                              <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Novos Contatos</span>
-                              <p className="text-3xl md:text-4xl font-black text-white">104.982</p>
-                              <span className="inline-block text-xs font-bold text-emerald-400">↑ +15,6% vs. período anterior</span>
-                           </div>
-                           <div className="p-6 rounded-3xl bg-[#07152e] border border-white/10 space-y-2">
-                              <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Taxa de Qualificação</span>
-                              <p className="text-3xl md:text-4xl font-black text-primary">26,4%</p>
-                              <span className="inline-block text-xs font-bold text-emerald-400">↑ +4,7 p.p. de evolução</span>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </section>
-
-            {/* How it Works (Trilha de 4 Passos Oficial) */}
-            <section className="py-24 bg-[#061329] border-y border-white/10">
-               <div className="container mx-auto px-4">
-                  <div className="text-center mb-16">
-                     <h2 className="text-3xl md:text-5xl font-black tracking-tighter mb-6 text-white">Do cadastro à lista útil em <span className="text-primary italic">4 passos simples</span></h2>
-                     <p className="text-slate-300 text-lg max-w-2xl mx-auto">A trilha da Deepson foi desenhada para você encontrar compradores reais em até 2 minutos, sem precisar montar filtros complexos no escuro.</p>
-                  </div>
-
-                  <div className="grid md:grid-cols-4 gap-8 relative">
+                  <div className="grid md:grid-cols-4 gap-6 relative">
                      <div className="hidden md:block absolute top-1/2 left-0 right-0 h-0.5 bg-primary/20 -z-10" />
                      {[
-                        { step: "①", t: "Sua Empresa (Briefing)", d: "Cole o seu site e diga o que vende, para quem e em qual região. A IA entende o seu negócio na sua língua." },
-                        { step: "②", t: "Seu Cliente Ideal (ICP)", d: "A IA define o perfil dos melhores compradores e seleciona automaticamente os CNAEs, portes e estados ideais." },
-                        { step: "③", t: "Empresas Encontradas", d: "Receba a lista ordenada por nota de aderência ao seu ICP, com o motivo claro de por que abordar cada empresa." },
-                        { step: "④", t: "Funil e Enriquecimento", d: "Salve no funil e libere contato (1 créd.), Sinais financeiros (1 créd.) ou Enriquecer tudo com decisor e IA (5 créd.)." }
+                        {
+                           step: "①",
+                           t: "Sua Empresa (Briefing)",
+                           d: "Informe o seu site, o que você vende, para quem e em qual região. A IA interpreta sua oferta comercial."
+                        },
+                        {
+                           step: "②",
+                           t: "Seu Cliente Ideal (ICP)",
+                           d: "A IA sugere o perfil de comprador ideal e seleciona automaticamente os CNAEs, portes e estados mais aderentes."
+                        },
+                        {
+                           step: "③",
+                           t: "Empresas Compatíveis",
+                           d: "Receba as empresas ordenadas por nota de aderência ao seu ICP, com a explicação clara do motivo para abordar cada uma."
+                        },
+                        {
+                           step: "④",
+                           t: "Funil e Enriquecimento",
+                           d: "Salve no funil e escolha o que liberar: Contato (1 créd.), Sinais financeiros (1 créd.), Enriquecer tudo (5 créd.) ou exportar planilha (1 créd.)."
+                        }
                      ].map((s, i) => (
-                        <div key={i} className="bg-[#040f21] p-8 rounded-[32px] border border-white/10 text-center relative group hover:border-primary/50 transition-colors">
-                           <div className="w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-black mx-auto mb-6 shadow-lg shadow-primary/20 text-lg group-hover:scale-110 transition-transform">
+                        <div key={i} className="bg-[#040f21] p-7 rounded-[28px] border border-white/10 text-left relative group hover:border-primary/50 transition-colors">
+                           <div className="w-11 h-11 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-black mb-5 shadow-lg shadow-primary/20 text-base">
                               {s.step}
                            </div>
-                           <h4 className="text-xl font-bold mb-3 text-white">{s.t}</h4>
+                           <h4 className="text-lg font-bold mb-2.5 text-white">{s.t}</h4>
                            <p className="text-slate-300 text-sm leading-relaxed">{s.d}</p>
                         </div>
                      ))}
@@ -417,84 +238,168 @@ const FreeTrialPage = () => {
                </div>
             </section>
 
-            {/* Who is it for */}
-            <section className="py-24 bg-[#040f21]">
-               <div className="container mx-auto px-4 text-center">
-                  <h2 className="text-3xl md:text-5xl font-black mb-16 tracking-tighter italic text-white">Para quem é a <span className="text-primary">Inteligência B2B da Deepson</span></h2>
-                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
-                     {[
-                        { t: "Indústrias & Distribuidoras", i: Building2 },
-                        { t: "SaaS & Tecnologia B2B", i: Code },
-                        { t: "Venda de Serviços B2B", i: Rocket },
-                        { t: "Consultorias & Agências", i: Target },
-                        { t: "Comércio Atacadista", i: LayoutDashboard },
-                        { t: "Agronegócio & Insumos", i: Shield },
-                        { t: "Equipes de SDR & Outbound", i: Users },
-                        { t: "Expansão & Inteligência Comercial", i: BarChart3 }
-                     ].map((item, i) => (
-                        <div key={i} className="flex flex-col items-center gap-4 p-8 rounded-[32px] border border-white/10 bg-[#07152e] hover:bg-primary/10 hover:border-primary/30 transition-all">
-                           <div className="w-12 h-12 rounded-xl bg-[#040f21] flex items-center justify-center border border-white/10 shadow-sm">
-                              <item.i className="w-6 h-6 text-primary" />
-                           </div>
-                           <span className="font-bold text-sm md:text-base text-white">{item.t}</span>
+            {/* Practical Demonstration & Real Case Section */}
+            <section className="py-24 relative overflow-hidden bg-[#040f21] border-b border-white/10">
+               <div className="container mx-auto px-4">
+                  <div className="flex flex-col lg:flex-row items-center gap-14 mb-20">
+                     <div className="lg:w-1/2 space-y-6">
+                        <div className="bg-primary/15 text-primary px-4 py-1.5 rounded-full w-fit font-bold text-xs uppercase tracking-widest border border-primary/25">
+                           Por Dentro do Produto
                         </div>
-                     ))}
+                        <h2 className="text-3xl md:text-4xl font-black leading-tight text-white">
+                           Qualificação com motivo claro, decisores e sinais financeiros de fontes públicas
+                        </h2>
+                        <p className="text-slate-300 text-base md:text-lg leading-relaxed">
+                           Em vez de entregar apenas uma lista fria de CNPJs, o Deepson cruza a base oficial de empresas ativas com o seu ICP para priorizar quem realmente tem perfil para comprar sua solução.
+                        </p>
+                        <ul className="space-y-3.5">
+                           {[
+                              "Nota de aderência (0 a 100) calculada por IA com justificativa em linguagem comercial",
+                              "Identificação de contatos corporativos, quadro societário e decisores no LinkedIn",
+                              "Sinais financeiros objetivos (Receita Federal, dívida ativa PGFN e cartórios) com fonte e data",
+                              "Funil comercial em Kanban e exportação de listas qualificadas (até 50 empresas por 1 crédito)"
+                           ].map((item, i) => (
+                              <li key={i} className="flex items-start gap-3 text-slate-200 text-sm md:text-base">
+                                 <Check className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                                 <span className="font-medium">{item}</span>
+                              </li>
+                           ))}
+                        </ul>
+                        <div className="pt-2">
+                           <Button variant="cta" size="lg" className="h-13 px-8 rounded-full font-black" onClick={scrollToForm}>
+                              Experimentar com 20 créditos grátis
+                           </Button>
+                        </div>
+                     </div>
+
+                     <div className="lg:w-1/2 relative">
+                        <div className="absolute -inset-4 bg-primary/15 blur-3xl rounded-[40px] opacity-40" />
+                        <div className="relative z-10 rounded-[28px] border border-white/15 bg-[#07152e] p-3 shadow-2xl">
+                           <img
+                              src="/dashboard-deepson.jpg"
+                              alt="Ilustração do painel Deepson — Inteligência de Mercado B2B"
+                              className="rounded-[20px] w-full h-auto"
+                              loading="lazy"
+                           />
+                           <p className="text-[11px] text-slate-400 text-center mt-3 px-2">
+                              * Imagem meramente ilustrativa da interface do painel (números demonstrativos). Na plataforma, o volume de empresas e oportunidades reflete os filtros de CNAE, porte e região do seu ICP sobre a base pública da Receita Federal.
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+
+                  {/* Case Real: Aplicações Práticas em Operações B2B */}
+                  <div className="max-w-5xl mx-auto bg-[#07152e] border border-white/10 rounded-3xl p-8 md:p-10">
+                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 mb-6 border-b border-white/10">
+                        <div>
+                           <span className="text-xs font-black uppercase tracking-widest text-primary block mb-1">
+                              Aplicação Real em Operações B2B
+                           </span>
+                           <h3 className="text-2xl font-black text-white">
+                              Como empresas B2B utilizam a inteligência do Deepson na prática
+                           </h3>
+                        </div>
+                        <span className="text-xs font-bold bg-white/5 border border-white/10 text-slate-300 px-4 py-2 rounded-full w-fit">
+                           Grupo FullWeb • Metodologia Aplicada
+                        </span>
+                     </div>
+
+                     <div className="grid md:grid-cols-3 gap-6">
+                        <div className="bg-[#040f21] border border-white/10 rounded-2xl p-6 space-y-3">
+                           <div className="w-10 h-10 rounded-xl bg-primary/15 flex items-center justify-center">
+                              <Building2 className="w-5 h-5 text-primary" />
+                           </div>
+                           <h4 className="font-bold text-white text-base">Outsourcing de TI & Impressão (Case MGITECH)</h4>
+                           <p className="text-xs text-slate-300 leading-relaxed">
+                              Mapeamento regional no estado de São Paulo cruzando porte empresarial, setores intensivos em documentação (saúde, logística, educação e indústria) e exclusão automática de concorrentes do mesmo CNAE.
+                           </p>
+                        </div>
+
+                        <div className="bg-[#040f21] border border-white/10 rounded-2xl p-6 space-y-3">
+                           <div className="w-10 h-10 rounded-xl bg-primary/15 flex items-center justify-center">
+                              <SearchCheck className="w-5 h-5 text-primary" />
+                           </div>
+                           <h4 className="font-bold text-white text-base">Engenharia & Saúde e Segurança do Trabalho (SST)</h4>
+                           <p className="text-xs text-slate-300 leading-relaxed">
+                              Identificação de indústrias e construtoras ativas com obrigação de PGR/PCMSO, liberando contato validado, situação cadastral na Receita Federal e decisores de RH/Operações.
+                           </p>
+                        </div>
+
+                        <div className="bg-[#040f21] border border-white/10 rounded-2xl p-6 space-y-3">
+                           <div className="w-10 h-10 rounded-xl bg-primary/15 flex items-center justify-center">
+                              <UserCheck className="w-5 h-5 text-primary" />
+                           </div>
+                           <h4 className="font-bold text-white text-base">Indústria de Embalagens & Insumos B2B</h4>
+                           <p className="text-xs text-slate-300 leading-relaxed">
+                              Seleção automática dos CNAEs compradores (indústrias de alimentos, cosméticos e centros de distribuição) separando fornecedores de matéria-prima dos reais compradores finais.
+                           </p>
+                        </div>
+                     </div>
                   </div>
                </div>
             </section>
 
-            {/* Cost comparison intro */}
-            <section className="py-12 bg-[#061329] border-t border-white/10">
-               <div className="container mx-auto px-4 text-center mb-4 max-w-3xl">
-                  <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">Quanto custa prospectar sem inteligência de dados?</p>
-                  <h2 className="text-2xl md:text-3xl font-black tracking-tighter mb-4 leading-tight text-white">
-                     Bases desatualizadas + ferramentas separadas + horas improdutivas de SDRs custam facilmente mais de <span className="text-destructive line-through decoration-2">R$ 2.500/mês</span>.
-                  </h2>
-                  <p className="text-slate-300 text-base mb-2">
-                     Com a Deepson, você acessa inteligência de mercado B2B, base de empresas, segmentações e automação em uma única plataforma.
-                  </p>
-                  <p className="text-primary font-bold text-sm uppercase tracking-wider">
-                     Mais precisão no ICP. Mais oportunidades reais. Mais vendas B2B.
-                  </p>
-               </div>
-            </section>
+            {/* Plans & Credit Costs Section */}
             <PlansSection />
 
             {/* FAQ Section */}
             <section className="py-24 bg-[#061329]">
                <div className="container mx-auto px-4 max-w-3xl">
                   <div className="text-center mb-16">
-                     <h2 className="text-3xl md:text-5xl font-black mb-6 tracking-tighter text-white">Perguntas <span className="text-primary italic">Frequentes</span></h2>
-                     <p className="text-slate-300">Tudo o que você precisa saber sobre o teste grátis de 7 dias da Deepson.</p>
+                     <h2 className="text-3xl md:text-5xl font-black mb-4 tracking-tight text-white">
+                        Perguntas <span className="text-primary italic">Frequentes</span>
+                     </h2>
+                     <p className="text-slate-300">
+                        Regras claras sobre o teste grátis de 7 dias, funcionamento dos créditos, exportação e LGPD.
+                     </p>
                   </div>
 
                   <Accordion type="single" collapsible className="space-y-4">
                      {[
-                        { q: "Precisa de cartão de crédito para os 7 dias de teste?", a: "Não! Você cria sua conta gratuita agora mesmo sem informar cartão de crédito e já recebe 20 créditos para testar a plataforma por 7 dias (dá para ~10 empresas com contato e sinais financeiros)." },
-                        { q: "Como funcionam os créditos e os planos da Deepson?", a: "Tudo funciona com transparência total: Pesquisa de contato custa 1 crédito, Sinais financeiros 1 crédito, Enriquecer tudo (contato + LinkedIn do decisor + análise por IA) 5 créditos e Baixar lista (até 50 empresas do funil) 1 crédito. Os planos começam no Essencial (R$ 197/mês com 50 créditos), Profissional (R$ 497/mês com 300 créditos), Equipe (R$ 997/mês com 800 créditos) e Escala (R$ 1.997/mês com 2.000 créditos)." },
-                        { q: "A mesma empresa consome créditos duas vezes?", a: "Não! Ação já liberada não cobra de novo: a mesma empresa nunca gasta créditos duas vezes pela mesma ação na sua conta, e todo botão mostra exatamente quantos créditos vai consumir antes de você clicar." },
-                        { q: "O que são os Sinais Financeiros?", a: "São informações de fontes públicas (situação cadastral na Receita Federal, recuperação judicial/falência, dívida ativa na PGFN e, quando habilitado sob pedido, protestos em cartório), apresentadas de forma objetiva com a respectiva fonte e data da consulta. Não constitui análise de crédito." },
-                        { q: "Em quanto tempo meu acesso é liberado?", a: "Na mesma hora! Assim que você preenche o formulário com Nome, E-mail, WhatsApp e CNPJ, sua conta é criada automaticamente e você já entra logado no painel da Deepson." }
+                        {
+                           q: "Como funcionam os 20 créditos do teste grátis de 7 dias?",
+                           a: "Ao criar sua conta gratuita (sem cartão de crédito), você recebe 20 créditos válidos por 7 dias. A quantidade de empresas analisadas depende das ações que você escolher: por exemplo, você pode liberar Contato + Sinais financeiros para 10 empresas (2 créditos por empresa) ou fazer o Enriquecimento completo com decisor e análise de IA para 4 empresas (5 créditos por empresa)."
+                        },
+                        {
+                           q: "Posso exportar listas durante o teste grátis? Os créditos expiram?",
+                           a: "Sim! Durante o teste grátis você pode exportar empresas do seu funil para planilha (1 crédito para até 50 empresas). Os 20 créditos de demonstração valem durante os 7 dias do teste. Nos planos mensais pagos, a cota mensal renova a cada ciclo (o saldo da cota mensal não usado expira na virada), enquanto créditos avulsos comprados à parte nunca expiram."
+                        },
+                        {
+                           q: "O que acontece quando uma consulta não encontra informações ou se eu clicar duas vezes na mesma empresa?",
+                           a: "Você não perde créditos: (1) se a pesquisa de contato não localizar telefone ou e-mail válido, o crédito não é cobrado (ou é estornado automaticamente no seu extrato); (2) uma ação já liberada para uma empresa fica salva na sua conta e nunca é cobrada duas vezes."
+                        },
+                        {
+                           q: "O que são os Sinais Financeiros?",
+                           a: "São dados objetivos consultados em fontes públicas oficiais (situação cadastral na Receita Federal, registros públicos de recuperação judicial/falência, dívida ativa na PGFN e, quando habilitado sob pedido, protestos em cartório), sempre acompanhados da fonte e data da consulta. Não representam score, nota ou recomendação de crédito."
+                        },
+                        {
+                           q: "Como o Deepson trata a LGPD e os dados de decisores?",
+                           a: "Os dados cadastrais de pessoas jurídicas provêm de bases públicas oficiais (Receita Federal e PGFN). Informações corporativas de contato e de decisores destinam-se exclusivamente à prospecção comercial B2B sob legítimo interesse e transparência (Lei nº 13.709/2018 — LGPD), contando com canal permanente e gratuito para revisão ou oposição/exclusão de dados pelo titular."
+                        }
                      ].map((item, i) => (
                         <AccordionItem key={i} value={`item-${i}`} className="bg-[#040f21] border border-white/10 rounded-2xl px-6 py-2 overflow-hidden shadow-sm">
-                           <AccordionTrigger className="hover:no-underline font-bold text-left text-lg py-4 text-white">
+                           <AccordionTrigger className="hover:no-underline font-bold text-left text-base md:text-lg py-4 text-white">
                               {item.q}
                            </AccordionTrigger>
-                           <AccordionContent className="text-slate-300 text-base leading-relaxed pb-6">
+                           <AccordionContent className="text-slate-300 text-sm md:text-base leading-relaxed pb-6">
                               {item.a}
                            </AccordionContent>
                         </AccordionItem>
                      ))}
                   </Accordion>
 
-                  <div className="mt-20 p-10 rounded-[40px] bg-primary text-primary-foreground text-center relative overflow-hidden group">
+                  <div className="mt-16 p-10 rounded-[40px] bg-primary text-primary-foreground text-center relative overflow-hidden group">
                      <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-20 transition-opacity" />
-                     <h3 className="text-3xl font-black mb-4 italic tracking-tight">Pronto para encontrar suas próximas oportunidades B2B?</h3>
-                     <p className="mb-8 text-primary-foreground/90 text-lg">Crie sua conta grátis agora e receba 20 créditos imediatos para testar por 7 dias.</p>
+                     <h3 className="text-2xl md:text-3xl font-black mb-3 italic tracking-tight">
+                        Encontre empresas com maior potencial de comprar de você
+                     </h3>
+                     <p className="mb-8 text-primary-foreground/90 text-base md:text-lg">
+                        Teste grátis por 7 dias, sem cartão, com 20 créditos liberados na hora.
+                     </p>
                      <Button
                         size="lg"
                         variant="secondary"
-                        className="h-14 px-10 rounded-full font-black text-lg gap-2 shadow-xl hover:scale-105 transition-transform"
+                        className="h-14 px-10 rounded-full font-black text-base md:text-lg gap-2 shadow-xl hover:scale-105 transition-transform"
                         onClick={scrollToForm}
                      >
                         Começar teste grátis sem cartão
@@ -514,20 +419,20 @@ const FreeTrialPage = () => {
                      <Sparkles className="w-8 h-8 text-primary" />
                   </div>
                   <DialogTitle className="text-2xl font-black text-white tracking-tight text-center">
-                     Espere! Seus 20 créditos grátis estão prontos
+                     Experimente o Deepson com 20 créditos grátis
                   </DialogTitle>
                   <DialogDescription className="text-slate-300 text-sm text-center leading-relaxed">
-                     Teste a plataforma de Inteligência de Dados B2B da Deepson por 7 dias sem cartão de crédito. Sua conta é criada na hora!
+                     Informe o site da sua empresa, descubra seu cliente ideal com IA e analise até 10 empresas (contato + sinais financeiros) por 7 dias sem cartão.
                   </DialogDescription>
                </DialogHeader>
 
                <div className="bg-white/5 border border-white/10 p-4 rounded-2xl flex flex-col md:flex-row items-center gap-4 text-left">
                   <div className="w-12 h-12 rounded-xl bg-primary/15 flex items-center justify-center shrink-0">
-                     <CheckCircle2 className="w-6 h-6 text-primary" />
+                     <FileSpreadsheet className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                     <p className="text-sm font-bold text-white">+2,45 Milhões de Empresas Mapeadas</p>
-                     <p className="text-xs text-slate-300">Busque por CNPJ, segmento, porte e região com acesso imediato ao painel.</p>
+                     <p className="text-sm font-bold text-white">7 dias grátis • Sem cartão de crédito</p>
+                     <p className="text-xs text-slate-300">Custo claro antes de cada clique e garantia contra cobrança em consulta sem dados.</p>
                   </div>
                </div>
 
