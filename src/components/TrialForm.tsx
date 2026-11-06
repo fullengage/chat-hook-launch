@@ -12,34 +12,33 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { toast } from "sonner";
-import { CheckCircle2, Loader2, MessageSquare, Zap, Shield } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
+import { Loader2, Zap, Shield } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-// URL da Edge Function que aciona o webhook do ChatHook
+// URL da Edge Function que aciona o webhook do ChatHook (lead continua salvo no Supabase)
 const EDGE_FUNCTION_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/capture-lead`;
+// Cadastro do teste grátis da Deepson: cria a conta (7 dias, 20 créditos) e devolve o link de entrada já logado
+const CADASTRO_URL = "https://seo.deepson.com.br/api/teste-gratis";
+const WHATSAPP_AJUDA =
+  "https://api.whatsapp.com/send?phone=5511955501090&text=" +
+  encodeURIComponent("Olá! Tentei criar minha conta de teste da Deepson e não consegui.");
+const digitos = (s: string) => s.replace(/\D/g, "");
 
 const formSchema = z.object({
   name: z.string().min(2, "O nome deve ter pelo menos 2 caracteres."),
   email: z.string().email("E-mail inválido."),
-  whatsapp: z.string().min(10, "Informe um WhatsApp válido."),
+  whatsapp: z.string().refine((v) => digitos(v).length >= 10 && digitos(v).length <= 13, "Informe o WhatsApp com DDD."),
+  cnpj: z.string().refine((v) => digitos(v).length === 14, "Informe o CNPJ da sua empresa (14 números)."),
   termsAccepted: z.boolean().refine((val) => val === true, {
     message: "Você deve aceitar os Termos de Uso e Política de Privacidade.",
   }),
 });
 
 const TrialForm = () => {
-  const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [honeypot, setHoneypot] = useState("");
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -47,25 +46,37 @@ const TrialForm = () => {
       name: "",
       email: "",
       whatsapp: "",
+      cnpj: "",
       termsAccepted: false,
     },
   });
 
-
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setIsSubmitting(true);
     try {
-      // Chama a Edge Function — ela salva no banco E dispara o webhook do ChatHook
-      const { data: { session } } = await supabase.auth.getSession();
-      const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string;
-
-      const res = await fetch(EDGE_FUNCTION_URL, {
+      const params = new URLSearchParams(window.location.search);
+      // 1) cria a conta na Deepson (text/plain evita a pré-checagem de CORS; o servidor lê o JSON)
+      const res = await fetch(CADASTRO_URL, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${session?.access_token ?? anonKey}`,
-          "apikey": anonKey,
-        },
+        headers: { "Content-Type": "text/plain" },
+        body: JSON.stringify({
+          nome: values.name.trim(),
+          email: values.email.trim(),
+          whatsapp: digitos(values.whatsapp),
+          cnpj: digitos(values.cnpj),
+          site: honeypot, // armadilha de robô: vazio para pessoas
+          origem: `${params.get("utm_source") || "deepson.com.br"}/${params.get("utm_campaign") || "teste_7_dias"}`,
+        }),
+      });
+      const result = (await res.json().catch(() => ({}))) as { url?: string; erro?: string };
+      if (!res.ok || !result.url) throw new Error(result.erro || "Não conseguimos criar sua conta agora.");
+
+      // 2) o lead continua indo para o Supabase/webhook, como antes (sem segurar a entrada)
+      const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string;
+      void fetch(EDGE_FUNCTION_URL, {
+        method: "POST",
+        keepalive: true,
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${anonKey}`, apikey: anonKey },
         body: JSON.stringify({
           name: values.name,
           email: values.email,
@@ -75,31 +86,20 @@ const TrialForm = () => {
           page: window.location.pathname,
           userAgent: navigator.userAgent,
         }),
-      });
+      }).catch(() => {});
 
-      if (!res.ok) {
-        const errBody = await res.json().catch(() => ({}));
-        console.error("Edge function error:", errBody);
-        throw new Error(errBody?.error ?? "Erro ao enviar cadastro.");
-      }
-
-      toast.success("Solicitação enviada com sucesso!");
-      console.log("Lead captured and webhook triggered for:", values.name);
-
-      // Persiste no localStorage para evitar perda de dados em caso de refresh na página de obrigado
-      localStorage.setItem("chathook_lead_name", values.name);
-      localStorage.setItem("chathook_lead_whatsapp", values.whatsapp);
-
-      navigate("/obrigado", {
-        state: {
-          name: values.name,
-          whatsapp: values.whatsapp,
-        },
-      });
+      const gtag = (window as unknown as { gtag?: (...a: unknown[]) => void }).gtag;
+      if (typeof gtag === "function") gtag("event", "sign_up", { method: "teste_gratis_7_dias" });
+      toast.success("Conta criada! Entrando na plataforma…");
+      setTimeout(() => {
+        window.location.href = result.url!;
+      }, 700);
     } catch (error) {
-      console.error("Erro ao capturar lead:", error);
-      toast.error("Ocorreu um erro. Por favor, tente novamente.");
-    } finally {
+      const texto = error instanceof Error && error.message ? error.message : "Não conseguimos criar sua conta agora.";
+      toast.error(texto, {
+        action: { label: "Falar no WhatsApp", onClick: () => window.open(WHATSAPP_AJUDA, "_blank", "noopener") },
+        duration: 12000,
+      });
       setIsSubmitting(false);
     }
   };
@@ -111,7 +111,7 @@ const TrialForm = () => {
            7 Dias Grátis &amp; Sem Cartão
         </div>
         <h3 className="text-3xl font-black text-foreground mb-3 tracking-tighter italic">Liberar meu <span className="text-primary">CRM Inteligente</span></h3>
-        <p className="text-sm text-slate-200 leading-relaxed font-semibold">Preencha abaixo para receber seu acesso e o bônus de implantação hoje mesmo.</p>
+        <p className="text-sm text-slate-200 leading-relaxed font-semibold">Preencha abaixo: sua conta é criada na hora e você já entra na plataforma, com 20 créditos para testar por 7 dias.</p>
       </div>
 
       <Form {...form}>
@@ -158,6 +158,32 @@ const TrialForm = () => {
 
           <FormField
             control={form.control}
+            name="cnpj"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-xs font-black text-foreground uppercase tracking-wider">CNPJ da sua empresa</FormLabel>
+                <FormControl>
+                  <Input placeholder="00.000.000/0001-00" inputMode="numeric" {...field} className="h-12 bg-background border-white/25 text-foreground placeholder:text-slate-400 focus:border-primary focus:ring-1 focus:ring-primary focus-visible:ring-primary/20 transition-all font-medium" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          {/* armadilha de robô: escondida; pessoa de verdade não preenche */}
+          <input
+            type="text"
+            name="site"
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            value={honeypot}
+            onChange={(e) => setHoneypot(e.target.value)}
+            style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
+          />
+
+          <FormField
+            control={form.control}
             name="termsAccepted"
             render={({ field }) => (
               <FormItem className="flex flex-row items-start space-x-3 space-y-0 p-1">
@@ -179,7 +205,7 @@ const TrialForm = () => {
           <Button type="submit" variant="cta" className="w-full h-16 text-[13px] sm:text-base font-black mt-6 shadow-button group relative overflow-hidden rounded-2xl" disabled={isSubmitting}>
              <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-20 transition-opacity" />
             {isSubmitting ? (
-              <><Loader2 className="mr-2 h-6 w-6 animate-spin" /> Configurando...</>
+              <><Loader2 className="mr-2 h-6 w-6 animate-spin" /> Criando sua conta...</>
             ) : (
               <span className="flex items-center gap-2">
                  COMEÇAR TESTE GRÁTIS SEM CARTÃO
