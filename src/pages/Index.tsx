@@ -14,7 +14,7 @@ import {
 import PlansSection from "@/components/PlansSection";
 
 const WHATSAPP_URL = "https://wa.me/5511955501090?text=Ol%C3%A1!%20Gostaria%20de%20conversar%20sobre%20a%20Deepson.";
-const PLATFORM_URL = "http://chat.deepson.com.br/";
+const PLATFORM_URL = "https://chat.deepson.com.br/";
 
 const Index: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);

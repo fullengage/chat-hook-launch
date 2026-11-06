@@ -50,7 +50,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <a href="http://chat.deepson.com.br/" target="_blank" rel="noopener noreferrer" className="text-sm text-slate-300 hover:text-primary transition-colors duration-200 inline-flex items-center gap-1.5">
+                <a href="https://chat.deepson.com.br/" target="_blank" rel="noopener noreferrer" className="text-sm text-slate-300 hover:text-primary transition-colors duration-200 inline-flex items-center gap-1.5">
                   Acessar Plataforma <ExternalLink className="w-3.5 h-3.5" />
                 </a>
               </li>
