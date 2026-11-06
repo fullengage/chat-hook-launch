@@ -43,12 +43,8 @@ const FreeTrialPage = () => {
       formElement?.scrollIntoView({ behavior: "smooth" });
    };
 
-   const handleOpenChatwoot = () => {
-      if (typeof window !== "undefined" && (window as unknown as { $chatwoot?: { toggle: (s: string) => void } }).$chatwoot) {
-         (window as unknown as { $chatwoot: { toggle: (s: string) => void } }).$chatwoot.toggle("open");
-      } else {
-         window.open("https://wa.me/5511955501090?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Deepson.", "_blank");
-      }
+   const handleOpenWhatsApp = () => {
+      window.open("https://wa.me/5511955501090?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Deepson.", "_blank", "noopener");
    };
 
    return (
@@ -74,7 +70,7 @@ const FreeTrialPage = () => {
                         variant="outline"
                         size="sm"
                         className="rounded-full font-bold border-primary/30 text-white hover:bg-primary/10 transition-all text-sm h-11"
-                        onClick={handleOpenChatwoot}
+                        onClick={handleOpenWhatsApp}
                      >
                         Falar com Especialista
                      </Button>
@@ -161,7 +157,7 @@ const FreeTrialPage = () => {
                            <Button variant="cta" size="lg" className="w-full h-14 rounded-2xl font-bold" onClick={scrollToForm}>
                               Começar teste grátis sem cartão
                            </Button>
-                           <Button variant="outline" size="lg" className="w-full h-14 rounded-2xl font-bold" onClick={handleOpenChatwoot}>
+                           <Button variant="outline" size="lg" className="w-full h-14 rounded-2xl font-bold" onClick={handleOpenWhatsApp}>
                               Falar com Especialista
                            </Button>
                         </div>
