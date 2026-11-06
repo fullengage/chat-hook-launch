@@ -33,7 +33,7 @@ const DataDeletion = () => {
         </div>
 
         <p className="text-lg text-muted-foreground mb-12 leading-relaxed">
-          Sua privacidade é importante para nós. Caso deseje excluir seus dados pessoais armazenados pelo Chathook, você pode solicitar a exclusão de forma simples e segura.
+          Sua privacidade é importante para nós. Caso deseje excluir seus dados pessoais armazenados pelo Deepson, você pode solicitar a exclusão de forma simples e segura.
         </p>
         
         <div className="grid md:grid-cols-2 gap-12">

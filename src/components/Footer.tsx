@@ -122,7 +122,7 @@ const Footer = () => {
         <div className="mt-12 pt-8 border-t border-border/30 flex flex-col lg:flex-row lg:items-center justify-between gap-6 text-[10px] sm:text-xs text-muted-foreground">
           {/* Company details, CNPJ & Terms info on a single horizontal row */}
           <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 flex-wrap">
-            <span className="font-bold text-foreground">CHATHOOK CRM - SOFTWARE E TECNOLOGIA LTDA</span>
+            <span className="font-bold text-foreground">DEEPSON - INTELIGENCIA DE DADOS E TECNOLOGIA LTDA</span>
             <span className="hidden md:inline text-border/40">|</span>
             <span>CNPJ: 19.904.935/0001-20 | Mogi das Cruzes, SP</span>
             <span className="hidden md:inline text-border/40">|</span>
@@ -133,7 +133,7 @@ const Footer = () => {
           
           {/* Copyright & Social links on the same line */}
           <div className="flex flex-col sm:flex-row sm:items-center gap-4 xl:gap-6 w-full lg:w-auto justify-between shrink-0">
-            <span>© {new Date().getFullYear()} Chathook. Todos os direitos reservados.</span>
+            <span>© {new Date().getFullYear()} Deepson. Todos os direitos reservados.</span>
             
             {/* Social Links */}
             <div className="flex items-center gap-4">

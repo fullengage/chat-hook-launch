@@ -195,7 +195,7 @@ const TrialForm = () => {
                 </FormControl>
                 <div className="space-y-1 mt-1 leading-tight">
                   <FormLabel className="text-[12px] text-slate-300 font-semibold cursor-pointer">
-                    Li e aceito os <Link to="/termos-de-uso" className="text-green-400 hover:underline font-extrabold" target="_blank">Termos de Uso</Link> e a <Link to="/privacidade" className="text-green-400 hover:underline font-extrabold" target="_blank">Política de Privacidade</Link>.
+                    Li e aceito os <Link to="/termos-de-uso" className="text-primary hover:underline font-extrabold" target="_blank">Termos de Uso</Link> e a <Link to="/privacidade" className="text-primary hover:underline font-extrabold" target="_blank">Política de Privacidade</Link>.
                   </FormLabel>
                 </div>
               </FormItem>
@@ -215,7 +215,7 @@ const TrialForm = () => {
           </Button>
 
           <div className="flex items-center justify-center gap-4 mt-6 text-slate-300 opacity-90">
-             <Shield className="w-4 h-4 text-green-400" />
+             <Shield className="w-4 h-4 text-primary" />
              <span className="text-[10px] font-bold uppercase tracking-widest">Protocolo SSL Seguro</span>
           </div>
         </form>

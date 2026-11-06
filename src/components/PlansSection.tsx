@@ -21,11 +21,11 @@ const PlansSection = () => {
       ],
       bonuses: [
         {
-          title: "Implantação Estratégica do ChatHook",
+          title: "Implantação Estratégica do Deepson",
           desc: "Configuração completa do sistema, funis, equipes, automações e IA."
         },
         {
-          title: "Treinamento de IA e Automação para Usuários ChatHook",
+          title: "Treinamento de IA e Automação para Usuários Deepson",
           desc: "Aprenda a criar agentes, automações e utilizar IA para vender mais."
         }
       ],
@@ -114,7 +114,7 @@ const PlansSection = () => {
   ];
 
   const handleContactSales = () => {
-    window.open("https://api.whatsapp.com/send/?phone=5511955501090&text=Olá! Gostaria de falar com um consultor sobre os planos e bônus do ChatHook.", "_blank");
+    window.open("https://api.whatsapp.com/send/?phone=5511955501090&text=Olá! Gostaria de falar com um consultor sobre os planos e bônus do Deepson.", "_blank");
   };
 
   const handleFreeTrial = () => {

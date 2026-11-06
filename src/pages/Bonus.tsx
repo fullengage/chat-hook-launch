@@ -23,10 +23,10 @@ const Bonus = () => {
     window.scrollTo(0, 0);
     
     // Set document title and meta description dynamically
-    document.title = "Bônus Exclusivos - ChatHook";
+    document.title = "Bônus Exclusivos - Deepson";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute("content", "Aproveite seus bônus exclusivos da ChatHook: treinamento individual de IA, ferramentas e templates, comunidade VIP e o Guia Completo do CRM WhatsApp.");
+      metaDescription.setAttribute("content", "Aproveite seus bônus exclusivos da Deepson: treinamento individual de IA, ferramentas e templates, comunidade VIP e o Guia Completo do CRM WhatsApp.");
     }
   }, []);
 
@@ -49,13 +49,11 @@ const Bonus = () => {
       <header className="py-4 border-b border-border/10 bg-background/50 backdrop-blur-md sticky top-0 z-50">
         <div className="container mx-auto px-4 flex justify-between items-center">
           <img 
-            src="/icons.png" 
-            alt="Logo" 
-            className="w-24 h-24 md:w-32 md:h-32 object-contain cursor-pointer hover:scale-105 transition-transform" 
+            src="/logo-deepson.jpg" 
+            alt="Deepson Logo" 
+            className="h-12 md:h-16 w-auto rounded-lg object-contain cursor-pointer hover:scale-105 transition-transform" 
             onClick={() => navigate("/")}
             id="bonus-header-logo"
-            width={128}
-            height={128}
           />
           <div className="flex items-center gap-2 text-[10px] md:text-sm text-muted-foreground bg-muted/30 px-4 py-2 rounded-full border border-border/10">
             <ShieldCheck className="w-4 h-4 text-primary" />
@@ -78,7 +76,7 @@ const Bonus = () => {
               Seu Pacote de <span className="text-primary text-shadow-glow">Bônus Exclusivos</span>
             </h1>
             <p className="text-muted-foreground text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
-              Parabéns! Por ter iniciado seu período de teste do ChatHook, você acaba de liberar acesso a um conjunto de ferramentas e recursos estratégicos para impulsionar suas conversões no WhatsApp.
+              Parabéns! Por ter iniciado seu período de teste da Deepson, você acaba de liberar acesso a um conjunto de ferramentas e recursos estratégicos para impulsionar suas conversões no WhatsApp.
             </p>
           </div>
 
@@ -123,7 +121,7 @@ const Bonus = () => {
                   </div>
                   <h3 className="text-xl font-bold mt-2 text-foreground">Guia Completo CRM WhatsApp</h3>
                   <p className="text-muted-foreground text-xs md:text-sm leading-relaxed mt-2">
-                    O manual prático definitivo que ensina como organizar equipes de atendimento, criar métricas de performance comercial, reduzir o tempo de resposta inicial e estruturar um funil de vendas à prova de falhas utilizando o ChatHook.
+                    O manual prático definitivo que ensina como organizar equipes de atendimento, criar métricas de performance comercial, reduzir o tempo de resposta inicial e estruturar um funil de vendas à prova de falhas utilizando a Deepson.
                   </p>
                 </div>
               </div>

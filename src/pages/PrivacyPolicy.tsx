@@ -21,7 +21,7 @@ const PrivacyPolicy = () => {
         
         <div className="space-y-6 text-muted-foreground leading-relaxed">
           <p>
-            Esta Política de Privacidade descreve como o Chathook CRM ("nós", "nosso") coleta, usa e protege suas informações pessoais ao utilizar nosso site e serviços.
+            Esta Política de Privacidade descreve como o Deepson CRM ("nós", "nosso") coleta, usa e protege suas informações pessoais ao utilizar nosso site e serviços.
           </p>
 
           <section className="space-y-4">

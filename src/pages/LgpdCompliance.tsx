@@ -30,7 +30,7 @@ const LgpdCompliance = () => {
         </div>
 
         <p className="text-lg text-muted-foreground mb-12 leading-relaxed">
-          Esta declaração descreve como o **Chathook CRM** (desenvolvido por **CHATHOOK CRM - SOFTWARE E TECNOLOGIA LTDA**, sob o CNPJ **19.904.935/0001-20**, com sede em Mogi das Cruzes, SP) se posiciona em relação à **Lei Geral de Proteção de Dados Pessoais (LGPD - Lei nº 13.709/2018)**, nossos compromissos com a segurança e os direitos de nossos usuários.
+          Esta declaração descreve como o **Deepson CRM** (desenvolvido por **CHATHOOK CRM - SOFTWARE E TECNOLOGIA LTDA**, sob o CNPJ **19.904.935/0001-20**, com sede em Mogi das Cruzes, SP) se posiciona em relação à **Lei Geral de Proteção de Dados Pessoais (LGPD - Lei nº 13.709/2018)**, nossos compromissos com a segurança e os direitos de nossos usuários.
         </p>
         
         <div className="space-y-12">
@@ -41,20 +41,20 @@ const LgpdCompliance = () => {
               <div>
                 <h2 className="text-xl font-bold text-foreground">1. Nossos Papéis na LGPD</h2>
                 <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
-                  De acordo com as diretrizes da LGPD, o papel do ChatHook varia dependendo da relação com os dados:
+                  De acordo com as diretrizes da LGPD, o papel do Deepson varia dependendo da relação com os dados:
                 </p>
               </div>
             </div>
             
             <div className="grid md:grid-cols-2 gap-4 mt-6">
               <div className="bg-background/50 border border-border p-5 rounded-xl">
-                <h3 className="font-bold text-sm text-foreground mb-2">ChatHook como Controlador</h3>
+                <h3 className="font-bold text-sm text-foreground mb-2">Deepson como Controlador</h3>
                 <p className="text-xs text-muted-foreground leading-relaxed">
                   Somos <strong>Controladores</strong> dos dados pessoais dos nossos clientes directos (dados de cadastro de conta, faturamento, e-mail de contato). Determinamos as finalidades de processamento para manter e faturar a plataforma.
                 </p>
               </div>
               <div className="bg-background/50 border border-border p-5 rounded-xl">
-                <h3 className="font-bold text-sm text-foreground mb-2">ChatHook como Operador</h3>
+                <h3 className="font-bold text-sm text-foreground mb-2">Deepson como Operador</h3>
                 <p className="text-xs text-muted-foreground leading-relaxed">
                   Somos <strong>Operadores</strong> das informações enviadas por nossos clientes através da API do WhatsApp e CRM (dados dos clientes dos nossos clientes). O processamento é ditado exclusivamente sob instrução e responsabilidade dos nossos clientes.
                 </p>
@@ -119,7 +119,7 @@ const LgpdCompliance = () => {
                 Encarregado pelo Tratamento de Dados (DPO)
               </h2>
               <p className="text-xs text-muted-foreground max-w-lg leading-relaxed">
-                Conforme exigido pelo Artigo 41 da LGPD, o ChatHook possui um Encarregado pelo Tratamento de Dados Pessoais designado para atender às suas dúvidas, requisições de titulares e comunicações da ANPD (Autoridade Nacional de Proteção de Dados).
+                Conforme exigido pelo Artigo 41 da LGPD, o Deepson possui um Encarregado pelo Tratamento de Dados Pessoais designado para atender às suas dúvidas, requisições de titulares e comunicações da ANPD (Autoridade Nacional de Proteção de Dados).
               </p>
             </div>
             

@@ -111,12 +111,10 @@ const Obrigado = () => {
       <header className="py-4 border-b border-border/10 bg-background/50 backdrop-blur-md sticky top-0 z-50">
         <div className="container mx-auto px-4 flex justify-between items-center">
           <img 
-            src="/icons.png" 
-            alt="Logo" 
-            className="w-24 h-24 md:w-32 md:h-32 object-contain cursor-pointer hover:scale-105 transition-transform" 
+            src="/logo-deepson.jpg" 
+            alt="Deepson Logo" 
+            className="h-14 md:h-16 w-auto object-contain rounded cursor-pointer hover:scale-105 transition-transform" 
             onClick={() => navigate("/")}
-            width={128}
-            height={128}
           />
           <div className="flex items-center gap-2 text-[10px] md:text-sm text-muted-foreground bg-muted/30 px-4 py-2 rounded-full border border-border/10">
             <ShieldCheck className="w-4 h-4 text-primary" />
@@ -230,7 +228,7 @@ const Obrigado = () => {
                 <span>🎁 Seu Bônus Especial Liberado!</span>
               </div>
               <p className="text-muted-foreground text-xs leading-relaxed">
-                Aqui está o seu <strong>Guia Completo CRM ChatHook WhatsApp</strong> para acelerar seus resultados comerciais. Clique no botão abaixo para baixar agora:
+                Aqui está o seu <strong>Guia Completo CRM Deepson WhatsApp</strong> para acelerar seus resultados comerciais. Clique no botão abaixo para baixar agora:
               </p>
               <Button 
                 variant="outline" 

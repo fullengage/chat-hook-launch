@@ -108,7 +108,7 @@ const WhatsAppButton = () => {
             <div className="mb-4">
               <div className="bg-muted/50 p-3 rounded-lg mb-4">
                 <p className="text-sm text-muted-foreground">
-                  👋 Olá! Como podemos ajudar você com o Chathook?
+                  👋 Olá! Como podemos ajudar você com o Deepson?
                 </p>
               </div>
             </div>
@@ -156,7 +156,7 @@ const WhatsAppButton = () => {
             {/* Info */}
             <div className="mt-4 text-center">
               <p className="text-xs text-muted-foreground">
-                Powered by <span className="font-semibold text-primary">Chathook</span>
+                Powered by <span className="font-semibold text-primary">Deepson</span>
               </p>
             </div>
           </div>

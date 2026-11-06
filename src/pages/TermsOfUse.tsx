@@ -21,13 +21,13 @@ const TermsOfUse = () => {
         
         <div className="space-y-6 text-muted-foreground leading-relaxed">
           <p>
-            Bem-vindo ao Chathook CRM. Ao utilizar nosso site e serviços, você concorda em cumprir estes Termos de Uso.
+            Bem-vindo ao Deepson CRM. Ao utilizar nosso site e serviços, você concorda em cumprir estes Termos de Uso.
           </p>
 
           <section className="space-y-4">
             <h2 className="text-2xl font-bold text-foreground">1. Descrição do Serviço</h2>
             <p>
-              O Chathook CRM fornece uma plataforma de automação de WhatsApp, CRM de Kanban e inteligência artificial para empresas. O acesso ao teste de 7 dias é disponibilizado para avaliação e uso comercial limitado.
+              O Deepson CRM fornece uma plataforma de automação de WhatsApp, CRM de Kanban e inteligência artificial para empresas. O acesso ao teste de 7 dias é disponibilizado para avaliação e uso comercial limitado.
             </p>
           </section>
 
@@ -41,14 +41,14 @@ const TermsOfUse = () => {
           <section className="space-y-4">
             <h2 className="text-2xl font-bold text-foreground">3. Responsabilidades</h2>
             <p>
-              Você é responsável por todas as informações fornecidas e pelas mensagens enviadas através de sua conta conectada ao Chathook CRM. Recomendamos que o uso observe as políticas de uso do WhatsApp.
+              Você é responsável por todas as informações fornecidas e pelas mensagens enviadas através de sua conta conectada ao Deepson CRM. Recomendamos que o uso observe as políticas de uso do WhatsApp.
             </p>
           </section>
 
           <section className="space-y-4">
             <h2 className="text-2xl font-bold text-foreground">4. Propriedade Intelectual</h2>
             <p>
-              Todo o conteúdo, logotipo e tecnologia associada ao Chathook CRM são de nossa propriedade intelectual e não podem ser reproduzidos sem autorização prévia.
+              Todo o conteúdo, logotipo e tecnologia associada ao Deepson CRM são de nossa propriedade intelectual e não podem ser reproduzidos sem autorização prévia.
             </p>
           </section>
 

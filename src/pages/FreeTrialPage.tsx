@@ -48,12 +48,10 @@ const FreeTrialPage = () => {
             <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
                <div className="flex items-center gap-3">
                   <img
-                     src="/icons.png"
-                     alt="Logo"
-                     className="w-24 h-24 md:w-32 md:h-32 object-contain cursor-pointer hover:scale-105 transition-transform"
+                     src="/logo-deepson.jpg"
+                     alt="Deepson — Inteligência de Dados B2B"
+                     className="h-14 md:h-16 w-auto object-contain rounded cursor-pointer hover:scale-105 transition-transform"
                      onClick={() => navigate("/")}
-                     width={128}
-                     height={128}
                   />
                </div>
                <div className="flex flex-wrap items-center justify-center md:justify-end gap-3 md:gap-6">
@@ -96,7 +94,7 @@ const FreeTrialPage = () => {
                         </h1>
 
                         <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                           Com o ChatHook você vai ter mais vendas, mais clientes, mais faturamento, atendimento com IA , CRM, funil, veja o que sua equipe comercial esta falando no WhatsApp.
+                           Com a Deepson você vai ter mais vendas, mais clientes, mais faturamento, inteligência de dados B2B, atendimento com IA, CRM, funil e visão completa da sua equipe comercial no WhatsApp.
                         </p>
 
                         <div className="flex flex-col sm:flex-row items-center gap-4">
@@ -181,7 +179,7 @@ const FreeTrialPage = () => {
                      <h2 className="text-3xl md:text-4xl font-black tracking-tighter mb-4">
                         Uma assinatura no lugar de <span className="text-primary italic">cinco</span>
                      </h2>
-                     <p className="text-muted-foreground text-lg">Veja o que você para de pagar ao centralizar tudo no ChatHook.</p>
+                     <p className="text-muted-foreground text-lg">Veja o que você para de pagar ao centralizar tudo na Deepson.</p>
                   </div>
                   <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 mb-10">
                      {[
@@ -202,7 +200,7 @@ const FreeTrialPage = () => {
                   </div>
                   <div className="text-center p-6 rounded-3xl bg-primary/5 border border-primary/20">
                      <p className="text-base font-bold text-foreground">
-                        Com o ChatHook, sua empresa tem atendimento, CRM, funil, automação, IA e inteligência comercial —{" "}
+                        Com a Deepson, sua empresa tem inteligência de dados B2B, atendimento, CRM, funil, automação e IA —{" "}
                         <span className="text-primary">no mesmo lugar que seu cliente já está: o WhatsApp.</span>
                      </p>
                   </div>
@@ -214,7 +212,7 @@ const FreeTrialPage = () => {
                <div className="container mx-auto px-4">
                   <div className="text-center mb-16">
                      <h2 className="text-3xl font-black mb-4">Operando em outro patamar hoje mesmo</h2>
-                     <p className="text-muted-foreground">Sua equipe já conhece o WhatsApp. O ChatHook transforma ele em sistema comercial.</p>
+                     <p className="text-muted-foreground">Sua equipe já conhece o WhatsApp. A Deepson transforma ele em sistema comercial.</p>
                   </div>
 
                   <div className="grid md:grid-cols-3 gap-8">
@@ -405,7 +403,7 @@ const FreeTrialPage = () => {
                      CRM + chatbot + multiatendimento + planilhas podem facilmente passar de <span className="text-destructive line-through decoration-2">R$ 800</span>, <span className="text-destructive line-through decoration-2">R$ 1.500</span> ou até <span className="text-destructive line-through decoration-2">R$ 5.000</span> por mês.
                   </h2>
                   <p className="text-muted-foreground text-base mb-2">
-                     Com o ChatHook, você centraliza tudo em um único plano: atendimento, funil, automação, IA e gestão comercial no WhatsApp.
+                     Com a Deepson, você centraliza tudo em um único plano: inteligência B2B, atendimento, funil, automação, IA e gestão comercial no WhatsApp.
                   </p>
                   <p className="text-primary font-bold text-sm uppercase tracking-wider">
                      Menos ferramentas. Mais controle. Mais vendas.
@@ -426,7 +424,7 @@ const FreeTrialPage = () => {
                      {[
                         { q: "Precisa de cartão de crédito para os 7 dias?", a: "Não! Você pode começar seu teste gratuito agora mesmo sem cadastrar nenhum cartão. Queremos que você veja o valor antes de qualquer compromisso." },
                         { q: "Como funciona a implantação hoje mesmo?", a: "Assim que você inicia o teste, nossa equipe de onboarding entra em contato para mapear seu processo e configurar sua conta para que você já comece a vender no novo formato em tempo recorde." },
-                        { q: "Pode usar vários números de WhatsApp?", a: "Com certeza. O ChatHook foi feito para centralizar vários canais e números em um único painel, permitindo que sua equipe gerencie tudo de forma unificada." },
+                        { q: "Pode usar vários números de WhatsApp?", a: "Com certeza. A Deepson foi feita para centralizar vários canais e números em um único painel, permitindo que sua equipe gerencie tudo de forma unificada." },
                         { q: "A IA é difícil de configurar?", a: "De forma alguma. O agente de agendamento com IA já vem com modelos baseados em melhores práticas de vendas. Você só precisa alimentar as informações do seu negócio e ele começa a aprender." },
                         { q: "Posso cancelar a qualquer momento?", a: "Sim. Nossos planos são sem fidelidade. Você tem total liberdade para continuar ou encerrar quando desejar, sem multas." }
                      ].map((item, i) => (

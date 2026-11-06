@@ -23,7 +23,7 @@ const Contact = () => {
 
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h1 className="text-4xl md:text-5xl font-black italic mb-4">
-            Fale com a equipe <span className="text-primary">Chathook</span>
+            Fale com a equipe <span className="text-primary">Deepson</span>
           </h1>
           <p className="text-xl text-muted-foreground">
             Estamos prontos para ajudar você.
@@ -36,7 +36,7 @@ const Contact = () => {
               <MessageSquare className="w-6 h-6" />
             </div>
             <h3 className="font-bold text-lg mb-2">Comercial</h3>
-            <p className="text-sm text-muted-foreground">Dúvidas sobre planos, preços e como o Chathook pode ajudar seu negócio.</p>
+            <p className="text-sm text-muted-foreground">Dúvidas sobre planos, preços e como o Deepson pode ajudar seu negócio.</p>
           </div>
           
           <div className="bg-muted/30 border border-border/80 rounded-2xl p-6 flex flex-col items-center text-center hover:border-primary/50 transition-colors">
@@ -60,7 +60,7 @@ const Contact = () => {
               <Handshake className="w-6 h-6" />
             </div>
             <h3 className="font-bold text-lg mb-2">Parcerias</h3>
-            <p className="text-sm text-muted-foreground">Seja um parceiro Chathook, agências, afiliados e integrações de terceiros.</p>
+            <p className="text-sm text-muted-foreground">Seja um parceiro Deepson, agências, afiliados e integrações de terceiros.</p>
           </div>
         </div>
 
@@ -140,7 +140,7 @@ const Contact = () => {
               </AccordionItem>
 
               <AccordionItem value="item-5" className="border border-border/50 bg-muted/20 px-4 rounded-lg">
-                <AccordionTrigger className="hover:no-underline font-semibold">O Chathook funciona com Chatwoot?</AccordionTrigger>
+                <AccordionTrigger className="hover:no-underline font-semibold">O Deepson funciona com Chatwoot?</AccordionTrigger>
                 <AccordionContent className="text-muted-foreground">
                   Sim, nossa infraestrutura é otimizada e conta com uma versão avançada baseada na tecnologia do Chatwoot, com recursos exclusivos criados pela nossa equipe.
                 </AccordionContent>
@@ -149,7 +149,7 @@ const Contact = () => {
               <AccordionItem value="item-6" className="border border-border/50 bg-muted/20 px-4 rounded-lg">
                 <AccordionTrigger className="hover:no-underline font-semibold">Posso integrar com IA?</AccordionTrigger>
                 <AccordionContent className="text-muted-foreground">
-                  Com certeza! O Chathook possui integrações nativas e via webhook para ferramentas de IA como OpenAI, Typebot e Dialogflow para automação inteligente.
+                  Com certeza! O Deepson possui integrações nativas e via webhook para ferramentas de IA como OpenAI, Typebot e Dialogflow para automação inteligente.
                 </AccordionContent>
               </AccordionItem>
 
@@ -165,7 +165,7 @@ const Contact = () => {
 
         <div className="bg-gradient-to-r from-primary/20 via-primary/10 to-transparent border border-primary/20 rounded-3xl p-10 md:p-16 text-center">
           <h2 className="text-3xl md:text-4xl font-black italic mb-6">
-            Transforme seu atendimento com o Chathook.
+            Transforme seu atendimento com o Deepson.
           </h2>
           <Button size="lg" className="text-lg h-14 px-8 font-bold gap-2 group" onClick={() => window.open('https://app.deepson.com.br/trial', '_blank')}>
             Solicitar Demonstração

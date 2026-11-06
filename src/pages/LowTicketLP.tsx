@@ -16,7 +16,7 @@ const LowTicketLP = () => {
 
       <header className="py-6 container mx-auto px-4 flex justify-between items-center">
         <div className="flex items-center gap-3">
-           <img src="/icons.png" alt="Logo" className="w-24 h-auto object-contain" width={96} height={96} />
+           <img src="/logo-deepson.jpg" alt="Deepson Logo" className="h-12 w-auto object-contain rounded" />
         </div>
         <Button variant="outline" size="sm" className="border-white/10 text-white/60 hover:text-white" onClick={goToOffer}>
           Entrar agora
@@ -37,7 +37,7 @@ const LowTicketLP = () => {
             </h1>
             
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-12 max-w-2xl mx-auto">
-              Toda a potência do CRM ChatHook por um valor menor que um cafezinho por dia. Kanban, multi-atendentes e IA configurada <span className="text-foreground font-bold underline decoration-primary">hoje mesmo</span>.
+              Toda a potência do CRM Deepson por um valor menor que um cafezinho por dia. Kanban, multi-atendentes e IA configurada <span className="text-foreground font-bold underline decoration-primary">hoje mesmo</span>.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
