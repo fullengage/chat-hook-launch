@@ -48,12 +48,6 @@ const Index: React.FC = () => {
             <a href="#plans-section" className="hover:text-[#ff6b00] transition-colors">Planos</a>
             <a href="#simulador" className="hover:text-[#ff6b00] transition-colors">Simulador</a>
             <a 
-              href="/teste-gratis" 
-              className="hover:text-[#ff6b00] transition-colors font-bold text-[#ff6b00]"
-            >
-              Teste Grátis (7 dias)
-            </a>
-            <a 
               href={PLATFORM_URL} 
               target="_blank" 
               rel="noopener noreferrer"
@@ -62,13 +56,19 @@ const Index: React.FC = () => {
               Plataforma <ExternalLink className="w-3.5 h-3.5" />
             </a>
             <a 
+              href="/teste-gratis"
+              className="inline-flex items-center gap-2 bg-[#ff6b00] hover:bg-[#ea580c] text-white px-5 py-2.5 rounded-full font-bold shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5"
+            >
+              Teste Grátis (7 dias) →
+            </a>
+            <a 
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#ff6b00] hover:bg-[#ea580c] text-white px-5 py-2.5 rounded-full font-bold shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5"
+              className="inline-flex items-center gap-1.5 border border-[#ff6b00] text-[#ff6b00] hover:bg-[#ff6b00] hover:text-white px-4 py-2 rounded-full font-bold transition-all"
             >
               <MessageCircle className="w-4 h-4" />
-              Fale conosco ↗
+              Fale conosco
             </a>
           </nav>
 
@@ -361,14 +361,22 @@ const Index: React.FC = () => {
                 ))}
               </ul>
 
-              <a 
-                href={PLATFORM_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-[#ff6b00] hover:bg-[#ea580c] text-white px-8 py-4 rounded-full font-bold text-base shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5"
-              >
-                Conhecer a plataforma →
-              </a>
+              <div className="flex flex-wrap items-center gap-4">
+                <a 
+                  href="/teste-gratis"
+                  className="inline-flex items-center gap-2 bg-[#ff6b00] hover:bg-[#ea580c] text-white px-8 py-4 rounded-full font-bold text-base shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5"
+                >
+                  Testar grátis por 7 dias →
+                </a>
+                <a 
+                  href={PLATFORM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 border-2 border-[#0f172a] text-[#0f172a] hover:border-[#ff6b00] hover:text-[#ff6b00] px-7 py-4 rounded-full font-bold text-base transition-all"
+                >
+                  Acessar plataforma ↗
+                </a>
+              </div>
             </div>
 
             <div className="bg-white border border-[#e2e8f0] rounded-3xl overflow-hidden shadow-xl">
@@ -564,15 +572,23 @@ const Index: React.FC = () => {
                   Fórmula: ticket × margem × taxa de conversão × parcela de aquisição. Use estes valores como referência estratégica para planejar o retorno da sua operação.
                 </p>
 
-                <a 
-                  href={WHATSAPP_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full inline-flex items-center justify-center gap-2 bg-[#ff6b00] hover:bg-[#ea580c] text-white py-4 rounded-full font-bold text-base shadow-lg transition-all"
-                >
-                  <MessageCircle className="w-5 h-5" />
-                  Discutir uma campanha com a Deepson ↗
-                </a>
+                <div className="space-y-3">
+                  <a 
+                    href="/teste-gratis"
+                    className="w-full inline-flex items-center justify-center gap-2 bg-[#ff6b00] hover:bg-[#ea580c] text-white py-4 rounded-full font-bold text-base shadow-lg transition-all"
+                  >
+                    Começar teste grátis (7 dias + 20 créditos) →
+                  </a>
+                  <a 
+                    href={WHATSAPP_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full inline-flex items-center justify-center gap-2 border border-white/30 hover:border-[#ff6b00] hover:text-[#ff6b00] text-white py-3.5 rounded-full font-bold text-sm transition-all"
+                  >
+                    <MessageCircle className="w-4 h-4" />
+                    Discutir uma campanha com a Deepson ↗
+                  </a>
+                </div>
               </div>
             </div>
 
@@ -639,12 +655,18 @@ const Index: React.FC = () => {
             <h5 className="text-xs font-black uppercase tracking-wider text-white mb-4">Plataforma</h5>
             <ul className="space-y-2.5 text-xs">
               <li>
+                <a href="/teste-gratis" className="text-[#ff6b00] font-bold hover:underline transition-colors flex items-center gap-1">
+                  Teste Grátis (7 dias) →
+                </a>
+              </li>
+              <li>
                 <a href={PLATFORM_URL} target="_blank" rel="noopener noreferrer" className="hover:text-[#ff6b00] transition-colors flex items-center gap-1">
                   Acessar Plataforma <ExternalLink className="w-3 h-3" />
                 </a>
               </li>
               <li><a href="#solucao" className="hover:text-[#ff6b00] transition-colors">Nossa Solução</a></li>
               <li><a href="#metodologia" className="hover:text-[#ff6b00] transition-colors">Como Funciona</a></li>
+              <li><a href="#plans-section" className="hover:text-[#ff6b00] transition-colors">Planos e Preços</a></li>
               <li><a href="#simulador" className="hover:text-[#ff6b00] transition-colors">Simulador de ROI</a></li>
             </ul>
           </div>
