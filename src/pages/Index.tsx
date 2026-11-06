@@ -11,6 +11,7 @@ import {
   Menu, 
   X
 } from "lucide-react";
+import PlansSection from "@/components/PlansSection";
 
 const WHATSAPP_URL = "https://wa.me/5511955501090?text=Ol%C3%A1!%20Gostaria%20de%20conversar%20sobre%20a%20Deepson.";
 const PLATFORM_URL = "http://chat.deepson.com.br/";
@@ -43,7 +44,8 @@ const Index: React.FC = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-200">
             <a href="#solucao" className="hover:text-[#ff6b00] transition-colors">Solução</a>
-            <a href="#metodologia" className="hover:text-[#ff6b00] transition-colors">Metodologia</a>
+            <a href="#metodologia" className="hover:text-[#ff6b00] transition-colors">Como Funciona</a>
+            <a href="#plans-section" className="hover:text-[#ff6b00] transition-colors">Planos</a>
             <a href="#simulador" className="hover:text-[#ff6b00] transition-colors">Simulador</a>
             <a 
               href="/teste-gratis" 
@@ -141,16 +143,16 @@ const Index: React.FC = () => {
             <div className="lg:col-span-7 flex flex-col items-start">
               <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ff6b00]/10 text-[#ff6b00] border border-[#ff6b00]/20 text-xs font-extrabold tracking-wider uppercase mb-6">
                 <Sparkles className="w-3.5 h-3.5" />
-                Inteligência de Dados B2B • +2,45 Milhões de Empresas
+                Do seu site ao seu próximo cliente B2B
               </span>
 
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#0f172a] tracking-tight leading-[1.08] mb-6">
-                Encontre as empresas certas.<br />
-                <span className="text-[#ff6b00]">Gere mais negócios B2B com dados.</span>
+                Do seu site ao seu<br />
+                <span className="text-[#ff6b00]">próximo cliente B2B.</span>
               </h1>
 
               <p className="text-lg md:text-xl text-[#475569] leading-relaxed max-w-2xl mb-8">
-                A <strong>Deepson</strong> mapeia mais de 2,45 milhões de empresas no Brasil, identifica os segmentos em maior crescimento e entrega listas, contatos e insights acionáveis para sua prospecção comercial B2B.
+                Você cola o seu site: a IA da <strong>Deepson</strong> entende o que você vende, monta o seu cliente ideal (ICP e CNAEs), acha as empresas certas com nota e motivo, mostra quem decide, consulta sinais financeiros e escreve a abordagem.
               </p>
 
               <div className="flex flex-wrap items-center gap-4 w-full sm:w-auto mb-6">
@@ -454,6 +456,9 @@ const Index: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Plans & Credit Costs Section */}
+      <PlansSection />
 
       {/* Simulator Section */}
       <section id="simulador" className="py-24 bg-[#f1f5f9] border-t border-[#e2e8f0]">

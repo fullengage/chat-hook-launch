@@ -21,13 +21,20 @@ const TermsOfUse = () => {
         
         <div className="space-y-6 text-muted-foreground leading-relaxed">
           <p>
-            Bem-vindo ao Deepson CRM. Ao utilizar nosso site e serviços, você concorda em cumprir estes Termos de Uso.
+            Bem-vindo à Deepson. Ao utilizar nosso site e serviços, você concorda em cumprir estes Termos de Uso.
           </p>
 
           <section className="space-y-4">
             <h2 className="text-2xl font-bold text-foreground">1. Descrição do Serviço</h2>
             <p>
-              O Deepson CRM fornece uma plataforma de automação de WhatsApp, CRM de Kanban e inteligência artificial para empresas. O acesso ao teste de 7 dias é disponibilizado para avaliação e uso comercial limitado.
+              A Deepson fornece uma plataforma de inteligência de dados B2B, prospecção comercial, enriquecimento de empresas, funil comercial (Kanban) e inteligência artificial para empresas. O acesso ao teste gratuito de 7 dias (com 20 créditos inclusos, limitado a um teste por CNPJ) é disponibilizado para avaliação da plataforma.
+            </p>
+          </section>
+
+          <section className="space-y-4">
+            <h2 className="text-2xl font-bold text-foreground">2. Sinais Financeiros e Dados de Fontes Públicas</h2>
+            <p>
+              As informações exibidas na seção "Sinais financeiros" e nas fichas de empresas são obtidas de fontes públicas oficiais (como Receita Federal, PGFN e cartórios de protesto) na data da consulta, sendo apresentadas exclusivamente em caráter informativo. A Deepson não realiza análise, concessão ou recomendação de crédito, cabendo exclusivamente ao usuário e à sua equipe a avaliação de risco comercial, não se responsabilizando a Deepson por eventual inadimplência ou decisão de negócio tomada com base nos dados consultados.
             </p>
           </section>
 

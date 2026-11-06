@@ -109,23 +109,22 @@ const FreeTrialPage = () => {
                      <div className="lg:w-3/5 text-center lg:text-left space-y-8">
                         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/15 border border-primary/30 text-primary text-xs font-extrabold uppercase tracking-wider">
                            <Sparkles className="w-3.5 h-3.5" />
-                           Inteligência de Dados B2B • +2,45 Milhões de Empresas
+                           Do seu site ao seu próximo cliente B2B
                         </div>
 
                         <h1 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-[0.95] text-white mt-0 pt-0">
-                           Encontre as empresas certas e escale suas vendas B2B com{" "}
-                           <span className="text-primary italic text-shadow-glow">Inteligência de Dados</span>.
+                           Do seu site ao seu <span className="text-primary italic text-shadow-glow">próximo cliente B2B</span> em minutos.
                         </h1>
 
                         <p className="text-lg md:text-2xl text-slate-300 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                           Pare de prospectar no escuro. Com a <strong>Deepson</strong> você mapeia empresas por CNPJ, segmento, porte e região, identifica os setores em maior crescimento e acessa oportunidades comerciais qualificadas em segundos.
+                           Cole o seu site: a IA da <strong>Deepson</strong> entende o que você vende, monta seu cliente ideal (ICP e CNAEs), encontra as empresas certas com <strong>nota de aderência e motivo</strong>, libera contatos, decisores, sinais financeiros e escreve a abordagem comercial.
                         </p>
 
                         <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
                            <div className="flex items-center gap-3 bg-primary/10 px-4 py-3 rounded-2xl border border-primary/20">
                               <CheckCircle2 className="w-5 h-5 text-primary shrink-0" />
                               <p className="text-sm text-slate-200 font-medium">
-                                 Conta criada <span className="text-white font-bold">na hora</span> com <span className="text-primary font-bold">20 créditos grátis</span> para testar por 7 dias
+                                 Você recebe <span className="text-primary font-bold">20 créditos grátis por 7 dias</span>: dá para <span className="text-white font-bold">~10 empresas com contato e sinais financeiros</span>
                               </p>
                            </div>
                         </div>
@@ -390,21 +389,21 @@ const FreeTrialPage = () => {
                </div>
             </section>
 
-            {/* How it Works */}
+            {/* How it Works (Trilha de 4 Passos Oficial) */}
             <section className="py-24 bg-[#061329] border-y border-white/10">
                <div className="container mx-auto px-4">
                   <div className="text-center mb-16">
-                     <h2 className="text-3xl md:text-5xl font-black tracking-tighter mb-6 text-white">Comece a prospectar em <span className="text-primary italic">4 passos simples</span></h2>
-                     <p className="text-slate-300 text-lg max-w-xl mx-auto">Sem burocracia e sem esperar implantação: você cria sua conta e já entra na plataforma na mesma hora.</p>
+                     <h2 className="text-3xl md:text-5xl font-black tracking-tighter mb-6 text-white">Do cadastro à lista útil em <span className="text-primary italic">4 passos simples</span></h2>
+                     <p className="text-slate-300 text-lg max-w-2xl mx-auto">A trilha da Deepson foi desenhada para você encontrar compradores reais em até 2 minutos, sem precisar montar filtros complexos no escuro.</p>
                   </div>
 
                   <div className="grid md:grid-cols-4 gap-8 relative">
                      <div className="hidden md:block absolute top-1/2 left-0 right-0 h-0.5 bg-primary/20 -z-10" />
                      {[
-                        { step: "01", t: "Cadastre-se Grátis", d: "Preencha o formulário acima e tenha sua conta criada na hora com 20 créditos por 7 dias." },
-                        { step: "02", t: "Mapeie seu ICP", d: "Busque empresas por CNPJ, razão social, porte, localização e segmento de atuação." },
-                        { step: "03", t: "Crie Segmentações", d: "Monte listas qualificadas e acompanhe os insights dos setores que mais crescem." },
-                        { step: "04", t: "Gere Negócios", d: "Aborde as empresas certas, aumente sua taxa de qualificação e escale suas vendas B2B." }
+                        { step: "①", t: "Sua Empresa (Briefing)", d: "Cole o seu site e diga o que vende, para quem e em qual região. A IA entende o seu negócio na sua língua." },
+                        { step: "②", t: "Seu Cliente Ideal (ICP)", d: "A IA define o perfil dos melhores compradores e seleciona automaticamente os CNAEs, portes e estados ideais." },
+                        { step: "③", t: "Empresas Encontradas", d: "Receba a lista ordenada por nota de aderência ao seu ICP, com o motivo claro de por que abordar cada empresa." },
+                        { step: "④", t: "Funil e Enriquecimento", d: "Salve no funil e libere contato (1 créd.), Sinais financeiros (1 créd.) ou Enriquecer tudo com decisor e IA (5 créd.)." }
                      ].map((s, i) => (
                         <div key={i} className="bg-[#040f21] p-8 rounded-[32px] border border-white/10 text-center relative group hover:border-primary/50 transition-colors">
                            <div className="w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-black mx-auto mb-6 shadow-lg shadow-primary/20 text-lg group-hover:scale-110 transition-transform">
@@ -471,11 +470,11 @@ const FreeTrialPage = () => {
 
                   <Accordion type="single" collapsible className="space-y-4">
                      {[
-                        { q: "Precisa de cartão de crédito para os 7 dias de teste?", a: "Não! Você cria sua conta gratuita agora mesmo sem informar cartão de crédito e já recebe 20 créditos para testar a plataforma por 7 dias." },
-                        { q: "Em quanto tempo meu acesso é liberado?", a: "Na mesma hora! Assim que você preenche o formulário com Nome, E-mail, WhatsApp e CNPJ, sua conta é criada automaticamente e você já entra logado no painel da Deepson." },
-                        { q: "O que posso fazer com os 20 créditos gratuitos?", a: "Você pode pesquisar empresas na nossa base de mais de 2,45 milhões de CNPJs, testar filtros por segmento e porte, criar listas de prospecção e desbloquear dados e contatos comerciais." },
-                        { q: "Quais segmentos estão disponíveis na plataforma?", a: "Cobrimos empresas de todos os portes (Micro, Pequena, Média e Grande) nos principais macro-setores brasileiros: Indústria, Comércio, Serviços e Agronegócio." },
-                        { q: "Posso fazer upgrade ou cancelar quando quiser?", a: "Sim! Nossos planos não exigem fidelidade. Você testa gratuitamente por 7 dias e decide com total liberdade como deseja escalar sua operação B2B." }
+                        { q: "Precisa de cartão de crédito para os 7 dias de teste?", a: "Não! Você cria sua conta gratuita agora mesmo sem informar cartão de crédito e já recebe 20 créditos para testar a plataforma por 7 dias (dá para ~10 empresas com contato e sinais financeiros)." },
+                        { q: "Como funcionam os créditos e os planos da Deepson?", a: "Tudo funciona com transparência total: Pesquisa de contato custa 1 crédito, Sinais financeiros 1 crédito, Enriquecer tudo (contato + LinkedIn do decisor + análise por IA) 5 créditos e Baixar lista (até 50 empresas do funil) 1 crédito. Os planos começam no Essencial (R$ 197/mês com 50 créditos), Profissional (R$ 497/mês com 300 créditos), Equipe (R$ 997/mês com 800 créditos) e Escala (R$ 1.997/mês com 2.000 créditos)." },
+                        { q: "A mesma empresa consome créditos duas vezes?", a: "Não! Ação já liberada não cobra de novo: a mesma empresa nunca gasta créditos duas vezes pela mesma ação na sua conta, e todo botão mostra exatamente quantos créditos vai consumir antes de você clicar." },
+                        { q: "O que são os Sinais Financeiros?", a: "São informações de fontes públicas (situação cadastral na Receita Federal, recuperação judicial/falência, dívida ativa na PGFN e, quando habilitado sob pedido, protestos em cartório), apresentadas de forma objetiva com a respectiva fonte e data da consulta. Não constitui análise de crédito." },
+                        { q: "Em quanto tempo meu acesso é liberado?", a: "Na mesma hora! Assim que você preenche o formulário com Nome, E-mail, WhatsApp e CNPJ, sua conta é criada automaticamente e você já entra logado no painel da Deepson." }
                      ].map((item, i) => (
                         <AccordionItem key={i} value={`item-${i}`} className="bg-[#040f21] border border-white/10 rounded-2xl px-6 py-2 overflow-hidden shadow-sm">
                            <AccordionTrigger className="hover:no-underline font-bold text-left text-lg py-4 text-white">

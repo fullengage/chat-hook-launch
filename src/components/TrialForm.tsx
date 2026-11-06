@@ -106,12 +106,14 @@ const TrialForm = () => {
 
   return (
     <div className="p-1">
-      <div className="mb-8 relative">
+      <div className="mb-6 relative">
         <div className="bg-primary/15 text-primary text-[10px] font-black px-3 py-1 rounded-full w-fit mb-4 uppercase tracking-wider border border-primary/25">
            7 Dias Grátis • 20 Créditos • Sem Cartão
         </div>
         <h3 className="text-3xl font-black text-foreground mb-3 tracking-tighter italic">Liberar meu <span className="text-primary">Acesso Grátis</span></h3>
-        <p className="text-sm text-slate-200 leading-relaxed font-semibold">Preencha abaixo: sua conta é criada na hora e você já entra na plataforma da Deepson com 20 créditos liberados para testar por 7 dias.</p>
+        <p className="text-sm text-slate-200 leading-relaxed font-semibold">
+          Preencha abaixo: sua conta é criada na hora e você já entra na plataforma com <span className="text-primary font-bold">20 créditos grátis por 7 dias</span> (dá para ~10 empresas com contato e sinais financeiros).
+        </p>
       </div>
 
       <Form {...form}>
