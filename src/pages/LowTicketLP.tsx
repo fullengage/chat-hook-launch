@@ -16,7 +16,7 @@ const LowTicketLP = () => {
 
       <header className="py-6 container mx-auto px-4 flex justify-between items-center">
         <div className="flex items-center gap-3">
-           <img src="/logo-deepson.jpg" alt="Deepson Logo" className="h-12 w-auto object-contain rounded" />
+           <img src="/logo-deepson.png" alt="Deepson Logo" className="h-12 w-auto object-contain" />
         </div>
         <Button variant="outline" size="sm" className="border-white/10 text-white/60 hover:text-white" onClick={goToOffer}>
           Entrar agora

@@ -108,12 +108,12 @@ const Obrigado = () => {
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[120px] -z-10" />
 
       {/* Header */}
-      <header className="py-4 border-b border-border/10 bg-background/50 backdrop-blur-md sticky top-0 z-50">
+      <header className="py-4 border-b border-white/10 bg-[#040f21]/95 backdrop-blur-md sticky top-0 z-50">
         <div className="container mx-auto px-4 flex justify-between items-center">
           <img 
-            src="/logo-deepson.jpg" 
+            src="/logo-deepson.png" 
             alt="Deepson Logo" 
-            className="h-14 md:h-16 w-auto object-contain rounded cursor-pointer hover:scale-105 transition-transform" 
+            className="h-12 md:h-14 w-auto object-contain cursor-pointer hover:scale-105 transition-transform" 
             onClick={() => navigate("/")}
           />
           <div className="flex items-center gap-2 text-[10px] md:text-sm text-muted-foreground bg-muted/30 px-4 py-2 rounded-full border border-border/10">

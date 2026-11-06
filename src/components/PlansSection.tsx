@@ -8,25 +8,25 @@ const PlansSection = () => {
 
   const plans = [
     {
-      name: "Starter",
+      name: "Starter B2B",
       badge: "Inicial",
       icon: Zap,
-      description: "Ideal para pequenos negócios que estão começando no digital.",
+      description: "Ideal para empresas que querem iniciar a prospecção B2B orientada por dados.",
       features: [
-        "1 número de WhatsApp",
-        "Até 3 atendentes",
-        "Kanban de Vendas",
-        "Agente de agendamento com IA",
-        "Relatórios básicos"
+        "Acesso à base de +2,45 mi empresas",
+        "Busca por CNPJ, razão social e segmento",
+        "Filtros por porte, UF, cidade e CNAE",
+        "Listas e segmentações comerciais",
+        "Painel de visão geral e oportunidades"
       ],
       bonuses: [
         {
-          title: "Implantação Estratégica do Deepson",
-          desc: "Configuração completa do sistema, funis, equipes, automações e IA."
+          title: "Teste Grátis de 7 Dias + 20 Créditos",
+          desc: "Conta liberada na hora para validar filtros, listas e contatos reais."
         },
         {
-          title: "Treinamento de IA e Automação para Usuários Deepson",
-          desc: "Aprenda a criar agentes, automações e utilizar IA para vender mais."
+          title: "Guia Prático de Prospecção B2B",
+          desc: "Como definir seu ICP e abordar decisores com alta taxa de resposta."
         }
       ],
       ctaPrimary: "Começar Teste Grátis",
@@ -34,26 +34,26 @@ const PlansSection = () => {
       highlight: false
     },
     {
-      name: "Pro",
+      name: "Pro Intelligence",
       badge: "Avançado",
       icon: Star,
-      description: "Para empresas que precisam de mais escala e suporte profissional.",
+      description: "Para equipes comerciais que buscam volume qualificado e inteligência de mercado.",
       features: [
-        "Até 3 números",
-        "Até 10 atendentes",
-        "Kanban de Vendas",
-        "Agente de agendamento com IA",
-        "Relatórios básicos",
-        "Suporte e treinamento"
+        "Tudo do plano Starter B2B",
+        "Maior pacote mensal de créditos B2B",
+        "Inteligência de mercado e radar de setores",
+        "Relatórios avançados de conversão",
+        "Exportação e gestão de listas B2B",
+        "Suporte prioritário via WhatsApp"
       ],
       bonuses: [
         {
-          title: "Tudo do Plano Starter",
-          desc: "Implantação Estratégica + Treinamento de IA e Automação."
+          title: "Tudo do Plano Starter B2B",
+          desc: "Acesso imediato ao teste grátis + materiais de prospecção."
         },
         {
-          title: "Consultoria Comercial e Processos de Vendas",
-          desc: "Diagnóstico do processo comercial, atendimento, follow-up e conversão."
+          title: "Diagnóstico de ICP e Segmentação",
+          desc: "Análise dos melhores segmentos (Indústria, Comércio, Serviços, Agro) para o seu negócio."
         }
       ],
       ctaPrimary: "Começar Teste Grátis",
@@ -61,30 +61,30 @@ const PlansSection = () => {
       highlight: false
     },
     {
-      name: "Business",
+      name: "Business Scale",
       badge: "Opção recomendada",
       icon: Crown,
-      description: "A solução completa para operações robustas e múltiplos times.",
+      description: "A solução completa de inteligência de dados B2B, automação e escala comercial.",
       features: [
-        "20 números",
-        "20 atendentes",
-        "Kanban de Vendas",
-        "Agente de agendamento com IA",
-        "Relatórios básicos",
-        "Suporte, treinamento e instalação"
+        "Volume elevado de créditos e buscas",
+        "Inteligência de mercado B2B completa",
+        "Módulos de Automação e Integrações",
+        "Múltiplos usuários da equipe comercial",
+        "Insights preditivos por segmento e porte",
+        "Acompanhamento estratégico dedicado"
       ],
       bonuses: [
         {
-          title: "Tudo dos Planos Starter e Pro",
-          desc: "Implantação + Treinamento + Consultoria Comercial."
+          title: "Onboarding Estratégico Deepson",
+          desc: "Configuração de listas, filtros de ICP e integrações com seu processo comercial."
         },
         {
-          title: "Diagnóstico Estratégico de Negócios",
-          desc: "Análise de processos, gargalos, oportunidades e plano de crescimento."
+          title: "Mapeamento de Oportunidades B2B",
+          desc: "Identificação das regiões e CNAEs com maior potencial de compra para sua solução."
         },
         {
-          title: "Consultoria de Acompanhamento de Resultados",
-          desc: "Consultoria contínua para acompanhamento de resultados."
+          title: "Consultoria de Escala Outbound",
+          desc: "Acompanhamento de métricas de qualificação e performance comercial."
         }
       ],
       ctaPrimary: "Começar Teste Grátis",
@@ -92,19 +92,20 @@ const PlansSection = () => {
       highlight: true
     },
     {
-      name: "Personalizado",
+      name: "Enterprise",
       badge: "Corporativo",
       icon: Check,
-      description: "Soluções sob medida para grandes operações e ONGs.",
+      description: "Soluções sob medida para grandes operações B2B, integrações via API e dados customizados.",
       features: [
-        "Solução sob medida para ONGs",
-        "Empresas com alto faturamento",
-        "Múltiplas filiais e PDVs"
+        "Volume customizado de créditos e dados",
+        "Integrações dedicadas via API / Webhook",
+        "Enriquecimento de base em larga escala",
+        "Múltiplas unidades de negócio"
       ],
       bonuses: [
         {
-          title: "Suporte Dedicado",
-          desc: "Gerente de contas exclusivo e SLA de atendimento prioritário."
+          title: "Gerente de Contas Exclusivo",
+          desc: "Atendimento consultivo dedicado e SLA prioritário para sua operação."
         }
       ],
       ctaPrimary: "Fale com Vendas",
@@ -114,11 +115,16 @@ const PlansSection = () => {
   ];
 
   const handleContactSales = () => {
-    window.open("https://api.whatsapp.com/send/?phone=5511955501090&text=Olá! Gostaria de falar com um consultor sobre os planos e bônus do Deepson.", "_blank");
+    window.open("https://api.whatsapp.com/send/?phone=5511955501090&text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20um%20consultor%20sobre%20os%20planos%20da%20Deepson.", "_blank");
   };
 
   const handleFreeTrial = () => {
-    navigate("/teste-gratis");
+    const formElement = document.getElementById("trial-form-section");
+    if (formElement) {
+      formElement.scrollIntoView({ behavior: "smooth" });
+    } else {
+      navigate("/teste-gratis");
+    }
   };
 
   return (
@@ -127,10 +133,10 @@ const PlansSection = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-foreground uppercase tracking-tight italic">
-            Planos de Teste com <span className="text-primary">Bônus Exclusivos</span>
+            Planos para Escalar sua <span className="text-primary">Prospecção B2B</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Ative seu teste gratuito de 7 dias e garanta nossa implantação estratégica assistida e treinamentos exclusivos.
+            Comece agora com 7 dias grátis e 20 créditos liberados na hora — sem precisar de cartão de crédito.
           </p>
         </div>
 
@@ -194,7 +200,7 @@ const PlansSection = () => {
 
                 {/* Bonuses Section */}
                 <div className="mb-8">
-                  <p className="text-xs font-bold uppercase tracking-wider text-primary mb-3">🎁 Bônus Inclusos:</p>
+                  <p className="text-xs font-bold uppercase tracking-wider text-primary mb-3">🎁 Vantagens Inclusas:</p>
                   <ul className="space-y-4">
                     {plan.bonuses.map((bonus, bonusIndex) => (
                       <li key={bonusIndex} className="bg-primary/5 border border-primary/10 rounded-xl p-3 flex flex-col gap-1">
@@ -249,15 +255,15 @@ const PlansSection = () => {
         {/* Bottom Note */}
         <div className="text-center mt-16">
           <p className="text-muted-foreground mb-4">
-            Todas as assinaturas incluem atualizações gratuitas e suporte técnico.
+            Todas as assinaturas incluem atualizações constantes da base B2B e suporte especializado.
           </p>
           <div className="inline-flex items-center gap-2 text-sm text-primary">
-            <span>Tem dúvidas?</span>
+            <span>Tem dúvidas sobre qual plano escolher?</span>
             <button 
               onClick={handleContactSales}
-              className="underline hover:no-underline transition-all duration-200"
+              className="underline hover:no-underline transition-all duration-200 font-bold"
             >
-              Fale conosco
+              Fale conosco no WhatsApp
             </button>
           </div>
         </div>

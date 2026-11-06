@@ -1,5 +1,25 @@
 import { useState, useEffect } from "react";
-import { CheckCircle2, Zap, LayoutDashboard, Bot, ShieldCheck, Clock, AlertCircle, MessageSquareOff, UserMinus, BarChart3, Users, HelpCircle, ChevronDown, Check, Star, Rocket, Target, Shield, ZapIcon, Code, X } from "lucide-react";
+import {
+   CheckCircle2,
+   Zap,
+   LayoutDashboard,
+   ShieldCheck,
+   Clock,
+   AlertCircle,
+   BarChart3,
+   Users,
+   Check,
+   Rocket,
+   Target,
+   Shield,
+   Code,
+   Search,
+   Database,
+   TrendingUp,
+   Filter,
+   Building2,
+   Sparkles
+} from "lucide-react";
 import TrialForm from "@/components/TrialForm";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
@@ -15,7 +35,6 @@ const FreeTrialPage = () => {
 
    useEffect(() => {
       const handleMouseLeave = (e: MouseEvent) => {
-         // Detect if cursor leaves from the top (clientY < 50)
          if (e.clientY < 50 && !hasShownExit) {
             setShowExitPopup(true);
             setHasShownExit(true);
@@ -29,33 +48,33 @@ const FreeTrialPage = () => {
    }, [hasShownExit]);
 
    const scrollToForm = () => {
-      const formElement = document.getElementById('trial-form-section');
-      formElement?.scrollIntoView({ behavior: 'smooth' });
+      const formElement = document.getElementById("trial-form-section");
+      formElement?.scrollIntoView({ behavior: "smooth" });
    };
 
    const handleOpenChatwoot = () => {
-      if (typeof window !== "undefined" && (window as any).$chatwoot) {
-         (window as any).$chatwoot.toggle("open");
+      if (typeof window !== "undefined" && (window as unknown as { $chatwoot?: { toggle: (s: string) => void } }).$chatwoot) {
+         (window as unknown as { $chatwoot: { toggle: (s: string) => void } }).$chatwoot.toggle("open");
       } else {
-         window.open("https://wa.me/5511955501090", "_blank");
+         window.open("https://wa.me/5511955501090?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Deepson.", "_blank");
       }
    };
 
    return (
-      <div className="min-h-screen bg-background text-foreground font-sans selection:bg-primary/30 scroll-smooth">
+      <div className="min-h-screen bg-[#040f21] text-foreground font-sans selection:bg-primary/30 scroll-smooth">
          {/* Header / Logo */}
-         <header className="py-3 lg:py-4 border-b border-border/10 bg-background/50 backdrop-blur-md sticky top-0 z-50">
+         <header className="py-3 lg:py-4 border-b border-white/10 bg-[#040f21]/95 backdrop-blur-md sticky top-0 z-50">
             <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
                <div className="flex items-center gap-3">
                   <img
-                     src="/logo-deepson.jpg"
+                     src="/logo-deepson.png"
                      alt="Deepson — Inteligência de Dados B2B"
-                     className="h-14 md:h-16 w-auto object-contain rounded cursor-pointer hover:scale-105 transition-transform"
+                     className="h-12 md:h-14 w-auto object-contain cursor-pointer hover:scale-105 transition-transform"
                      onClick={() => navigate("/")}
                   />
                </div>
                <div className="flex flex-wrap items-center justify-center md:justify-end gap-3 md:gap-6">
-                  <div className="hidden sm:flex items-center gap-2 text-[10px] md:text-sm text-muted-foreground bg-muted/30 px-4 py-2 rounded-full border border-border/10">
+                  <div className="hidden sm:flex items-center gap-2 text-[10px] md:text-sm text-slate-300 bg-white/5 px-4 py-2 rounded-full border border-white/10">
                      <ShieldCheck className="w-4 h-4 text-primary" />
                      <span className="font-bold uppercase tracking-widest leading-none">LGPD Compliant</span>
                   </div>
@@ -63,10 +82,10 @@ const FreeTrialPage = () => {
                      <Button
                         variant="outline"
                         size="sm"
-                        className="rounded-full font-bold border-primary/20 hover:bg-primary/5 transition-all text-sm h-11"
+                        className="rounded-full font-bold border-primary/30 text-white hover:bg-primary/10 transition-all text-sm h-11"
                         onClick={handleOpenChatwoot}
                      >
-                        Falar com Consultor
+                        Falar com Especialista
                      </Button>
                      <Button
                         variant="cta"
@@ -83,25 +102,30 @@ const FreeTrialPage = () => {
 
          <main>
             {/* Hero Section */}
-            <section className="pt-0 pb-20 lg:pt-0 lg:pb-32 overflow-hidden relative">
+            <section className="pt-10 pb-20 lg:pt-14 lg:pb-32 overflow-hidden relative">
                <div className="container mx-auto px-4">
-                  <div className="flex flex-col lg:flex-row items-center lg:items-start gap-20">
+                  <div className="flex flex-col lg:flex-row items-center lg:items-start gap-16 lg:gap-20">
                      {/* Content */}
                      <div className="lg:w-3/5 text-center lg:text-left space-y-8">
+                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/15 border border-primary/30 text-primary text-xs font-extrabold uppercase tracking-wider">
+                           <Sparkles className="w-3.5 h-3.5" />
+                           Inteligência de Dados B2B • +2,45 Milhões de Empresas
+                        </div>
 
-                        <h1 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-[0.9] text-foreground mt-0 pt-0">
-                           Pare de perder vendas no WhatsApp e substitua <span className="text-primary italic text-shadow-glow">5 ferramentas</span> por uma só.
+                        <h1 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-[0.95] text-white mt-0 pt-0">
+                           Encontre as empresas certas e escale suas vendas B2B com{" "}
+                           <span className="text-primary italic text-shadow-glow">Inteligência de Dados</span>.
                         </h1>
 
-                        <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                           Com a Deepson você vai ter mais vendas, mais clientes, mais faturamento, inteligência de dados B2B, atendimento com IA, CRM, funil e visão completa da sua equipe comercial no WhatsApp.
+                        <p className="text-lg md:text-2xl text-slate-300 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                           Pare de prospectar no escuro. Com a <strong>Deepson</strong> você mapeia empresas por CNPJ, segmento, porte e região, identifica os setores em maior crescimento e acessa oportunidades comerciais qualificadas em segundos.
                         </p>
 
-                        <div className="flex flex-col sm:flex-row items-center gap-4">
-                           <div className="flex items-center gap-3 bg-primary/5 px-4 py-3 rounded-2xl border border-primary/10">
+                        <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                           <div className="flex items-center gap-3 bg-primary/10 px-4 py-3 rounded-2xl border border-primary/20">
                               <CheckCircle2 className="w-5 h-5 text-primary shrink-0" />
-                              <p className="text-sm text-muted-foreground font-medium">
-                                 Implantação feita pela nossa equipe <span className="text-foreground font-bold">hoje mesmo</span>
+                              <p className="text-sm text-slate-200 font-medium">
+                                 Conta criada <span className="text-white font-bold">na hora</span> com <span className="text-primary font-bold">20 créditos grátis</span> para testar por 7 dias
                               </p>
                            </div>
                         </div>
@@ -111,43 +135,43 @@ const FreeTrialPage = () => {
                               Começar teste grátis sem cartão
                            </Button>
                            <Button variant="outline" size="lg" className="w-full h-14 rounded-2xl font-bold" onClick={handleOpenChatwoot}>
-                              Falar com Consultor
+                              Falar com Especialista
                            </Button>
                         </div>
 
-                        <div className="grid sm:grid-cols-2 gap-6 py-4">
-                           <div className="flex items-center gap-4 bg-muted/30 p-4 rounded-2xl border border-border/10">
-                              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                                 <LayoutDashboard className="w-6 h-6 text-primary" />
+                        <div className="grid sm:grid-cols-2 gap-6 py-4 text-left">
+                           <div className="flex items-center gap-4 bg-white/5 p-4 rounded-2xl border border-white/10">
+                              <div className="w-12 h-12 rounded-xl bg-primary/15 flex items-center justify-center shrink-0">
+                                 <Database className="w-6 h-6 text-primary" />
                               </div>
                               <div>
-                                 <p className="text-sm font-black text-foreground">Kanban Comercial</p>
-                                 <p className="text-[12px] text-muted-foreground">Gestão visual completa do funil.</p>
+                                 <p className="text-sm font-black text-white">+2,45 Milhões de Empresas</p>
+                                 <p className="text-[12px] text-slate-300">Busca por CNPJ, razão social, porte e segmento.</p>
                               </div>
                            </div>
-                           <div className="flex items-center gap-4 bg-muted/30 p-4 rounded-2xl border border-border/10">
-                              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                                 <Bot className="w-6 h-6 text-primary" />
+                           <div className="flex items-center gap-4 bg-white/5 p-4 rounded-2xl border border-white/10">
+                              <div className="w-12 h-12 rounded-xl bg-primary/15 flex items-center justify-center shrink-0">
+                                 <TrendingUp className="w-6 h-6 text-primary" />
                               </div>
                               <div>
-                                 <p className="text-sm font-black text-foreground">Agente de agendamento com IA 24/7</p>
-                                 <p className="text-[12px] text-muted-foreground">Respostas inteligentes sem atrasos.</p>
+                                 <p className="text-sm font-black text-white">Radar de Oportunidades B2B</p>
+                                 <p className="text-[12px] text-slate-300">Segmentações inteligentes e insights de mercado.</p>
                               </div>
                            </div>
                         </div>
 
-                        <div className="flex flex-wrap justify-center lg:justify-start gap-4 pt-4">
-                           <div className="flex items-center gap-2 bg-primary/5 px-4 py-2 rounded-xl border border-primary/10">
+                        <div className="flex flex-wrap justify-center lg:justify-start gap-4 pt-2">
+                           <div className="flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-xl border border-primary/20">
                               <CheckCircle2 className="w-4 h-4 text-primary" />
-                              <span className="font-bold text-[11px] uppercase tracking-wider">7 dias grátis</span>
+                              <span className="font-bold text-[11px] text-white uppercase tracking-wider">7 dias grátis</span>
                            </div>
-                           <div className="flex items-center gap-2 bg-primary/5 px-4 py-2 rounded-xl border border-primary/10">
-                              <Clock className="w-4 h-4 text-primary" />
-                              <span className="font-bold text-[11px] uppercase tracking-wider">implantação do sistema hoje mesmo</span>
+                           <div className="flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-xl border border-primary/20">
+                              <Zap className="w-4 h-4 text-primary" />
+                              <span className="font-bold text-[11px] text-white uppercase tracking-wider">20 créditos liberados na hora</span>
                            </div>
-                           <div className="flex items-center gap-2 bg-primary/5 px-4 py-2 rounded-xl border border-primary/10">
+                           <div className="flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-xl border border-primary/20">
                               <ShieldCheck className="w-4 h-4 text-primary" />
-                              <span className="font-bold text-[11px] uppercase tracking-wider">Sem Cartão</span>
+                              <span className="font-bold text-[11px] text-white uppercase tracking-wider">Sem Cartão</span>
                            </div>
                         </div>
                      </div>
@@ -155,106 +179,115 @@ const FreeTrialPage = () => {
                      {/* Form Section */}
                      <div id="trial-form-section" className="lg:w-2/5 w-full max-w-md mx-auto relative scroll-mt-32">
                         <div className="absolute -inset-4 bg-primary/20 rounded-[40px] blur-3xl -z-10 animate-pulse" />
-                        <div className="bg-[#0f172a]/90 backdrop-blur-md border border-primary/50 rounded-[32px] p-6 md:p-8 shadow-2xl relative overflow-hidden">
+                        <div className="bg-[#07152e]/95 backdrop-blur-md border border-primary/50 rounded-[32px] p-6 md:p-8 shadow-2xl relative overflow-hidden">
                            <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-primary" />
                            <TrialForm />
                         </div>
                         <div className="mt-6 flex flex-col items-center gap-2 text-center">
-                           <p className="text-xs text-muted-foreground leading-relaxed">
-                              Chega de ficar esperando. Implantação imediata — nossa equipe configura tudo com você no mesmo dia.
+                           <p className="text-xs text-slate-300 leading-relaxed">
+                              Acesso 100% imediato — preencha os dados acima e entre direto no painel da Deepson já logado.
                            </p>
                         </div>
                      </div>
                   </div>
                </div>
 
-               <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -z-10" />
-               <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[120px] -z-10" />
+               <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] -z-10" />
+               <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px] -z-10" />
             </section>
 
-            {/* Substitution Section */}
-            <section className="py-20 border-y border-border/10">
-               <div className="container mx-auto px-4 max-w-4xl">
+            {/* Substitution / Evolution Section */}
+            <section className="py-20 border-y border-white/10 bg-[#061329]">
+               <div className="container mx-auto px-4 max-w-5xl">
                   <div className="text-center mb-12">
-                     <h2 className="text-3xl md:text-4xl font-black tracking-tighter mb-4">
-                        Uma assinatura no lugar de <span className="text-primary italic">cinco</span>
+                     <h2 className="text-3xl md:text-4xl font-black tracking-tighter mb-4 text-white">
+                        Substitua a prospecção manual por <span className="text-primary italic">Inteligência B2B</span>
                      </h2>
-                     <p className="text-muted-foreground text-lg">Veja o que você para de pagar ao centralizar tudo na Deepson.</p>
+                     <p className="text-slate-300 text-lg">Veja o que sua operação comercial deixa para trás ao centralizar dados e prospecção na Deepson.</p>
                   </div>
                   <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 mb-10">
                      {[
-                        { name: "Kommo / Pipedrive", sub: "CRM externo" },
-                        { name: "Manychat / Typebot", sub: "Chatbot isolado" },
-                        { name: "Blip / Zenvia", sub: "Multiatendimento" },
-                        { name: "RD Station / Mlabs", sub: "Marketing separado" },
-                        { name: "Planilha de leads", sub: "Google Sheets / Excel" },
+                        { name: "Listas Frias Compradas", sub: "Contatos desatualizados" },
+                        { name: "Busca Manual de CNPJ", sub: "Horas perdidas no Google" },
+                        { name: "Planilhas Soltas", sub: "Dados sem qualificação" },
+                        { name: "Prospecção no Escuro", sub: "Abordagem fora do ICP" },
+                        { name: "Ferramentas Isoladas", sub: "Alto custo operacional" },
                      ].map((item, i) => (
-                        <div key={i} className="flex flex-col gap-1 p-4 rounded-2xl border border-border/40 bg-muted/20 opacity-60 relative overflow-hidden">
+                        <div key={i} className="flex flex-col gap-1 p-4 rounded-2xl border border-white/10 bg-white/5 opacity-75 relative overflow-hidden">
                            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                              <div className="w-full h-px bg-destructive/50 rotate-[-8deg]" />
+                              <div className="w-full h-px bg-destructive/60 rotate-[-8deg]" />
                            </div>
-                           <p className="text-sm font-bold text-foreground line-through decoration-destructive/60">{item.name}</p>
-                           <p className="text-[11px] text-muted-foreground">{item.sub}</p>
+                           <p className="text-sm font-bold text-white line-through decoration-destructive/70">{item.name}</p>
+                           <p className="text-[11px] text-slate-400">{item.sub}</p>
                         </div>
                      ))}
                   </div>
-                  <div className="text-center p-6 rounded-3xl bg-primary/5 border border-primary/20">
-                     <p className="text-base font-bold text-foreground">
-                        Com a Deepson, sua empresa tem inteligência de dados B2B, atendimento, CRM, funil, automação e IA —{" "}
-                        <span className="text-primary">no mesmo lugar que seu cliente já está: o WhatsApp.</span>
+                  <div className="text-center p-6 rounded-3xl bg-primary/10 border border-primary/25">
+                     <p className="text-base font-bold text-white">
+                        Com a Deepson, sua empresa tem base de empresas B2B, filtros de ICP, listas segmentadas, insights de mercado e automação —{" "}
+                        <span className="text-primary">tudo em uma única plataforma de inteligência comercial.</span>
                      </p>
                   </div>
                </div>
             </section>
 
-            {/* Benefits Section (Quickly) */}
-            <section className="py-24 bg-muted/20 border-b border-border/10">
+            {/* Benefits Section */}
+            <section className="py-24 bg-[#040f21] border-b border-white/10">
                <div className="container mx-auto px-4">
                   <div className="text-center mb-16">
-                     <h2 className="text-3xl font-black mb-4">Operando em outro patamar hoje mesmo</h2>
-                     <p className="text-muted-foreground">Sua equipe já conhece o WhatsApp. A Deepson transforma ele em sistema comercial.</p>
+                     <h2 className="text-3xl md:text-4xl font-black mb-4 text-white">Inteligência de mercado para vender todos os dias</h2>
+                     <p className="text-slate-300">Dados reais, oportunidades mapeadas e insights acionáveis para sua equipe comercial focar em quem realmente compra.</p>
                   </div>
 
                   <div className="grid md:grid-cols-3 gap-8">
-                     <div className="p-8 rounded-3xl bg-background border border-border/50 hover:shadow-2xl transition-all">
-                        <h3 className="text-xl font-bold mb-4">Implantação assistida</h3>
-                        <p className="text-muted-foreground">Nossa equipe configura Kanban, multi-atendentes e IA junto com você. Você não fica sozinho nenhum momento.</p>
+                     <div className="p-8 rounded-3xl bg-[#07152e] border border-white/10 hover:border-primary/40 hover:shadow-2xl transition-all">
+                        <div className="w-12 h-12 rounded-2xl bg-primary/15 flex items-center justify-center mb-5">
+                           <Search className="w-6 h-6 text-primary" />
+                        </div>
+                        <h3 className="text-xl font-bold mb-3 text-white">Busca por CNPJ, Razão Social ou Segmento</h3>
+                        <p className="text-slate-300 text-sm leading-relaxed">Encontre exatamente o perfil de cliente ideal (ICP) filtrando entre mais de 2,45 milhões de empresas mapeadas em todo o Brasil.</p>
                      </div>
-                     <div className="p-8 rounded-3xl bg-background border border-border/50 hover:shadow-2xl transition-all">
-                        <h3 className="text-xl font-bold mb-4">Todos os números em um só lugar</h3>
-                        <p className="text-muted-foreground">Conecte vários números do WhatsApp em uma central unificada. Histórico completo, sem informação espalhada em celulares pessoais.</p>
+                     <div className="p-8 rounded-3xl bg-[#07152e] border border-white/10 hover:border-primary/40 hover:shadow-2xl transition-all">
+                        <div className="w-12 h-12 rounded-2xl bg-primary/15 flex items-center justify-center mb-5">
+                           <BarChart3 className="w-6 h-6 text-primary" />
+                        </div>
+                        <h3 className="text-xl font-bold mb-3 text-white">Insights e Top Segmentos em Alta</h3>
+                        <p className="text-slate-300 text-sm leading-relaxed">Descubra quais setores (Indústria, Comércio, Serviços, Agronegócio) apresentam maior crescimento em oportunidades no período.</p>
                      </div>
-                     <div className="p-8 rounded-3xl bg-background border border-border/50 hover:shadow-2xl transition-all">
-                        <h3 className="text-xl font-bold mb-4">80% menos tarefas repetitivas</h3>
-                        <p className="text-muted-foreground">O agente de agendamento com IA qualifica leads, responde dúvidas frequentes e agenda — liberando seu time para focar no fechamento.</p>
+                     <div className="p-8 rounded-3xl bg-[#07152e] border border-white/10 hover:border-primary/40 hover:shadow-2xl transition-all">
+                        <div className="w-12 h-12 rounded-2xl bg-primary/15 flex items-center justify-center mb-5">
+                           <Filter className="w-6 h-6 text-primary" />
+                        </div>
+                        <h3 className="text-xl font-bold mb-3 text-white">Listas e Segmentações por Porte</h3>
+                        <p className="text-slate-300 text-sm leading-relaxed">Segmente microempresas, pequenas, médias e grandes empresas e organize listas qualificadas prontas para sua abordagem comercial.</p>
                      </div>
                   </div>
                </div>
             </section>
 
             {/* Pain Points Section */}
-            <section className="py-24 bg-muted/10 relative overflow-hidden">
+            <section className="py-24 bg-[#061329] relative overflow-hidden">
                <div className="container mx-auto px-4">
                   <div className="max-w-3xl mx-auto text-center mb-16 space-y-4">
-                     <h2 className="text-3xl md:text-5xl font-black tracking-tighter">O custo invisível do <span className="text-primary italic">caos no WhatsApp</span></h2>
-                     <p className="text-lg text-muted-foreground">Cada minuto de desorganização é um lead que esfria e uma venda que você deixa na mesa.</p>
+                     <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-white">O custo invisível de <span className="text-primary italic">prospectar sem dados</span></h2>
+                     <p className="text-lg text-slate-300">Quando seu time comercial procura clientes manualmente, você perde tempo, energia e vendas todos os dias.</p>
                   </div>
 
                   <div className="grid md:grid-cols-3 gap-8">
                      {[
-                        { icon: MessageSquareOff, t: "Mensagens Perdidas", d: "Leads que desaparecem no fundo da caixa de entrada sem resposta." },
-                        { icon: UserMinus, t: "Follow-up Esquecido", d: "Sua equipe esquece de retornar e o concorrente fecha a venda." },
-                        { icon: BarChart3, t: "Falta de Visão", d: "Você não sabe quantas vendas estão abertas ou em que estágio estão." },
-                        { icon: Users, t: "Equipe Sem Contexto", d: "O cliente explica a mesma coisa 3 vezes para pessoas diferentes." },
-                        { icon: AlertCircle, t: "Sem Histórico", d: "Informações cruciais perdidas em prints e memórias individuais." },
-                        { icon: Clock, t: "Gargalo de Tempo", d: "O gestor gasta horas apenas tentando entender o que está acontecendo." }
+                        { icon: AlertCircle, t: "Contatos Desatualizados", d: "Vendedores desperdiçando horas com telefones inexistentes e empresas baixadas." },
+                        { icon: Target, t: "Abordagem Fora do ICP", d: "Reuniões improdutivas com empresas que não têm porte ou orçamento para sua solução." },
+                        { icon: BarChart3, t: "Cegueira de Mercado", d: "Falta de clareza sobre quais segmentos e regiões estão gerando mais oportunidades agora." },
+                        { icon: Clock, t: "Pesquisa Manual Lenta", d: "Seu time gasta mais tempo procurando quem abordar do que efetivamente vendendo." },
+                        { icon: Users, t: "Baixa Qualificação", d: "Listas genéricas que geram baixa taxa de resposta e desmotivam a equipe de vendas." },
+                        { icon: TrendingUp, t: "Pipeline Imprevisível", d: "Sem geração constante de oportunidades qualificadas, o faturamento oscila todo mês." }
                      ].map((item, i) => (
-                        <div key={i} className="p-8 rounded-[32px] bg-background border border-border/50 hover:border-primary/30 transition-all group">
-                           <div className="w-14 h-14 rounded-2xl bg-muted flex items-center justify-center mb-6 group-hover:bg-primary/10 transition-colors">
-                              <item.icon className="w-7 h-7 text-muted-foreground group-hover:text-primary transition-colors" />
+                        <div key={i} className="p-8 rounded-[32px] bg-[#040f21] border border-white/10 hover:border-primary/40 transition-all group">
+                           <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center mb-6 group-hover:bg-primary/15 transition-colors">
+                              <item.icon className="w-7 h-7 text-slate-300 group-hover:text-primary transition-colors" />
                            </div>
-                           <h3 className="text-xl font-bold mb-3">{item.t}</h3>
-                           <p className="text-muted-foreground text-sm leading-relaxed">{item.d}</p>
+                           <h3 className="text-xl font-bold mb-3 text-white">{item.t}</h3>
+                           <p className="text-slate-300 text-sm leading-relaxed">{item.d}</p>
                         </div>
                      ))}
                   </div>
@@ -262,29 +295,30 @@ const FreeTrialPage = () => {
             </section>
 
             {/* Product Showcase */}
-            <section className="py-24 relative overflow-hidden">
+            <section className="py-24 relative overflow-hidden bg-[#040f21]">
                <div className="container mx-auto px-4">
                   <div className="text-center mb-20">
-                     <h2 className="text-3xl md:text-5xl font-black mb-6 tracking-tighter">Tudo que sua operação precisa, <span className="text-primary italic text-shadow-glow">no mesmo lugar</span></h2>
-                     <p className="text-muted-foreground text-lg max-w-2xl mx-auto">Do primeiro contato ao fechamento — sem sair do WhatsApp, sem abrir outra aba.</p>
+                     <h2 className="text-3xl md:text-5xl font-black mb-6 tracking-tighter text-white">Tudo que sua prospecção B2B precisa, <span className="text-primary italic text-shadow-glow">em um único painel</span></h2>
+                     <p className="text-slate-300 text-lg max-w-2xl mx-auto">Da inteligência de mercado à criação de listas hipersegmentadas — conheça a plataforma Deepson por dentro.</p>
                   </div>
 
-                  <div className="space-y-32">
+                  <div className="space-y-28">
                      {/* Feature 1 */}
                      <div className="flex flex-col lg:flex-row items-center gap-16">
                         <div className="lg:w-1/2 space-y-6">
-                           <div className="bg-primary/10 text-primary px-4 py-2 rounded-full w-fit font-bold text-xs uppercase tracking-widest">Controle Total</div>
-                           <h3 className="text-4xl font-black leading-tight">Kanban Comercial: Nunca mais esqueça um lead</h3>
-                           <p className="text-muted-foreground text-lg leading-relaxed">
-                              Visualize toda sua jornada de vendas em colunas. Arraste e solte seus clientes conforme eles avançam no funil. Saiba exatamente quem precisa de atenção agora.
+                           <div className="bg-primary/15 text-primary px-4 py-2 rounded-full w-fit font-bold text-xs uppercase tracking-widest border border-primary/25">Inteligência de Mercado B2B</div>
+                           <h3 className="text-3xl md:text-4xl font-black leading-tight text-white">Visão Geral: Dados, oportunidades e insights em tempo real</h3>
+                           <p className="text-slate-300 text-lg leading-relaxed">
+                              Tenha um raio-x completo do mercado brasileiro com mais de 2.458.317 empresas mapeadas. Acompanhe a evolução de oportunidades, distribuição por porte e os segmentos com maior crescimento.
                            </p>
                            <ul className="space-y-4">
                               {[
-                                 "Mova leads entre estágios filtrando por prioridade",
-                                 "Tags personalizadas para segmentação rápida",
-                                 "Histórico completo de cada interação no card"
+                                 "Mais de 2,45 milhões de empresas mapeadas e atualizadas",
+                                 "Análise de distribuição por porte (Micro, Pequena, Média e Grande)",
+                                 "Top segmentos em oportunidade (Indústria, Comércio, Serviços e Agro)",
+                                 "Insights automáticos da Deepson para direcionar seu foco comercial"
                               ].map((item, i) => (
-                                 <li key={i} className="flex items-center gap-3">
+                                 <li key={i} className="flex items-center gap-3 text-slate-200">
                                     <Check className="w-5 h-5 text-primary shrink-0" />
                                     <span className="font-medium">{item}</span>
                                  </li>
@@ -292,14 +326,12 @@ const FreeTrialPage = () => {
                            </ul>
                         </div>
                         <div className="lg:w-1/2 relative group">
-                           <div className="absolute -inset-4 bg-primary/20 blur-3xl rounded-[40px] opacity-20 group-hover:opacity-40 transition-opacity" />
+                           <div className="absolute -inset-4 bg-primary/20 blur-3xl rounded-[40px] opacity-30 group-hover:opacity-50 transition-opacity" />
                            <img
-                              src="/images/kanban_board.png"
-                              alt="Kanban System"
-                              className="rounded-[32px] border border-border/50 shadow-2xl relative z-10 hover:scale-[1.02] transition-transform duration-500"
+                              src="/dashboard-deepson.jpg"
+                              alt="Painel Deepson — Inteligência de Mercado B2B"
+                              className="rounded-[28px] border border-white/15 shadow-2xl relative z-10 hover:scale-[1.02] transition-transform duration-500 w-full h-auto"
                               loading="lazy"
-                              width={600}
-                              height={375}
                            />
                         </div>
                      </div>
@@ -307,34 +339,51 @@ const FreeTrialPage = () => {
                      {/* Feature 2 */}
                      <div className="flex flex-col lg:flex-row-reverse items-center gap-16">
                         <div className="lg:w-1/2 space-y-6">
-                           <div className="bg-primary/10 text-primary px-4 py-2 rounded-full w-fit font-bold text-xs uppercase tracking-widest">Inteligência Artificial</div>
-                           <h3 className="text-4xl font-black leading-tight">Agente de agendamento com IA: Atendimento 24/7 de alta qualidade</h3>
-                           <p className="text-muted-foreground text-lg leading-relaxed">
-                              Nossa IA aprende sobre seu negócio e qualifica seus leads automaticamente. Ela responde dúvidas frequentes e prepara o terreno para sua equipe fechar o negócio.
+                           <div className="bg-primary/15 text-primary px-4 py-2 rounded-full w-fit font-bold text-xs uppercase tracking-widest border border-primary/25">Prospecção & Segmentação</div>
+                           <h3 className="text-3xl md:text-4xl font-black leading-tight text-white">Listas segmentadas, novos contatos e qualificação acelerada</h3>
+                           <p className="text-slate-300 text-lg leading-relaxed">
+                              Busque empresas por CNPJ, razão social ou segmento, salve listas personalizadas e utilize automação e integrações para abastecer seu time comercial com leads dentro do seu ICP.
                            </p>
                            <ul className="space-y-4">
                               {[
-                                 "Respostas instantâneas baseadas na sua base de dados",
-                                 "Qualificação inteligente antes do transbordo humano",
-                                 "Disponibilidade total, inclusive de madrugada e feriados"
+                                 "Busca instantânea por CNPJ, razão social, CNAE ou segmento",
+                                 "Criação de listas e segmentações sob medida para campanhas B2B",
+                                 "Módulos integrados de Relatórios, Automação e Integrações",
+                                 "20 créditos liberados na hora no seu teste gratuito de 7 dias"
                               ].map((item, i) => (
-                                 <li key={i} className="flex items-center gap-3">
+                                 <li key={i} className="flex items-center gap-3 text-slate-200">
                                     <Check className="w-5 h-5 text-primary shrink-0" />
                                     <span className="font-medium">{item}</span>
                                  </li>
                               ))}
                            </ul>
+                           <div className="pt-2">
+                              <Button variant="cta" size="lg" className="h-14 px-8 rounded-full font-black" onClick={scrollToForm}>
+                                 Criar conta grátis com 20 créditos
+                              </Button>
+                           </div>
                         </div>
-                        <div className="lg:w-1/2 relative group">
-                           <div className="absolute -inset-4 bg-primary/20 blur-3xl rounded-[40px] opacity-20 group-hover:opacity-40 transition-opacity" />
-                           <img
-                              src="/images/captain_system.png"
-                              alt="IA System"
-                              className="rounded-[32px] border border-border/50 shadow-2xl relative z-10 hover:scale-[1.02] transition-transform duration-500"
-                              loading="lazy"
-                              width={600}
-                              height={375}
-                           />
+                        <div className="lg:w-1/2 grid grid-cols-2 gap-4">
+                           <div className="p-6 rounded-3xl bg-[#07152e] border border-white/10 space-y-2">
+                              <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Empresas Mapeadas</span>
+                              <p className="text-3xl md:text-4xl font-black text-white">2.458.317</p>
+                              <span className="inline-block text-xs font-bold text-emerald-400">↑ +12,8% vs. período anterior</span>
+                           </div>
+                           <div className="p-6 rounded-3xl bg-gradient-to-br from-[#ff6b00] to-[#ea580c] text-white space-y-2 shadow-xl">
+                              <span className="text-xs font-bold uppercase tracking-wider text-white/90">Oportunidades</span>
+                              <p className="text-3xl md:text-4xl font-black text-white">38.420</p>
+                              <span className="inline-block text-xs font-bold text-white">↑ +9,2% em crescimento</span>
+                           </div>
+                           <div className="p-6 rounded-3xl bg-[#07152e] border border-white/10 space-y-2">
+                              <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Novos Contatos</span>
+                              <p className="text-3xl md:text-4xl font-black text-white">104.982</p>
+                              <span className="inline-block text-xs font-bold text-emerald-400">↑ +15,6% vs. período anterior</span>
+                           </div>
+                           <div className="p-6 rounded-3xl bg-[#07152e] border border-white/10 space-y-2">
+                              <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Taxa de Qualificação</span>
+                              <p className="text-3xl md:text-4xl font-black text-primary">26,4%</p>
+                              <span className="inline-block text-xs font-bold text-emerald-400">↑ +4,7 p.p. de evolução</span>
+                           </div>
                         </div>
                      </div>
                   </div>
@@ -342,27 +391,27 @@ const FreeTrialPage = () => {
             </section>
 
             {/* How it Works */}
-            <section className="py-24 bg-muted/30">
+            <section className="py-24 bg-[#061329] border-y border-white/10">
                <div className="container mx-auto px-4">
                   <div className="text-center mb-16">
-                     <h2 className="text-3xl md:text-5xl font-black tracking-tighter mb-6">Implantação rápida em <span className="text-primary italic">4 passos</span></h2>
-                     <p className="text-muted-foreground text-lg max-w-xl mx-auto">Você não precisa ser expert. Nós cuidamos do pesado para você operar em tempo recorde.</p>
+                     <h2 className="text-3xl md:text-5xl font-black tracking-tighter mb-6 text-white">Comece a prospectar em <span className="text-primary italic">4 passos simples</span></h2>
+                     <p className="text-slate-300 text-lg max-w-xl mx-auto">Sem burocracia e sem esperar implantação: você cria sua conta e já entra na plataforma na mesma hora.</p>
                   </div>
 
                   <div className="grid md:grid-cols-4 gap-8 relative">
-                     <div className="hidden md:block absolute top-1/2 left-0 right-0 h-0.5 bg-primary/10 -z-10" />
+                     <div className="hidden md:block absolute top-1/2 left-0 right-0 h-0.5 bg-primary/20 -z-10" />
                      {[
-                        { step: "01", t: "Conectar", d: "Conecte seus números de WhatsApp em segundos via QR Code." },
-                        { step: "02", t: "Organizar", d: "Nossa equipe configura seu Kanban personalizado de vendas." },
-                        { step: "03", t: "Automatizar", d: "Ative o Captain IA e configure suas mensagens de boas-vindas." },
-                        { step: "04", t: "Escalar", d: "Acompanhe métricas, gerencie sua equipe e venda muito mais." }
+                        { step: "01", t: "Cadastre-se Grátis", d: "Preencha o formulário acima e tenha sua conta criada na hora com 20 créditos por 7 dias." },
+                        { step: "02", t: "Mapeie seu ICP", d: "Busque empresas por CNPJ, razão social, porte, localização e segmento de atuação." },
+                        { step: "03", t: "Crie Segmentações", d: "Monte listas qualificadas e acompanhe os insights dos setores que mais crescem." },
+                        { step: "04", t: "Gere Negócios", d: "Aborde as empresas certas, aumente sua taxa de qualificação e escale suas vendas B2B." }
                      ].map((s, i) => (
-                        <div key={i} className="bg-background p-8 rounded-[32px] border border-border/50 text-center relative group hover:border-primary/50 transition-colors">
+                        <div key={i} className="bg-[#040f21] p-8 rounded-[32px] border border-white/10 text-center relative group hover:border-primary/50 transition-colors">
                            <div className="w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-black mx-auto mb-6 shadow-lg shadow-primary/20 text-lg group-hover:scale-110 transition-transform">
                               {s.step}
                            </div>
-                           <h4 className="text-xl font-bold mb-3">{s.t}</h4>
-                           <p className="text-muted-foreground text-sm leading-relaxed">{s.d}</p>
+                           <h4 className="text-xl font-bold mb-3 text-white">{s.t}</h4>
+                           <p className="text-slate-300 text-sm leading-relaxed">{s.d}</p>
                         </div>
                      ))}
                   </div>
@@ -370,69 +419,69 @@ const FreeTrialPage = () => {
             </section>
 
             {/* Who is it for */}
-            <section className="py-24">
+            <section className="py-24 bg-[#040f21]">
                <div className="container mx-auto px-4 text-center">
-                  <h2 className="text-3xl md:text-5xl font-black mb-16 tracking-tighter italic">Transforme seu WhatsApp no <span className="text-primary">principal canal de vendas</span></h2>
+                  <h2 className="text-3xl md:text-5xl font-black mb-16 tracking-tighter italic text-white">Para quem é a <span className="text-primary">Inteligência B2B da Deepson</span></h2>
                   <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
                      {[
-                        { t: "Clínicas & Saúde", i: Shield },
-                        { t: "Venda de Serviços", i: Rocket },
-                        { t: "E-commerce & Ads", i: Target },
-                        { t: "Imobiliárias", i: LayoutDashboard },
-                        { t: "Educação & Cursos", i: Users },
-                        { t: "SaaS & Tecnologia", i: Code },
-                        { t: "Recuperação de Leads", i: ZapIcon },
-                        { t: "Escala Comercial", i: BarChart3 }
+                        { t: "Indústrias & Distribuidoras", i: Building2 },
+                        { t: "SaaS & Tecnologia B2B", i: Code },
+                        { t: "Venda de Serviços B2B", i: Rocket },
+                        { t: "Consultorias & Agências", i: Target },
+                        { t: "Comércio Atacadista", i: LayoutDashboard },
+                        { t: "Agronegócio & Insumos", i: Shield },
+                        { t: "Equipes de SDR & Outbound", i: Users },
+                        { t: "Expansão & Inteligência Comercial", i: BarChart3 }
                      ].map((item, i) => (
-                        <div key={i} className="flex flex-col items-center gap-4 p-8 rounded-[32px] border border-border/50 bg-muted/10 hover:bg-primary/5 hover:border-primary/20 transition-all">
-                           <div className="w-12 h-12 rounded-xl bg-background flex items-center justify-center border border-border/50 shadow-sm">
+                        <div key={i} className="flex flex-col items-center gap-4 p-8 rounded-[32px] border border-white/10 bg-[#07152e] hover:bg-primary/10 hover:border-primary/30 transition-all">
+                           <div className="w-12 h-12 rounded-xl bg-[#040f21] flex items-center justify-center border border-white/10 shadow-sm">
                               <item.i className="w-6 h-6 text-primary" />
                            </div>
-                           <span className="font-bold text-sm md:text-base">{item.t}</span>
+                           <span className="font-bold text-sm md:text-base text-white">{item.t}</span>
                         </div>
                      ))}
                   </div>
                </div>
             </section>
 
-            {/* Plans Section */}
-            <section className="py-8 bg-muted/10 border-t border-border/10">
-               <div className="container mx-auto px-4 text-center mb-8 max-w-3xl">
-                  <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-3">Quanto sua empresa gasta hoje com ferramentas separadas?</p>
-                  <h2 className="text-2xl md:text-3xl font-black tracking-tighter mb-4 leading-tight">
-                     CRM + chatbot + multiatendimento + planilhas podem facilmente passar de <span className="text-destructive line-through decoration-2">R$ 800</span>, <span className="text-destructive line-through decoration-2">R$ 1.500</span> ou até <span className="text-destructive line-through decoration-2">R$ 5.000</span> por mês.
+            {/* Cost comparison intro */}
+            <section className="py-12 bg-[#061329] border-t border-white/10">
+               <div className="container mx-auto px-4 text-center mb-4 max-w-3xl">
+                  <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">Quanto custa prospectar sem inteligência de dados?</p>
+                  <h2 className="text-2xl md:text-3xl font-black tracking-tighter mb-4 leading-tight text-white">
+                     Bases desatualizadas + ferramentas separadas + horas improdutivas de SDRs custam facilmente mais de <span className="text-destructive line-through decoration-2">R$ 2.500/mês</span>.
                   </h2>
-                  <p className="text-muted-foreground text-base mb-2">
-                     Com a Deepson, você centraliza tudo em um único plano: inteligência B2B, atendimento, funil, automação, IA e gestão comercial no WhatsApp.
+                  <p className="text-slate-300 text-base mb-2">
+                     Com a Deepson, você acessa inteligência de mercado B2B, base de empresas, segmentações e automação em uma única plataforma.
                   </p>
                   <p className="text-primary font-bold text-sm uppercase tracking-wider">
-                     Menos ferramentas. Mais controle. Mais vendas.
+                     Mais precisão no ICP. Mais oportunidades reais. Mais vendas B2B.
                   </p>
                </div>
             </section>
             <PlansSection />
 
             {/* FAQ Section */}
-            <section className="py-24 bg-muted/10">
+            <section className="py-24 bg-[#061329]">
                <div className="container mx-auto px-4 max-w-3xl">
                   <div className="text-center mb-16">
-                     <h2 className="text-3xl md:text-5xl font-black mb-6 tracking-tighter">Perguntas <span className="text-primary italic">Frequentes</span></h2>
-                     <p className="text-muted-foreground">Tudo o que você precisa saber para começar agora.</p>
+                     <h2 className="text-3xl md:text-5xl font-black mb-6 tracking-tighter text-white">Perguntas <span className="text-primary italic">Frequentes</span></h2>
+                     <p className="text-slate-300">Tudo o que você precisa saber sobre o teste grátis de 7 dias da Deepson.</p>
                   </div>
 
                   <Accordion type="single" collapsible className="space-y-4">
                      {[
-                        { q: "Precisa de cartão de crédito para os 7 dias?", a: "Não! Você pode começar seu teste gratuito agora mesmo sem cadastrar nenhum cartão. Queremos que você veja o valor antes de qualquer compromisso." },
-                        { q: "Como funciona a implantação hoje mesmo?", a: "Assim que você inicia o teste, nossa equipe de onboarding entra em contato para mapear seu processo e configurar sua conta para que você já comece a vender no novo formato em tempo recorde." },
-                        { q: "Pode usar vários números de WhatsApp?", a: "Com certeza. A Deepson foi feita para centralizar vários canais e números em um único painel, permitindo que sua equipe gerencie tudo de forma unificada." },
-                        { q: "A IA é difícil de configurar?", a: "De forma alguma. O agente de agendamento com IA já vem com modelos baseados em melhores práticas de vendas. Você só precisa alimentar as informações do seu negócio e ele começa a aprender." },
-                        { q: "Posso cancelar a qualquer momento?", a: "Sim. Nossos planos são sem fidelidade. Você tem total liberdade para continuar ou encerrar quando desejar, sem multas." }
+                        { q: "Precisa de cartão de crédito para os 7 dias de teste?", a: "Não! Você cria sua conta gratuita agora mesmo sem informar cartão de crédito e já recebe 20 créditos para testar a plataforma por 7 dias." },
+                        { q: "Em quanto tempo meu acesso é liberado?", a: "Na mesma hora! Assim que você preenche o formulário com Nome, E-mail, WhatsApp e CNPJ, sua conta é criada automaticamente e você já entra logado no painel da Deepson." },
+                        { q: "O que posso fazer com os 20 créditos gratuitos?", a: "Você pode pesquisar empresas na nossa base de mais de 2,45 milhões de CNPJs, testar filtros por segmento e porte, criar listas de prospecção e desbloquear dados e contatos comerciais." },
+                        { q: "Quais segmentos estão disponíveis na plataforma?", a: "Cobrimos empresas de todos os portes (Micro, Pequena, Média e Grande) nos principais macro-setores brasileiros: Indústria, Comércio, Serviços e Agronegócio." },
+                        { q: "Posso fazer upgrade ou cancelar quando quiser?", a: "Sim! Nossos planos não exigem fidelidade. Você testa gratuitamente por 7 dias e decide com total liberdade como deseja escalar sua operação B2B." }
                      ].map((item, i) => (
-                        <AccordionItem key={i} value={`item-${i}`} className="bg-background border border-border/50 rounded-2xl px-6 py-2 overflow-hidden shadow-sm">
-                           <AccordionTrigger className="hover:no-underline font-bold text-left text-lg py-4">
+                        <AccordionItem key={i} value={`item-${i}`} className="bg-[#040f21] border border-white/10 rounded-2xl px-6 py-2 overflow-hidden shadow-sm">
+                           <AccordionTrigger className="hover:no-underline font-bold text-left text-lg py-4 text-white">
                               {item.q}
                            </AccordionTrigger>
-                           <AccordionContent className="text-muted-foreground text-base leading-relaxed pb-6">
+                           <AccordionContent className="text-slate-300 text-base leading-relaxed pb-6">
                               {item.a}
                            </AccordionContent>
                         </AccordionItem>
@@ -441,8 +490,8 @@ const FreeTrialPage = () => {
 
                   <div className="mt-20 p-10 rounded-[40px] bg-primary text-primary-foreground text-center relative overflow-hidden group">
                      <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-20 transition-opacity" />
-                     <h3 className="text-3xl font-black mb-6 italic tracking-tight">Pronto para centralizar tudo em uma única operação?</h3>
-                     <p className="mb-10 text-primary-foreground/90 text-lg">Comece os 7 dias grátis agora. Nossa equipe configura tudo com você hoje mesmo.</p>
+                     <h3 className="text-3xl font-black mb-4 italic tracking-tight">Pronto para encontrar suas próximas oportunidades B2B?</h3>
+                     <p className="mb-8 text-primary-foreground/90 text-lg">Crie sua conta grátis agora e receba 20 créditos imediatos para testar por 7 dias.</p>
                      <Button
                         size="lg"
                         variant="secondary"
@@ -460,26 +509,26 @@ const FreeTrialPage = () => {
          <Footer />
 
          <Dialog open={showExitPopup} onOpenChange={setShowExitPopup}>
-            <DialogContent className="sm:max-w-[500px] border border-primary/20 bg-card p-6 md:p-8 rounded-[32px] text-center space-y-6">
+            <DialogContent className="sm:max-w-[500px] border border-primary/30 bg-[#07152e] p-6 md:p-8 rounded-[32px] text-center space-y-6 text-white">
                <DialogHeader>
-                  <div className="mx-auto w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-2">
-                     <CheckCircle2 className="w-8 h-8 text-primary" />
+                  <div className="mx-auto w-16 h-16 rounded-full bg-primary/15 flex items-center justify-center mb-2">
+                     <Sparkles className="w-8 h-8 text-primary" />
                   </div>
-                  <DialogTitle className="text-2xl font-black text-foreground tracking-tight text-center">
-                     Antes de sair — um material gratuito para você
+                  <DialogTitle className="text-2xl font-black text-white tracking-tight text-center">
+                     Espere! Seus 20 créditos grátis estão prontos
                   </DialogTitle>
-                  <DialogDescription className="text-muted-foreground text-sm text-center leading-relaxed">
-                     Preparamos um guia prático sobre como estruturar uma operação comercial inteligente no WhatsApp. Sem enrolação — direto ao ponto.
+                  <DialogDescription className="text-slate-300 text-sm text-center leading-relaxed">
+                     Teste a plataforma de Inteligência de Dados B2B da Deepson por 7 dias sem cartão de crédito. Sua conta é criada na hora!
                   </DialogDescription>
                </DialogHeader>
 
-               <div className="bg-muted/30 border border-border/50 p-4 rounded-2xl flex flex-col md:flex-row items-center gap-4 text-left">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+               <div className="bg-white/5 border border-white/10 p-4 rounded-2xl flex flex-col md:flex-row items-center gap-4 text-left">
+                  <div className="w-12 h-12 rounded-xl bg-primary/15 flex items-center justify-center shrink-0">
                      <CheckCircle2 className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                     <p className="text-sm font-bold text-foreground">Guia: CRM WhatsApp para equipes comerciais</p>
-                     <p className="text-xs text-muted-foreground">Como organizar funil, follow-up e atendimento sem depender de planilha.</p>
+                     <p className="text-sm font-bold text-white">+2,45 Milhões de Empresas Mapeadas</p>
+                     <p className="text-xs text-slate-300">Busque por CNPJ, segmento, porte e região com acesso imediato ao painel.</p>
                   </div>
                </div>
 
@@ -492,17 +541,8 @@ const FreeTrialPage = () => {
                         scrollToForm();
                      }}
                   >
-                     Iniciar teste grátis + baixar o guia
+                     Liberar meus 20 créditos grátis agora
                   </Button>
-                  <button
-                     onClick={() => {
-                        setShowExitPopup(false);
-                        window.open("https://zzehxqgyberjewihsliu.supabase.co/storage/v1/object/public/pdfs/ChatHook_WhatsApp_CRM.pdf", "_blank");
-                     }}
-                     className="text-xs font-bold text-primary hover:underline transition-all"
-                  >
-                     Só quero o PDF por enquanto
-                  </button>
                </div>
             </DialogContent>
          </Dialog>

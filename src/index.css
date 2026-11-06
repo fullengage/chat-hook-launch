@@ -79,22 +79,22 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
+    --background: 217 78% 7.3%;
     --foreground: 210 40% 98%;
 
-    --card: 222.2 84% 4.9%;
+    --card: 217 72% 9.5%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 222.2 84% 4.9%;
+    --popover: 217 78% 7.3%;
     --popover-foreground: 210 40% 98%;
 
     --primary: 24 100% 50%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 217 33% 17%;
+    --secondary: 217 50% 14%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 217.2 32.6% 17.5%;
+    --muted: 217 45% 13%;
     --muted-foreground: 215 20.2% 65.1%;
 
     --accent: 24 100% 50%;
@@ -103,15 +103,15 @@ All colors MUST be HSL.
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
+    --border: 217 40% 16%;
+    --input: 217 40% 16%;
     --ring: 24 100% 50%;
 
     /* Gradients for dark mode */
     --gradient-primary: linear-gradient(135deg, hsl(24 100% 50%), hsl(18 95% 48%));
-    --gradient-secondary: linear-gradient(135deg, hsl(220 47% 11%), hsl(217 33% 17%));
-    --gradient-hero: linear-gradient(135deg, hsl(24 100% 50%), hsl(220 47% 11%));
-    --gradient-card: linear-gradient(145deg, hsl(222.2 84% 4.9%), hsl(217.2 32.6% 17.5%));
+    --gradient-secondary: linear-gradient(135deg, hsl(217 78% 7.3%), hsl(217 50% 14%));
+    --gradient-hero: linear-gradient(135deg, hsl(24 100% 50%), hsl(217 78% 7.3%));
+    --gradient-card: linear-gradient(145deg, hsl(217 72% 9.5%), hsl(217 45% 13%));
 
     /* Shadows for dark mode */
     --shadow-card: 0 10px 30px -10px hsl(0 0% 0% / 0.3);

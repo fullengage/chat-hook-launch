@@ -30,13 +30,13 @@ const Index: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#f8fafc] text-[#0f172a] font-sans antialiased selection:bg-[#ff6b00] selection:text-white">
       {/* Top Navbar */}
-      <header className="sticky top-0 z-50 bg-[#070d19]/95 backdrop-blur-md border-b border-[#1e293b] transition-all">
+      <header className="sticky top-0 z-50 bg-[#040f21] border-b border-[#1e293b] transition-all">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <a href="/" className="flex items-center gap-3 group">
             <img
-              src="/logo-deepson.jpg"
+              src="/logo-deepson.png"
               alt="Deepson — Inteligência de Dados B2B"
-              className="h-12 w-auto object-contain rounded"
+              className="h-11 md:h-12 w-auto object-contain"
             />
           </a>
 
@@ -45,6 +45,12 @@ const Index: React.FC = () => {
             <a href="#solucao" className="hover:text-[#ff6b00] transition-colors">Solução</a>
             <a href="#metodologia" className="hover:text-[#ff6b00] transition-colors">Metodologia</a>
             <a href="#simulador" className="hover:text-[#ff6b00] transition-colors">Simulador</a>
+            <a 
+              href="/teste-gratis" 
+              className="hover:text-[#ff6b00] transition-colors font-bold text-[#ff6b00]"
+            >
+              Teste Grátis (7 dias)
+            </a>
             <a 
               href={PLATFORM_URL} 
               target="_blank" 
@@ -76,7 +82,7 @@ const Index: React.FC = () => {
 
         {/* Mobile Dropdown */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-[#070d19] border-b border-[#1e293b] px-6 py-6 flex flex-col gap-4 shadow-xl text-white">
+          <div className="md:hidden bg-[#040f21] border-b border-[#1e293b] px-6 py-6 flex flex-col gap-4 shadow-xl text-white">
             <a 
               href="#solucao" 
               onClick={() => setMobileMenuOpen(false)}
@@ -99,10 +105,17 @@ const Index: React.FC = () => {
               Simulador
             </a>
             <a 
+              href="/teste-gratis" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-base font-bold text-[#ff6b00] py-2 border-b border-[#1e293b]"
+            >
+              Teste Grátis (7 dias + 20 créditos)
+            </a>
+            <a 
               href={PLATFORM_URL} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-base font-semibold text-[#ff6b00] py-2 flex items-center justify-between"
+              className="text-base font-semibold text-slate-200 py-2 flex items-center justify-between"
             >
               <span>Acessar Plataforma</span>
               <ExternalLink className="w-4 h-4" />
@@ -128,41 +141,39 @@ const Index: React.FC = () => {
             <div className="lg:col-span-7 flex flex-col items-start">
               <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ff6b00]/10 text-[#ff6b00] border border-[#ff6b00]/20 text-xs font-extrabold tracking-wider uppercase mb-6">
                 <Sparkles className="w-3.5 h-3.5" />
-                Inteligência de Dados B2B & Automação
+                Inteligência de Dados B2B • +2,45 Milhões de Empresas
               </span>
 
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#0f172a] tracking-tight leading-[1.08] mb-6">
-                Menos contatos.<br />
-                <span className="text-[#ff6b00]">Mais conversas que importam.</span>
+                Encontre as empresas certas.<br />
+                <span className="text-[#ff6b00]">Gere mais negócios B2B com dados.</span>
               </h1>
 
               <p className="text-lg md:text-xl text-[#475569] leading-relaxed max-w-2xl mb-8">
-                A <strong>Deepson</strong> combina inteligência de dados B2B, automação e inteligência artificial para encontrar potenciais compradores e identificar quem demonstra real interesse em sua solução.
+                A <strong>Deepson</strong> mapeia mais de 2,45 milhões de empresas no Brasil, identifica os segmentos em maior crescimento e entrega listas, contatos e insights acionáveis para sua prospecção comercial B2B.
               </p>
 
               <div className="flex flex-wrap items-center gap-4 w-full sm:w-auto mb-6">
                 <a 
-                  href={WHATSAPP_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="/teste-gratis"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-[#ff6b00] hover:bg-[#ea580c] text-white px-8 py-4 rounded-full font-bold text-base shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5"
                 >
-                  <MessageCircle className="w-5 h-5" />
-                  Quero conhecer a Deepson ↗
+                  Começar teste grátis (7 dias + 20 créditos) →
                 </a>
 
                 <a 
-                  href={PLATFORM_URL}
+                  href={WHATSAPP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border-2 border-[#ff6b00] text-[#ff6b00] hover:bg-[#ff6b00] hover:text-white px-8 py-4 rounded-full font-bold text-base transition-all transform hover:-translate-y-0.5"
                 >
-                  Conhecer a plataforma →
+                  <MessageCircle className="w-5 h-5" />
+                  Falar com especialista ↗
                 </a>
               </div>
 
               <p className="text-xs font-semibold text-[#64748b]">
-                ✦ Uma empresa do Grupo FullWeb • Inteligência de Dados B2B & Conversas
+                ✦ Uma empresa do Grupo FullWeb • Inteligência de Dados B2B & Prospecção Comercial
               </p>
             </div>
 
@@ -170,11 +181,11 @@ const Index: React.FC = () => {
             <div className="lg:col-span-5 relative">
               <div className="relative mx-auto max-w-md lg:max-w-none">
                 <div className="bg-gradient-to-tr from-[#ff6b00] to-[#fb923c] p-1.5 rounded-3xl shadow-2xl">
-                  <div className="bg-[#070d19] rounded-[22px] p-6 text-white relative overflow-hidden">
-                    <div className="mb-5 rounded-xl overflow-hidden border border-white/10 bg-[#070d19]">
+                  <div className="bg-[#040f21] rounded-[22px] p-6 text-white relative overflow-hidden">
+                    <div className="mb-5 rounded-xl overflow-hidden border border-white/10 bg-[#040f21]">
                       <img
-                        src="/logo-deepson.jpg"
-                        alt="Deepson — Inteligência de Dados B2B"
+                        src="/dashboard-deepson.jpg"
+                        alt="Painel Deepson — Inteligência de Mercado B2B"
                         className="w-full h-auto object-cover"
                       />
                     </div>
@@ -565,7 +576,7 @@ const Index: React.FC = () => {
       </section>
 
       {/* Final CTA Section */}
-      <section className="py-24 bg-gradient-to-br from-[#070d19] via-[#0b111e] to-[#131f33] text-white text-center relative overflow-hidden border-t-4 border-[#ff6b00]">
+      <section className="py-24 bg-gradient-to-br from-[#040f21] via-[#07152e] to-[#0f2242] text-white text-center relative overflow-hidden border-t-4 border-[#ff6b00]">
         <div className="max-w-4xl mx-auto px-6 relative z-10">
           <span className="text-xs font-black uppercase tracking-widest text-[#fb923c] mb-4 block">
             ✦ Seu próximo passo
@@ -574,27 +585,25 @@ const Index: React.FC = () => {
             Vamos encontrar seu próximo negócio?
           </h2>
           <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Conheça nossa proposta de inteligência de dados B2B, automação, prospecção e atendimento comercial e converse sobre um piloto adequado ao seu mercado.
+            Crie sua conta gratuita com 20 créditos liberados na hora ou converse com nosso time sobre uma operação de inteligência de dados B2B sob medida.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4">
             <a 
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/teste-gratis"
               className="inline-flex items-center gap-2.5 bg-[#ff6b00] hover:bg-[#ea580c] text-white px-9 py-4 rounded-full font-bold text-base shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-0.5"
             >
-              <MessageCircle className="w-5 h-5" />
-              Conversar com a Deepson ↗
+              Começar teste grátis (7 dias) →
             </a>
 
             <a 
-              href={PLATFORM_URL}
+              href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 border-2 border-white/60 hover:border-[#ff6b00] hover:text-[#ff6b00] text-white px-8 py-4 rounded-full font-bold text-base transition-all transform hover:-translate-y-0.5"
             >
-              Conhecer a plataforma →
+              <MessageCircle className="w-5 h-5" />
+              Conversar com a Deepson ↗
             </a>
           </div>
 
@@ -605,13 +614,13 @@ const Index: React.FC = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#070d19] text-slate-400 py-16 border-t border-[#1e293b]">
+      <footer className="bg-[#040f21] text-slate-400 py-16 border-t border-[#1e293b]">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10">
           <div className="md:col-span-1">
             <img
-              src="/logo-deepson.jpg"
+              src="/logo-deepson.png"
               alt="Deepson — Inteligência de Dados B2B"
-              className="h-12 w-auto object-contain mb-3 rounded"
+              className="h-11 w-auto object-contain mb-3"
             />
             <span className="text-[10px] font-bold tracking-widest uppercase text-slate-400 block mb-3">
               Uma empresa do Grupo FullWeb
