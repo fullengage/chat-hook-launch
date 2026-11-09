@@ -10,7 +10,7 @@ const PlansSection = () => {
     {
       name: "1. Essencial",
       title: "Essencial",
-      price: "R$ 197",
+      price: "R$ 297",
       period: "/mês",
       badge: "Inicial",
       icon: Zap,
