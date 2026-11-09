@@ -14,11 +14,11 @@ const PlansSection = () => {
       period: "/mês",
       badge: "Inicial",
       icon: Zap,
-      description: "Para profissionais e pequenas empresas.",
+      description: "Para quem está estruturando a prospecção B2B.",
       features: [
         "50 créditos incluídos/mês",
         "1 usuário",
-        "Para profissionais e pequenas empresas.",
+        "Para quem está estruturando a prospecção B2B.",
         "Limite diário: até 50 créditos/dia",
         "Recarga avulsa: R$ 1,00/crédito (não expira)"
       ],
@@ -33,11 +33,11 @@ const PlansSection = () => {
       period: "/mês",
       badge: "Mais escolhido",
       icon: Crown,
-      description: "Para pequenas equipes comerciais.",
+      description: "Para equipes de 2 a 3 vendedores.",
       features: [
         "300 créditos incluídos/mês",
         "3 usuários",
-        "Para pequenas equipes comerciais.",
+        "Para equipes de 2 a 3 vendedores.",
         "Limite diário: até 150 créditos/dia",
         "Recarga avulsa: R$ 0,90/crédito (não expira)"
       ],
@@ -52,11 +52,11 @@ const PlansSection = () => {
       period: "/mês",
       badge: "Crescimento",
       icon: Star,
-      description: "Para operações comerciais em crescimento.",
+      description: "Para equipes comerciais em crescimento.",
       features: [
         "800 créditos incluídos/mês",
         "5 usuários",
-        "Para operações comerciais em crescimento.",
+        "Para equipes comerciais em crescimento.",
         "Limite diário: até 300 créditos/dia",
         "Recarga avulsa: R$ 0,80/crédito (não expira)"
       ],
@@ -71,11 +71,11 @@ const PlansSection = () => {
       period: "/mês",
       badge: "Alto Volume",
       icon: TrendingUp,
-      description: "Para operações de prospecção de maior volume.",
+      description: "Para operações com várias equipes ou unidades.",
       features: [
         "2.000 créditos incluídos/mês",
         "Até 15 usuários",
-        "Para operações de prospecção de maior volume.",
+        "Para operações com várias equipes ou unidades.",
         "Limite diário: até 600 créditos/dia",
         "Recarga avulsa: R$ 0,70/crédito (não expira)"
       ],
@@ -139,10 +139,10 @@ const PlansSection = () => {
             Planos, Créditos e Regras Claras
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-6 text-white uppercase tracking-tight italic">
-            Escolha o plano ideal para sua <span className="text-primary">Operação B2B</span>
+            Escolha o plano pelo tamanho da sua <span className="text-primary">equipe comercial</span>
           </h2>
           <p className="text-base md:text-lg text-slate-300 leading-relaxed">
-            O plano <strong>Essencial</strong> é ideal para profissionais e empresas que estão estruturando a prospecção B2B; o plano <strong>Profissional</strong> atende pequenas equipes comerciais com rotina diária de abordagem; já os planos <strong>Equipe</strong> e <strong>Escala</strong> foram desenhados para operações comerciais em crescimento e agências de geração de leads de maior volume.
+            Todos os planos têm a mesma inteligência. O que muda é quantas empresas você abre por mês e quantos vendedores usam a plataforma.
           </p>
         </div>
 

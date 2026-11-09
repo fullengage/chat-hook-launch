@@ -82,7 +82,7 @@ const TrialForm = () => {
           name: values.name,
           email: values.email,
           whatsapp: values.whatsapp,
-          companySize: `CNPJ: ${digitos(values.cnpj)}`,
+          companySize: `CNPJ: ${digitos(values.cnpj)}${params.get("site") ? ` · Site: ${params.get("site")}` : ""}`,
           source: "free_trial_landing_page",
           page: window.location.pathname,
           userAgent: navigator.userAgent,

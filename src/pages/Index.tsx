@@ -1,32 +1,41 @@
 import React, { useState } from "react";
-import { 
-  ExternalLink, 
-  MessageCircle, 
-  CheckCircle2, 
-  Search, 
-  Mail, 
-  TrendingUp, 
-  Sparkles, 
-  BarChart3, 
-  Menu, 
+import {
+  ExternalLink,
+  MessageCircle,
+  CheckCircle2,
+  Search,
+  Target,
+  UserCheck,
+  ArrowRight,
+  BarChart3,
+  Menu,
   X
 } from "lucide-react";
 import PlansSection from "@/components/PlansSection";
+import HeroFlow from "@/components/HeroFlow";
 
 const WHATSAPP_URL = "https://wa.me/5511955501090?text=Ol%C3%A1!%20Gostaria%20de%20conversar%20sobre%20a%20Deepson.";
 const PLATFORM_URL = "https://chat.deepson.com.br/";
 
+// ponytail: preços duplicados do PlansSection; mudar nos dois lugares
+const SIM_PLANS = [
+  { name: "Essencial", price: 297, credits: 50 },
+  { name: "Profissional", price: 497, credits: 300 },
+  { name: "Equipe", price: 997, credits: 800 },
+  { name: "Escala", price: 1997, credits: 2000 },
+];
+
 const Index: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  
-  // Interactive Calculator State
-  const [ticket, setTicket] = useState(5000);
-  const [margin, setMargin] = useState(40);
-  const [conversion, setConversion] = useState(10);
-  const [allocation, setAllocation] = useState(30);
+  const [site, setSite] = useState("");
 
-  const calculatedLeadValue = (ticket * (margin / 100) * (conversion / 100) * (allocation / 100));
-  const estimatedBudget = calculatedLeadValue * 20;
+  // Simulador: Deepson x anúncio
+  const [adCpl, setAdCpl] = useState(80);
+  const [planIdx, setPlanIdx] = useState(0);
+  const plan = SIM_PLANS[planIdx];
+  const empresas = plan.credits / 2; // 1 crédito contato + 1 crédito sinais financeiros
+  const custoEmpresa = plan.price / empresas;
+  const leadsAnuncio = Math.floor(plan.price / adCpl);
 
   return (
     <div className="min-h-screen bg-[#f8fafc] text-[#0f172a] font-sans antialiased selection:bg-[#ff6b00] selection:text-white">
@@ -136,156 +145,72 @@ const Index: React.FC = () => {
       </header>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden pt-16 pb-24 md:py-28 bg-gradient-to-b from-[#f8fafc] via-[#fff7ed]/60 to-[#f8fafc]">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-            
-            <div className="lg:col-span-7 flex flex-col items-start">
-              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ff6b00]/10 text-[#ff6b00] border border-[#ff6b00]/20 text-xs font-extrabold tracking-wider uppercase mb-6">
-                <Sparkles className="w-3.5 h-3.5" />
-                Do seu site ao seu próximo cliente B2B
-              </span>
+      <section className="relative overflow-hidden pt-16 pb-20 md:pt-24 md:pb-28 bg-[#f8fafc]">
+        <div className="max-w-4xl mx-auto px-6 text-center relative">
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#0f172a] tracking-tight leading-[1.08] mb-6">
-                Encontre empresas com<br />
-                <span className="text-[#ff6b00]">maior potencial de comprar de você.</span>
-              </h1>
+          <span className="inline-block px-4 py-1.5 rounded-full bg-white border border-[#e2e8f0] shadow-sm text-sm text-[#0f172a] mb-6">
+            <strong>+2,4 milhões</strong> de empresas brasileiras mapeadas
+          </span>
 
-              <p className="text-lg md:text-xl text-[#475569] leading-relaxed max-w-2xl mb-4">
-                Informe o site da sua empresa. A IA do <strong>Deepson</strong> entende o que você vende, identifica seu cliente ideal e encontra empresas compatíveis, explicando por que cada uma merece a atenção do seu comercial.
-              </p>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#0f172a] tracking-tight leading-[1.08] mb-5">
+            Receba <span className="whitespace-nowrap text-[#ff6b00]">10 empresas ideais</span>{" "}<br className="hidden sm:block" />para vender em 2 minutos, grátis
+          </h1>
 
-              <p className="text-base font-bold text-[#0f172a] border-l-4 border-[#ff6b00] pl-4 mb-8">
-                Seu vendedor passa menos tempo procurando clientes e mais tempo conversando com quem tem potencial de comprar.
-              </p>
-
-              <div className="flex flex-wrap items-center gap-4 w-full sm:w-auto mb-6">
-                <a 
-                  href="/teste-gratis"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-[#ff6b00] hover:bg-[#ea580c] text-white px-8 py-4 rounded-full font-bold text-base shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5"
-                >
-                  Começar teste grátis (7 dias + 20 créditos) →
-                </a>
-
-                <a 
-                  href={WHATSAPP_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border-2 border-[#ff6b00] text-[#ff6b00] hover:bg-[#ff6b00] hover:text-white px-8 py-4 rounded-full font-bold text-base transition-all transform hover:-translate-y-0.5"
-                >
-                  <MessageCircle className="w-5 h-5" />
-                  Falar com especialista ↗
-                </a>
-              </div>
-
-              <p className="text-xs font-semibold text-[#64748b]">
-                ✦ Uma empresa do Grupo FullWeb • Inteligência de Dados B2B & Prospecção Comercial
-              </p>
-            </div>
-
-            {/* Hero Visual Card */}
-            <div className="lg:col-span-5 relative">
-              <div className="relative mx-auto max-w-md lg:max-w-none">
-                <div className="bg-gradient-to-tr from-[#ff6b00] to-[#fb923c] p-1.5 rounded-3xl shadow-2xl">
-                  <div className="bg-[#040f21] rounded-[22px] p-6 text-white relative overflow-hidden">
-                    <div className="mb-5 rounded-xl overflow-hidden border border-white/10 bg-[#040f21]">
-                      <img
-                        src="/dashboard-deepson.jpg"
-                        alt="Painel Deepson — Inteligência de Mercado B2B"
-                        className="w-full h-auto object-cover"
-                      />
-                    </div>
-
-                    <div className="flex items-center justify-between border-b border-white/10 pb-3 mb-4">
-                      <div className="flex items-center gap-2">
-                        <div className="w-2.5 h-2.5 rounded-full bg-red-500"></div>
-                        <div className="w-2.5 h-2.5 rounded-full bg-amber-500"></div>
-                        <div className="w-2.5 h-2.5 rounded-full bg-emerald-500"></div>
-                        <span className="ml-2 text-xs font-bold text-white/80">Painel Deepson ( Ilustrativo )</span>
-                      </div>
-                      <span className="text-[11px] uppercase tracking-wider text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded-full border border-emerald-500/30">
-                        Demonstração
-                      </span>
-                    </div>
-
-                    <div className="grid grid-cols-3 gap-3 mb-4">
-                      <div className="bg-white/5 border border-white/10 rounded-xl p-3 text-center">
-                        <span className="block text-xl font-black text-white">2,45 mi</span>
-                        <span className="text-[10px] text-white/60">Empresas mapeadas</span>
-                      </div>
-                      <div className="bg-white/5 border border-white/10 rounded-xl p-3 text-center">
-                        <span className="block text-xl font-black text-[#ff6b00]">38.420</span>
-                        <span className="text-[10px] text-white/60">Oportunidades</span>
-                      </div>
-                      <div className="bg-white/5 border border-white/10 rounded-xl p-3 text-center">
-                        <span className="block text-xl font-black text-emerald-400">26,4%</span>
-                        <span className="text-[10px] text-white/60">Qualificação</span>
-                      </div>
-                    </div>
-
-                    <div className="space-y-2.5">
-                      <div className="bg-white/5 border border-white/10 rounded-xl p-3 flex items-center justify-between">
-                        <div>
-                          <p className="text-sm font-bold text-white">Empresa Alfa Corp</p>
-                          <p className="text-xs text-white/60">Solicitou demonstração da IA</p>
-                        </div>
-                        <span className="bg-emerald-500/20 text-emerald-300 text-[11px] font-bold px-2.5 py-1 rounded-full border border-emerald-500/30">
-                          Interessado
-                        </span>
-                      </div>
-
-                      <div className="bg-white/5 border border-white/10 rounded-xl p-3 flex items-center justify-between">
-                        <div>
-                          <p className="text-sm font-bold text-white">Grupo Beta Log</p>
-                          <p className="text-xs text-white/60">Pediu proposta comercial</p>
-                        </div>
-                        <span className="bg-emerald-500/20 text-emerald-300 text-[11px] font-bold px-2.5 py-1 rounded-full border border-emerald-500/30">
-                          Interessado
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="absolute -bottom-6 -right-4 bg-white border border-[#fed7aa] px-5 py-3 rounded-2xl shadow-xl flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-[#ff6b00] text-white flex items-center justify-center font-bold">
-                    ✦
-                  </div>
-                  <div>
-                    <span className="block text-xs font-extrabold uppercase tracking-wider text-[#ff6b00]">
-                      Inteligência B2B
-                    </span>
-                    <span className="text-sm font-bold text-[#0f172a]">
-                      Dados que geram negócios
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
+          <div className="flex flex-wrap items-center justify-center gap-2 mb-8">
+            <span className="px-3.5 py-1.5 rounded-full bg-[#f1f5f9] text-sm font-semibold text-[#334155]">Sem cartão de crédito</span>
+            <span className="px-3.5 py-1.5 rounded-full bg-[#f1f5f9] text-sm font-semibold text-[#334155]">🎁 20 créditos grátis</span>
           </div>
+
+          <div className="relative max-w-xl mx-auto">
+          <HeroFlow className="hidden md:block absolute right-full top-1/2 -translate-y-1/2 w-[640px] h-[640px]" />
+          <HeroFlow className="hidden md:block absolute left-full top-1/2 -translate-y-1/2 w-[640px] h-[640px] -scale-x-100" />
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              const s = site.trim();
+              window.location.href = s ? `/teste-gratis?site=${encodeURIComponent(s)}` : "/teste-gratis";
+            }}
+            className="relative z-10 flex items-center gap-2 bg-white border-2 border-[#0f172a] rounded-2xl p-1.5 pl-5 shadow-lg focus-within:border-[#ff6b00] transition-colors"
+          >
+            <label htmlFor="hero-site" className="sr-only">Site da sua empresa</label>
+            <input
+              id="hero-site"
+              type="text"
+              inputMode="url"
+              autoComplete="url"
+              value={site}
+              onChange={(e) => setSite(e.target.value)}
+              placeholder="Cole o site da sua empresa"
+              className="flex-1 min-w-0 bg-transparent py-3 text-base text-[#0f172a] placeholder:text-[#94a3b8] outline-none"
+            />
+            <button
+              type="submit"
+              aria-label="Ver minhas empresas"
+              className="shrink-0 inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#ff6b00] hover:bg-[#ea580c] text-white transition-colors"
+            >
+              <ArrowRight className="w-5 h-5" />
+            </button>
+          </form>
+          </div>
+          <a href="/teste-gratis" className="inline-block mt-3 text-sm text-[#64748b] hover:text-[#ff6b00] underline-offset-4 hover:underline">
+            Não tenho site
+          </a>
+
+          <p className="text-lg text-[#475569] leading-relaxed max-w-2xl mx-auto mt-8">
+            A IA do <strong>Deepson</strong> lê o seu site, define o seu cliente ideal e encontra as empresas que mais combinam com você — com nota de encaixe, o motivo, quem decide a compra e a abordagem pronta.
+          </p>
         </div>
       </section>
 
       {/* Ribbon Bar */}
       <section className="bg-[#0b111e] text-slate-100 py-5 border-y border-[#1e293b]">
         <div className="max-w-7xl mx-auto px-6 flex flex-wrap items-center justify-between gap-4 text-xs md:text-sm font-bold tracking-wide uppercase">
-          <div className="flex items-center gap-2">
-            <span className="text-white bg-[#ff6b00] rounded-full w-5 h-5 inline-flex items-center justify-center text-[11px]">✓</span>
-            Pesquisa orientada por dados
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-white bg-[#ff6b00] rounded-full w-5 h-5 inline-flex items-center justify-center text-[11px]">✓</span>
-            Abordagem com contexto
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-white bg-[#ff6b00] rounded-full w-5 h-5 inline-flex items-center justify-center text-[11px]">✓</span>
-            Interesse demonstrado
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-white bg-[#ff6b00] rounded-full w-5 h-5 inline-flex items-center justify-center text-[11px]">✓</span>
-            Grupo FullWeb
-          </div>
+          {["Cliente ideal pelo seu site", "Nota de encaixe com motivo", "Quem decide a compra", "Dado com fonte e data"].map((t) => (
+            <div key={t} className="flex items-center gap-2">
+              <span className="text-white bg-[#ff6b00] rounded-full w-5 h-5 inline-flex items-center justify-center text-[11px]">✓</span>
+              {t}
+            </div>
+          ))}
         </div>
       </section>
 
@@ -293,86 +218,68 @@ const Index: React.FC = () => {
       <section id="solucao" className="py-24 max-w-7xl mx-auto px-6">
         <div className="max-w-3xl mb-16">
           <span className="text-xs font-black uppercase tracking-widest text-[#ff6b00] mb-3 block">
-            ✦ O problema que resolvemos
+            ✦ O problema
           </span>
           <h2 className="text-3xl md:text-5xl font-black text-[#0f172a] tracking-tight leading-tight mb-6">
-            Seu time deveria estar vendendo. Não procurando quem abordar.
+            Seu vendedor deveria estar vendendo, não montando lista.
           </h2>
           <p className="text-lg text-[#475569] leading-relaxed">
-            Buscar empresas, organizar contatos, personalizar mensagens e acompanhar respostas exige tempo. Nossa proposta é transformar essas etapas em uma operação de prospecção e atendimento mais simples e mensurável.
+            Hoje a prospecção B2B é planilha de CNPJ, filtro que ninguém sabe montar e mensagem genérica que ninguém responde. Ou então é anúncio: você paga por clique, o contato some quando a verba acaba e a lista nunca é sua.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="bg-white border border-[#e2e8f0] p-8 rounded-3xl shadow-sm hover:shadow-md hover:border-[#fdba74] transition-all">
-            <div className="w-14 h-14 rounded-2xl bg-[#fff7ed] border border-[#ffedd5] text-[#ff6b00] flex items-center justify-center mb-6">
-              <Search className="w-7 h-7" />
+          {[
+            { icon: Search, t: "Entende o que você vende", d: "A IA lê o seu site e descreve o seu cliente ideal: setor, porte, região e o tipo de empresa que compra de você." },
+            { icon: Target, t: "Acha e prioriza as empresas certas", d: "Cada empresa vem com nota de encaixe e o porquê. Não é lista; é uma fila em ordem de prioridade." },
+            { icon: UserCheck, t: "Mostra quem decide e como abordar", d: "Sócios, contato, site, Google Maps, situação na Receita e uma abordagem escrita com fato real daquela empresa." },
+          ].map(({ icon: Icon, t, d }) => (
+            <div key={t} className="bg-white border border-[#e2e8f0] p-8 rounded-3xl shadow-sm hover:shadow-md hover:border-[#fdba74] transition-all">
+              <div className="w-14 h-14 rounded-2xl bg-[#fff7ed] border border-[#ffedd5] text-[#ff6b00] flex items-center justify-center mb-6">
+                <Icon className="w-7 h-7" />
+              </div>
+              <h3 className="text-xl font-black text-[#0f172a] mb-3">{t}</h3>
+              <p className="text-[#475569] text-sm leading-relaxed">{d}</p>
             </div>
-            <h3 className="text-xl font-black text-[#0f172a] mb-3">Encontramos o perfil certo</h3>
-            <p className="text-[#475569] text-sm leading-relaxed">
-              Mapeamos empresas por setor, localização, porte e critérios de ICP definidos sob medida para o seu negócio.
-            </p>
-          </div>
-
-          <div className="bg-white border border-[#e2e8f0] p-8 rounded-3xl shadow-sm hover:shadow-md hover:border-[#fdba74] transition-all">
-            <div className="w-14 h-14 rounded-2xl bg-[#fff7ed] border border-[#ffedd5] text-[#ff6b00] flex items-center justify-center mb-6">
-              <Mail className="w-7 h-7" />
-            </div>
-            <h3 className="text-xl font-black text-[#0f172a] mb-3">Iniciamos conversas</h3>
-            <p className="text-[#475569] text-sm leading-relaxed">
-              Planejamos abordagens contextualizadas, com automação, inteligência artificial e supervisão humana.
-            </p>
-          </div>
-
-          <div className="bg-white border border-[#e2e8f0] p-8 rounded-3xl shadow-sm hover:shadow-md hover:border-[#fdba74] transition-all">
-            <div className="w-14 h-14 rounded-2xl bg-[#fff7ed] border border-[#ffedd5] text-[#ff6b00] flex items-center justify-center mb-6">
-              <TrendingUp className="w-7 h-7" />
-            </div>
-            <h3 className="text-xl font-black text-[#0f172a] mb-3">Organizamos o interesse</h3>
-            <p className="text-[#475569] text-sm leading-relaxed">
-              Respostas positivas são analisadas e encaminhadas com evidência e contexto para o time de fechamento.
-            </p>
-          </div>
+          ))}
         </div>
       </section>
 
-      {/* Product Vision & Platform CTA */}
+      {/* Diferenciais */}
       <section className="py-24 bg-[#f1f5f9] border-y border-[#e2e8f0]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <span className="text-xs font-black uppercase tracking-widest text-[#ff6b00] mb-3 block">
-                ✦ Visão do produto
+                ✦ Por que não é só uma lista
               </span>
-              <h2 className="text-3xl md:text-5xl font-black text-[#0f172a] tracking-tight leading-tight mb-6">
-                Um processo inteiro. Uma experiência simples.
+              <h2 className="text-3xl md:text-5xl font-black text-[#0f172a] tracking-tight leading-tight mb-8">
+                Lista de CNPJ você acha em qualquer lugar. Motivo para ligar hoje, não.
               </h2>
-              <p className="text-lg text-[#475569] leading-relaxed mb-8">
-                A experiência que estamos construindo começa pelo seu produto e pelo cliente ideal — não por uma planilha interminável.
-              </p>
 
               <ul className="space-y-4 mb-8">
                 {[
-                  "Defina o perfil do comprador ideal (ICP) com mais de 2,4 milhões de empresas mapeadas",
-                  "Acompanhe oportunidades e o andamento da campanha em tempo real",
-                  "Visualize respostas e sinais de real interesse comercial",
-                  "Entenda quais abordagens e segmentos geram maior crescimento"
-                ].map((item, index) => (
-                  <li key={index} className="flex items-start gap-3 text-base font-semibold text-[#0f172a]">
+                  ["Cliente ideal pelo seu site", "você não precisa saber montar filtro."],
+                  ["Nota com o porquê", "“indústria · EPP · sócio identificado · site sem SEO”."],
+                  ["Sinais financeiros", "situação na Receita, recuperação judicial e dívida ativa antes de abordar."],
+                  ["Abordagem com fato real", "e-mail, ligação ou LinkedIn com o que é verdade sobre aquela empresa."],
+                  ["A base fica com você", "funil, anotações e histórico são da sua empresa."],
+                ].map(([t, d]) => (
+                  <li key={t} className="flex items-start gap-3 text-base text-[#0f172a]">
                     <CheckCircle2 className="w-5 h-5 text-[#ff6b00] shrink-0 mt-0.5" />
-                    <span>{item}</span>
+                    <span><strong>{t}</strong> — {d}</span>
                   </li>
                 ))}
               </ul>
 
               <div className="flex flex-wrap items-center gap-4">
-                <a 
+                <a
                   href="/teste-gratis"
                   className="inline-flex items-center gap-2 bg-[#ff6b00] hover:bg-[#ea580c] text-white px-8 py-4 rounded-full font-bold text-base shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5"
                 >
                   Testar grátis por 7 dias →
                 </a>
-                <a 
+                <a
                   href={PLATFORM_URL}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -387,10 +294,10 @@ const Index: React.FC = () => {
               <div className="bg-[#0b111e] text-white px-6 py-4 flex items-center justify-between">
                 <span className="text-sm font-bold flex items-center gap-2">
                   <BarChart3 className="w-4 h-4 text-[#ff6b00]" />
-                  Ecossistema Deepson B2B
+                  Sua fila de hoje
                 </span>
                 <span className="text-xs font-bold text-[#ff6b00] bg-[#ff6b00]/15 border border-[#ff6b00]/30 px-3 py-1 rounded-full">
-                  Plataforma
+                  Exemplo ilustrativo
                 </span>
               </div>
 
@@ -401,70 +308,86 @@ const Index: React.FC = () => {
               />
 
               <div className="p-6 space-y-3">
-                <div className="p-4 rounded-2xl bg-[#f8fafc] border border-[#e2e8f0] hover:border-[#fdba74] transition-colors">
-                  <h4 className="font-bold text-[#0f172a] flex items-center justify-between">
-                    <span>Inteligência de Mercado & Base B2B</span>
-                    <span className="text-xs bg-[#fff7ed] text-[#ff6b00] border border-[#fed7aa] px-2.5 py-0.5 rounded-full font-bold">Dados B2B</span>
-                  </h4>
-                  <p className="text-xs text-[#475569] mt-1">Segmentação avançada por CNPJ, porte, setor e evolução de oportunidades.</p>
-                </div>
-
-                <div className="p-4 rounded-2xl bg-[#f8fafc] border border-[#e2e8f0] hover:border-[#fdba74] transition-colors">
-                  <h4 className="font-bold text-[#0f172a] flex items-center justify-between">
-                    <span>Atendimento, IA & Automação WhatsApp</span>
-                    <span className="text-xs bg-emerald-100 text-emerald-800 px-2.5 py-0.5 rounded-full font-bold">IA Ativa</span>
-                  </h4>
-                  <p className="text-xs text-[#475569] mt-1">Triagem 24/7 com inteligência artificial, múltiplos atendentes e Kanban integrado.</p>
-                </div>
+                {[
+                  ["Indústria de embalagens · Campinas", "92", "EPP, 18 anos de mercado, sócio identificado, abriu filial em agosto"],
+                  ["Distribuidora de EPI · Guarulhos", "87", "Vende para indústria; site sem página de orçamento"],
+                ].map(([n, nota, motivo]) => (
+                  <div key={n} className="p-4 rounded-2xl bg-[#f8fafc] border border-[#e2e8f0] flex items-start justify-between gap-4">
+                    <div>
+                      <h4 className="font-bold text-[#0f172a]">{n}</h4>
+                      <p className="text-xs text-[#475569] mt-1">{motivo}</p>
+                    </div>
+                    <span className="shrink-0 text-xs bg-[#fff7ed] text-[#ff6b00] border border-[#fed7aa] px-2.5 py-1 rounded-full font-black">Nota {nota}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Methodology Section */}
+      {/* Como funciona */}
       <section id="metodologia" className="py-24 max-w-7xl mx-auto px-6">
         <div className="max-w-3xl mb-16">
           <span className="text-xs font-black uppercase tracking-widest text-[#ff6b00] mb-3 block">
-            ✦ Nossa proposta
+            ✦ Como funciona
           </span>
-          <h2 className="text-3xl md:text-5xl font-black text-[#0f172a] tracking-tight leading-tight mb-6">
-            Você compra a oportunidade de conversar. Não apenas acesso a uma lista.
+          <h2 className="text-3xl md:text-5xl font-black text-[#0f172a] tracking-tight leading-tight">
+            Do cadastro à primeira conversa em 4 passos.
           </h2>
-          <p className="text-lg text-[#475569] leading-relaxed">
-            Construímos uma operação com critérios claros de interesse, rastreabilidade das respostas e modelo comercial alinhado ao valor que cada oportunidade pode gerar.
-          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="bg-white border border-[#e2e8f0] p-8 rounded-3xl hover:border-[#fdba74] transition-colors">
-            <span className="text-xs font-black uppercase tracking-wider text-[#ff6b00] mb-4 block">
-              01 / TRANSPARÊNCIA
-            </span>
-            <h3 className="text-xl font-black text-[#0f172a] mb-3">Interesse verificável</h3>
-            <p className="text-[#475569] text-sm leading-relaxed">
-              Registro completo da interação e do motivo exato pelo qual uma resposta foi considerada positiva.
-            </p>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {[
+            ["Cole seu site", "O Deepson descreve o seu negócio e o seu cliente ideal. Você ajusta se quiser."],
+            ["Receba a fila", "Empresas compatíveis em ordem de nota, cada uma com o motivo."],
+            ["Abra o que interessa", "Contato, decisor e sinais financeiros. O custo em créditos aparece antes do clique."],
+            ["Aborde e marque o resultado", "Reunião, venda ou “não”: seu funil mostra o que está funcionando."],
+          ].map(([t, d], i) => (
+            <div key={t} className="bg-white border border-[#e2e8f0] p-8 rounded-3xl hover:border-[#fdba74] transition-colors">
+              <span className="text-xs font-black uppercase tracking-wider text-[#ff6b00] mb-4 block">
+                Passo {String(i + 1).padStart(2, "0")}
+              </span>
+              <h3 className="text-xl font-black text-[#0f172a] mb-3">{t}</h3>
+              <p className="text-[#475569] text-sm leading-relaxed">{d}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
-          <div className="bg-white border border-[#e2e8f0] p-8 rounded-3xl hover:border-[#fdba74] transition-colors">
-            <span className="text-xs font-black uppercase tracking-wider text-[#ff6b00] mb-4 block">
-              02 / INTELIGÊNCIA
-            </span>
-            <h3 className="text-xl font-black text-[#0f172a] mb-3">Aprendizado comercial</h3>
-            <p className="text-[#475569] text-sm leading-relaxed">
-              Análise contínua das abordagens e dos segmentos que geram as melhores taxas de resposta observadas.
-            </p>
-          </div>
-
-          <div className="bg-white border border-[#e2e8f0] p-8 rounded-3xl hover:border-[#fdba74] transition-colors">
-            <span className="text-xs font-black uppercase tracking-wider text-[#ff6b00] mb-4 block">
-              03 / ECONOMIA
-            </span>
-            <h3 className="text-xl font-black text-[#0f172a] mb-3">Viabilidade antes de volume</h3>
-            <p className="text-[#475569] text-sm leading-relaxed">
-              Uma avaliação precisa do ticket, margem e conversão para estudar o custo aceitável e rentável por oportunidade.
-            </p>
+      {/* Deepson x anúncio */}
+      <section className="py-24 bg-[#f1f5f9] border-y border-[#e2e8f0]">
+        <div className="max-w-5xl mx-auto px-6">
+          <span className="text-xs font-black uppercase tracking-widest text-[#ff6b00] mb-3 block">
+            ✦ Deepson x anúncio pago
+          </span>
+          <h2 className="text-3xl md:text-5xl font-black text-[#0f172a] tracking-tight leading-tight mb-10">
+            Quanto custa um mês de anúncio para falar com as empresas certas?
+          </h2>
+          <div className="overflow-x-auto bg-white border border-[#e2e8f0] rounded-3xl shadow-sm">
+            <table className="w-full text-left text-sm">
+              <thead>
+                <tr className="border-b border-[#e2e8f0] text-xs uppercase tracking-wider text-[#64748b]">
+                  <th className="py-4 px-6 font-bold"></th>
+                  <th className="py-4 px-6 font-bold">Anúncio pago</th>
+                  <th className="py-4 px-6 font-bold text-[#ff6b00]">Deepson</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-[#e2e8f0]">
+                {[
+                  ["Quem você alcança", "Quem clicou", "Empresas escolhidas pelo seu cliente ideal"],
+                  ["Quem decide a compra", "Não sabe", "Sócios e decisor identificados"],
+                  ["Quando a verba acaba", "O contato some", "A lista e o histórico continuam seus"],
+                  ["Custo", "Leilão por clique", "Plano mensal + créditos com preço na tela"],
+                ].map(([k, a, d]) => (
+                  <tr key={k}>
+                    <td className="py-4 px-6 font-bold text-[#0f172a]">{k}</td>
+                    <td className="py-4 px-6 text-[#64748b]">{a}</td>
+                    <td className="py-4 px-6 font-semibold text-[#0f172a]">{d}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </section>
@@ -476,126 +399,97 @@ const Index: React.FC = () => {
       <section id="simulador" className="py-24 bg-[#f1f5f9] border-t border-[#e2e8f0]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
             <div className="lg:col-span-6">
               <span className="text-xs font-black uppercase tracking-widest text-[#ff6b00] mb-3 block">
-                ✦ Ferramenta Interativa
+                ✦ Simulador
               </span>
               <h2 className="text-3xl md:text-5xl font-black text-[#0f172a] tracking-tight leading-tight mb-6">
-                Quanto pode valer um lead interessado?
+                Compare com o que você paga hoje por lead.
               </h2>
               <p className="text-base text-[#475569] leading-relaxed mb-8">
-                Ajuste os parâmetros abaixo para calcular o teto indicativo de investimento por lead com base na economia real do seu negócio:
+                Informe quanto custa um lead no seu anúncio e escolha um plano:
               </p>
 
-              <div className="bg-white border border-[#e2e8f0] p-6 rounded-3xl space-y-5 shadow-md">
+              <div className="bg-white border border-[#e2e8f0] p-6 rounded-3xl space-y-6 shadow-md">
                 <div>
                   <div className="flex justify-between text-xs font-bold text-[#0f172a] mb-1.5">
-                    <label>Valor médio da venda (Ticket R$)</label>
-                    <span className="text-[#ff6b00]">R$ {ticket.toLocaleString("pt-BR")}</span>
+                    <label htmlFor="sim-cpl">Custo por lead no anúncio</label>
+                    <span className="text-[#ff6b00]">R$ {adCpl.toLocaleString("pt-BR")}</span>
                   </div>
-                  <input 
-                    type="range" 
-                    min="500" 
-                    max="50000" 
-                    step="500"
-                    value={ticket}
-                    onChange={(e) => setTicket(Number(e.target.value))}
-                    className="w-full accent-[#ff6b00]" 
+                  <input
+                    id="sim-cpl"
+                    type="range"
+                    min="10"
+                    max="500"
+                    step="5"
+                    value={adCpl}
+                    onChange={(e) => setAdCpl(Number(e.target.value))}
+                    className="w-full accent-[#ff6b00]"
                   />
                 </div>
-
                 <div>
-                  <div className="flex justify-between text-xs font-bold text-[#0f172a] mb-1.5">
-                    <label>Margem de contribuição (%)</label>
-                    <span className="text-[#ff6b00]">{margin}%</span>
+                  <span className="block text-xs font-bold text-[#0f172a] mb-2">Plano Deepson</span>
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                    {SIM_PLANS.map((p, i) => (
+                      <button
+                        key={p.name}
+                        type="button"
+                        onClick={() => setPlanIdx(i)}
+                        className={`px-3 py-2 rounded-xl text-sm font-bold border transition-colors ${
+                          i === planIdx ? "bg-[#ff6b00] border-[#ff6b00] text-white" : "border-[#e2e8f0] text-[#0f172a] hover:border-[#ff6b00]"
+                        }`}
+                      >
+                        {p.name}
+                      </button>
+                    ))}
                   </div>
-                  <input 
-                    type="range" 
-                    min="5" 
-                    max="90" 
-                    value={margin}
-                    onChange={(e) => setMargin(Number(e.target.value))}
-                    className="w-full accent-[#ff6b00]" 
-                  />
-                </div>
-
-                <div>
-                  <div className="flex justify-between text-xs font-bold text-[#0f172a] mb-1.5">
-                    <label>Taxa de conversão estimada (%)</label>
-                    <span className="text-[#ff6b00]">{conversion}%</span>
-                  </div>
-                  <input 
-                    type="range" 
-                    min="1" 
-                    max="50" 
-                    value={conversion}
-                    onChange={(e) => setConversion(Number(e.target.value))}
-                    className="w-full accent-[#ff6b00]" 
-                  />
-                </div>
-
-                <div>
-                  <div className="flex justify-between text-xs font-bold text-[#0f172a] mb-1.5">
-                    <label>Parcela destinada à aquisição (%)</label>
-                    <span className="text-[#ff6b00]">{allocation}%</span>
-                  </div>
-                  <input 
-                    type="range" 
-                    min="5" 
-                    max="60" 
-                    value={allocation}
-                    onChange={(e) => setAllocation(Number(e.target.value))}
-                    className="w-full accent-[#ff6b00]" 
-                  />
                 </div>
               </div>
             </div>
 
             <div className="lg:col-span-6">
-              <div className="bg-[#0b111e] text-white p-8 md:p-10 rounded-3xl shadow-2xl border border-[#1e293b] relative overflow-hidden">
+              <div className="bg-[#0b111e] text-white p-8 md:p-10 rounded-3xl shadow-2xl border border-[#1e293b]">
                 <span className="text-xs font-black uppercase tracking-wider text-[#ff6b00] mb-2 block">
-                  ✦ Resultado da Simulação
+                  ✦ Resultado
                 </span>
-                <h3 className="text-2xl font-bold mb-6">Uma conta que começa pela sua margem.</h3>
+                <h3 className="text-2xl font-bold mb-6">Plano {plan.name}: R$ {plan.price.toLocaleString("pt-BR")}/mês</h3>
 
-                <div className="bg-white/5 border border-white/10 rounded-2xl p-6 mb-6">
-                  <span className="text-xs text-slate-300 uppercase tracking-wider block mb-1">
-                    Teto indicativo por lead interessado:
-                  </span>
-                  <div className="text-4xl md:text-5xl font-black text-[#ff6b00]">
-                    {calculatedLeadValue.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}
+                <div className="grid grid-cols-2 gap-4 mb-6">
+                  <div className="bg-white/5 border border-white/10 rounded-2xl p-5">
+                    <span className="text-xs text-slate-300 block mb-1">Empresas com contato + sinais financeiros</span>
+                    <div className="text-3xl font-black text-[#ff6b00]">{empresas.toLocaleString("pt-BR")}/mês</div>
+                    <span className="text-xs text-slate-400">≈ {custoEmpresa.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })} cada</span>
                   </div>
-                  <p className="text-xs text-slate-300 mt-3">
-                    Orçamento indicativo para pacote de 20 oportunidades:{" "}
-                    <strong className="text-white">{estimatedBudget.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</strong>
-                  </p>
+                  <div className="bg-white/5 border border-white/10 rounded-2xl p-5">
+                    <span className="text-xs text-slate-300 block mb-1">O mesmo valor em anúncio</span>
+                    <div className="text-3xl font-black">{leadsAnuncio.toLocaleString("pt-BR")} leads</div>
+                    <span className="text-xs text-slate-400">a R$ {adCpl.toLocaleString("pt-BR")} cada</span>
+                  </div>
                 </div>
 
                 <p className="text-xs text-slate-400 mb-8 leading-relaxed">
-                  Fórmula: ticket × margem × taxa de conversão × parcela de aquisição. Use estes valores como referência estratégica para planejar o retorno da sua operação.
+                  Conta: preço do plano ÷ (créditos do mês ÷ 2), já que cada empresa usa 1 crédito de contato e 1 de sinais financeiros. Lead de anúncio já demonstrou interesse; empresa do Deepson é um prospect escolhido a dedo, com quem decide. Use como referência, não como promessa de resultado.
                 </p>
 
                 <div className="space-y-3">
-                  <a 
+                  <a
                     href="/teste-gratis"
                     className="w-full inline-flex items-center justify-center gap-2 bg-[#ff6b00] hover:bg-[#ea580c] text-white py-4 rounded-full font-bold text-base shadow-lg transition-all"
                   >
-                    Começar teste grátis (7 dias + 20 créditos) →
+                    Ver minhas 10 empresas grátis →
                   </a>
-                  <a 
+                  <a
                     href={WHATSAPP_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full inline-flex items-center justify-center gap-2 border border-white/30 hover:border-[#ff6b00] hover:text-[#ff6b00] text-white py-3.5 rounded-full font-bold text-sm transition-all"
                   >
                     <MessageCircle className="w-4 h-4" />
-                    Discutir uma campanha com a Deepson ↗
+                    Falar com um especialista ↗
                   </a>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </section>
@@ -607,10 +501,10 @@ const Index: React.FC = () => {
             ✦ Seu próximo passo
           </span>
           <h2 className="text-3xl md:text-5xl font-black tracking-tight mb-6">
-            Vamos encontrar seu próximo negócio?
+            Cole seu site e veja suas primeiras 10 empresas hoje.
           </h2>
           <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Crie sua conta gratuita com 20 créditos liberados na hora ou converse com nosso time sobre uma operação de inteligência de dados B2B sob medida.
+            7 dias grátis, 20 créditos, sem cartão. Se preferir, conversamos antes sobre a sua operação comercial.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4">
@@ -651,7 +545,7 @@ const Index: React.FC = () => {
               Uma empresa do Grupo FullWeb
             </span>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Inteligência de dados B2B, atendimento e automação para escalar suas vendas.
+              Inteligência comercial B2B: do seu site ao seu próximo cliente.
             </p>
           </div>
 
