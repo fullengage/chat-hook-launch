@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   ExternalLink,
   MessageCircle,
@@ -12,7 +12,7 @@ import {
   X
 } from "lucide-react";
 import PlansSection from "@/components/PlansSection";
-import HeroFlow from "@/components/HeroFlow";
+import HeroRadar from "@/components/HeroRadar";
 
 const WHATSAPP_URL = "https://wa.me/5511955501090?text=Ol%C3%A1!%20Gostaria%20de%20conversar%20sobre%20a%20Deepson.";
 const PLATFORM_URL = "https://chat.deepson.com.br/";
@@ -28,6 +28,7 @@ const SIM_PLANS = [
 const Index: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [site, setSite] = useState("");
+  const formAnchor = useRef<HTMLDivElement>(null);
 
   // Simulador: Deepson x anúncio
   const [adCpl, setAdCpl] = useState(80);
@@ -146,7 +147,8 @@ const Index: React.FC = () => {
 
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-16 pb-20 md:pt-24 md:pb-28 bg-[#f8fafc]">
-        <div className="max-w-4xl mx-auto px-6 text-center relative">
+        <HeroRadar anchor={formAnchor} />
+        <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
 
           <span className="inline-block px-4 py-1.5 rounded-full bg-white border border-[#e2e8f0] shadow-sm text-sm text-[#0f172a] mb-6">
             <strong>+2,4 milhões</strong> de empresas brasileiras mapeadas
@@ -161,9 +163,7 @@ const Index: React.FC = () => {
             <span className="px-3.5 py-1.5 rounded-full bg-[#f1f5f9] text-sm font-semibold text-[#334155]">🎁 20 créditos grátis</span>
           </div>
 
-          <div className="relative max-w-xl mx-auto">
-          <HeroFlow className="hidden md:block absolute right-full top-1/2 -translate-y-1/2 w-[640px] h-[640px]" />
-          <HeroFlow className="hidden md:block absolute left-full top-1/2 -translate-y-1/2 w-[640px] h-[640px] -scale-x-100" />
+          <div ref={formAnchor} className="relative max-w-xl mx-auto">
           <form
             onSubmit={(e) => {
               e.preventDefault();
