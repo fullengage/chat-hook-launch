@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Check, Crown, Star, TrendingUp, Coins, ShieldAlert, Info } from "lucide-react";
+import { Check, Crown, Zap, TrendingUp, Coins, ShieldAlert, Info } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const PlansSection = () => {
@@ -12,8 +12,8 @@ const PlansSection = () => {
       title: "Profissional",
       price: "R$ 497",
       period: "/mês",
-      badge: "Mais escolhido",
-      icon: Crown,
+      badge: "Para começar",
+      icon: Zap,
       description: "Para equipes de 2 a 3 vendedores.",
       features: [
         "300 créditos incluídos/mês",
@@ -24,15 +24,15 @@ const PlansSection = () => {
       ],
       ctaPrimary: "Começar Teste Grátis",
       ctaSecondary: "Falar com Consultor",
-      highlight: true
+      highlight: false
     },
     {
       name: "2. Equipe",
       title: "Equipe",
       price: "R$ 997",
       period: "/mês",
-      badge: "Crescimento",
-      icon: Star,
+      badge: "Mais escolhido",
+      icon: Crown,
       description: "Para equipes comerciais em crescimento.",
       features: [
         "800 créditos incluídos/mês",
@@ -43,7 +43,7 @@ const PlansSection = () => {
       ],
       ctaPrimary: "Começar Teste Grátis",
       ctaSecondary: "Falar com Consultor",
-      highlight: false
+      highlight: true
     },
     {
       name: "3. Escala",
@@ -128,13 +128,13 @@ const PlansSection = () => {
         </div>
 
         {/* Plans Grid */}
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-6 max-w-6xl mx-auto items-stretch mb-16">
+        <div className="grid lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto items-center mb-16 pt-6">
           {plans.map((plan, index) => (
             <Card
               key={index}
               className={`relative p-8 rounded-3xl border-2 transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between bg-[#07152e] text-white ${
                 plan.highlight
-                  ? "border-primary shadow-button scale-[1.02] z-10"
+                  ? "border-primary bg-gradient-to-b from-primary/15 to-[#07152e] shadow-[0_0_60px_-10px_rgba(255,107,0,0.6)] ring-4 ring-primary/20 lg:scale-110 lg:py-12 z-10"
                   : "border-white/10 hover:border-primary/50"
               }`}
             >
@@ -142,7 +142,7 @@ const PlansSection = () => {
                 {/* Highlight Badge */}
                 {plan.highlight && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <div className="bg-gradient-cta text-white px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-wider shadow-button whitespace-nowrap">
+                    <div className="bg-gradient-cta text-white px-6 py-2 rounded-full text-sm font-black uppercase tracking-wider shadow-button whitespace-nowrap">
                       ⭐ {plan.badge}
                     </div>
                   </div>
@@ -164,7 +164,7 @@ const PlansSection = () => {
 
                 {/* Price */}
                 <div className="mb-6 pb-6 border-b border-white/10 flex items-baseline gap-1">
-                  <span className="text-4xl font-black text-primary">{plan.price}</span>
+                  <span className={`${plan.highlight ? "text-5xl" : "text-4xl"} font-black text-primary`}>{plan.price}</span>
                   <span className="text-sm text-slate-300 font-semibold">{plan.period}</span>
                 </div>
 
