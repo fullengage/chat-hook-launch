@@ -19,7 +19,6 @@ const PLATFORM_URL = "https://chat.deepson.com.br/";
 
 // ponytail: preços duplicados do PlansSection; mudar nos dois lugares
 const SIM_PLANS = [
-  { name: "Essencial", price: 297, credits: 50 },
   { name: "Profissional", price: 497, credits: 300 },
   { name: "Equipe", price: 997, credits: 800 },
   { name: "Escala", price: 1997, credits: 2000 },
@@ -429,7 +428,7 @@ const Index: React.FC = () => {
                 </div>
                 <div>
                   <span className="block text-xs font-bold text-[#0f172a] mb-2">Plano Deepson</span>
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                  <div className="grid grid-cols-3 gap-2">
                     {SIM_PLANS.map((p, i) => (
                       <button
                         key={p.name}

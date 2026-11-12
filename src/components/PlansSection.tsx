@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Check, Crown, Star, Zap, TrendingUp, Coins, ShieldAlert, Info } from "lucide-react";
+import { Check, Crown, Star, TrendingUp, Coins, ShieldAlert, Info } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const PlansSection = () => {
@@ -8,26 +8,7 @@ const PlansSection = () => {
 
   const plans = [
     {
-      name: "1. Essencial",
-      title: "Essencial",
-      price: "R$ 297",
-      period: "/mês",
-      badge: "Inicial",
-      icon: Zap,
-      description: "Para quem está estruturando a prospecção B2B.",
-      features: [
-        "50 créditos incluídos/mês",
-        "1 usuário",
-        "Para quem está estruturando a prospecção B2B.",
-        "Limite diário: até 50 créditos/dia",
-        "Recarga avulsa: R$ 1,00/crédito (não expira)"
-      ],
-      ctaPrimary: "Começar Teste Grátis",
-      ctaSecondary: "Falar com Consultor",
-      highlight: false
-    },
-    {
-      name: "2. Profissional",
+      name: "1. Profissional",
       title: "Profissional",
       price: "R$ 497",
       period: "/mês",
@@ -46,7 +27,7 @@ const PlansSection = () => {
       highlight: true
     },
     {
-      name: "3. Equipe",
+      name: "2. Equipe",
       title: "Equipe",
       price: "R$ 997",
       period: "/mês",
@@ -65,7 +46,7 @@ const PlansSection = () => {
       highlight: false
     },
     {
-      name: "4. Escala",
+      name: "3. Escala",
       title: "Escala",
       price: "R$ 1.997",
       period: "/mês",
@@ -147,7 +128,7 @@ const PlansSection = () => {
         </div>
 
         {/* Plans Grid */}
-        <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-6 max-w-7xl mx-auto items-stretch mb-16">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-6 max-w-6xl mx-auto items-stretch mb-16">
           {plans.map((plan, index) => (
             <Card
               key={index}
