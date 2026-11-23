@@ -15,7 +15,7 @@ import PlansSection from "@/components/PlansSection";
 import HeroRadar from "@/components/HeroRadar";
 
 const WHATSAPP_URL = "https://wa.me/5511955501090?text=Ol%C3%A1!%20Gostaria%20de%20conversar%20sobre%20a%20Deepson.";
-const PLATFORM_URL = "https://chat.deepson.com.br/";
+const PLATFORM_URL = "https://app.deepson.com.br/";
 
 // ponytail: preços duplicados do PlansSection; mudar nos dois lugares
 const SIM_PLANS = [
@@ -44,8 +44,8 @@ const Index: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <a href="/" className="flex items-center gap-3 group">
             <img
-              src="/logo-deepson.png"
-              alt="Deepson — Inteligência de Dados B2B"
+              src="/logo-deepai.png"
+              alt="DeepAI — Inteligência de Dados B2B"
               className="h-11 md:h-12 w-auto object-contain"
             />
           </a>
@@ -536,8 +536,8 @@ const Index: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10">
           <div className="md:col-span-1">
             <img
-              src="/logo-deepson.png"
-              alt="Deepson — Inteligência de Dados B2B"
+              src="/logo-deepai.png"
+              alt="DeepAI — Inteligência de Dados B2B"
               className="h-11 w-auto object-contain mb-3"
             />
             <span className="text-[10px] font-bold tracking-widest uppercase text-slate-400 block mb-3">

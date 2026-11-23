@@ -111,8 +111,8 @@ const Obrigado = () => {
       <header className="py-4 border-b border-white/10 bg-[#040f21]/95 backdrop-blur-md sticky top-0 z-50">
         <div className="container mx-auto px-4 flex justify-between items-center">
           <img 
-            src="/logo-deepson.png" 
-            alt="Deepson Logo" 
+            src="/logo-deepai.png" 
+            alt="DeepAI Logo" 
             className="h-12 md:h-14 w-auto object-contain cursor-pointer hover:scale-105 transition-transform" 
             onClick={() => navigate("/")}
           />

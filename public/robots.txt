@@ -1,5 +1,9 @@
 User-agent: *
 Allow: /
+Disallow: /auth
+Disallow: /blog/dashboard
+Disallow: /webhooks/
+Disallow: /obrigado
 Disallow: /conversations/
 Disallow: /conversations
 Disallow: /campaigns/
@@ -8,3 +12,5 @@ Disallow: /quick-start/
 Disallow: /quick-start
 Disallow: /stage/
 Disallow: /stage
+
+Sitemap: https://deepb2b.ai/sitemap.xml

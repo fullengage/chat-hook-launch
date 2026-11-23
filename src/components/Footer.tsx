@@ -13,7 +13,7 @@ const Footer = () => {
           <div className="md:col-span-1">
             <div className="flex items-center mb-5">
               <Link to="/">
-                <img src="/logo-deepson.png" alt="Deepson — Inteligência de Dados B2B" className="h-11 w-auto object-contain" />
+                <img src="/logo-deepai.png" alt="DeepAI — Inteligência de Dados B2B" className="h-11 w-auto object-contain" />
               </Link>
             </div>
             <p className="text-slate-300 mb-6 text-sm leading-relaxed">
@@ -50,7 +50,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <a href="https://chat.deepson.com.br/" target="_blank" rel="noopener noreferrer" className="text-sm text-slate-300 hover:text-primary transition-colors duration-200 inline-flex items-center gap-1.5">
+                <a href="https://app.deepson.com.br/" target="_blank" rel="noopener noreferrer" className="text-sm text-slate-300 hover:text-primary transition-colors duration-200 inline-flex items-center gap-1.5">
                   Acessar Plataforma <ExternalLink className="w-3.5 h-3.5" />
                 </a>
               </li>

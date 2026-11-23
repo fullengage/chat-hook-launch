@@ -54,8 +54,8 @@ const FreeTrialPage = () => {
             <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
                <div className="flex items-center gap-3">
                   <img
-                     src="/logo-deepson.png"
-                     alt="Deepson — Inteligência de Dados B2B"
+                     src="/logo-deepai.png"
+                     alt="DeepAI — Inteligência de Dados B2B"
                      className="h-12 md:h-14 w-auto object-contain cursor-pointer hover:scale-105 transition-transform"
                      onClick={() => navigate("/")}
                   />

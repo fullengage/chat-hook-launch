@@ -139,12 +139,6 @@ const Contact = () => {
                 </AccordionContent>
               </AccordionItem>
 
-              <AccordionItem value="item-5" className="border border-border/50 bg-muted/20 px-4 rounded-lg">
-                <AccordionTrigger className="hover:no-underline font-semibold">O Deepson funciona com Chatwoot?</AccordionTrigger>
-                <AccordionContent className="text-muted-foreground">
-                  Sim, nossa infraestrutura é otimizada e conta com uma versão avançada baseada na tecnologia do Chatwoot, com recursos exclusivos criados pela nossa equipe.
-                </AccordionContent>
-              </AccordionItem>
 
               <AccordionItem value="item-6" className="border border-border/50 bg-muted/20 px-4 rounded-lg">
                 <AccordionTrigger className="hover:no-underline font-semibold">Posso integrar com IA?</AccordionTrigger>
