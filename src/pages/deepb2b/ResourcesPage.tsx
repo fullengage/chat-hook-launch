@@ -42,39 +42,73 @@ export const ResourcesPage: React.FC = () => {
       </section>
 
       <section className="py-16 bg-[#f8fafc]">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 grid grid-cols-1 md:grid-cols-2 gap-8">
-          {EDITORIAL_ARTICLES.map((article) => {
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 space-y-8">
+          {EDITORIAL_ARTICLES.filter((a) => a.featuredReport).map((article) => {
             const content = article.localized[locale];
             return (
               <Link
                 key={article.slug}
                 to={articleTo(article.slug)}
-                className="group rounded-3xl border border-slate-200 bg-white p-8 shadow-sm hover:border-[#ff6b00] transition-all flex flex-col justify-between gap-6"
+                className="group block rounded-3xl border-2 border-[#ff6b00] bg-[#040f21] p-8 md:p-10 text-white shadow-xl hover:bg-[#07152e] transition-all"
               >
-                <div className="space-y-3">
-                  <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-500">
-                    <span className="rounded-full bg-[#fff7ed] border border-orange-200 px-3 py-1 font-bold text-[#c2410c]">
-                      {content.category}
-                    </span>
-                    <span className="inline-flex items-center gap-1.5">
-                      <BookOpen className="h-3.5 w-3.5" aria-hidden="true" />
-                      {content.readingMinutes} {dict.resources.readingTimeLabel} ·{" "}
-                      {formatDate(article.updatedAt)}
-                    </span>
-                  </div>
-                  <h2 className="text-2xl font-extrabold text-[#0f172a] group-hover:text-[#ff6b00] transition-colors">
-                    {content.title}
-                  </h2>
-                  <p className="text-sm text-slate-600 leading-relaxed">{content.summary}</p>
+                <div className="flex flex-wrap items-center justify-between gap-3 text-xs mb-4">
+                  <span className="rounded-full bg-[#ff6b00] px-3.5 py-1 font-black uppercase tracking-wider text-white">
+                    {content.category}
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 text-slate-300">
+                    <BookOpen className="h-3.5 w-3.5 text-[#ff6b00]" aria-hidden="true" />
+                    {content.readingMinutes} {dict.resources.readingTimeLabel} ·{" "}
+                    {formatDate(article.updatedAt)}
+                  </span>
                 </div>
-
-                <span className="inline-flex items-center gap-1.5 text-sm font-bold text-[#040f21]">
+                <h2 className="text-2xl md:text-3xl font-extrabold text-white group-hover:text-[#ff6b00] transition-colors mb-3">
+                  {content.title}
+                </h2>
+                <p className="text-sm md:text-base text-slate-300 leading-relaxed max-w-4xl mb-5">
+                  {content.summary}
+                </p>
+                <span className="inline-flex items-center gap-2 text-sm font-bold text-[#ff6b00]">
                   <span>{dict.resources.readGuide}</span>
-                  <ArrowRight className="h-4 w-4 text-[#ff6b00]" aria-hidden="true" />
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </span>
               </Link>
             );
           })}
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {EDITORIAL_ARTICLES.filter((a) => !a.featuredReport).map((article) => {
+              const content = article.localized[locale];
+              return (
+                <Link
+                  key={article.slug}
+                  to={articleTo(article.slug)}
+                  className="group rounded-3xl border border-slate-200 bg-white p-8 shadow-sm hover:border-[#ff6b00] transition-all flex flex-col justify-between gap-6"
+                >
+                  <div className="space-y-3">
+                    <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-500">
+                      <span className="rounded-full bg-[#fff7ed] border border-orange-200 px-3 py-1 font-bold text-[#c2410c]">
+                        {content.category}
+                      </span>
+                      <span className="inline-flex items-center gap-1.5">
+                        <BookOpen className="h-3.5 w-3.5" aria-hidden="true" />
+                        {content.readingMinutes} {dict.resources.readingTimeLabel} ·{" "}
+                        {formatDate(article.updatedAt)}
+                      </span>
+                    </div>
+                    <h2 className="text-2xl font-extrabold text-[#0f172a] group-hover:text-[#ff6b00] transition-colors">
+                      {content.title}
+                    </h2>
+                    <p className="text-sm text-slate-600 leading-relaxed">{content.summary}</p>
+                  </div>
+
+                  <span className="inline-flex items-center gap-1.5 text-sm font-bold text-[#040f21]">
+                    <span>{dict.resources.readGuide}</span>
+                    <ArrowRight className="h-4 w-4 text-[#ff6b00]" aria-hidden="true" />
+                  </span>
+                </Link>
+              );
+            })}
+          </div>
         </div>
       </section>
     </SiteLayout>

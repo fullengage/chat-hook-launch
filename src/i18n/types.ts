@@ -1,4 +1,4 @@
-export type Locale = "en" | "pt-br" | "zh-cn";
+export type Locale = "en" | "pt-br" | "es" | "zh-cn";
 
 export type RouteKey =
   | "home"
@@ -8,7 +8,6 @@ export type RouteKey =
   | "industryMapping"
   | "brazilMarketEntry"
   | "solutions"
-  | "pricing"
   | "resources"
   | "about"
   | "contact"
@@ -59,6 +58,15 @@ export interface SolutionSegmentCopy {
   deliverables: string[];
 }
 
+export interface SolutionSuiteModuleCopy {
+  key: CapabilityKey | "enterprise";
+  badge: string;
+  title: string;
+  description: string;
+  highlights: string[];
+  routeKey: RouteKey;
+}
+
 export interface FaqItem {
   question: string;
   answer: string;
@@ -66,7 +74,7 @@ export interface FaqItem {
 
 export interface TranslationDictionary {
   locale: Locale;
-  htmlLang: "en" | "pt-BR" | "zh-CN";
+  htmlLang: "en" | "pt-BR" | "es" | "zh-CN";
   intlLocale: string;
   currencyCode: "USD" | "BRL" | "CNY";
   localeLabel: string;
@@ -92,7 +100,6 @@ export interface TranslationDictionary {
     industryMapping: string;
     brazilMarketEntry: string;
     solutions: string;
-    pricing: string;
     resources: string;
     about: string;
     contact: string;
@@ -194,45 +201,24 @@ export interface TranslationDictionary {
     eyebrow: string;
     h1: string;
     lead: string;
+    suiteTitle: string;
+    suiteSubtitle: string;
+    suiteCtaLabel: string;
+    modules: SolutionSuiteModuleCopy[];
+    segmentsTitle: string;
     segments: SolutionSegmentCopy[];
-    ctaTitle: string;
-    ctaSubtitle: string;
-  };
-  pricing: {
-    eyebrow: string;
-    h1: string;
-    lead: string;
-    currencyNotice: string;
-    mostPopular: string;
-    perMonth: string;
-    creditsPerMonth: string;
-    usersIncluded: string;
-    dailyLimit: string;
-    topUpRate: string;
+    enterpriseCasesTitle: string;
+    enterpriseCases: { tag: string; title: string; flow: string }[];
+    platformGovernanceTitle: string;
+    platformGovernanceBody: string;
     trialCardTitle: string;
     trialCardSubtitle: string;
-    trialOptions: { label: string; title: string; detail: string }[];
-    planCtaBr: string;
-    planCtaIntl: string;
-    contactSalesCta: string;
-    enterpriseTitle: string;
-    enterpriseSubtitle: string;
-    enterpriseFeatures: string[];
-    enterpriseCta: string;
-    creditTableTitle: string;
-    creditTableSubtitle: string;
-    creditTableHeaders: { action: string; deliverable: string; cost: string };
-    creditUnitLabel: string;
-    rules: { title: string; description: string }[];
-    simulatorTitle: string;
-    simulatorSubtitle: string;
-    simulatorAdCplLabel: string;
-    simulatorPlanLabel: string;
-    simulatorDeepB2BResult: string;
-    simulatorAdResult: string;
-    simulatorEach: string;
-    simulatorMethodologyNote: string;
-    financialDisclaimer: string;
+    trialCardCta: string;
+    ctaTitle: string;
+    ctaSubtitle: string;
+    primaryCta: string;
+    secondaryCta: string;
+    discoverCta: string;
   };
   resources: {
     eyebrow: string;
@@ -282,6 +268,10 @@ export interface TranslationDictionary {
     phonePlaceholder: string;
     purposeLabel: string;
     purposeOptions: { value: string; label: string }[];
+    sectorLabel: string;
+    sectorPlaceholder: string;
+    stageLabel: string;
+    stageOptions: { value: string; label: string }[];
     messageLabel: string;
     messagePlaceholder: string;
     consentLabel: string;

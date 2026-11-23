@@ -7,6 +7,8 @@ export interface DemoLeadPayload {
   country: string;
   phone?: string;
   purpose: string;
+  sector?: string;
+  stage?: string;
   message: string;
   locale: Locale;
   page: string;
@@ -93,8 +95,12 @@ export async function submitDemoRequest(payload: DemoLeadPayload): Promise<LeadS
     `Country: ${payload.country.trim()}`,
     `Locale: ${payload.locale}`,
     `Purpose: ${payload.purpose}`,
+    payload.sector?.trim() ? `Sector: ${payload.sector.trim()}` : null,
+    payload.stage?.trim() ? `Stage: ${payload.stage.trim()}` : null,
     `Need: ${payload.message.trim()}`,
-  ].join(" | ");
+  ]
+    .filter(Boolean)
+    .join(" | ");
 
   return postToCaptureLead({
     name: payload.name.trim(),

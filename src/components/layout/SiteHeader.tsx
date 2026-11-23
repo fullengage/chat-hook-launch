@@ -25,7 +25,6 @@ export const SiteHeader: React.FC = () => {
 
   const mainLinks = [
     { label: dict.nav.solutions, to: routeTo("solutions") },
-    { label: dict.nav.pricing, to: routeTo("pricing") },
     { label: dict.nav.resources, to: routeTo("resources") },
     { label: dict.nav.about, to: routeTo("about") },
   ];
@@ -38,7 +37,11 @@ export const SiteHeader: React.FC = () => {
             <span>
               {dict.localeNotice.suggestPrefix}{" "}
               <strong className="text-white">
-                {suggestedBrowserLocale === "pt-br" ? "Português (Brasil)" : "简体中文"}
+                {suggestedBrowserLocale === "pt-br"
+                  ? "Português (Brasil)"
+                  : suggestedBrowserLocale === "es"
+                    ? "Español (LATAM)"
+                    : "简体中文"}
               </strong>
             </span>
             <div className="flex items-center gap-3">
@@ -47,7 +50,11 @@ export const SiteHeader: React.FC = () => {
                 onClick={() => switchLocale(suggestedBrowserLocale)}
                 className="rounded-full bg-[#ff6b00] px-3 py-1 font-bold text-white hover:bg-[#ea580c] transition-colors"
               >
-                {suggestedBrowserLocale === "pt-br" ? "Ir para /pt-br/" : "前往 /zh-cn/"}
+                {suggestedBrowserLocale === "pt-br"
+                  ? "Ir para /pt-br/"
+                  : suggestedBrowserLocale === "es"
+                    ? "Ir a /es/"
+                    : "前往 /zh-cn/"}
               </button>
               <button
                 type="button"

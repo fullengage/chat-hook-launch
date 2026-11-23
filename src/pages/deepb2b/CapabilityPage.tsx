@@ -10,6 +10,7 @@ import { SiteLayout } from "@/components/layout/SiteLayout";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { ProvenanceBadge } from "@/components/discovery/ProvenanceBadge";
 import { CompanyDiscoveryExperience } from "@/components/discovery/CompanyDiscoveryExperience";
+import { BrazilOpportunityDemo } from "@/components/discovery/BrazilOpportunityDemo";
 
 interface CapabilityPageProps {
   capability: CapabilityKey;
@@ -18,7 +19,7 @@ interface CapabilityPageProps {
 const SECONDARY_TARGET_BY_CAPABILITY: Record<CapabilityKey, RouteKey> = {
   businessData: "contact",
   marketIntelligence: "solutions",
-  leadGeneration: "pricing",
+  leadGeneration: "solutions",
   industryMapping: "resources",
   brazilMarketEntry: "resources",
 };
@@ -192,6 +193,7 @@ export const CapabilityPage: React.FC<CapabilityPageProps> = ({ capability }) =>
       </section>
 
       {capability === "businessData" && <CompanyDiscoveryExperience showFieldMatrix />}
+      {capability === "brazilMarketEntry" && <BrazilOpportunityDemo />}
     </SiteLayout>
   );
 };

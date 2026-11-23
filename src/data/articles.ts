@@ -22,10 +22,283 @@ export interface EditorialArticle {
   slug: ArticleSlug;
   publishedAt: string;
   updatedAt: string;
+  featuredReport?: boolean;
   localized: Record<Locale, LocalizedArticleContent>;
 }
 
 export const EDITORIAL_ARTICLES: readonly EditorialArticle[] = [
+  {
+    slug: "brazil-industrial-machinery-distribution-report-2026",
+    publishedAt: "2026-11-23",
+    updatedAt: "2026-11-23",
+    featuredReport: true,
+    localized: {
+      en: {
+        title: "Brazil Industrial Machinery & Equipment Distribution — Sector Intelligence Report (2026)",
+        metaTitle: "Brazil Industrial Machinery Distribution Report 2026 | Sources & CNAE Map | DeepB2B",
+        metaDescription:
+          "Structured 2026 sector report on Brazilian industrial machinery buyers, wholesale distributors (CNAE 4663-0/00), regional industrial corridors, and public registry due diligence.",
+        category: "Sector Report · Nov 2026",
+        summary:
+          "An evidence-based map of how foreign machinery manufacturers separate stocking distributors, commission agents, and end-user factories across Brazil's industrial hubs — with full official source attribution.",
+        readingMinutes: 8,
+        sections: [
+          {
+            heading: "Executive Context & Scope",
+            paragraphs: [
+              "Foreign industrial machinery manufacturers (notably from Germany, China, Italy, and the United States) rarely fail in Brazil due to product quality; most stalls occur during partner screening. Standard international directories blur commercial agents, retail hardware resellers, and true B2B technical distributors.",
+              "This 2026 sector briefing documents the official Brazilian classification framework (IBGE/CONCLA CNAE 2.3 and Receita Federal CNPJ) used to map buyers and distribution partners without relying on unverified headcount or private revenue guesses.",
+            ],
+          },
+          {
+            heading: "1. Value Chain Taxonomy: Separating Manufacturers, Distributors & Agents",
+            paragraphs: [
+              "Brazilian tax registries assign primary and secondary 7-digit CNAE codes. For machinery market entry, four distinct layers must be separated cleanly:",
+            ],
+            bullets: [
+              "CNAE Division 28 (e.g., 2822-4, 2869-1): Domestic machinery and equipment manufacturers — useful to identify local competitors or OEM integrators.",
+              "CNAE 4663-0/00 (Comércio atacadista de máquinas e equipamentos para uso industrial; partes e peças): Core wholesale trade classification for stocking industrial machinery distributors and importers.",
+              "CNAE 3314-7 (Manutenção e reparação de máquinas e equipamentos): Industrial maintenance and after-sales engineering — frequently registered as a secondary CNAE by technical channel partners.",
+              "CNAE 4614-1/00 (Representantes comerciais e agentes do comércio de máquinas): Commissioned sales agents who intermediate deals without holding inventory or import licenses.",
+            ],
+          },
+          {
+            heading: "2. Priority Industrial Corridors in Brazil",
+            paragraphs: [
+              "Industrial demand and import distribution infrastructure are heavily concentrated across specific state corridors. Splitting partner outreach by macro-region reflects real logistics and state ICMS tax boundaries:",
+            ],
+            bullets: [
+              "São Paulo Corridor (Capital, Campinas, Sorocaba, Piracicaba, ABC): Primary entry point for national importers, engineering integrators, and multi-sector industrial headquarters.",
+              "Southern Manufacturing Belt (Curitiba/PR, Joinville & Blumenau/SC, Caxias do Sul/RS): Precision metalworking, tooling, agribusiness equipment, plastics, and export-focused plants.",
+              "Minas Gerais Industrial Axis (Belo Horizonte, Contagem, Betim): Heavy industrial maintenance, mining machinery supply chains, and regional distribution.",
+            ],
+          },
+          {
+            heading: "3. Public Registry Due Diligence Before Channel Commitment",
+            paragraphs: [
+              "Before appointing an exclusive distributor or shipping demonstration units, export teams should cross-check four public Brazilian layers:",
+            ],
+            bullets: [
+              "Confirm ATIVA legal status and establishment history (0001 headquarters vs. regional branches) in Receita Federal.",
+              "Review company size tier (EPP / DEMAIS) and Capital Social while remembering Capital Social is declared equity, not annual turnover.",
+              "Inspect QSA (Quadro de Sócios e Administradores) to identify managing partners and multi-company corporate links.",
+              "Screen public federal fiscal signals (PGFN Dívida Ativa) and judicial recovery filings as objective early-warning indicators.",
+            ],
+          },
+          {
+            heading: "4. Methodological Boundaries & Data Limitations",
+            paragraphs: [
+              "In line with DeepB2B governance standards, this report cites only verifiable public structures. Private Brazilian limited companies (Ltda.) do not publish audited annual machinery sales or monthly headcount in open government registries; product-line specialization must be confirmed via public corporate websites or direct commercial qualification.",
+            ],
+          },
+        ],
+        sources: [
+          "IBGE / CONCLA — CNAE 2.3 Official Classification (Divisions 28, 33, 46)",
+          "Receita Federal do Brasil — Cadastro Nacional da Pessoa Jurídica (CNPJ) & QSA",
+          "MDIC / Comex Stat — Brazilian Foreign Trade Methodology (NCM / HS Chapters 84 & 85)",
+          "PGFN — Procuradoria-Geral da Fazenda Nacional (Public Federal Debt Registry)",
+        ],
+      },
+      "pt-br": {
+        title: "Distribuição de Máquinas e Equipamentos Industriais no Brasil — Relatório Setorial (2026)",
+        metaTitle: "Relatório Setorial 2026: Distribuição de Máquinas Industriais no Brasil | DeepB2B",
+        metaDescription:
+          "Relatório técnico com fontes oficiais (IBGE/CNAE, Receita Federal, MDIC/Comex Stat e PGFN) sobre canais de distribuição de máquinas industriais e polos regionais.",
+        category: "Relatório Setorial · Nov 2026",
+        summary:
+          "Mapeamento estruturado da cadeia de máquinas e equipamentos industriais no Brasil: como separar distribuidores atacadistas (CNAE 4663-0/00), representantes comerciais, assistência técnica e indústrias compradoras.",
+        readingMinutes: 8,
+        sections: [
+          {
+            heading: "Contexto e Escopo Metodológico",
+            paragraphs: [
+              "Fabricantes estrangeiros e indústrias nacionais de bens de capital frequentemente enfrentam ruído ao buscar parceiros de canal no Brasil: diretórios genéricos misturam representantes comissionados, lojas varejistas e concorrentes fabris na mesma lista.",
+              "Este relatório setorial documenta a taxonomia oficial brasileira (CNAE 2.3 / CNPJ) e os critérios públicos aplicáveis à qualificação de canais de máquinas industriais, sem utilizar estimativas opacas ou números não auditáveis.",
+            ],
+          },
+          {
+            heading: "1. Arquitetura da Cadeia em Códigos CNAE",
+            paragraphs: [
+              "A separação correta dos elos da cadeia exige combinar CNAE principal e secundário:",
+            ],
+            bullets: [
+              "Divisão 28 (ex.: 2822-4, 2869-1): Fabricação de máquinas e equipamentos — identifica produtores locais e concorrentes diretos.",
+              "CNAE 4663-0/00: Comércio atacadista de máquinas e equipamentos para uso industrial; partes e peças — núcleo dos distribuidores e importadores B2B com estoque.",
+              "CNAE 3314-7: Manutenção e reparação de máquinas industriais — frequentemente presente como CNAE secundário em distribuidores com engenharia de pós-venda.",
+              "CNAE 4614-1/00: Representantes comerciais e agentes — atuam por comissão, sem estoque próprio ou estrutura de importação.",
+            ],
+          },
+          {
+            heading: "2. Polos Industriais Prioritários",
+            paragraphs: [
+              "Custos logísticos e regras estaduais de ICMS tornam recomendável segmentar a prospecção de canais por corredores regionais:",
+            ],
+            bullets: [
+              "Corredor Paulista (Capital, Campinas, Sorocaba, Piracicaba, ABC): principal concentração de sedes importadoras e integradores.",
+              "Cinturão Sul (Curitiba/PR, Joinville e Blumenau/SC, Caxias do Sul/RS): forte densidade em metalmecânica, plásticos, agroindústria e manufatura de precisão.",
+              "Eixo Mineiro (BH, Contagem, Betim): distribuição voltada a mineração, siderurgia e manutenção pesada.",
+            ],
+          },
+          {
+            heading: "3. Diligência Cadastral Antes de Nomear Distribuidores",
+            paragraphs: [
+              "Antes de avançar em negociações comerciais ou exclusividade regional, verifique:",
+            ],
+            bullets: [
+              "Situação cadastral ATIVA, data de abertura e distinção matriz/filial na Receita Federal.",
+              "Porte fiscal (EPP / Demais) e Capital Social (lembrando que Capital Social não equivale a faturamento anual).",
+              "Quadro Societário (QSA) para identificar sócios administradores e vínculos empresariais.",
+              "Sinais públicos na PGFN e registros de recuperação judicial na data da consulta.",
+            ],
+          },
+          {
+            heading: "4. Fontes e Limitações Transparentes",
+            paragraphs: [
+              "Sociedades limitadas fechadas não divulgam faturamento por linha de máquina nem quadro mensal exato de engenheiros em bases públicas abertas. A validação de marcas representadas e portfólio técnico deve combinar dados oficiais com leitura do site corporativo e entrevista comercial.",
+            ],
+          },
+        ],
+        sources: [
+          "IBGE / CONCLA — Classificação Nacional de Atividades Econômicas (CNAE 2.3)",
+          "Receita Federal do Brasil — Cadastro Nacional da Pessoa Jurídica (CNPJ) e QSA",
+          "MDIC / Comex Stat — Metodologia de Comércio Exterior (Capítulos NCM 84 e 85)",
+          "PGFN — Lista Pública de Devedores / Dívida Ativa da União",
+        ],
+      },
+      es: {
+        title: "Distribución de Maquinaria y Equipos Industriales en Brasil — Informe Sectorial (2026)",
+        metaTitle: "Informe Sectorial 2026: Distribución de Maquinaria Industrial en Brasil | DeepB2B",
+        metaDescription:
+          "Informe estructurado con fuentes oficiales (IBGE/CNAE, Receita Federal, MDIC/Comex Stat y PGFN) sobre canales de distribución de maquinaria industrial y polos regionales en Brasil.",
+        category: "Informe Sectorial · Nov 2026",
+        summary:
+          "Mapa basado en registros oficiales de cómo los fabricantes internacionales separan distribuidores mayoristas (CNAE 4663-0/00), agentes comisionistas y plantas compradoras en los corredores industriales de Brasil.",
+        readingMinutes: 8,
+        sections: [
+          {
+            heading: "Contexto Ejecutivo y Alcance Metodológico",
+            paragraphs: [
+              "Los fabricantes extranjeros de maquinaria industrial que buscan expandirse hacia Brasil rara vez tropiezan por competitividad de producto; el cuello de botella suele estar en la selección de socios locales. Los directorios genéricos mezclan agentes comerciales, ferreterías minoristas y competidores industriales en una misma lista.",
+              "Este informe técnico documenta la taxonomía oficial brasileña (IBGE/CONCLA CNAE 2.3 y CNPJ) utilizada para identificar compradores finales y distribuidores mayoristas sin inventar cifras de facturación privada ni dotación de personal no publicada.",
+            ],
+          },
+          {
+            heading: "1. Arquitectura de la Cadena en Códigos CNAE",
+            paragraphs: [
+              "Para mapear correctamente el ecosistema industrial de maquinaria, es indispensable separar cuatro eslabones mediante CNAE principal y secundario:",
+            ],
+            bullets: [
+              "División 28 (ej. 2822-4, 2869-1): Fabricantes locales de maquinaria y equipos — permite identificar competidores nacionales o integradores OEM.",
+              "CNAE 4663-0/00: Comercio mayorista de maquinaria y equipos para uso industrial; partes y piezas — núcleo de distribuidores e importadores B2B con inventario.",
+              "CNAE 3314-7: Mantenimiento y reparación de maquinaria industrial — frecuente como CNAE secundario en socios técnicos con servicio posventa.",
+              "CNAE 4614-1/00: Representantes comerciales y agentes — intermedian pedidos por comisión sin inventario ni estructura de importación.",
+            ],
+          },
+          {
+            heading: "2. Corredores Industriales Prioritarios en Brasil",
+            paragraphs: [
+              "La logística continental y la tributación estatal (ICMS) hacen recomendable segmentar la cobertura por regiones:",
+            ],
+            bullets: [
+              "Corredor de São Paulo (Capital, Campinas, Sorocaba, Piracicaba, ABC): principal polo de importadores nacionales, integradores y sedes corporativas.",
+              "Cinturón Industrial del Sur (Curitiba/PR, Joinville y Blumenau/SC, Caxias do Sul/RS): metalmecánica de precisión, plásticos, maquinaria agroindustrial y plantas exportadoras.",
+              "Eje de Minas Gerais (Belo Horizonte, Contagem, Betim): maquinaria para minería, mantenimiento industrial pesado y distribución regional.",
+            ],
+          },
+          {
+            heading: "3. Debida Diligencia Registral Previa al Acuerdo",
+            paragraphs: [
+              "Antes de designar un distribuidor exclusivo o enviar equipos de demostración, conviene revisar cuatro capas públicas oficiales:",
+            ],
+            bullets: [
+              "Confirmar estado registral ATIVA, año de fundación y relación matriz/sucursal (0001 vs. 0002) en Receita Federal.",
+              "Revisar tamaño fiscal (EPP / Demais) y Capital Social, recordando que el capital declarado en estatutos no equivale a ventas anuales.",
+              "Consultar el QSA (Cuadro de Socios y Administradores) para identificar a los socios gestores y grupos vinculados.",
+              "Verificar señales fiscales públicas en PGFN y registros públicos de recuperación judicial en la fecha de consulta.",
+            ],
+          },
+          {
+            heading: "4. Límites Transparentes de las Fuentes Públicas",
+            paragraphs: [
+              "Las sociedades limitadas brasileñas (Ltda.) de capital cerrado no divulgan ingresos auditados por línea de maquinaria ni nómina mensual en registros abiertos. La especialización técnica y marcas representadas deben confirmarse mediante sitios web corporativos y contacto comercial directo.",
+            ],
+          },
+        ],
+        sources: [
+          "IBGE / CONCLA — Clasificación Oficial CNAE 2.3 (Divisiones 28, 33, 46)",
+          "Receita Federal do Brasil — Cadastro Nacional da Pessoa Jurídica (CNPJ) y QSA",
+          "MDIC / Comex Stat — Metodología de Comercio Exterior (Capítulos NCM 84 y 85)",
+          "PGFN — Registro Público de Deuda Activa de la Unión",
+        ],
+      },
+      "zh-cn": {
+        title: "巴西工业机械与设备分销渠道深度行业报告（2026）",
+        metaTitle: "2026 巴西工业机械与设备分销渠道行业报告 | DeepB2B",
+        metaDescription:
+          "基于巴西 IBGE CNAE 分类、联邦税务局 CNPJ、MDIC 外贸架构与 PGFN 官方来源编写的 2026 巴西工业设备渠道调研实务报告。",
+        category: "行业报告 · 2026年11月",
+        summary:
+          "系统拆解中国及海外工业机械制造商如何区分巴西本地工厂、备货型进口批发商（CNAE 4663-0/00）、售后工程商与纯佣金代理，并附上重点工业走廊与合规尽调框架。",
+        readingMinutes: 8,
+        sections: [
+          {
+            heading: "研究背景与编写原则",
+            paragraphs: [
+              "来自中国、德国、意大利和美国的工业设备制造商在进入巴西时，最常见的瓶颈并非产品性价比，而是难以在初期区分“具备清关与售后能力的专业经销商”与“仅做撮合的个人商业代表或小型五金零售店”。",
+              "本报告立足巴西官方公开分类体系（IBGE/CONCLA CNAE 2.3 与联邦税务局 CNPJ），坚持不编造任何未经审计的私营企业营收或员工人数估算。",
+            ],
+          },
+          {
+            heading: "一、巴西工业设备产业链的四个关键 CNAE 层级",
+            paragraphs: [
+              "在筛选潜在经销商或下游客户时，必须结合主营与兼营 7 位 CNAE 编码进行精准分层：",
+            ],
+            bullets: [
+              "第 28 大类（如 2822-4、2869-1）：巴西本土机械设备制造厂——可用于识别本地同业竞争者或 OEM 集成伙伴。",
+              "CNAE 4663-0/00（工业用机械、设备及零配件批发贸易）：核心目标编码，对应具备贸易主体资格的工业设备经销商与进口批发商。",
+              "CNAE 3314-7（工业机械维修与保养工程）：优质设备经销商常将其作为兼营编码登记，体现其具备本地售后技术团队。",
+              "CNAE 4614-1/00（机械设备商业代表及代理）：通常仅按佣金撮合订单，不承担库存或自主进口清关。",
+            ],
+          },
+          {
+            heading: "二、巴西重点工业走廊分布",
+            paragraphs: [
+              "受各州流转税（ICMS）与内陆物流半径制约，建议按区域布局多点渠道：",
+            ],
+            bullets: [
+              "圣保罗工业走廊（圣保罗市、坎皮纳斯、索罗卡巴、ABC 工业区）：全国设备进口商总部与大型自动化集成商最密集的核心地带。",
+              "南部制造带（库里蒂巴/PR、若因维利与布卢梅瑙/SC、南卡希亚斯/RS）：精密金属加工、农机、塑料包装机械及出口工厂重镇。",
+              "米纳斯吉拉斯州轴线（贝洛奥里藏特、孔塔任）：聚焦矿业装备、重工维护与冶金产业链配套渠道。",
+            ],
+          },
+          {
+            heading: "三、签署代理或寄送样机前的官方尽调清单",
+            paragraphs: [
+              "在开展深度商务谈判前，建议依托巴西官方公开信息完成四项基础排查：",
+            ],
+            bullets: [
+              "核实联邦税务局在营状态（ATIVA）、成立年限及总公司/分公司关系（0001 vs 0002）。",
+              "查看企业规模分类（EPP / DEMAIS）与注册资本（注意：章程注册资本不等同于年销售额）。",
+              "查阅 QSA 法定股东与管理人架构，确认实际控制人与关联公司背景。",
+              "检索 PGFN 联邦公共欠税及司法重整记录作为早期风险提示。",
+            ],
+          },
+          {
+            heading: "四、数据来源与公开边界声明",
+            paragraphs: [
+              "根据巴西法律，非上市有限责任公司（Ltda.）无需公开具体设备品类的年度销售额或月度在职人数。因此，评估经销商实际代理品牌与工程实力时，应将官方注册基座与企业官网核验及商务沟通相结合。",
+            ],
+          },
+        ],
+        sources: [
+          "IBGE / CONCLA — CNAE 2.3 官方经济活动分类（第 28、33、46 类）",
+          "巴西联邦税务局 (Receita Federal) — CNPJ 注册架构与 QSA 股东公开规范",
+          "MDIC / Comex Stat — 巴西外贸统计方法论（NCM 第 84、85 章机电设备）",
+          "PGFN — 巴西国家财政总署公开联邦欠税名录",
+        ],
+      },
+    },
+  },
   {
     slug: "how-to-find-distributors-in-brazil",
     publishedAt: "2026-11-10",
@@ -123,6 +396,53 @@ export const EDITORIAL_ARTICLES: readonly EditorialArticle[] = [
           "Receita Federal do Brasil — Dados Públicos do CNPJ",
           "IBGE / CONCLA — Estrutura Oficial CNAE",
           "PGFN — Regularidade Fiscal Pública",
+        ],
+      },
+      es: {
+        title: "Cómo Encontrar Distribuidores en Brasil",
+        metaTitle: "Cómo Encontrar Distribuidores en Brasil por CNAE y Región | DeepB2B",
+        metaDescription:
+          "Guía práctica para fabricantes y exportadores latinoamericanos y globales que buscan distribuidores mayoristas reales en Brasil usando códigos CNAE.",
+        category: "Entrada a Brasil",
+        summary:
+          "Por qué las búsquedas genéricas mezclan minoristas y fábricas en Brasil, y cómo los códigos CNAE mayoristas, filtros regionales y revisión QSA resuelven la selección de canales.",
+        readingMinutes: 6,
+        sections: [
+          {
+            heading: "Por qué buscar distribuidores en Brasil exige lógica registral local",
+            paragraphs: [
+              "Quienes buscan distribuidores en Brasil desde el exterior suelen iniciar con búsquedas en inglés o español. Sin embargo, gran parte de los distribuidores regionales brasileños publican sus catálogos exclusivamente en portugués.",
+              "Además, los listados genéricos mezclan comercios minoristas, agentes independientes y fabricantes competidores. Aplicar la taxonomía fiscal brasileña elimina ese ruido desde el inicio.",
+            ],
+          },
+          {
+            heading: "1. Aísle el comercio mayorista mediante la División 46 del CNAE",
+            paragraphs: [
+              "Toda empresa formal en Brasil registra códigos CNAE (Clasificación Nacional de Actividades Económicas). El comercio mayorista se agrupa en la División 46, la manufactura en las Divisiones 10–33 y el comercio minorista en la División 47.",
+            ],
+            bullets: [
+              "Filtre por códigos de la División 46 alineados con su equipo, insumo industrial o línea de consumo.",
+              "Incluya CNAEs secundarios cuando los importadores combinen distribución mayorista con servicio técnico.",
+              "Excluya CNAEs de fabricación directa cuando busque socios de canal y no competidores.",
+            ],
+          },
+          {
+            heading: "2. Segmente por macrorregión en lugar de tratar Brasil como un solo punto",
+            paragraphs: [
+              "Las distancias continentales y los impuestos estatales (ICMS) hacen que pocos distribuidores cubran todo el país de manera uniforme. Estructure listas separadas para Sudeste (SP, MG, RJ), Sur (PR, SC, RS) y Nordeste (BA, PE, CE).",
+            ],
+          },
+          {
+            heading: "3. Verifique vigencia registral y QSA antes de contactar",
+            paragraphs: [
+              "Confirme estado ATIVA en Receita Federal, revise antigüedad, tamaño empresarial (Porte) y socios administradores (QSA) antes de enviar listas de precios o condiciones comerciales.",
+            ],
+          },
+        ],
+        sources: [
+          "Receita Federal do Brasil — Datos Públicos de CNPJ",
+          "IBGE / CONCLA — Estructura Oficial CNAE",
+          "PGFN — Consulta Pública de Deuda Activa",
         ],
       },
       "zh-cn": {
@@ -270,6 +590,51 @@ export const EDITORIAL_ARTICLES: readonly EditorialArticle[] = [
           "Portal Redesim — Governo Federal",
         ],
       },
+      es: {
+        title: "Entendiendo los Datos del CNPJ Brasileño",
+        metaTitle: "Entendiendo los Datos del CNPJ Brasileño: Matriz, Porte y QSA | DeepB2B",
+        metaDescription:
+          "Guía completa sobre el registro fiscal CNPJ de 14 dígitos en Brasil: diferencia entre matriz y sucursal, Razão Social, tamaño Porte, QSA y estado registral.",
+        category: "Datos Empresariales",
+        summary:
+          "Todo lo que un equipo internacional necesita saber para interpretar un registro CNPJ brasileño sin errores conceptuales.",
+        readingMinutes: 5,
+        sections: [
+          {
+            heading: "Anatomía de los 14 dígitos del CNPJ",
+            paragraphs: [
+              "El CNPJ es el registro tributario obligatorio emitido por Receita Federal para toda entidad y establecimiento físico en Brasil:",
+            ],
+            bullets: [
+              "Primeros 8 dígitos (CNPJ Básico): identifican al grupo empresarial raíz.",
+              "Dígitos 9 al 12 (Orden): '0001' corresponde a la casa matriz (Matriz); '0002', '0003', etc., identifican sucursales, plantas o centros de distribución (Filiais).",
+              "Últimos 2 dígitos: dígitos verificadores.",
+            ],
+          },
+          {
+            heading: "Campos clave en la calificación B2B",
+            paragraphs: [
+              "Interpretar correctamente el registro evita descartar industrias relevantes o contactar empresas inactivas:",
+            ],
+            bullets: [
+              "Razão Social vs. Nome Fantasia: muchas industrias tradicionales no completan el nombre comercial (Nome Fantasia) en el registro fiscal.",
+              "Situação Cadastral: filtre siempre por ATIVA para prospección y evaluación de socios.",
+              "Porte (ME, EPP, Demais): clasificación fiscal oficial según régimen tributario.",
+              "QSA (Quadro de Sócios e Administradores): socios y administradores legales registrados ante Receita Federal.",
+            ],
+          },
+          {
+            heading: "Precaución al interpretar el Capital Social",
+            paragraphs: [
+              "El Capital Social declarado en los estatutos no equivale a la facturación anual ni al flujo de caja operativo de la empresa.",
+            ],
+          },
+        ],
+        sources: [
+          "Receita Federal do Brasil — Instrucción Normativa CNPJ",
+          "Portal Nacional Redesim — Estructura Registral",
+        ],
+      },
       "zh-cn": {
         title: "全面解析巴西 CNPJ 企业注册数据",
         metaTitle: "巴西 CNPJ 税号与企业注册档案详解：总分公司、规模与 QSA | DeepB2B",
@@ -402,6 +767,46 @@ export const EDITORIAL_ARTICLES: readonly EditorialArticle[] = [
           "Receita Federal do Brasil — Classificação Fiscal",
         ],
       },
+      es: {
+        title: "Sectores Económicos Brasileños y CNAE Explicados",
+        metaTitle: "Sectores Económicos de Brasil y Estructura CNAE Explicados | DeepB2B",
+        metaDescription:
+          "Cómo la jerarquía oficial de 7 dígitos del CNAE organiza manufactura, comercio mayorista, logística y servicios en Brasil.",
+        category: "Mapeo Sectorial",
+        summary:
+          "Cómo leer los niveles del CNAE y combinar actividades principales y secundarias para segmentar con precisión el mercado brasileño.",
+        readingMinutes: 5,
+        sections: [
+          {
+            heading: "Cómo funciona la jerarquía CNAE de 5 niveles",
+            paragraphs: [
+              "Administrada por el IBGE y CONCLA, la tabla CNAE organiza cada actividad económica brasileña en Sección, División (2 dígitos), Grupo (3 dígitos), Clase (5 dígitos) y Subclase (7 dígitos).",
+            ],
+          },
+          {
+            heading: "CNAE Principal vs. Secundarios en la segmentación",
+            paragraphs: [
+              "Las empresas en Brasil registran un CNAE principal y pueden declarar múltiples CNAEs secundarios. Muchos importadores medianos registran mantenimiento o distribución como actividad secundaria.",
+            ],
+            bullets: [
+              "Divisiones 10 a 33: Industrias manufactureras (alimentos, empaques, metalmecánica, maquinaria).",
+              "División 46: Comercio mayorista y distribuidores B2B.",
+              "División 47: Comercio minorista.",
+              "Divisiones 49 a 53: Transporte de carga, almacenamiento y logística.",
+            ],
+          },
+          {
+            heading: "IA transparente para traducir su oferta a CNAE",
+            paragraphs: [
+              "DeepB2B traduce su descripción comercial en español a los grupos CNAE compatibles mostrando exactamente qué códigos se aplican en cada filtro.",
+            ],
+          },
+        ],
+        sources: [
+          "IBGE / CONCLA — Tabla Oficial CNAE 2.3",
+          "Receita Federal do Brasil — Vinculación CNAE en CNPJ",
+        ],
+      },
       "zh-cn": {
         title: "巴西主要行业格局与 CNAE 行业分类指南",
         metaTitle: "巴西行业分类（CNAE）与产业链划分详解 | DeepB2B",
@@ -525,6 +930,45 @@ export const EDITORIAL_ARTICLES: readonly EditorialArticle[] = [
         sources: [
           "Receita Federal do Brasil — Estrutura Pública CNPJ",
           "IBGE — Classificações Econômicas Regionais",
+        ],
+      },
+      es: {
+        title: "Cómo las Empresas Extranjeras Investigan el Mercado Brasileño",
+        metaTitle: "Cómo Investigar el Mercado B2B de Brasil desde el Exterior | DeepB2B",
+        metaDescription:
+          "Guía práctica para equipos de exportación y consultoras de América Latina y el mundo que evalúan Brasil sin presencia local.",
+        category: "Entrada a Brasil",
+        summary:
+          "Realidades operativas que los directorios globales omiten sobre Brasil y cómo estructurar una investigación de canales en cuatro pasos.",
+        readingMinutes: 6,
+        sections: [
+          {
+            heading: "Barreras prácticas al investigar Brasil desde el exterior",
+            paragraphs: [
+              "Los directorios internacionales tradicionales suelen sobre-representar multinacionales con presencia en inglés, dejando fuera a miles de industrias medianas y distribuidores regionales sólidos en Brasil.",
+            ],
+            bullets: [
+              "La documentación registral, códigos CNAE y sitios web corporativos operan principalmente en portugués.",
+              "La densidad industrial se concentra en corredores estatales específicos (Sudeste y Sur) junto a polos especializados como Manaos o el agro en el Centro-Oeste.",
+              "Es clave distinguir entre 'representante comercial' (comisionista sin stock) y distribuidor importador.",
+            ],
+          },
+          {
+            heading: "Flujo recomendado en 4 etapas",
+            paragraphs: [
+              "Antes de programar viajes comerciales o ferias en São Paulo, estructure la investigación en cuatro capas:",
+            ],
+            bullets: [
+              "Traduzca su portafolio a códigos CNAE de producción o comercio mayorista.",
+              "Segmente por macrorregión y tamaño empresarial.",
+              "Confirme estado activo e historial societario (QSA).",
+              "Contraste sitios web corporativos antes de iniciar el contacto.",
+            ],
+          },
+        ],
+        sources: [
+          "Receita Federal do Brasil — Estructura Pública CNPJ",
+          "IBGE — Clasificaciones Económicas Regionales",
         ],
       },
       "zh-cn": {
@@ -654,6 +1098,47 @@ export const EDITORIAL_ARTICLES: readonly EditorialArticle[] = [
           "Receita Federal do Brasil — Base Pública CNPJ",
           "PGFN — Dívida Ativa da União",
           "Presidência da República — Lei nº 13.709/2018 (LGPD)",
+        ],
+      },
+      es: {
+        title: "Datos Empresariales en Brasil: Fuentes y Limitaciones",
+        metaTitle: "Datos Empresariales de Brasil: Fuentes Oficiales, LGPD y Límites | DeepB2B",
+        metaDescription:
+          "Explicación técnica honesta sobre qué divulgan los registros públicos brasileños (CNPJ, CNAE, QSA, PGFN) y qué datos privados no son públicos.",
+        category: "Gobernanza de Datos",
+        summary:
+          "Por qué la inteligencia empresarial confiable exige trazar límites claros entre registros oficiales, presencia web e inferencias de IA.",
+        readingMinutes: 5,
+        sections: [
+          {
+            heading: "Qué informan realmente las fuentes públicas brasileñas",
+            paragraphs: [
+              "Brasil cuenta con una sólida estructura pública de transparencia corporativa centrada en Receita Federal y PGFN:",
+            ],
+            bullets: [
+              "Receita Federal: CNPJ, Razão Social, Nome Fantasia, dirección, fecha de constitución, estado registral (ATIVA/BAIXADA), CNAEs, Porte, Capital Social y QSA.",
+              "PGFN: inscripciones públicas en deuda activa federal de la Unión.",
+              "Registros notariales (bajo solicitud): consultas de protestos.",
+            ],
+          },
+          {
+            heading: "Qué NO es público en sociedades privadas cerradas",
+            paragraphs: [
+              "Las sociedades limitadas cerradas (Ltda.) en Brasil no publican facturación mensual auditada ni nómina exacta de empleados en bases gubernamentales abiertas. Cualquier plataforma que muestre esas cifras como exactas presenta estimaciones estadísticas, no registros oficiales.",
+              "En DeepB2B nunca presentamos inferencias de IA como hechos oficiales.",
+            ],
+          },
+          {
+            heading: "Transparencia y cumplimiento LGPD",
+            paragraphs: [
+              "Los datos registrales de personas jurídicas son públicos; los datos de contacto ejecutivo se tratan exclusivamente para prospección B2B legítima bajo la Ley Nº 13.709/2018 (LGPD), con canal gratuito de revisión y exclusión (opt-out).",
+            ],
+          },
+        ],
+        sources: [
+          "Receita Federal do Brasil — Datos Abiertos CNPJ",
+          "PGFN — Registro Público de Deudores",
+          "Presidencia de la República — Ley Nº 13.709/2018 (LGPD)",
         ],
       },
       "zh-cn": {

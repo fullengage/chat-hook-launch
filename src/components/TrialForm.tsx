@@ -109,11 +109,11 @@ const TrialForm = () => {
     <div className="p-1">
       <div className="mb-6 relative">
         <div className="bg-primary/15 text-primary text-[10px] font-black px-3 py-1 rounded-full w-fit mb-4 uppercase tracking-wider border border-primary/25">
-           7 Dias Grátis • 20 Créditos • Sem Cartão
+           7 Dias Grátis • Sem Cartão de Crédito
         </div>
         <h3 className="text-3xl font-black text-foreground mb-3 tracking-tighter italic">Liberar meu <span className="text-primary">Acesso Grátis</span></h3>
         <p className="text-sm text-slate-200 leading-relaxed font-semibold">
-          Crie sua conta gratuita e receba <span className="text-primary font-bold">20 créditos por 7 dias</span> para analisar até 10 empresas (contato + sinais financeiros) ou 4 empresas com enriquecimento completo por IA.
+          Crie sua conta gratuita por <span className="text-primary font-bold">7 dias</span> para analisar empresas compatíveis, acessar contatos, sinais financeiros e enriquecimento por IA. Os detalhes de planos e consumo ficam disponíveis dentro da plataforma.
         </p>
       </div>
 

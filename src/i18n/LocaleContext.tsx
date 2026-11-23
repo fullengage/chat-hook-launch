@@ -56,7 +56,7 @@ export const LocaleProvider: React.FC<LocaleProviderProps> = ({
     }
 
     const stored = window.localStorage.getItem(LOCALE_STORAGE_KEY) as Locale | null;
-    if (stored && (stored === "en" || stored === "pt-br" || stored === "zh-cn")) {
+    if (stored && (stored === "en" || stored === "pt-br" || stored === "es" || stored === "zh-cn")) {
       if (stored !== "en") {
         setSuggestedBrowserLocale(stored);
       }
@@ -66,6 +66,8 @@ export const LocaleProvider: React.FC<LocaleProviderProps> = ({
     const navLang = (window.navigator.language || "").toLowerCase();
     if (navLang.startsWith("pt")) {
       setSuggestedBrowserLocale("pt-br");
+    } else if (navLang.startsWith("es")) {
+      setSuggestedBrowserLocale("es");
     } else if (navLang.startsWith("zh")) {
       setSuggestedBrowserLocale("zh-cn");
     }

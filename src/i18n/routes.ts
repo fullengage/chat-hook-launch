@@ -2,7 +2,7 @@ import type { Locale, RouteKey } from "./types";
 
 export const SITE_ORIGIN = "https://deepb2b.ai";
 
-export const SUPPORTED_LOCALES: readonly Locale[] = ["en", "pt-br", "zh-cn"] as const;
+export const SUPPORTED_LOCALES: readonly Locale[] = ["en", "pt-br", "es", "zh-cn"] as const;
 
 export const DEFAULT_LOCALE: Locale = "en";
 
@@ -15,7 +15,6 @@ export const ROUTES_BY_LOCALE: Record<Locale, Record<RouteKey, string>> = {
     industryMapping: "/en/industry-mapping",
     brazilMarketEntry: "/en/brazil-market-entry",
     solutions: "/en/solutions",
-    pricing: "/en/pricing",
     resources: "/en/resources",
     about: "/en/about",
     contact: "/en/contact",
@@ -33,7 +32,6 @@ export const ROUTES_BY_LOCALE: Record<Locale, Record<RouteKey, string>> = {
     industryMapping: "/pt-br/mapeamento-setorial",
     brazilMarketEntry: "/pt-br/entrada-no-mercado-brasileiro",
     solutions: "/pt-br/solucoes",
-    pricing: "/pt-br/planos",
     resources: "/pt-br/conteudos",
     about: "/pt-br/sobre",
     contact: "/pt-br/contato",
@@ -43,6 +41,23 @@ export const ROUTES_BY_LOCALE: Record<Locale, Record<RouteKey, string>> = {
     lgpd: "/pt-br/lgpd",
     dataDeletion: "/pt-br/exclusao-de-dados",
   },
+  es: {
+    home: "/es",
+    businessData: "/es/datos-empresariales",
+    marketIntelligence: "/es/inteligencia-de-mercado",
+    leadGeneration: "/es/generacion-de-leads",
+    industryMapping: "/es/mapeo-sectorial",
+    brazilMarketEntry: "/es/entrada-al-mercado-brasileno",
+    solutions: "/es/soluciones",
+    resources: "/es/recursos",
+    about: "/es/nosotros",
+    contact: "/es/contacto",
+    login: "/es/acceso",
+    privacy: "/es/privacidad",
+    terms: "/es/terminos-de-uso",
+    lgpd: "/es/lgpd",
+    dataDeletion: "/es/eliminacion-de-datos",
+  },
   "zh-cn": {
     home: "/zh-cn",
     businessData: "/zh-cn/business-data",
@@ -51,7 +66,6 @@ export const ROUTES_BY_LOCALE: Record<Locale, Record<RouteKey, string>> = {
     industryMapping: "/zh-cn/industry-mapping",
     brazilMarketEntry: "/zh-cn/brazil-market-entry",
     solutions: "/zh-cn/solutions",
-    pricing: "/zh-cn/pricing",
     resources: "/zh-cn/resources",
     about: "/zh-cn/about",
     contact: "/zh-cn/contact",
@@ -63,13 +77,15 @@ export const ROUTES_BY_LOCALE: Record<Locale, Record<RouteKey, string>> = {
   },
 };
 
-export const HREFLANG_BY_LOCALE: Record<Locale, "en" | "pt-BR" | "zh-CN"> = {
+export const HREFLANG_BY_LOCALE: Record<Locale, "en" | "pt-BR" | "es" | "zh-CN"> = {
   en: "en",
   "pt-br": "pt-BR",
+  es: "es",
   "zh-cn": "zh-CN",
 };
 
 export const ARTICLE_SLUGS = [
+  "brazil-industrial-machinery-distribution-report-2026",
   "how-to-find-distributors-in-brazil",
   "understanding-brazilian-cnpj-data",
   "brazilian-business-sectors-explained",
@@ -87,6 +103,7 @@ export function normalizePathname(pathname: string): string {
 export function detectLocaleFromPath(pathname: string): Locale {
   const norm = normalizePathname(pathname).toLowerCase();
   if (norm === "/pt-br" || norm.startsWith("/pt-br/")) return "pt-br";
+  if (norm === "/es" || norm.startsWith("/es/")) return "es";
   if (norm === "/zh-cn" || norm.startsWith("/zh-cn/")) return "zh-cn";
   if (
     norm === "/teste-gratis" ||
@@ -148,8 +165,8 @@ export function resolveAlternatePath(currentPathname: string, targetLocale: Loca
 
 export function getAlternateLinks(
   currentPathname: string,
-): { hreflang: "en" | "pt-BR" | "zh-CN" | "x-default"; href: string }[] {
-  const links: { hreflang: "en" | "pt-BR" | "zh-CN" | "x-default"; href: string }[] =
+): { hreflang: "en" | "pt-BR" | "es" | "zh-CN" | "x-default"; href: string }[] {
+  const links: { hreflang: "en" | "pt-BR" | "es" | "zh-CN" | "x-default"; href: string }[] =
     SUPPORTED_LOCALES.map((loc) => ({
       hreflang: HREFLANG_BY_LOCALE[loc],
       href: `${SITE_ORIGIN}${resolveAlternatePath(currentPathname, loc)}`,

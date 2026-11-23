@@ -10,12 +10,14 @@ import { cn } from "@/lib/utils";
 const LOCALE_SHORT_LABELS: Record<Locale, string> = {
   en: "EN",
   "pt-br": "PT-BR",
+  es: "ES",
   "zh-cn": "中文",
 };
 
 const LOCALE_ARIA_LABELS: Record<Locale, string> = {
   en: "English",
   "pt-br": "Português (Brasil)",
+  es: "Español",
   "zh-cn": "简体中文",
 };
 

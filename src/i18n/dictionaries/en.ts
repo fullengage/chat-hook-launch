@@ -10,7 +10,7 @@ export const enDictionary: TranslationDictionary = {
   brand: {
     name: "DeepB2B",
     tagline: "Brazil's Business Intelligence, Powered by AI.",
-    subtitle: "BRAZIL BUSINESS INTELLIGENCE",
+    subtitle: "BRAZIL BUSINESS DATA & MARKET INTELLIGENCE",
     valueProposition:
       "Discover Brazilian companies, understand industries, identify potential business partners and uncover commercial opportunities with AI-powered business intelligence.",
     legacyEntityNotice:
@@ -48,14 +48,9 @@ export const enDictionary: TranslationDictionary = {
         "Research Brazilian distributors, importers, local partners, and regional market structures before committing expansion capital.",
     },
     solutions: {
-      title: "Solutions by Team & Market Role | DeepB2B",
+      title: "Solutions — Brazil Business Data & Market Intelligence | DeepB2B",
       description:
-        "Tailored Brazilian business intelligence workflows for foreign manufacturers, exporters, market entry consultancies, technology vendors, and international sales teams.",
-    },
-    pricing: {
-      title: "Pricing & Credit Transparency | DeepB2B",
-      description:
-        "Transparent credit-based pricing for Brazilian business data, financial signals, and AI enrichment, plus custom Enterprise plans for global teams.",
+        "Explore DeepB2B solutions: Business Data, Market Intelligence, Lead Generation, Industry Mapping, Brazil Market Entry, and Enterprise Solutions.",
     },
     resources: {
       title: "Brazil Market & CNPJ Intelligence Guides | DeepB2B",
@@ -111,7 +106,6 @@ export const enDictionary: TranslationDictionary = {
     industryMapping: "Industry Mapping",
     brazilMarketEntry: "Brazil Market Entry",
     solutions: "Solutions",
-    pricing: "Pricing",
     resources: "Resources",
     about: "About",
     contact: "Contact",
@@ -466,16 +460,70 @@ export const enDictionary: TranslationDictionary = {
     },
   },
   solutions: {
-    eyebrow: "Solutions by Organization",
-    h1: "Built for every team researching or selling into Brazil",
-    lead: "Select the workflow tailored to your commercial role, whether you are entering Brazil from abroad or running an established local sales operation.",
+    eyebrow: "DeepB2B Solutions",
+    h1: "Brazil Business Data & Market Intelligence Solutions",
+    lead: "Modular intelligence designed to help international organizations and Brazilian commercial teams understand Brazil, map value chains, and identify qualified buyers, distributors, and suppliers.",
+    suiteTitle: "Core Platform & Enterprise Capabilities",
+    suiteSubtitle: "Explore each intelligence capability or request a tailored demonstration with our team.",
+    suiteCtaLabel: "Explore capability",
+    modules: [
+      {
+        key: "businessData",
+        badge: "Official Registries",
+        title: "Business Data",
+        description: "Structured Brazilian company profiles (CNPJ, CNAE, size, status, and QSA ownership) with transparent source and date.",
+        highlights: ["Receita Federal & PGFN official foundations", "State, municipality & corporate size filters", "Strict provenance separation"],
+        routeKey: "businessData",
+      },
+      {
+        key: "marketIntelligence",
+        badge: "Sector Insights",
+        title: "Market Intelligence",
+        description: "Analyze Brazilian sector density, regional hubs, and buyer profiles with AI-assisted market discovery.",
+        highlights: ["AI-assisted ICP modeling from your website", "Opportunity radar across Brazilian states", "Lookalike company identification"],
+        routeKey: "marketIntelligence",
+      },
+      {
+        key: "leadGeneration",
+        badge: "B2B Qualification",
+        title: "Lead Generation",
+        description: "Prioritized Brazilian prospect queues ranked by ICP compatibility, corporate context, and built-in pipeline tracking.",
+        highlights: ["0–100 explainable ICP fit scoring", "On-demand decision-maker verification", "Integrated Kanban funnel & CSV/Excel export"],
+        routeKey: "leadGeneration",
+      },
+      {
+        key: "industryMapping",
+        badge: "Supply Chains",
+        title: "Industry Mapping",
+        description: "Separate manufacturers, importers, wholesale distributors, and retailers across Brazil via official 7-digit CNAE codes.",
+        highlights: ["Value-chain layer isolation", "Competitor CNAE exclusion", "Regional industrial corridor mapping"],
+        routeKey: "industryMapping",
+      },
+      {
+        key: "brazilMarketEntry",
+        badge: "Global Expansion",
+        title: "Brazil Market Entry",
+        description: "Decision-ready intelligence for foreign exporters, manufacturers, and advisors entering or expanding in Brazil.",
+        highlights: ["Distributor & importer shortlists by state", "Counterparty registration due diligence", "Multilingual desk (EN / PT-BR / ES / ZH-CN)"],
+        routeKey: "brazilMarketEntry",
+      },
+      {
+        key: "enterprise",
+        badge: "Tailored Scope",
+        title: "Enterprise Solutions",
+        description: "Custom workspace deployments, guided market-entry workshops, and international onboarding for teams without a Brazilian CNPJ.",
+        highlights: ["Dedicated onboarding & sector mapping", "Multi-seat team governance", "Cross-border LGPD documentation"],
+        routeKey: "contact",
+      },
+    ],
+    segmentsTitle: "Solutions by Team & Market Role",
     segments: [
       {
         audience: "Foreign Manufacturers & Exporters",
         badge: "International",
         challenge: "Finding reliable Brazilian distributors and industrial buyers without local contacts or Portuguese-only registry expertise.",
         howDeepB2BHelps: "Translates product descriptions into Brazilian CNAE targets, filters active wholesalers/importers, and surfaces public corporate context.",
-        deliverables: ["Distributor shortlists by state", "Active status & QSA visibility", "Guided bilingual demo"],
+        deliverables: ["Distributor shortlists by state", "Active status & QSA visibility", "Guided multilingual demo"],
       },
       {
         audience: "Market Entry Consultancies & Trade Advisors",
@@ -488,7 +536,7 @@ export const enDictionary: TranslationDictionary = {
         audience: "B2B Technology & Enterprise Sales Teams",
         badge: "Commercial",
         challenge: "Generic lead lists lack fit context, decision-maker visibility, or public financial health signals.",
-        howDeepB2BHelps: "Combines AI ICP scoring with on-demand contact enrichment, LinkedIn decision-makers, and Kanban pipeline tracking.",
+        howDeepB2BHelps: "Combines AI ICP scoring with on-demand contact enrichment, decision-makers, and Kanban pipeline tracking.",
         deliverables: ["0–100 ICP fit rationale", "Decision-maker & channel lookup", "Receita & PGFN public signals"],
       },
       {
@@ -499,71 +547,35 @@ export const enDictionary: TranslationDictionary = {
         deliverables: ["Sector & size segmentation", "Corporate partner structure (QSA)", "Custom consultation support"],
       },
     ],
-    ctaTitle: "See how DeepB2B fits your team's workflow",
-    ctaSubtitle: "Book a live walkthrough focused on your target industry and Brazilian regions.",
-  },
-  pricing: {
-    eyebrow: "Transparent Pricing & Credit Model",
-    h1: "Clear credit governance — zero hidden fees",
-    lead: "DeepB2B operates on a transparent credit model: every action displays its exact credit cost before execution, and empty contact lookups are never billed.",
-    currencyNotice:
-      "Self-service subscription billing currently operates in Brazilian Reais (BRL) for domestic accounts. International teams and global enterprises can request custom USD/invoice onboarding via demo.",
-    mostPopular: "Most Popular",
-    perMonth: "/month",
-    creditsPerMonth: "credits/month included",
-    usersIncluded: "users",
-    dailyLimit: "Daily limit:",
-    topUpRate: "Extra credits:",
-    trialCardTitle: "Domestic Self-Service Trial (Brazil CNPJ)",
-    trialCardSubtitle: "7 days free • 20 credits • No credit card required (for companies with a Brazilian CNPJ).",
-    trialOptions: [
-      { label: "Option A · 10 companies", title: "2 credits / company", detail: "Contact Lookup (1 cr.) + Financial Signals (1 cr.)" },
-      { label: "Option B · 4 companies", title: "5 credits / company", detail: "Full AI Enrichment + Decision-Maker LinkedIn + Outreach" },
-    ],
-    planCtaBr: "Start Brazil Free Trial",
-    planCtaIntl: "Request Enterprise / Demo",
-    contactSalesCta: "Talk to Our Team",
-    enterpriseTitle: "Global & Enterprise Onboarding",
-    enterpriseSubtitle:
-      "For foreign manufacturers, export teams, and consultancies operating outside Brazil without a local CNPJ.",
-    enterpriseFeatures: [
-      "Guided market discovery & distributor mapping workshops",
-      "Custom international invoicing and dedicated onboarding",
-      "Multi-seat workspace configuration and priority support",
-      "Tailored data governance & cross-border LGPD documentation",
-    ],
-    enterpriseCta: "Request International Demo",
-    creditTableTitle: "Credit Cost Per Action",
-    creditTableSubtitle: "Predictable unit economics shown before every click inside the platform.",
-    creditTableHeaders: {
-      action: "Action",
-      deliverable: "What You Receive",
-      cost: "Cost",
-    },
-    creditUnitLabel: "credits",
-    rules: [
+    enterpriseCasesTitle: "International Enterprise Use Cases",
+    enterpriseCases: [
       {
-        title: "No duplicate charges & no paying for empty lookups",
-        description:
-          "The same company never consumes credits twice for the same action in your account. If a contact lookup finds no valid phone or email, the credit is not deducted or is automatically refunded.",
+        tag: "Germany · Capital Goods",
+        title: "German Industrial Machinery Manufacturer",
+        flow: "Industrial Machinery → Brazilian buying factories (Divisions 10/17/25) → Wholesale distributors (CNAE 4663-0/00) → QSA & PGFN check.",
       },
       {
-        title: "Cycle renewal & non-expiring top-ups",
-        description:
-          "Monthly plan quotas renew every billing cycle, while standalone top-up credits purchased separately never expire.",
+        tag: "China · Manufacturing Export",
+        title: "Chinese Equipment & Packaging Exporter",
+        flow: "Packaging / Machinery → Separate stocking distributors from commission agents → Regional hubs (SP, PR, SC) → Prioritized partner queue.",
+      },
+      {
+        tag: "LATAM / US · Advisory",
+        title: "Market Entry Consultancy & Trade Desk",
+        flow: "Sector taxonomy & competitor exclusion → Active corporate entity screening → Exportable candidate tables with official source dates.",
       },
     ],
-    simulatorTitle: "Compare cost per qualified account",
-    simulatorSubtitle: "Adjust your current paid-ads cost per lead (BRL benchmark) to compare with credit-based account discovery:",
-    simulatorAdCplLabel: "Current Cost Per Lead (Paid Ads)",
-    simulatorPlanLabel: "Select Reference Plan",
-    simulatorDeepB2BResult: "Accounts with Contact + Financial Signals",
-    simulatorAdResult: "Equivalent Paid-Ad Leads",
-    simulatorEach: "approx. each",
-    simulatorMethodologyNote:
-      "Calculation: plan price ÷ (monthly credits ÷ 2), assuming 1 Contact credit + 1 Financial Signals credit per company. Reference benchmark only — not a performance guarantee.",
-    financialDisclaimer:
-      "Public Signals & LGPD Notice: Registration and fiscal signals originate from official public sources (Receita Federal, PGFN, and registry offices) at query time and do not constitute credit scoring or credit recommendations.",
+    platformGovernanceTitle: "Plans, Credits & Consumption Details Inside the Platform",
+    platformGovernanceBody:
+      "DeepB2B does not publish standard pricing on public pages. International Enterprise proposals are tailored after a commercial demonstration, while active plan options and the detailed credit-consumption table remain available inside the authenticated platform (app.deepson.com.br).",
+    trialCardTitle: "Operating with a Brazilian CNPJ?",
+    trialCardSubtitle: "Companies registered in Brazil can access our 7-day free trial directly on the Brazil trial portal.",
+    trialCardCta: "Start Brazil Free Trial",
+    ctaTitle: "See how DeepB2B fits your organization",
+    ctaSubtitle: "Book a live walkthrough focused on your target Brazilian sectors, buyers, or distribution channels.",
+    primaryCta: "Request a Demo",
+    secondaryCta: "Talk to Our Team",
+    discoverCta: "Discover Our Solutions",
   },
   resources: {
     eyebrow: "Brazil Intelligence Resources",
@@ -660,6 +672,15 @@ export const enDictionary: TranslationDictionary = {
       { value: "market-research", label: "Brazil market entry & industry mapping" },
       { value: "enterprise-partnership", label: "Enterprise account / custom proposal" },
     ],
+    sectorLabel: "Target Sector in Brazil",
+    sectorPlaceholder: "e.g., Industrial Machinery, Packaging, Food Ingredients",
+    stageLabel: "Brazil Market Entry Stage",
+    stageOptions: [
+      { value: "exploring-market", label: "Exploring Brazilian market demand & channels" },
+      { value: "seeking-distributors", label: "Actively seeking Brazilian distributors / importers" },
+      { value: "active-sales-desk", label: "Already selling in Brazil and scaling B2B pipeline" },
+      { value: "advisory-research", label: "Conducting market-entry advisory for a client" },
+    ],
     messageLabel: "Target Sector or Commercial Need",
     messagePlaceholder: "Describe the industries, Brazilian regions, or company profiles you want to analyze...",
     consentLabel:
@@ -669,7 +690,7 @@ export const enDictionary: TranslationDictionary = {
     successTitle: "Request received",
     successMessage:
       "Thank you. Our team has received your inquiry and will follow up at your work email with next steps for a tailored demonstration.",
-    errorMessage: "We could not submit your request right now. Please try again or email contato@deepson.com.br.",
+    errorMessage: "We could not submit your request right now. Please try again or email contact@deepb2b.ai.",
     validation: {
       name: "Please enter your name (at least 2 characters).",
       email: "Please enter a valid work email address.",
@@ -721,7 +742,7 @@ export const enDictionary: TranslationDictionary = {
       {
         heading: "4. Contact & Rights",
         body: [
-          "For privacy questions or to exercise access, correction, or deletion rights, contact privacidade@deepson.com.br or use our Data Deletion portal.",
+          "For privacy questions or to exercise access, correction, or deletion rights, contact privacy@deepb2b.ai or use our Data Deletion portal.",
         ],
       },
     ],
@@ -765,7 +786,7 @@ export const enDictionary: TranslationDictionary = {
       {
         heading: "Security & DPO Contact",
         body: [
-          "All web communications use TLS encryption, role-based access controls, and segregated storage. Contact our Data Protection Officer at privacidade@deepson.com.br.",
+          "All web communications use TLS encryption, role-based access controls, and segregated storage. Contact our Data Protection Officer at privacy@deepb2b.ai.",
         ],
       },
     ],

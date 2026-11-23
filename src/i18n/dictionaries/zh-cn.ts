@@ -10,7 +10,7 @@ export const zhCnDictionary: TranslationDictionary = {
   brand: {
     name: "DeepB2B",
     tagline: "巴西企业数据与商业情报平台 · AI 驱动",
-    subtitle: "BRAZIL BUSINESS INTELLIGENCE",
+    subtitle: "BRAZIL BUSINESS DATA & MARKET INTELLIGENCE",
     valueProposition: "巴西企业数据与商业情报平台——助力中国企业精准发现巴西买家、经销商、供应商与商业合作伙伴。",
     legacyEntityNotice:
       "DeepB2B 是巴西数据科技公司 Deepson（DEEPSON - INTELIGENCIA DE DADOS E TECNOLOGIA LTDA，CNPJ 19.904.935/0001-20 · Grupo FullWeb）面向全球市场推出的商业情报品牌。",
@@ -47,14 +47,9 @@ export const zhCnDictionary: TranslationDictionary = {
         "帮助中国制造商、出口商与产业咨询机构在落地巴西前，系统排查当地经销商、进口商与合规资质背景。",
     },
     solutions: {
-      title: "按业务场景划分的巴西商业情报方案 | DeepB2B",
+      title: "巴西商业情报与企业数据解决方案 | DeepB2B",
       description:
-        "专为中国制造出海团队、国际贸易商、市场咨询机构及跨境 B2B 销售团队打造的巴西市场开发流程。",
-    },
-    pricing: {
-      title: "方案与点数透明计费说明 | DeepB2B",
-      description:
-        "公开透明的点数计费机制与企业级定制方案。海外客户无需巴西本地 CNPJ 即可预约演示并申请国际团队专属报价。",
+        "了解 DeepB2B 全系列方案：Business Data、Market Intelligence、Lead Generation、Industry Mapping、Brazil Market Entry 与 Enterprise Solutions。",
     },
     resources: {
       title: "巴西商业情报指南：CNPJ、CNAE 与渠道开发实务 | DeepB2B",
@@ -107,7 +102,6 @@ export const zhCnDictionary: TranslationDictionary = {
     industryMapping: "行业与产业链映射",
     brazilMarketEntry: "巴西市场准入",
     solutions: "行业方案",
-    pricing: "方案定价",
     resources: "市场指南",
     about: "关于我们",
     contact: "商务咨询",
@@ -452,9 +446,63 @@ export const zhCnDictionary: TranslationDictionary = {
     },
   },
   solutions: {
-    eyebrow: "角色化解决方案",
-    h1: "贴合不同出海与本地业务团队的巴西情报方案",
-    lead: "无论您是立足国内开发巴西买家的出口企业，还是已经在巴西设立本地团队的集团机构，均可找到匹配的工作流。",
+    eyebrow: "DeepB2B 解决方案",
+    h1: "巴西企业数据与商业情报（Brazil Business Data & Market Intelligence）",
+    lead: "面向中国及全球出海企业构建的模块化巴西商业情报方案。联系我们预约专属演示，了解最适合贵司巴西业务阶段的方案配置。",
+    suiteTitle: "六大核心方案矩阵",
+    suiteSubtitle: "按业务模块深入了解能力细节，或直接联系团队安排针对性演示。",
+    suiteCtaLabel: "了解模块详情",
+    modules: [
+      {
+        key: "businessData",
+        badge: "官方注册基座",
+        title: "Business Data",
+        description: "基于巴西联邦税务局 CNPJ、CNAE 行业编码、规模、在营状态与股东结构（QSA）的企业档案。",
+        highlights: ["锚定 Receita Federal 与 PGFN 公开源", "支持全巴西 26 州及城市筛选", "严格标注来源与查询日期"],
+        routeKey: "businessData",
+      },
+      {
+        key: "marketIntelligence",
+        badge: "行业与区域洞察",
+        title: "Market Intelligence",
+        description: "依托 AI 与行业分类评估巴西各州采购密度、产业链分布及目标客户画像。",
+        highlights: ["基于官网定位自动建模 ICP", "各州潜在商业机会雷达", "相似优质客户拓展"],
+        routeKey: "marketIntelligence",
+      },
+      {
+        key: "leadGeneration",
+        badge: "B2B 客户开发",
+        title: "Lead Generation",
+        description: "按理想客户匹配度排序的高价值巴西企业队列，配备关键人背景与漏斗跟踪。",
+        highlights: ["0–100 可解释匹配度评分", "正式平台按需核验关键决策人", "集成看板（Kanban）及表格导出"],
+        routeKey: "leadGeneration",
+      },
+      {
+        key: "industryMapping",
+        badge: "产业链图谱",
+        title: "Industry Mapping",
+        description: "利用 7 位 CNAE 编码精准分离巴西本土制造厂、进口批发商、售后工程商与零售终端。",
+        highlights: ["产业链层级精确隔离", "自动剔除同业竞争对手", "重点工业走廊集群扫描"],
+        routeKey: "industryMapping",
+      },
+      {
+        key: "brazilMarketEntry",
+        badge: "出海巴西",
+        title: "Brazil Market Entry",
+        description: "专为中国及国际制造商、出口商打造的巴西市场进入与当地经销商筛选情报。",
+        highlights: ["分州建立经销商与进口商短名单", "合作前官方注册资质初筛", "支持中文/英文/葡文团队对接"],
+        routeKey: "brazilMarketEntry",
+      },
+      {
+        key: "enterprise",
+        badge: "企业定制",
+        title: "Enterprise Solutions",
+        description: "为跨国集团、多席位业务团队及暂无巴西本地 CNPJ 的海外公司提供专属对接方案。",
+        highlights: ["针对目标行业的引导式演示与建库", "多席位协同管理与权限配置", "完整的巴西 LGPD 数据合规文档"],
+        routeKey: "contact",
+      },
+    ],
+    segmentsTitle: "按组织角色划分的应用方案",
     segments: [
       {
         audience: "中国制造商与出口商",
@@ -485,70 +533,35 @@ export const zhCnDictionary: TranslationDictionary = {
         deliverables: ["企业规模与资本筛选", "股东关联结构参考", "定制化商务对接"],
       },
     ],
+    enterpriseCasesTitle: "典型跨国企业应用场景",
+    enterpriseCases: [
+      {
+        tag: "中国 · 制造出海",
+        title: "中国工业设备与包装制造商",
+        flow: "锁定巴西采购工业（第 10/17/25 类）→ 筛选 CNAE 4663-0/00 备货经销商 → 核查 QSA 股东与 PGFN 信号。",
+      },
+      {
+        tag: "德国 / 欧洲 · 装备出口",
+        title: "精密机械厂商建立巴西区域代理",
+        flow: "按圣保罗、南部三州与米纳斯产业带分层 → 剔除纯佣金个人代理 → 导出候选伙伴短名单。",
+      },
+      {
+        tag: "出海咨询与贸易机构",
+        title: "巴西市场进入可行性研究",
+        flow: "官方 CNAE 产业链映射 → 剔除同业竞争对手 → 附带官方出处与查询日期的交付文档。",
+      },
+    ],
+    platformGovernanceTitle: "方案配置与点数消耗明细说明",
+    platformGovernanceBody:
+      "DeepB2B 不在公开网页展示标准价目表。中国及国际企业方案均在商务演示后按需定制；巴西本地账户方案及详细点数消耗规则仅在登录正式平台工作台（app.deepson.com.br）后查看。",
+    trialCardTitle: "贵司在巴西是否已注册本地 CNPJ？",
+    trialCardSubtitle: "拥有巴西本地 CNPJ 税号的企业，可直接前往巴西试用通道开通 7 天免费体验。",
+    trialCardCta: "开启巴西本地试用",
     ctaTitle: "想了解 DeepB2B 如何适配您的巴西业务？",
-    ctaSubtitle: "提交您的目标行业与产品信息，预约我们的商业情报团队为您现场演示。",
-  },
-  pricing: {
-    eyebrow: "透明点数计费与企业方案",
-    h1: "清晰可控的数据核验成本，无任何隐藏费用",
-    lead: "平台采用透明点数机制：每次点击解锁前都会明确显示所需点数；若未查得有效联系方式，系统自动不扣费或退回点数。",
-    currencyNotice:
-      "目前线上自助订阅计费（雷亚尔 BRL）主要面向拥有巴西本地 CNPJ 税号的账户开放。中国及国际企业可通过下方预约演示获取企业级定制报价与国际结算方案。",
-    mostPopular: "最受欢迎",
-    perMonth: "/月",
-    creditsPerMonth: "每月包含点数",
-    usersIncluded: "个账号席位",
-    dailyLimit: "每日上限：",
-    topUpRate: "额外加购点数：",
-    trialCardTitle: "巴西本地账户试用（需巴西 CNPJ）",
-    trialCardSubtitle: "7 天免费试用 • 含 20 个体验点数 • 无需绑定信用卡（仅限巴西本地注册企业）。",
-    trialOptions: [
-      { label: "方案 A · 最多 10 家企业", title: "2 点 / 家", detail: "基础联系线索（1 点）+ 官方财务风险信号（1 点）" },
-      { label: "方案 B · 最多 4 家深度档案", title: "5 点 / 家", detail: "全面富化：联系信息 + 领英决策人 + AI 分析与切入建议" },
-    ],
-    planCtaBr: "开启巴西本地试用",
-    planCtaIntl: "预约国际演示与报价",
-    contactSalesCta: "联系商务顾问",
-    enterpriseTitle: "中国及全球企业专属对接方案",
-    enterpriseSubtitle: "面向暂未在巴西设立子公司（无本地 CNPJ）的出口商、制造商与咨询机构。",
-    enterpriseFeatures: [
-      "针对贵司出口品类的巴西经销商与目标行业定向演示",
-      "支持国际对公结算与企业级多席位账号开通",
-      "中/英/葡跨语种 ICP 画像梳理与 CNAE 编码配置",
-      "完整的巴西 LGPD 合规与数据溯源说明文档",
-    ],
-    enterpriseCta: "预约国际商务演示",
-    creditTableTitle: "平台内各操作点数消耗标准",
-    creditTableSubtitle: "透明定价原则：先看点数再点击，账户明细全程可查。",
-    creditTableHeaders: {
-      action: "操作类型",
-      deliverable: "获取的数据交付物",
-      cost: "消耗点数",
-    },
-    creditUnitLabel: "点数",
-    rules: [
-      {
-        title: "不重复扣费，空查询不收费",
-        description:
-          "同一账户对同一家企业执行过的同一操作不会二次扣点；若联系方式检索未发现有效电话或邮箱，点数将自动退还。",
-      },
-      {
-        title: "月度配额与加购点数规则",
-        description:
-          "订阅方案包含的月度点数按周期刷新；单独购买的加购点数永久有效、不会过期。",
-      },
-    ],
-    simulatorTitle: "参考成本测算（巴西雷亚尔基准）",
-    simulatorSubtitle: "将现有线上广告获客单价与基于点数的定向目标企业开发进行参考对比：",
-    simulatorAdCplLabel: "当前单条广告线索成本（BRL）",
-    simulatorPlanLabel: "选择参考方案",
-    simulatorDeepB2BResult: "可完成联系+信号核验的企业数",
-    simulatorAdResult: "同等预算可获得的广告线索",
-    simulatorEach: "约每家",
-    simulatorMethodologyNote:
-      "计算方式：方案月费 ÷（月度点数 ÷ 2），即每家企业使用 1 点联系核验 + 1 点公共信号。仅供运营参考，不构成获客转化承诺。",
-    financialDisclaimer:
-      "合规与数据声明：企业注册及财税信号均取自查询当日巴西官方公开源（Receita Federal、PGFN 等）并附带来源与日期，仅作商业信息参考，不构成信用评级或授信建议。",
+    ctaSubtitle: "欢迎预约一对一商业情报演示，由团队结合您的目标行业现场讲解。",
+    primaryCta: "预约产品演示 (Request a Demo)",
+    secondaryCta: "联系团队顾问 (Talk to Our Team)",
+    discoverCta: "探索全部方案",
   },
   resources: {
     eyebrow: "巴西商业情报知识库",
@@ -645,6 +658,15 @@ export const zhCnDictionary: TranslationDictionary = {
       { value: "market-research", label: "巴西市场进入调研与行业格局分析" },
       { value: "enterprise-partnership", label: "企业级账号合作 / 国际方案咨询" },
     ],
+    sectorLabel: "巴西目标行业",
+    sectorPlaceholder: "例如：工业机械、包装材料、食品配料",
+    stageLabel: "巴西业务所处阶段",
+    stageOptions: [
+      { value: "exploring-market", label: "正在评估巴西市场需求与渠道格局" },
+      { value: "seeking-distributors", label: "正在积极寻找巴西经销商 / 进口商" },
+      { value: "active-sales-desk", label: "已在巴西开展业务，需扩充 B2B 客户管线" },
+      { value: "advisory-research", label: "为客户开展巴西市场准入研究" },
+    ],
     messageLabel: "目标行业或具体商务需求",
     messagePlaceholder: "请简述您的产品类别、目标巴西州别或希望了解的企业类型...",
     consentLabel:
@@ -653,7 +675,7 @@ export const zhCnDictionary: TranslationDictionary = {
     submittingLabel: "正在提交...",
     successTitle: "申请已收到",
     successMessage: "感谢您的信任。我们的团队已收到您的需求，将通过工作邮箱与您联系并安排演示细节。",
-    errorMessage: "暂时无法提交申请，请稍后重试或直接发邮件至 contato@deepson.com.br。",
+    errorMessage: "暂时无法提交申请，请稍后重试或直接发邮件至 contact@deepb2b.ai。",
     validation: {
       name: "请填写您的姓名（至少 2 个字符）。",
       email: "请填写有效的工作邮箱地址。",
@@ -703,7 +725,7 @@ export const zhCnDictionary: TranslationDictionary = {
       },
       {
         heading: "4. 联系我们",
-        body: ["如对隐私处理有任何疑问，请发送邮件至 privacidade@deepson.com.br。"],
+        body: ["如对隐私处理有任何疑问，请发送邮件至 privacy@deepb2b.ai。"],
       },
     ],
     termsTitle: "服务条款",
@@ -738,7 +760,7 @@ export const zhCnDictionary: TranslationDictionary = {
       },
       {
         heading: "数据保护官（DPO）联系方式",
-        body: ["联系邮箱：privacidade@deepson.com.br。"],
+        body: ["联系邮箱：privacy@deepb2b.ai。"],
       },
     ],
     deletionTitle: "数据删除与信息退出（Opt-Out）",

@@ -1,11 +1,10 @@
 import React, { lazy, Suspense } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { LocaleProvider } from "@/i18n/LocaleContext";
 import { ROUTES_BY_LOCALE, SUPPORTED_LOCALES } from "@/i18n/routes";
 import HomePage from "@/pages/deepb2b/HomePage";
 import CapabilityPage from "@/pages/deepb2b/CapabilityPage";
 import SolutionsPage from "@/pages/deepb2b/SolutionsPage";
-import PricingPage from "@/pages/deepb2b/PricingPage";
 import ResourcesPage from "@/pages/deepb2b/ResourcesPage";
 import ArticlePage from "@/pages/deepb2b/ArticlePage";
 import AboutPage from "@/pages/deepb2b/AboutPage";
@@ -37,7 +36,7 @@ export const AppRoutes: React.FC = () => {
           {/* Root serves International English with canonical -> /en */}
           <Route path="/" element={<HomePage />} />
 
-          {/* Multilingual Routes (EN, PT-BR, ZH-CN) */}
+          {/* Multilingual Routes (EN, PT-BR, ES, ZH-CN) */}
           {SUPPORTED_LOCALES.map((locale) => {
             const paths = ROUTES_BY_LOCALE[locale];
             return (
@@ -49,7 +48,6 @@ export const AppRoutes: React.FC = () => {
                 <Route path={paths.industryMapping} element={<CapabilityPage capability="industryMapping" />} />
                 <Route path={paths.brazilMarketEntry} element={<CapabilityPage capability="brazilMarketEntry" />} />
                 <Route path={paths.solutions} element={<SolutionsPage />} />
-                <Route path={paths.pricing} element={<PricingPage />} />
                 <Route path={paths.resources} element={<ResourcesPage />} />
                 <Route path={`${paths.resources}/:slug`} element={<ArticlePage />} />
                 <Route path={paths.about} element={<AboutPage />} />
@@ -62,6 +60,13 @@ export const AppRoutes: React.FC = () => {
               </React.Fragment>
             );
           })}
+
+          {/* Legacy pricing URLs redirected to Solutions (no public pricing) */}
+          <Route path="/en/pricing" element={<Navigate to="/en/solutions" replace />} />
+          <Route path="/pt-br/planos" element={<Navigate to="/pt-br/solucoes" replace />} />
+          <Route path="/es/precios" element={<Navigate to="/es/soluciones" replace />} />
+          <Route path="/es/pricing" element={<Navigate to="/es/soluciones" replace />} />
+          <Route path="/zh-cn/pricing" element={<Navigate to="/zh-cn/solutions" replace />} />
 
           {/* Preserved Brazilian Conversion & Legacy Operational Routes */}
           <Route path="/teste-gratis" element={<FreeTrialPage />} />

@@ -74,8 +74,8 @@ export const SeoHead: React.FC<SeoHeadProps> = ({
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "sales",
-      email: "contato@deepson.com.br",
-      availableLanguage: ["English", "Portuguese", "Chinese"],
+      email: locale === "pt-br" ? "contato@deepb2b.ai" : "contact@deepb2b.ai",
+      availableLanguage: ["English", "Portuguese", "Spanish", "Chinese"],
     },
   };
 

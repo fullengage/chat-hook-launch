@@ -15,7 +15,6 @@ import TrialForm from "@/components/TrialForm";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-import PlansSection from "@/components/PlansSection";
 import Footer from "@/components/Footer";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 
@@ -117,19 +116,18 @@ const FreeTrialPage = () => {
                               <div className="flex items-center gap-2">
                                  <CheckCircle2 className="w-5 h-5 text-primary shrink-0" />
                                  <span className="font-black text-white text-sm md:text-base">
-                                    7 dias grátis, sem cartão • 20 créditos para experimentar
+                                    7 dias grátis, sem cartão • Acesso imediato à plataforma
                                  </span>
                               </div>
                               <span className="text-[11px] font-bold uppercase tracking-wider bg-primary/15 text-primary px-3 py-1 rounded-full border border-primary/30">
-                                 Você escolhe como usar
+                                 CNPJ Brasileiro
                               </span>
                            </div>
 
                            <div className="grid sm:grid-cols-2 gap-3">
                               <div className="bg-white/5 rounded-2xl p-3.5 border border-white/10">
                                  <div className="flex items-center justify-between mb-1">
-                                    <span className="text-xs font-extrabold uppercase tracking-wider text-primary">Opção 1 • 10 empresas</span>
-                                    <span className="text-[11px] text-slate-400 font-bold">2 créd./empresa</span>
+                                    <span className="text-xs font-extrabold uppercase tracking-wider text-primary">Descoberta & Dados</span>
                                  </div>
                                  <p className="text-xs text-slate-200 leading-relaxed">
                                     <strong>Contato + sinais financeiros</strong> (telefone, e-mail, sócios, Receita Federal e dívida ativa PGFN).
@@ -138,18 +136,17 @@ const FreeTrialPage = () => {
 
                               <div className="bg-white/5 rounded-2xl p-3.5 border border-white/10">
                                  <div className="flex items-center justify-between mb-1">
-                                    <span className="text-xs font-extrabold uppercase tracking-wider text-primary">Opção 2 • 4 empresas</span>
-                                    <span className="text-[11px] text-slate-400 font-bold">5 créd./empresa</span>
+                                    <span className="text-xs font-extrabold uppercase tracking-wider text-primary">Qualificação por IA</span>
                                  </div>
                                  <p className="text-xs text-slate-200 leading-relaxed">
-                                    <strong>Enriquecimento completo</strong> (contato + LinkedIn do decisor + análise e abordagem comercial por IA).
+                                    <strong>Enriquecimento completo</strong> (contato + decisor + análise de aderência e abordagem comercial por IA).
                                  </p>
                               </div>
                            </div>
 
                            <p className="text-[11px] text-slate-400 flex items-center gap-1.5">
                               <Info className="w-3.5 h-3.5 text-primary shrink-0" />
-                              A quantidade de empresas analisadas depende das ações escolhidas. Se uma consulta não encontrar contato válido, seu crédito não é consumido.
+                              Os planos e a tabela detalhada de consumo de créditos ficam disponíveis dentro da plataforma após o login. Se uma consulta não localizar contato válido, o crédito não é consumido.
                            </p>
                         </div>
 
@@ -172,7 +169,7 @@ const FreeTrialPage = () => {
                         </div>
                         <div className="mt-4 flex flex-col items-center gap-1 text-center">
                            <p className="text-xs text-slate-300 leading-relaxed">
-                              Cadastro imediato — seus 20 créditos ficam disponíveis assim que sua conta é criada.
+                              Cadastro imediato — seu acesso de teste é liberado assim que sua conta é criada.
                            </p>
                         </div>
                      </div>
@@ -219,7 +216,7 @@ const FreeTrialPage = () => {
                         {
                            step: "④",
                            t: "Funil e Enriquecimento",
-                           d: "Salve no funil e escolha o que liberar: Contato (1 créd.), Sinais financeiros (1 créd.), Enriquecer tudo (5 créd.) ou exportar planilha (1 créd.)."
+                           d: "Salve no funil e escolha o que liberar sob demanda: contatos, sinais financeiros, enriquecimento completo por IA ou exportação em planilha."
                         }
                      ].map((s, i) => (
                         <div key={i} className="bg-[#040f21] p-7 rounded-[28px] border border-white/10 text-left relative group hover:border-primary/50 transition-colors">
@@ -253,7 +250,7 @@ const FreeTrialPage = () => {
                               "Nota de aderência (0 a 100) calculada por IA com justificativa em linguagem comercial",
                               "Identificação de contatos corporativos, quadro societário e decisores no LinkedIn",
                               "Sinais financeiros objetivos (Receita Federal, dívida ativa PGFN e cartórios) com fonte e data",
-                              "Funil comercial em Kanban e exportação de listas qualificadas (até 50 empresas por 1 crédito)"
+                              "Funil comercial em Kanban e exportação de listas qualificadas em planilha"
                            ].map((item, i) => (
                               <li key={i} className="flex items-start gap-3 text-slate-200 text-sm md:text-base">
                                  <Check className="w-5 h-5 text-primary shrink-0 mt-0.5" />
@@ -263,7 +260,7 @@ const FreeTrialPage = () => {
                         </ul>
                         <div className="pt-2">
                            <Button variant="cta" size="lg" className="h-13 px-8 rounded-full font-black" onClick={scrollToForm}>
-                              Experimentar com 20 créditos grátis
+                              Experimentar grátis por 7 dias
                            </Button>
                         </div>
                      </div>
@@ -335,8 +332,22 @@ const FreeTrialPage = () => {
                </div>
             </section>
 
-            {/* Plans & Credit Costs Section */}
-            <PlansSection />
+            {/* Governance Callout Replacing Public Pricing */}
+            <section className="py-14 bg-[#040f21]">
+               <div className="container mx-auto px-4 max-w-4xl">
+                  <div className="rounded-3xl border border-white/15 bg-[#07152e] p-8 text-center text-white space-y-3">
+                     <span className="text-xs font-extrabold uppercase tracking-widest text-primary">
+                        Transparência na Plataforma
+                     </span>
+                     <h2 className="text-2xl font-black">
+                        Planos e tabela detalhada de créditos ficam disponíveis após o login
+                     </h2>
+                     <p className="text-sm text-slate-300 leading-relaxed">
+                        Dentro da plataforma autenticada você visualiza o custo em créditos antes de cada clique, consulta seu extrato em tempo real e escolhe o plano adequado à sua operação comercial.
+                     </p>
+                  </div>
+               </div>
+            </section>
 
             {/* FAQ Section */}
             <section className="py-24 bg-[#061329]">
@@ -346,19 +357,19 @@ const FreeTrialPage = () => {
                         Perguntas <span className="text-primary italic">Frequentes</span>
                      </h2>
                      <p className="text-slate-300">
-                        Regras claras sobre o teste grátis de 7 dias, funcionamento dos créditos, exportação e LGPD.
+                        Regras claras sobre o teste grátis de 7 dias, funcionamento da plataforma, exportação e LGPD.
                      </p>
                   </div>
 
                   <Accordion type="single" collapsible className="space-y-4">
                      {[
                         {
-                           q: "Como funcionam os 20 créditos do teste grátis de 7 dias?",
-                           a: "Ao criar sua conta gratuita (sem cartão de crédito), você recebe 20 créditos válidos por 7 dias. A quantidade de empresas analisadas depende das ações que você escolher: por exemplo, você pode liberar Contato + Sinais financeiros para 10 empresas (2 créditos por empresa) ou fazer o Enriquecimento completo com decisor e análise de IA para 4 empresas (5 créditos por empresa)."
+                           q: "Como funciona o teste grátis de 7 dias?",
+                           a: "Ao criar sua conta gratuita (sem cartão de crédito) com o CNPJ da sua empresa, você recebe créditos de degustação válidos por 7 dias para testar a descoberta de empresas, consultar contatos, verificar sinais financeiros e testar o enriquecimento por IA. A tabela detalhada de consumo fica disponível dentro do painel."
                         },
                         {
                            q: "Posso exportar listas durante o teste grátis? Os créditos expiram?",
-                           a: "Sim! Durante o teste grátis você pode exportar empresas do seu funil para planilha (1 crédito para até 50 empresas). Os 20 créditos de demonstração valem durante os 7 dias do teste. Nos planos mensais pagos, a cota mensal renova a cada ciclo (o saldo da cota mensal não usado expira na virada), enquanto créditos avulsos comprados à parte nunca expiram."
+                           a: "Sim! Durante o teste grátis você pode exportar empresas do seu funil para planilha. Os créditos do período de avaliação valem pelos 7 dias do teste. Nos planos da plataforma, todas as regras de renovação e extrato ficam visíveis na sua área logada."
                         },
                         {
                            q: "O que acontece quando uma consulta não encontra informações ou se eu clicar duas vezes na mesma empresa?",
@@ -390,7 +401,7 @@ const FreeTrialPage = () => {
                         Encontre empresas com maior potencial de comprar de você
                      </h3>
                      <p className="mb-8 text-primary-foreground/90 text-base md:text-lg">
-                        Teste grátis por 7 dias, sem cartão, com 20 créditos liberados na hora.
+                        Teste grátis por 7 dias, sem cartão, com liberação imediata na plataforma.
                      </p>
                      <Button
                         size="lg"
@@ -415,10 +426,10 @@ const FreeTrialPage = () => {
                      <Sparkles className="w-8 h-8 text-primary" />
                   </div>
                   <DialogTitle className="text-2xl font-black text-white tracking-tight text-center">
-                     Experimente o Deepson com 20 créditos grátis
+                     Experimente o DeepB2B grátis por 7 dias
                   </DialogTitle>
                   <DialogDescription className="text-slate-300 text-sm text-center leading-relaxed">
-                     Informe o site da sua empresa, descubra seu cliente ideal com IA e analise até 10 empresas (contato + sinais financeiros) por 7 dias sem cartão.
+                     Informe o site da sua empresa, descubra seu cliente ideal com IA e analise empresas compatíveis com contato e sinais financeiros por 7 dias sem cartão.
                   </DialogDescription>
                </DialogHeader>
 
@@ -428,7 +439,7 @@ const FreeTrialPage = () => {
                   </div>
                   <div>
                      <p className="text-sm font-bold text-white">7 dias grátis • Sem cartão de crédito</p>
-                     <p className="text-xs text-slate-300">Custo claro antes de cada clique e garantia contra cobrança em consulta sem dados.</p>
+                     <p className="text-xs text-slate-300">Transparência total dentro da plataforma e garantia contra cobrança em consulta sem dados.</p>
                   </div>
                </div>
 
@@ -441,7 +452,7 @@ const FreeTrialPage = () => {
                         scrollToForm();
                      }}
                   >
-                     Liberar meus 20 créditos grátis agora
+                     Liberar meu acesso grátis agora
                   </Button>
                </div>
             </DialogContent>

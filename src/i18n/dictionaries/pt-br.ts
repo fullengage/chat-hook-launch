@@ -10,7 +10,7 @@ export const ptBrDictionary: TranslationDictionary = {
   brand: {
     name: "DeepB2B",
     tagline: "Inteligência Empresarial Brasileira, Potencializada por IA.",
-    subtitle: "INTELIGÊNCIA DE DADOS B2B",
+    subtitle: "BRAZIL BUSINESS DATA & MARKET INTELLIGENCE",
     valueProposition:
       "Encontre empresas, identifique oportunidades e transforme dados brasileiros em inteligência comercial.",
     legacyEntityNotice:
@@ -48,14 +48,9 @@ export const ptBrDictionary: TranslationDictionary = {
         "Apoio analítico para empresas nacionais e estrangeiras mapearem distribuidores, parceiros e polos industriais no Brasil.",
     },
     solutions: {
-      title: "Soluções por Público e Operação Comercial | DeepB2B",
+      title: "Soluções — Dados Empresariais e Inteligência de Mercado | DeepB2B",
       description:
-        "Fluxos de inteligência B2B para diretores comerciais, vendedores, agências, consultorias e equipes de trade marketing.",
-    },
-    pricing: {
-      title: "Planos, Créditos e Simulador de Viabilidade | DeepB2B",
-      description:
-        "Planos mensais em reais com custo claro antes de cada clique, teste grátis de 7 dias com 20 créditos e opções Enterprise.",
+        "Conheça as soluções DeepB2B: Business Data, Market Intelligence, Lead Generation, Industry Mapping, Brazil Market Entry e Enterprise Solutions.",
     },
     resources: {
       title: "Conteúdos, Guias Técnicos de CNPJ e Mercado B2B | DeepB2B",
@@ -111,7 +106,6 @@ export const ptBrDictionary: TranslationDictionary = {
     industryMapping: "Mapeamento Setorial",
     brazilMarketEntry: "Mercado Brasileiro",
     solutions: "Soluções",
-    pricing: "Planos",
     resources: "Conteúdos",
     about: "Sobre",
     contact: "Contato",
@@ -397,12 +391,12 @@ export const ptBrDictionary: TranslationDictionary = {
       h1: "Menos tempo montando lista. Mais tempo com quem decide.",
       lead: "Receba uma fila priorizada de empresas brasileiras com alto encaixe ao seu ICP, decisores identificados e abordagem assistida por IA.",
       primaryCta: "Testar Grátis (7 dias)",
-      secondaryCta: "Ver Planos e Créditos",
+      secondaryCta: "Conhecer Nossas Soluções",
       highlightsTitle: "Fluxo de Prospecção",
       highlights: [
         { title: "Fila Ordenada por Aderência", description: "Chega de listas alfabéticas: aborde primeiro quem tem maior encaixe comercial." },
-        { title: "Enriquecimento Sob Demanda", description: "Libere apenas contatos (1 crédito), sinais (1 crédito) ou enriquecimento completo (5 créditos)." },
-        { title: "Funil Kanban & Exportação", description: "Gerencie negociações no funil integrado ou exporte até 50 empresas por 1 crédito." },
+        { title: "Enriquecimento Sob Demanda", description: "Libere contatos corporativos, sinais financeiros e enriquecimento completo sob demanda dentro da plataforma." },
+        { title: "Funil Kanban & Exportação", description: "Gerencie negociações no funil integrado ou exporte listas qualificadas em planilha (CSV/Excel)." },
       ],
       dataLayersTitle: "Garantia de Créditos",
       dataLayers: [
@@ -466,9 +460,63 @@ export const ptBrDictionary: TranslationDictionary = {
     },
   },
   solutions: {
-    eyebrow: "Soluções por Público",
-    h1: "Inteligência comercial adaptada ao seu modelo de venda B2B",
-    lead: "Da prospecção diária de SDRs à entrada de fabricantes estrangeiros no Brasil, escolha o fluxo ideal para sua equipe.",
+    eyebrow: "Soluções DeepB2B",
+    h1: "Soluções de dados empresariais e inteligência de mercado no Brasil",
+    lead: "Arquitetura modular para empresas internacionais e equipes comerciais brasileiras entenderem o mercado, mapearem cadeias e identificarem compradores, distribuidores e fornecedores.",
+    suiteTitle: "Portfólio Completo de Soluções",
+    suiteSubtitle: "Explore cada frente de inteligência ou solicite uma demonstração personalizada para o seu setor.",
+    suiteCtaLabel: "Explorar solução",
+    modules: [
+      {
+        key: "businessData",
+        badge: "Base Oficial",
+        title: "Business Data",
+        description: "Perfis empresariais brasileiros (CNPJ, CNAE, porte, situação e QSA) com origem oficial e data de consulta.",
+        highlights: ["Fontes oficiais Receita Federal e PGFN", "Filtros por estado, município e porte", "Separação rigorosa de proveniência"],
+        routeKey: "businessData",
+      },
+      {
+        key: "marketIntelligence",
+        badge: "Análise de Mercado",
+        title: "Market Intelligence",
+        description: "Analise densidade setorial, polos regionais e perfis de compradores no Brasil com apoio de IA.",
+        highlights: ["Modelagem de ICP pelo site da empresa", "Radar de oportunidades por estado", "Busca de empresas semelhantes"],
+        routeKey: "marketIntelligence",
+      },
+      {
+        key: "leadGeneration",
+        badge: "Prospecção B2B",
+        title: "Lead Generation",
+        description: "Filas priorizadas de empresas compatíveis com seu ICP, contexto societário e funil comercial integrado.",
+        highlights: ["Nota de aderência explicável (0–100)", "Verificação de decisores sob demanda", "Funil Kanban e exportação CSV/Excel"],
+        routeKey: "leadGeneration",
+      },
+      {
+        key: "industryMapping",
+        badge: "Cadeia Produtiva",
+        title: "Industry Mapping",
+        description: "Separe indústrias, importadores, distribuidores atacadistas e varejo usando a classificação oficial CNAE.",
+        highlights: ["Isolamento por elo da cadeia", "Exclusão automática de concorrentes", "Mapeamento de polos industriais"],
+        routeKey: "industryMapping",
+      },
+      {
+        key: "brazilMarketEntry",
+        badge: "Expansão Global",
+        title: "Brazil Market Entry",
+        description: "Inteligência comercial para grupos internacionais identificarem distribuidores, parceiros e fornecedores no Brasil.",
+        highlights: ["Shortlists de distribuidores por UF", "Diligência cadastral prévia", "Atendimento em PT-BR, EN, ES e ZH-CN"],
+        routeKey: "brazilMarketEntry",
+      },
+      {
+        key: "enterprise",
+        badge: "Sob Medida",
+        title: "Enterprise Solutions",
+        description: "Implantação dedicada para grupos corporativos, equipes multissetoriais e operações internacionais sem CNPJ local.",
+        highlights: ["Onboarding guiado e workshops setoriais", "Proposta comercial personalizada", "Governança e documentação LGPD"],
+        routeKey: "contact",
+      },
+    ],
+    segmentsTitle: "Soluções por Público",
     segments: [
       {
         audience: "Diretores Comerciais & Vendedores B2B",
@@ -482,7 +530,7 @@ export const ptBrDictionary: TranslationDictionary = {
         badge: "Consultoria",
         challenge: "Necessidade de montar segmentações rápidas e confiáveis para diferentes clientes e nichos.",
         howDeepB2BHelps: "Permite múltiplos perfis de ICP, filtros por CNAE/porte e exportação limpa em CSV/Excel.",
-        deliverables: ["Múltiplos perfis de cliente ideal", "Exportação de até 50 empresas/crédito", "Transparência de fonte e data"],
+        deliverables: ["Múltiplos perfis de cliente ideal", "Exportação estruturada para planilha", "Transparência de fonte e data"],
       },
       {
         audience: "Marketing & Trade Marketing",
@@ -495,75 +543,39 @@ export const ptBrDictionary: TranslationDictionary = {
         audience: "Empresas Estrangeiras & Exportadores",
         badge: "Global",
         challenge: "Barreira de idioma, complexidade tributária do CNPJ/CNAE e falta de visibilidade local.",
-        howDeepB2BHelps: "Atendimento multilíngue (PT-BR, EN, ZH-CN) com tradução de objetivos comerciais para filtros brasileiros.",
+        howDeepB2BHelps: "Atendimento multilíngue (PT-BR, EN, ES, ZH-CN) com tradução de objetivos comerciais para filtros brasileiros.",
         deliverables: ["Shortlist de distribuidores no Brasil", "Sinais cadastrais oficiais", "Demonstração guiada"],
       },
     ],
+    enterpriseCasesTitle: "Casos de Uso Enterprise & Internacionais",
+    enterpriseCases: [
+      {
+        tag: "Alemanha · Bens de Capital",
+        title: "Fabricante Estrangeiro de Máquinas Industriais",
+        flow: "Máquinas Industriais → Indústrias compradoras → Distribuidores atacadistas (CNAE 4663-0/00) → Verificação QSA e PGFN.",
+      },
+      {
+        tag: "China · Exportação B2B",
+        title: "Exportador buscando Distribuidores Regionais",
+        flow: "Embalagens / Equipamentos → Separação entre distribuidores com estoque e representantes → Polos SP, PR e SC.",
+      },
+      {
+        tag: "Brasil · Alta Escala",
+        title: "Operações Multiequipes e Trade Marketing",
+        flow: "Múltiplos perfis de ICP → Exclusão automática de concorrentes → Fila priorizada e exportação em lotes.",
+      },
+    ],
+    platformGovernanceTitle: "Planos e tabela detalhada de créditos dentro da plataforma",
+    platformGovernanceBody:
+      "Não exibimos tabelas públicas de preços nesta página. Clientes brasileiros podem experimentar a plataforma no teste gratuito, e toda a gestão de planos, cobrança e tabela detalhada de consumo de créditos permanece disponível dentro da plataforma autenticada (app.deepson.com.br). Para operações internacionais ou Enterprise, atendemos sob demonstração.",
+    trialCardTitle: "Empresas brasileiras com CNPJ ativo",
+    trialCardSubtitle: "Inicie o teste gratuito de 7 dias sem cartão de crédito e conheça a plataforma na prática.",
+    trialCardCta: "Testar a Plataforma Grátis",
     ctaTitle: "Quer ver a plataforma aplicada ao seu segmento?",
-    ctaSubtitle: "Inicie seu teste grátis de 7 dias ou agende uma demonstração personalizada.",
-  },
-  pricing: {
-    eyebrow: "Planos, Créditos e Regras Claras",
-    h1: "Escolha o plano pelo tamanho da sua equipe comercial",
-    lead: "Todos os planos entregam a mesma inteligência. O que muda é o volume mensal de créditos e a quantidade de usuários na operação.",
-    currencyNotice:
-      "Os planos self-service abaixo são faturados em Reais (BRL) no Brasil. Para equipes internacionais ou contratos corporativos Enterprise, solicite proposta sob medida.",
-    mostPopular: "Mais escolhido",
-    perMonth: "/mês",
-    creditsPerMonth: "créditos incluídos/mês",
-    usersIncluded: "usuários",
-    dailyLimit: "Limite diário:",
-    topUpRate: "Recarga avulsa:",
-    trialCardTitle: "Oferta de Teste Grátis (Brasil)",
-    trialCardSubtitle: "7 dias grátis • 20 créditos • Sem cartão de crédito (mediante CNPJ brasileiro válido).",
-    trialOptions: [
-      { label: "Opção A • Até 10 empresas", title: "2 créditos / empresa", detail: "Pesquisa de contato (1 créd.) + Sinais financeiros (1 créd.)" },
-      { label: "Opção B • Até 4 empresas completas", title: "5 créditos / empresa", detail: "Enriquecer tudo: contato + LinkedIn do decisor + análise e abordagem por IA" },
-    ],
-    planCtaBr: "Começar Teste Grátis",
-    planCtaIntl: "Solicitar Proposta",
-    contactSalesCta: "Falar com Consultor",
-    enterpriseTitle: "Enterprise & Operações Internacionais",
-    enterpriseSubtitle:
-      "Para grandes operações comerciais, grupos econômicos ou empresas estrangeiras sem CNPJ local.",
-    enterpriseFeatures: [
-      "Onboarding guiado e mapeamento inicial de distribuidores/setores",
-      "Faturamento corporativo personalizado (nacional ou internacional)",
-      "Múltiplos usuários, carteiras e governança de acesso",
-      "Suporte comercial bilíngue e documentação de conformidade LGPD",
-    ],
-    enterpriseCta: "Solicitar Demonstração Enterprise",
-    creditTableTitle: "Tabela de créditos por ação",
-    creditTableSubtitle: "Todo botão exibe o custo antes do clique e o extrato mostra exatamente para onde foi cada crédito.",
-    creditTableHeaders: {
-      action: "Ação",
-      deliverable: "O que você recebe",
-      cost: "Custo",
-    },
-    creditUnitLabel: "créditos",
-    rules: [
-      {
-        title: "Sem cobrança duplicada e sem pagar por consulta vazia",
-        description:
-          "A mesma empresa nunca gasta créditos duas vezes pela mesma ação na sua conta. Se a pesquisa de contato não localizar telefone ou e-mail válido, o crédito não é descontado (ou é estornado automaticamente).",
-      },
-      {
-        title: "Validade dos planos e recargas avulsas",
-        description:
-          "Os 20 créditos do teste grátis valem por 7 dias. Nos planos mensais, a cota renova todo mês e créditos avulsos comprados à parte nunca expiram.",
-      },
-    ],
-    simulatorTitle: "Compare com o que você paga hoje por lead",
-    simulatorSubtitle: "Informe quanto custa um lead em mídia paga e selecione um plano para comparar:",
-    simulatorAdCplLabel: "Custo por lead no anúncio",
-    simulatorPlanLabel: "Plano de referência",
-    simulatorDeepB2BResult: "Empresas com contato + sinais financeiros",
-    simulatorAdResult: "O mesmo valor em anúncio",
-    simulatorEach: "≈ cada",
-    simulatorMethodologyNote:
-      "Conta: preço do plano ÷ (créditos do mês ÷ 2), considerando 1 crédito de contato e 1 de sinais financeiros. Use como referência operacional, não como promessa de resultado.",
-    financialDisclaimer:
-      "Aviso sobre Sinais Financeiros e LGPD: Informações cadastrais e fiscais provêm de fontes públicas oficiais (Receita Federal, PGFN e cartórios) na data da consulta, exibidas com fonte e data, e não constituem análise ou recomendação de crédito.",
+    ctaSubtitle: "Inicie seu teste grátis no Brasil ou solicite uma demonstração personalizada com nosso time.",
+    primaryCta: "Solicitar Demonstração",
+    secondaryCta: "Falar com Nossa Equipe",
+    discoverCta: "Conhecer Nossas Soluções",
   },
   resources: {
     eyebrow: "Conteúdos e Relatórios",
@@ -660,6 +672,15 @@ export const ptBrDictionary: TranslationDictionary = {
       { value: "market-research", label: "Inteligência de mercado e mapeamento setorial" },
       { value: "enterprise-partnership", label: "Plano Enterprise / atendimento dedicado" },
     ],
+    sectorLabel: "Setor-alvo no Brasil",
+    sectorPlaceholder: "Ex.: Máquinas Industriais, Embalagens, Alimentos",
+    stageLabel: "Estágio da operação no Brasil",
+    stageOptions: [
+      { value: "active-sales-desk", label: "Operação ativa no Brasil buscando escalar vendas B2B" },
+      { value: "seeking-distributors", label: "Buscando distribuidores ou parceiros regionais" },
+      { value: "exploring-market", label: "Estudando entrada ou expansão de mercado" },
+      { value: "advisory-research", label: "Consultoria / pesquisa para cliente" },
+    ],
     messageLabel: "Mensagem ou necessidade comercial",
     messagePlaceholder: "Conte brevemente qual setor, região ou perfil de empresa deseja analisar...",
     consentLabel:
@@ -669,7 +690,7 @@ export const ptBrDictionary: TranslationDictionary = {
     successTitle: "Solicitação recebida com sucesso",
     successMessage:
       "Obrigado pelo contato. Nossa equipe analisará sua necessidade e responderá pelo e-mail profissional informado.",
-    errorMessage: "Não foi possível enviar sua solicitação agora. Tente novamente ou escreva para contato@deepson.com.br.",
+    errorMessage: "Não foi possível enviar sua solicitação agora. Tente novamente ou escreva para contato@deepb2b.ai.",
     validation: {
       name: "Informe seu nome (mínimo de 2 caracteres).",
       email: "Informe um e-mail profissional válido.",
@@ -719,7 +740,7 @@ export const ptBrDictionary: TranslationDictionary = {
       },
       {
         heading: "4. Canal de Privacidade",
-        body: ["Dúvidas ou solicitações podem ser enviadas a privacidade@deepson.com.br."],
+        body: ["Dúvidas ou solicitações podem ser enviadas a privacidade@deepb2b.ai."],
       },
     ],
     termsTitle: "Termos de Uso",
@@ -761,7 +782,7 @@ export const ptBrDictionary: TranslationDictionary = {
       },
       {
         heading: "Encarregado (DPO)",
-        body: ["Canal direto com o Encarregado pelo Tratamento de Dados: privacidade@deepson.com.br."],
+        body: ["Canal direto com o Encarregado pelo Tratamento de Dados: privacidade@deepb2b.ai."],
       },
     ],
     deletionTitle: "Solicitação de Exclusão de Dados & Opt-Out",

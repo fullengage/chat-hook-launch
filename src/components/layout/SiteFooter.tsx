@@ -8,12 +8,15 @@ import { DeepB2BLogo } from "@/components/brand/DeepB2BLogo";
 const LOCALE_NAMES = {
   en: "English (Global)",
   "pt-br": "Português (Brasil)",
+  es: "Español (LATAM)",
   "zh-cn": "简体中文 (China)",
 } as const;
 
 export const SiteFooter: React.FC = () => {
   const { dict, routeTo } = useLocale();
   const currentYear = new Date().getFullYear();
+
+  const contactEmail = locale === "pt-br" ? "contato@deepb2b.ai" : "contact@deepb2b.ai";
 
   return (
     <footer className="border-t border-white/10 bg-[#040f21] text-slate-300">
@@ -30,10 +33,10 @@ export const SiteFooter: React.FC = () => {
             <div className="flex items-center gap-2 text-xs text-slate-300">
               <Mail className="h-4 w-4 text-[#ff6b00]" aria-hidden="true" />
               <a
-                href="mailto:contato@deepson.com.br"
+                href={`mailto:${contactEmail}`}
                 className="hover:text-[#ff6b00] transition-colors"
               >
-                contato@deepson.com.br
+                {contactEmail}
               </a>
             </div>
           </div>
@@ -81,11 +84,6 @@ export const SiteFooter: React.FC = () => {
               <li>
                 <Link to={routeTo("solutions")} className="hover:text-[#ff6b00] transition-colors">
                   {dict.nav.solutions}
-                </Link>
-              </li>
-              <li>
-                <Link to={routeTo("pricing")} className="hover:text-[#ff6b00] transition-colors">
-                  {dict.nav.pricing}
                 </Link>
               </li>
               <li>

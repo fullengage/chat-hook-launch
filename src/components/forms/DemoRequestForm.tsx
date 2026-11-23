@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { CheckCircle2, Loader2, ShieldCheck } from "lucide-react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 import { useLocale } from "@/i18n/LocaleContext";
 import { submitDemoRequest } from "@/services/leadService";
 import { trackDemoRequest, trackFormStart } from "@/services/analytics";
@@ -30,9 +30,23 @@ import { Textarea } from "@/components/ui/textarea";
 export const DemoRequestForm: React.FC = () => {
   const { locale, dict } = useLocale();
   const location = useLocation();
+  const [searchParams] = useSearchParams();
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorDetail, setErrorDetail] = useState<string>("");
   const startedRef = useRef(false);
+
+  const initialCountry =
+    searchParams.get("country") ||
+    (locale === "pt-br" ? "Brasil" : locale === "zh-cn" ? "China" : "");
+  const initialSector = searchParams.get("sector") || "";
+  const initialPurpose =
+    searchParams.get("purpose") ||
+    dict.form.purposeOptions[0]?.value ||
+    "find-distributors";
+  const initialStage =
+    searchParams.get("stage") ||
+    dict.form.stageOptions[0]?.value ||
+    "exploring-market";
 
   const schema = useMemo(
     () =>
@@ -43,6 +57,8 @@ export const DemoRequestForm: React.FC = () => {
         country: z.string().trim().min(2, dict.form.validation.country),
         phone: z.string().trim().optional(),
         purpose: z.string().min(1, dict.form.validation.purpose),
+        sector: z.string().trim().default(""),
+        stage: z.string().min(1),
         message: z.string().trim().default(""),
         consent: z.boolean().refine((v) => v === true, {
           message: dict.form.validation.consent,
@@ -59,9 +75,11 @@ export const DemoRequestForm: React.FC = () => {
       name: "",
       email: "",
       company: "",
-      country: locale === "pt-br" ? "Brasil" : locale === "zh-cn" ? "China" : "",
+      country: initialCountry,
       phone: "",
-      purpose: dict.form.purposeOptions[0]?.value ?? "find-distributors",
+      purpose: initialPurpose,
+      sector: initialSector,
+      stage: initialStage,
       message: "",
       consent: false,
     },
@@ -85,6 +103,8 @@ export const DemoRequestForm: React.FC = () => {
       country: values.country,
       phone: values.phone,
       purpose: values.purpose,
+      sector: values.sector,
+      stage: values.stage,
       message: values.message,
       locale,
       page: location.pathname,
@@ -207,6 +227,55 @@ export const DemoRequestForm: React.FC = () => {
                     className="bg-white border-slate-300 text-[#0f172a]"
                   />
                 </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <FormField
+            control={form.control}
+            name="sector"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-xs font-bold text-[#0f172a]">
+                  {dict.form.sectorLabel}
+                </FormLabel>
+                <FormControl>
+                  <Input
+                    {...field}
+                    placeholder={dict.form.sectorPlaceholder}
+                    className="bg-white border-slate-300 text-[#0f172a]"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="stage"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-xs font-bold text-[#0f172a]">
+                  {dict.form.stageLabel}
+                </FormLabel>
+                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                  <FormControl>
+                    <SelectTrigger className="bg-white border-slate-300 text-[#0f172a]">
+                      <SelectValue />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    {dict.form.stageOptions.map((opt) => (
+                      <SelectItem key={opt.value} value={opt.value}>
+                        {opt.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
                 <FormMessage />
               </FormItem>
             )}

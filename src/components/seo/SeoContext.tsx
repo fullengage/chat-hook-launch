@@ -1,12 +1,12 @@
 import React, { createContext, useContext } from "react";
 
 export interface SeoAlternateLink {
-  hreflang: "en" | "pt-BR" | "zh-CN" | "x-default";
+  hreflang: "en" | "pt-BR" | "es" | "zh-CN" | "x-default";
   href: string;
 }
 
 export interface SeoMetadata {
-  lang: "en" | "pt-BR" | "zh-CN";
+  lang: "en" | "pt-BR" | "es" | "zh-CN";
   title: string;
   description: string;
   canonical: string;

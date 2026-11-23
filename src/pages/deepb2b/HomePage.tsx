@@ -19,6 +19,7 @@ import { SeoHead } from "@/components/seo/SeoHead";
 import { SiteLayout } from "@/components/layout/SiteLayout";
 import HeroRadar from "@/components/HeroRadar";
 import { CompanyDiscoveryExperience } from "@/components/discovery/CompanyDiscoveryExperience";
+import { BrazilOpportunityDemo } from "@/components/discovery/BrazilOpportunityDemo";
 import { BrazilMarketSnapshot } from "@/components/visualizations/BrazilMarketSnapshot";
 import { Card } from "@/components/ui/card";
 
@@ -174,6 +175,9 @@ export const HomePage: React.FC = () => {
       {/* Interactive Company Discovery Preview */}
       <CompanyDiscoveryExperience />
 
+      {/* Public Brazil Opportunity Intelligence Walkthrough (No CNPJ Required) */}
+      <BrazilOpportunityDemo />
+
       {/* Target Market Use Cases */}
       <section className="py-20 bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
@@ -327,10 +331,10 @@ export const HomePage: React.FC = () => {
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
             <Link
-              to={routeTo("pricing")}
+              to={routeTo("solutions")}
               className="inline-flex w-full sm:w-auto items-center justify-center rounded-full border border-white/25 px-8 py-4 text-sm font-bold text-white hover:border-[#ff6b00] hover:text-[#ff6b00] transition-colors"
             >
-              {dict.nav.pricing}
+              {dict.nav.solutions}
             </Link>
           </div>
         </div>
