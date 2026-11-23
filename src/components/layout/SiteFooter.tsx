@@ -13,7 +13,7 @@ const LOCALE_NAMES = {
 } as const;
 
 export const SiteFooter: React.FC = () => {
-  const { dict, routeTo } = useLocale();
+  const { locale, dict, routeTo } = useLocale();
   const currentYear = new Date().getFullYear();
 
   const contactEmail = locale === "pt-br" ? "contato@deepb2b.ai" : "contact@deepb2b.ai";
