@@ -20,7 +20,7 @@ import { Link } from "react-router-dom";
 // URL da Edge Function que registra o lead no Supabase
 const EDGE_FUNCTION_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/capture-lead`;
 // Cadastro do teste grátis da Deepson: cria a conta (7 dias, 20 créditos) e devolve o link de entrada já logado
-const CADASTRO_URL = "https://seo.deepson.com.br/api/teste-gratis";
+const CADASTRO_URL = "https://app.deepson.com.br/api/teste-gratis";
 const WHATSAPP_AJUDA =
   "https://api.whatsapp.com/send?phone=5511955501090&text=" +
   encodeURIComponent("Olá! Tentei criar minha conta de teste da Deepson e não consegui.");
