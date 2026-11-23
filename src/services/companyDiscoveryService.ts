@@ -159,20 +159,25 @@ export function interpretBusinessQuery(
           ? "仅保留联邦税务局登记为在营（ATIVA）主体"
           : "ATIVA (Active legal status verified in Receita Federal)";
 
-  const scored = ILLUSTRATIVE_COMPANIES.filter((item) => {
-    if (sectorKey !== "general" && !item.sectorTags.includes(sectorKey)) {
-      return false;
-    }
-    if (regionMatch && !item.ufTags.includes(regionMatch.uf)) {
-      return false;
-    }
-    if (isDistributor && item.roleTag !== "distributor") {
-      return false;
-    }
-    return true;
-  });
+  const scored = [...ILLUSTRATIVE_COMPANIES]
+    .map((item) => {
+      let relevance = item.ai.fitScore / 100;
+      if (sectorKey !== "general" && item.sectorTags.includes(sectorKey)) {
+        relevance += 50;
+      }
+      if (regionMatch && item.ufTags.includes(regionMatch.uf)) {
+        relevance += 25;
+      }
+      if ((isDistributor && item.roleTag === "distributor") || (!isDistributor && item.roleTag === "manufacturer")) {
+        relevance += 20;
+      }
+      return { item, relevance };
+    })
+    .sort((a, b) => b.relevance - a.relevance)
+    .slice(0, 3)
+    .map(({ item }) => item);
 
-  const records = scored.length > 0 ? scored : [...ILLUSTRATIVE_COMPANIES];
+  const records = scored;
 
   return {
     query,

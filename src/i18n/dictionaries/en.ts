@@ -236,7 +236,7 @@ export const enDictionary: TranslationDictionary = {
     eyebrow: "Interactive Company Discovery Preview",
     title: "Translate natural business queries into Brazilian registry filters",
     subtitle:
-      "Test how DeepB2B interprets commercial intent in English, Portuguese, or Chinese into structured Brazilian CNAE, state, and value-chain criteria.",
+      "Test how DeepB2B interprets commercial intent in English, Portuguese, Spanish, or Chinese into structured Brazilian CNAE, state, and value-chain criteria.",
     illustrativeNotice:
       "Illustrative demonstration: sample records below use masked CNPJs and illustrative company names to demonstrate data structure and provenance separation. Live company lookup runs inside the authenticated platform.",
     inputPlaceholder: "e.g., Find distributors of industrial equipment in Brazil",

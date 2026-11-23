@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Search, ShieldCheck, Globe, Sparkles, Lock, ArrowRight, Info } from "lucide-react";
 import { useLocale } from "@/i18n/LocaleContext";
@@ -20,7 +20,18 @@ export const CompanyDiscoveryExperience: React.FC<CompanyDiscoveryExperienceProp
   const [query, setQuery] = useState(dict.discovery.sampleQueries[0]);
   const [activeQuery, setActiveQuery] = useState(dict.discovery.sampleQueries[0]);
 
+  useEffect(() => {
+    setQuery(dict.discovery.sampleQueries[0]);
+    setActiveQuery(dict.discovery.sampleQueries[0]);
+  }, [locale, dict]);
+
   const result = interpretBusinessQuery(activeQuery, locale);
+  const gridClassName =
+    result.records.length === 1
+      ? "mx-auto max-w-2xl grid grid-cols-1 gap-6 mb-10"
+      : result.records.length === 2
+        ? "mx-auto max-w-5xl grid grid-cols-1 lg:grid-cols-2 gap-6 mb-10"
+        : "mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10";
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -161,7 +172,7 @@ export const CompanyDiscoveryExperience: React.FC<CompanyDiscoveryExperienceProp
         </div>
 
         {/* Illustrative Company Cards with Strict 4-Layer Provenance */}
-        <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10">
+        <div className={gridClassName}>
           {result.records.map((company) => (
             <Card
               key={company.id}

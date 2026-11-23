@@ -236,7 +236,7 @@ export const ptBrDictionary: TranslationDictionary = {
     eyebrow: "Experiência Interativa de Busca Empresarial",
     title: "Traduza objetivos comerciais em filtros reais do mercado brasileiro",
     subtitle:
-      "Digite uma busca em linguagem natural (em português, inglês ou chinês) para ver como a DeepB2B converte a intenção em critérios de CNAE, região, porte e cadeia produtiva.",
+      "Digite uma busca em linguagem natural (em português, inglês, espanhol ou chinês) para ver como a DeepB2B converte a intenção em critérios de CNAE, região, porte e cadeia produtiva.",
     illustrativeNotice:
       "Demonstração ilustrativa: os cartões abaixo utilizam CNPJs mascarados e nomes ilustrativos para demonstrar a separação das camadas de dados. A consulta real opera na plataforma autenticada.",
     inputPlaceholder: "Ex.: Encontre indústrias de embalagens no Paraná",
