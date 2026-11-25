@@ -40,3 +40,15 @@ test("new positioning: home headline and Trade Shows page in all 4 languages", (
     assert.ok(fs.readFileSync(file, "utf-8").includes(text), `${file}: "${text}" not found`);
   }
 });
+
+test("trade show calendar and profiles are prerendered with Event schema and market data", () => {
+  const page = fs.readFileSync("dist/pt-br/feiras/beauty-fair/index.html", "utf-8");
+  assert.ok(page.includes('"@type":"Event"') && page.includes('"startDate":"2027-09-04"'), "Event schema missing");
+  assert.ok(page.includes("Beauty Fair 2027"), "h1/title missing");
+  assert.ok(page.includes('hreflang="en" href="https://deepb2b.ai/en/trade-show-calendar/beauty-fair"'), "hreflang missing");
+  assert.ok(page.includes("9.290"), "market data missing");
+  for (const f of ["dist/pt-br/feiras/index.html", "dist/en/trade-show-calendar/feicon/index.html", "dist/es/ferias/hospitalar/index.html", "dist/zh-cn/trade-show-calendar/fispal-tecnologia/index.html"]) {
+    assert.ok(fs.existsSync(f), `${f} not prerendered`);
+  }
+  assert.ok(fs.readFileSync("dist/sitemap.xml", "utf-8").includes("https://deepb2b.ai/pt-br/feiras/feicon"));
+});

@@ -16,7 +16,8 @@ export type RouteKey =
   | "terms"
   | "lgpd"
   | "dataDeletion"
-  | "events";
+  | "events"
+  | "calendar";
 
 export type CapabilityKey =
   | "businessData"
@@ -103,6 +104,7 @@ export interface TranslationDictionary {
     solutions: string;
     resources: string;
     events: string;
+    calendar: string;
     about: string;
     contact: string;
     login: string;

@@ -17,6 +17,11 @@ export const enDictionary: TranslationDictionary = {
       "DeepB2B is the global intelligence brand operated by Deepson (DEEPSON - INTELIGENCIA DE DADOS E TECNOLOGIA LTDA, CNPJ 19.904.935/0001-20 · Grupo FullWeb).",
   },
   seo: {
+    calendar: {
+      title: "2027 Brazil Trade Show Calendar — São Paulo | DeepB2B",
+      description:
+        "Dates, venues and organizers of Brazil's leading 2027 business trade shows, verified on official websites, with exhibitor and buyer profiles for each sector.",
+    },
     events: {
       title: "Trade Show Intelligence for Exhibitors | DeepB2B",
       description:
@@ -113,6 +118,7 @@ export const enDictionary: TranslationDictionary = {
     solutions: "Solutions",
     resources: "Insights",
     events: "Trade Shows & Events",
+    calendar: "Trade show calendar",
     about: "About",
     contact: "Contact",
     login: "Platform Login",

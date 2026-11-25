@@ -16,6 +16,11 @@ export const zhCnDictionary: TranslationDictionary = {
       "DeepB2B 是巴西数据科技公司 Deepson（DEEPSON - INTELIGENCIA DE DADOS E TECNOLOGIA LTDA，CNPJ 19.904.935/0001-20 · Grupo FullWeb）面向全球市场推出的商业情报品牌。",
   },
   seo: {
+    calendar: {
+      title: "2027 巴西商务展会日历 — 圣保罗 | DeepB2B",
+      description:
+        "巴西 2027 年主要商务展会的日期、场馆和主办方（经官网核实），以及各行业的参展商与买家画像。",
+    },
     events: {
       title: "展会情报服务 — 面向参展商 | DeepB2B",
       description:
@@ -109,6 +114,7 @@ export const zhCnDictionary: TranslationDictionary = {
     solutions: "行业方案",
     resources: "洞察",
     events: "展会与活动",
+    calendar: "展会日历",
     about: "关于我们",
     contact: "商务咨询",
     login: "平台入口",

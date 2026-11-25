@@ -14,6 +14,7 @@ import LegalPage from "@/pages/deepb2b/LegalPage";
 import CookieConsent from "@/components/CookieConsent";
 import NotFound from "@/pages/NotFound";
 import EventsPage from "@/pages/deepb2b/EventsPage";
+import { TradeShowCalendarPage, TradeShowPage } from "@/pages/deepb2b/TradeShowPages";
 
 // Legacy operational routes preserved for production continuity
 const Obrigado = lazy(() => import("@/pages/Obrigado"));
@@ -48,6 +49,8 @@ export const AppRoutes: React.FC = () => {
                 <Route path={paths.industryMapping} element={<CapabilityPage capability="industryMapping" />} />
                 <Route path={paths.brazilMarketEntry} element={<CapabilityPage capability="brazilMarketEntry" />} />
                 <Route path={paths.events} element={<EventsPage />} />
+                <Route path={paths.calendar} element={<TradeShowCalendarPage />} />
+                <Route path={`${paths.calendar}/:slug`} element={<TradeShowPage />} />
                 <Route path={paths.solutions} element={<SolutionsPage />} />
                 <Route path={paths.resources} element={<ResourcesPage />} />
                 <Route path={`${paths.resources}/:slug`} element={<ArticlePage />} />

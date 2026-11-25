@@ -77,6 +77,9 @@ export const EventsPage: React.FC = () => {
             <CalendarDays className="h-8 w-8 text-[#ff6b00]" aria-hidden="true" />
             <h2 className="mt-4 text-2xl font-extrabold text-[#0f172a]">{c.calendarTitle}</h2>
             <p className="mt-3 text-sm text-slate-600 leading-relaxed">{c.calendarText}</p>
+            <Link to={routeTo("calendar")} className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-[#040f21] hover:text-[#ff6b00]">
+              {dict.nav.calendar} <ArrowRight className="h-4 w-4 text-[#ff6b00]" aria-hidden="true" />
+            </Link>
           </div>
         </div>
       </section>
