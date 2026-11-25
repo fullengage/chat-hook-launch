@@ -36,8 +36,7 @@ export const HomePage: React.FC = () => {
   const { locale, dict, routeTo, articleTo } = useLocale();
   const heroAnchorRef = useRef<HTMLDivElement>(null);
 
-  const primaryCtaTarget =
-    locale === "pt-br" ? "/teste-gratis" : "#company-discovery";
+  const primaryCtaTarget = locale === "pt-br" ? routeTo("contact") : "#company-discovery";
   const secondaryCtaTarget = routeTo("contact");
 
   const homeSchemas: Record<string, unknown>[] = [
@@ -317,12 +316,12 @@ export const HomePage: React.FC = () => {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              to={locale === "pt-br" ? "/teste-gratis" : routeTo("contact")}
+              to={routeTo("contact")}
               onClick={() =>
                 trackCtaClick(
                   "footer_banner_primary",
                   locale,
-                  locale === "pt-br" ? "/teste-gratis" : routeTo("contact"),
+                  routeTo("contact"),
                 )
               }
               className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-[#ff6b00] px-8 py-4 text-sm font-bold text-white hover:bg-[#ea580c] transition-colors"

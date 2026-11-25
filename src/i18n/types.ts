@@ -15,8 +15,7 @@ export type RouteKey =
   | "privacy"
   | "terms"
   | "lgpd"
-  | "dataDeletion"
-  | "freeTrial";
+  | "dataDeletion";
 
 export type CapabilityKey =
   | "businessData"
@@ -105,7 +104,6 @@ export interface TranslationDictionary {
     about: string;
     contact: string;
     login: string;
-    trialCta: string;
     primaryCta: string;
     secondaryCta: string;
     languageLabel: string;
@@ -213,9 +211,6 @@ export interface TranslationDictionary {
     enterpriseCases: { tag: string; title: string; flow: string }[];
     platformGovernanceTitle: string;
     platformGovernanceBody: string;
-    trialCardTitle: string;
-    trialCardSubtitle: string;
-    trialCardCta: string;
     ctaTitle: string;
     ctaSubtitle: string;
     primaryCta: string;
@@ -299,9 +294,6 @@ export interface TranslationDictionary {
     existingDescription: string;
     existingCta: string;
     existingNotice: string;
-    trialTitle: string;
-    trialDescription: string;
-    trialCta: string;
     intlTitle: string;
     intlDescription: string;
     intlCta: string;

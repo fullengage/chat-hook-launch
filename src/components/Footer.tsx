@@ -45,11 +45,6 @@ const Footer = () => {
             <h3 className="font-bold text-white mb-4 text-sm uppercase tracking-wider">Plataforma</h3>
             <ul className="space-y-3">
               <li>
-                <Link to="/teste-gratis" className="text-sm text-primary font-bold hover:underline transition-colors duration-200">
-                  Teste Grátis (7 dias + 20 créditos)
-                </Link>
-              </li>
-              <li>
                 <a href="https://app.deepson.com.br/" target="_blank" rel="noopener noreferrer" className="text-sm text-slate-300 hover:text-primary transition-colors duration-200 inline-flex items-center gap-1.5">
                   Acessar Plataforma <ExternalLink className="w-3.5 h-3.5" />
                 </a>

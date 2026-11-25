@@ -94,7 +94,7 @@ test("Spanish and Chinese prerendered pages contain authentic localized content 
   assert.ok(/[\u4e00-\u9fff]{10,}/.test(zhHome), "zh-cn home must render Chinese characters");
 });
 
-test("Zero public pricing, extra credit values, or lead-cost calculator appear in prerendered site or /teste-gratis", () => {
+test("Zero public pricing, extra credit values, or lead-cost calculator appear in prerendered site", () => {
   const forbiddenPricePatterns = [
     /R\$\s*497/,
     /R\$\s*997/,
@@ -116,12 +116,6 @@ test("Zero public pricing, extra credit values, or lead-cost calculator appear i
     for (const pattern of forbiddenPricePatterns) {
       assert.ok(!pattern.test(html), `Forbidden public pricing match ${pattern} found in ${file}`);
     }
-  }
-
-  const freeTrialSrc = fs.readFileSync(path.join(ROOT, "src/pages/FreeTrialPage.tsx"), "utf-8");
-  assert.ok(!freeTrialSrc.includes("PlansSection"), "FreeTrialPage must not render PlansSection");
-  for (const pattern of forbiddenPricePatterns) {
-    assert.ok(!pattern.test(freeTrialSrc), `Forbidden pricing pattern ${pattern} in FreeTrialPage.tsx`);
   }
 });
 
@@ -161,15 +155,10 @@ test("Consent-gated analytics: index.html does not unconditionally inject GTM or
   assert.ok(!srcIndex.includes("connect.facebook.net/en_US/fbevents.js"), "Meta Pixel must be loaded conditionally via analytics.ts");
 });
 
-test("Legacy Brazilian conversion flows and Supabase integrations remain intact", () => {
-  const trialForm = fs.readFileSync(path.join(ROOT, "src/components/TrialForm.tsx"), "utf-8");
-  assert.ok(trialForm.includes("https://app.deepson.com.br/api/teste-gratis"));
-  assert.ok(trialForm.includes("/functions/v1/capture-lead"));
-
+test("Contact flows and Supabase lead capture remain intact", () => {
   const appRoutes = fs.readFileSync(path.join(ROOT, "src/AppRoutes.tsx"), "utf-8");
-  assert.ok(fs.readFileSync(path.join(ROOT, "src/i18n/routes.ts"), "utf-8").includes('freeTrial: "/teste-gratis"'));
-  assert.ok(appRoutes.includes("paths.freeTrial"));
   assert.ok(appRoutes.includes('path="/obrigado"'));
+  assert.ok(fs.existsSync(path.join(ROOT, "supabase/functions/capture-lead/index.ts")));
 });
 
 test("DeepB2B pages contain zero ChatHook brand leaks", () => {

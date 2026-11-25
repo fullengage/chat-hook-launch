@@ -26,8 +26,8 @@ const NotFound = () => {
           <Link to={routeTo("home")} className="rounded-full bg-[#ff6b00] px-6 py-3 text-sm font-bold text-white hover:bg-[#ea580c]">
             {c.home}
           </Link>
-          <Link to={routeTo("freeTrial")} className="rounded-full border border-[#ff6b00] px-6 py-3 text-sm font-bold text-[#ff6b00] hover:bg-[#ff6b00]/10">
-            {dict.nav.trialCta}
+          <Link to={routeTo("contact")} className="rounded-full border border-[#ff6b00] px-6 py-3 text-sm font-bold text-[#ff6b00] hover:bg-[#ff6b00]/10">
+            {dict.nav.contact}
           </Link>
         </div>
       </section>

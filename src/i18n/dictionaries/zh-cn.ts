@@ -16,10 +16,6 @@ export const zhCnDictionary: TranslationDictionary = {
       "DeepB2B 是巴西数据科技公司 Deepson（DEEPSON - INTELIGENCIA DE DADOS E TECNOLOGIA LTDA，CNPJ 19.904.935/0001-20 · Grupo FullWeb）面向全球市场推出的商业情报品牌。",
   },
   seo: {
-    freeTrial: {
-      title: "免费试用 7 天 — 巴西 B2B 企业数据 | DeepB2B",
-      description: "免费试用 DeepB2B 7 天，赠送 20 积分，无需信用卡。找到符合您理想客户画像的巴西企业，含联系方式和财务信号。需巴西 CNPJ。",
-    },
     home: {
       title: "DeepB2B — 巴西企业数据与商业情报平台 | 发现巴西经销商与B2B商机",
       description:
@@ -110,7 +106,6 @@ export const zhCnDictionary: TranslationDictionary = {
     about: "关于我们",
     contact: "商务咨询",
     login: "平台入口",
-    trialCta: "免费试用（巴西）",
     primaryCta: "预约产品演示",
     secondaryCta: "探索巴西企业",
     languageLabel: "语言",
@@ -559,9 +554,6 @@ export const zhCnDictionary: TranslationDictionary = {
     platformGovernanceTitle: "方案配置与点数消耗明细说明",
     platformGovernanceBody:
       "DeepB2B 不在公开网页展示标准价目表。中国及国际企业方案均在商务演示后按需定制；巴西本地账户方案及详细点数消耗规则仅在登录正式平台工作台（app.deepson.com.br）后查看。",
-    trialCardTitle: "贵司在巴西是否已注册本地 CNPJ？",
-    trialCardSubtitle: "拥有巴西本地 CNPJ 税号的企业，可直接前往巴西试用通道开通 7 天免费体验。",
-    trialCardCta: "开启巴西本地试用",
     ctaTitle: "想了解 DeepB2B 如何适配您的巴西业务？",
     ctaSubtitle: "欢迎预约一对一商业情报演示，由团队结合您的目标行业现场讲解。",
     primaryCta: "预约产品演示 (Request a Demo)",
@@ -605,7 +597,7 @@ export const zhCnDictionary: TranslationDictionary = {
     statusItems: [
       { capability: "AI ICP 建模与巴西企业发现引擎", status: "production", detail: "已在 app.deepson.com.br 稳定运行" },
       { capability: "CNPJ、CNAE、股东（QSA）与 PGFN 信号核验", status: "production", detail: "按透明点数规则实时运行" },
-      { capability: "看板销售漏斗与 CSV/Excel 导出", status: "production", detail: "正式账户与试用账户均已支持" },
+      { capability: "看板销售漏斗与 CSV/Excel 导出", status: "production", detail: "正式账户均已支持" },
       { capability: "中国及海外企业专人演示与国际方案对接", status: "consultative", detail: "通过“预约演示”表单快速响应" },
       { capability: "登录工作台内全中文 / 英文界面", status: "roadmap", detail: "目前主工作台为葡萄牙语，海外客户享有专属引导" },
       { capability: "美元/人民币自助在线结算与开放 API", status: "roadmap", detail: "目前按企业级项目需求单独评估支持" },
@@ -628,7 +620,7 @@ export const zhCnDictionary: TranslationDictionary = {
     faqs: [
       {
         question: "我们公司在中国，没有巴西本地税号（CNPJ），可以使用 DeepB2B 吗？",
-        answer: "可以。虽然面向巴西国内用户的 7 天自助试用需要验证本地 CNPJ，但中国及海外企业可直接通过本页表单预约专人产品演示，并开通国际企业对接方案。",
+        answer: "可以。中国及海外企业可直接通过本页表单预约专人产品演示，并开通国际企业对接方案。",
       },
       {
         question: "平台内的巴西企业数据来自哪里？会虚构联系人吗？",
@@ -698,9 +690,6 @@ export const zhCnDictionary: TranslationDictionary = {
     existingDescription: "直接登录正式平台工作台，查看已保存的巴西企业、ICP 雷达与点数明细。",
     existingCta: "前往平台 (app.deepson.com.br)",
     existingNotice: "提示：当前登录后的平台操作界面默认语言为巴西葡萄牙语（pt-BR）。",
-    trialTitle: "拥有巴西本地 CNPJ 的在巴企业",
-    trialDescription: "支持免信用卡即时开通 7 天试用账户，并获赠 20 个体验点数。",
-    trialCta: "前往巴西试用开通页",
     intlTitle: "中国及海外企业（无巴西本地 CNPJ）",
     intlDescription: "请预约国际商务团队进行针对性演示，获取跨语种引导与定制开通支持。",
     intlCta: "预约海外企业演示",

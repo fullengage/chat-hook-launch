@@ -17,10 +17,6 @@ export const esDictionary: TranslationDictionary = {
       "DeepB2B es la marca global de inteligencia operada por Deepson (DEEPSON - INTELIGENCIA DE DADOS E TECNOLOGIA LTDA, CNPJ 19.904.935/0001-20 · Grupo FullWeb).",
   },
   seo: {
-    freeTrial: {
-      title: "Prueba gratis de 7 días — Datos de empresas de Brasil | DeepB2B",
-      description: "Pruebe DeepB2B gratis por 7 días con 20 créditos, sin tarjeta. Encuentre empresas brasileñas compatibles con su cliente ideal, con contactos y señales financieras. Requiere CNPJ brasileño.",
-    },
     home: {
       title: "DeepB2B — Datos Empresariales e Inteligencia de Mercado de Brasil",
       description:
@@ -72,9 +68,9 @@ export const esDictionary: TranslationDictionary = {
         "Converse con nuestro equipo comercial y solicite una demostración adaptada a su sector y objetivos de expansión en Brasil.",
     },
     login: {
-      title: "Acceso a la Plataforma y Prueba Gratuita | DeepB2B",
+      title: "Acceso a la Plataforma | DeepB2B",
       description:
-        "Inicie sesión en la plataforma operativa (app.deepson.com.br), solicite una demo internacional o acceda a la prueba gratuita para empresas con CNPJ en Brasil.",
+        "Inicie sesión en la plataforma operativa (app.deepson.com.br) o solicite una demo internacional.",
     },
     privacy: {
       title: "Política de Privacidad y Gobernanza Internacional | DeepB2B",
@@ -114,7 +110,6 @@ export const esDictionary: TranslationDictionary = {
     about: "Nosotros",
     contact: "Contacto",
     login: "Acceso a Plataforma",
-    trialCta: "Prueba gratis (Brasil)",
     primaryCta: "Solicitar Demo",
     secondaryCta: "Explorar Empresas de Brasil",
     languageLabel: "Idioma",
@@ -573,9 +568,6 @@ export const esDictionary: TranslationDictionary = {
     platformGovernanceTitle: "Planes, créditos y condiciones dentro de la plataforma",
     platformGovernanceBody:
       "DeepB2B no publica precios estándar en el sitio público. Las propuestas Enterprise para equipos internacionales se diseñan según el alcance de la operación mediante demostración comercial; los detalles de planes locales y la tabla completa de consumo de créditos permanecen disponibles exclusivamente dentro de la plataforma autenticada (app.deepson.com.br).",
-    trialCardTitle: "¿Su empresa opera con CNPJ brasileño?",
-    trialCardSubtitle: "Las compañías registradas en Brasil pueden acceder a la prueba gratuita de 7 días directamente en el portal de prueba.",
-    trialCardCta: "Acceder a Prueba Gratuita (Brasil)",
     ctaTitle: "Conozca cómo DeepB2B se adapta a su operación",
     ctaSubtitle: "Solicite una demostración guiada enfocada en su sector objetivo y regiones de Brasil.",
     primaryCta: "Request a Demo",
@@ -619,7 +611,7 @@ export const esDictionary: TranslationDictionary = {
     statusItems: [
       { capability: "Modelado ICP por IA y descubrimiento de empresas brasileñas", status: "production", detail: "Operativo en app.deepson.com.br" },
       { capability: "Filtros CNPJ, CNAE, QSA y señales públicas PGFN", status: "production", detail: "Activo dentro de la plataforma autenticada" },
-      { capability: "Embudo Kanban, verificación de decisores y exportación CSV/Excel", status: "production", detail: "Disponible para cuentas activas y prueba en Brasil" },
+      { capability: "Embudo Kanban, verificación de decisores y exportación CSV/Excel", status: "production", detail: "Disponible para cuentas activas" },
       { capability: "Demostraciones de entrada a Brasil y propuestas Enterprise", status: "consultative", detail: "Atendido mediante Solicitar Demo" },
       { capability: "Interfaz autenticada de la app en Español, Inglés y Chino", status: "roadmap", detail: "Actualmente en pt-BR dentro del app; onboarding guiado para equipos internacionales" },
       { capability: "API global autoservicio e integración automatizada Comex/ferias", status: "roadmap", detail: "Evaluado por proyecto corporativo" },
@@ -633,7 +625,7 @@ export const esDictionary: TranslationDictionary = {
     channels: [
       { title: "Demostraciones Internacionales", description: "Sesiones guiadas para exportadores, fabricantes y equipos de expansión en LATAM y el mundo." },
       { title: "Soluciones Enterprise", description: "Propuestas corporativas para múltiples usuarios, mapeo de canales y proyectos a medida." },
-      { title: "Mesa Comercial Brasil", description: "Soporte para operaciones comerciales locales y cuentas de prueba con CNPJ brasileño." },
+      { title: "Mesa Comercial Brasil", description: "Soporte para operaciones comerciales locales en Brasil." },
       { title: "Privacidad y LGPD", description: "Atención sobre origen de datos públicos y solicitudes de titulares." },
     ],
     formTitle: "Solicitar Demostración o Conversar con Nuestro Equipo",
@@ -642,7 +634,7 @@ export const esDictionary: TranslationDictionary = {
     faqs: [
       {
         question: "¿Necesito un CNPJ brasileño para solicitar una demostración?",
-        answer: "No. Aunque la prueba gratuita autoservicio en Brasil valida un CNPJ local, las empresas de América Latina y otros países pueden solicitar una demostración guiada y propuestas Enterprise desde este formulario.",
+        answer: "No. Las empresas de América Latina y otros países pueden solicitar una demostración guiada y propuestas Enterprise desde este formulario.",
       },
       {
         question: "¿De dónde provienen los datos de empresas brasileñas?",
@@ -713,9 +705,6 @@ export const esDictionary: TranslationDictionary = {
     existingDescription: "Inicie sesión directamente en su espacio de trabajo para acceder a su radar ICP, empresas guardadas y detalle de créditos.",
     existingCta: "Ir a la Plataforma (app.deepson.com.br)",
     existingNotice: "Nota: Actualmente la interfaz operativa autenticada funciona en portugués (pt-BR).",
-    trialTitle: "Empresas con CNPJ Brasileño",
-    trialDescription: "Active una cuenta de prueba gratuita de 7 días sin tarjeta de crédito en el portal de Brasil.",
-    trialCta: "Iniciar Prueba Gratuita (Brasil)",
     intlTitle: "Equipos de LATAM y Empresas Internacionales",
     intlDescription: "¿No cuenta con CNPJ en Brasil? Solicite una demostración guiada y propuesta Enterprise personalizada.",
     intlCta: "Solicitar Demo Internacional",

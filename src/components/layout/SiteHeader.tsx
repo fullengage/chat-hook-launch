@@ -13,7 +13,7 @@ export const SiteHeader: React.FC = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const primaryCtaTarget =
-    locale === "pt-br" ? "/teste-gratis" : routeTo("contact");
+    routeTo("contact");
 
   const intelligenceLinks = [
     { label: dict.nav.businessData, to: routeTo("businessData") },
@@ -135,15 +135,6 @@ export const SiteHeader: React.FC = () => {
             >
               {dict.nav.login}
             </Link>
-            {locale !== "pt-br" && (
-              <Link
-                to={routeTo("freeTrial")}
-                onClick={() => trackCtaClick("header_trial", locale, routeTo("freeTrial"))}
-                className="whitespace-nowrap rounded-full border border-[#ff6b00] px-4 py-2 text-xs font-bold text-[#ff6b00] hover:bg-[#ff6b00]/10 transition-colors"
-              >
-                {dict.nav.trialCta}
-              </Link>
-            )}
             <Link
               to={primaryCtaTarget}
               onClick={() => trackCtaClick("header_primary", locale, primaryCtaTarget)}
@@ -218,18 +209,6 @@ export const SiteHeader: React.FC = () => {
               </div>
 
               <div className="pt-2 flex flex-col gap-2">
-                {locale !== "pt-br" && (
-                  <Link
-                    to={routeTo("freeTrial")}
-                    onClick={() => {
-                      trackCtaClick("mobile_header_trial", locale, routeTo("freeTrial"));
-                      setMobileMenuOpen(false);
-                    }}
-                    className="flex w-full items-center justify-center rounded-full border border-[#ff6b00] py-3 text-sm font-bold text-[#ff6b00] hover:bg-[#ff6b00]/10"
-                  >
-                    {dict.nav.trialCta}
-                  </Link>
-                )}
                 <Link
                   to={primaryCtaTarget}
                   onClick={() => {

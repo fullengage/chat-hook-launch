@@ -29,10 +29,7 @@ export const CapabilityPage: React.FC<CapabilityPageProps> = ({ capability }) =>
   const copy = dict.capabilities[capability];
   const seoCopy = dict.seo[capability];
 
-  const primaryHref =
-    locale === "pt-br" && capability !== "brazilMarketEntry"
-      ? "/teste-gratis"
-      : routeTo("contact");
+  const primaryHref = routeTo("contact");
 
   const secondaryHref =
     capability === "businessData" && locale !== "pt-br"
