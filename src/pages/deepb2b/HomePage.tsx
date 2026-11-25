@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, BookOpen, CalendarDays, Check, CheckCircle2, Globe2, Handshake, LineChart, Megaphone } from "lucide-react";
 import { useLocale } from "@/i18n/LocaleContext";
 import { SITE_ORIGIN } from "@/i18n/routes";
-import { EDITORIAL_ARTICLES } from "@/data/articles";
+import { articlesFor } from "@/data/articles";
 import { trackCtaClick } from "@/services/analytics";
 import { SeoHead } from "@/components/seo/SeoHead";
 import { SiteLayout } from "@/components/layout/SiteLayout";
@@ -189,8 +189,7 @@ export const HomePage: React.FC = () => {
             </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {EDITORIAL_ARTICLES.slice(0, 3).map((article) => {
-              const content = article.localized[locale];
+            {articlesFor(locale).slice(0, 3).map(({ article, content }) => {
               return (
                 <Link key={article.slug} to={articleTo(article.slug)} className="group border-t-2 border-[#040f21] pt-5">
                   <div className="flex items-center justify-between text-xs text-slate-500 mb-3">

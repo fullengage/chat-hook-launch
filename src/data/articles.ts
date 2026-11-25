@@ -1,4 +1,4 @@
-import type { ArticleSlug } from "@/i18n/routes";
+import { articleAvailableIn, type ArticleSlug } from "@/i18n/routes";
 import type { Locale } from "@/i18n/types";
 
 export interface EditorialSection {
@@ -23,10 +23,336 @@ export interface EditorialArticle {
   publishedAt: string;
   updatedAt: string;
   featuredReport?: boolean;
-  localized: Record<Locale, LocalizedArticleContent>;
+  localized: Partial<Record<Locale, LocalizedArticleContent>>;
 }
 
 export const EDITORIAL_ARTICLES: readonly EditorialArticle[] = [
+  {
+    slug: "sao-paulo-business-trade-shows-2027",
+    publishedAt: "2026-11-25",
+    updatedAt: "2026-11-25",
+    localized: {
+      "pt-br": {
+        title: "Feiras de negócios em São Paulo em 2027: datas e quem compra em cada setor",
+        metaTitle: "Feiras de negócios em São Paulo 2027: datas e compradores | DeepB2B",
+        metaDescription:
+          "Datas de 2027 da FEICON, Hospitalar, Fispal Tecnologia e Beauty Fair, conferidas nos sites oficiais, e o tamanho do mercado comprador de cada setor na base da Receita Federal.",
+        category: "Feiras e Eventos · Nov 2026",
+        summary:
+          "Reunimos as datas de 2027 de quatro grandes feiras de São Paulo, conferidas nos sites oficiais, e cruzamos cada setor com a base pública da Receita Federal para mostrar o tamanho do mercado comprador.",
+        readingMinutes: 6,
+        sections: [
+          {
+            heading: "Por que São Paulo concentra as grandes feiras",
+            paragraphs: [
+              "Dois pavilhões recebem a maior parte das feiras de negócios de grande porte da capital: o São Paulo Expo, na Rodovia dos Imigrantes, e o Expo Center Norte, na Vila Guilherme.",
+              "Para quem expõe, a escolha da cidade tem uma razão prática: o estado de São Paulo concentra uma parcela grande das empresas compradoras de quase todos os setores. Os números abaixo mostram isso setor a setor.",
+            ],
+          },
+          {
+            heading: "O calendário de 2027",
+            paragraphs: [
+              "Datas conferidas nos sites oficiais de cada feira em 25/11/2026. Confirme no site do organizador antes de planejar viagem ou estande.",
+            ],
+            bullets: [
+              "FEICON — 6 a 9 de abril de 2027 — São Paulo Expo — construção civil e materiais de construção.",
+              "Hospitalar — 18 a 21 de maio de 2027 — São Paulo Expo — saúde e produtos hospitalares.",
+              "Fispal Tecnologia — 22 a 25 de junho de 2027 — São Paulo Expo — processamento e embalagem para alimentos e bebidas.",
+              "Beauty Fair — 4 a 7 de setembro de 2027 — Expo Center Norte — beleza, cosméticos e estética.",
+            ],
+          },
+          {
+            heading: "FEICON: quem compra na construção civil",
+            paragraphs: ["Estabelecimentos ativos por CNAE principal na base pública da Receita Federal (edição de outubro de 2026):"],
+            bullets: [
+              "Varejo de materiais de construção em geral (4744-0/99): 185.333 no Brasil, 33.802 em SP.",
+              "Construção de edifícios (4120-4/00): 181.848 no Brasil, 35.384 em SP.",
+              "Atacado de materiais de construção (4679-6/99): 8.941 no Brasil, 1.851 em SP.",
+            ],
+          },
+          {
+            heading: "Hospitalar: quem compra na saúde",
+            paragraphs: [],
+            bullets: [
+              "Clínicas médicas ambulatoriais (8630-5/03): 226.132 no Brasil, 71.384 em SP.",
+              "Atendimento hospitalar (8610-1/01): 29.435 no Brasil, 4.064 em SP.",
+              "Atacado de materiais médico-hospitalares (4645-1/01): 10.986 no Brasil, 3.225 em SP.",
+            ],
+          },
+          {
+            heading: "Fispal Tecnologia: quem compra em alimentos e bebidas",
+            paragraphs: [],
+            bullets: [
+              "Fabricação de produtos alimentícios (divisão 10 da CNAE, todos os códigos): 403.111 no Brasil, 101.061 em SP.",
+              "Laticínios (1052-0/00): 8.785 no Brasil, 954 em SP.",
+              "Fabricação de bebidas (divisão 11): 9.724 no Brasil, 1.483 em SP.",
+            ],
+          },
+          {
+            heading: "Beauty Fair: quem compra em beleza e cosméticos",
+            paragraphs: [],
+            bullets: [
+              "Atacado de cosméticos e perfumaria (4646-0/01): 9.290 no Brasil, 3.363 em SP.",
+              "Varejo de cosméticos e perfumaria (4772-5/00): 244.067 no Brasil, 67.579 em SP.",
+              "Cabeleireiros, manicure e pedicure (9602-5/01): 942.603 no Brasil, 280.546 em SP.",
+            ],
+          },
+          {
+            heading: "O que esses números dizem a quem expõe",
+            paragraphs: [],
+            bullets: [
+              "O comprador grande é minoria. Em cosméticos, há cerca de 9 mil atacadistas para mais de 240 mil lojas. Atacadistas e distribuidores costumam ser os contatos de maior valor por conversa, e os mais disputados durante a feira.",
+              "São Paulo pesa, mas não é tudo. Pouco mais de um terço dos atacadistas de cosméticos do país está em SP. Quem convida só compradores paulistas deixa de fora a maior parte do mercado.",
+              "O trabalho começa antes da abertura. Com o recorte certo de CNAE, porte e região, dá para saber antes da feira quem são os compradores com perfil, convidá-los e chegar ao evento com reuniões marcadas.",
+            ],
+          },
+          {
+            heading: "Metodologia",
+            paragraphs: [
+              "Datas e locais conferidos nos sites oficiais das feiras em 25/11/2026. Números de empresas: estabelecimentos ativos por CNAE principal na base pública da Receita Federal (edição de outubro de 2026), processada pela plataforma DeepB2B. É uma contagem de empresas, não uma estimativa do público de cada feira.",
+            ],
+          },
+        ],
+        sources: [
+          "Site oficial da FEICON (feicon.com.br), conferido em 25/11/2026",
+          "Site oficial da Hospitalar (hospitalar.com), conferido em 25/11/2026",
+          "Site oficial da Fispal Tecnologia (fispaltecnologia.com.br), conferido em 25/11/2026",
+          "Site oficial da Beauty Fair (beautyfair.com.br), conferido em 25/11/2026",
+          "Receita Federal — Dados Abertos do CNPJ, edição de outubro de 2026, processados pela DeepB2B",
+        ],
+      },
+      en: {
+        title: "Business Trade Shows in São Paulo in 2027: Dates and Who Buys in Each Sector",
+        metaTitle: "São Paulo Trade Shows 2027: Dates and Buyer Market | DeepB2B",
+        metaDescription:
+          "2027 dates for FEICON, Hospitalar, Fispal Tecnologia and Beauty Fair, verified on official websites, plus the size of each sector's buyer market from Brazil's Federal Revenue registry.",
+        category: "Trade Shows · Nov 2026",
+        summary:
+          "We gathered the 2027 dates of four major São Paulo trade shows, verified on official websites, and matched each sector against Brazil's public Federal Revenue registry to size the buyer market.",
+        readingMinutes: 6,
+        sections: [
+          {
+            heading: "Why São Paulo hosts Brazil's largest trade shows",
+            paragraphs: [
+              "Two venues host most of the city's large business trade shows: São Paulo Expo, on Rodovia dos Imigrantes, and Expo Center Norte, in Vila Guilherme.",
+              "For exhibitors there is a practical reason: São Paulo state is home to a large share of the buying companies in almost every sector. The figures below show this sector by sector.",
+            ],
+          },
+          {
+            heading: "The 2027 calendar",
+            paragraphs: ["Dates verified on each show's official website on 25 November 2026. Always confirm with the organizer before booking travel or a booth."],
+            bullets: [
+              "FEICON — 6–9 April 2027 — São Paulo Expo — construction and building materials.",
+              "Hospitalar — 18–21 May 2027 — São Paulo Expo — healthcare and hospital supplies.",
+              "Fispal Tecnologia — 22–25 June 2027 — São Paulo Expo — processing and packaging for food and beverages.",
+              "Beauty Fair — 4–7 September 2027 — Expo Center Norte — beauty, cosmetics and aesthetics.",
+            ],
+          },
+          {
+            heading: "FEICON: who buys in construction",
+            paragraphs: ["Active establishments by primary CNAE code in Brazil's public Federal Revenue registry (October 2026 edition):"],
+            bullets: [
+              "Building materials retail (4744-0/99): 185,333 in Brazil, 33,802 in São Paulo state.",
+              "Building construction companies (4120-4/00): 181,848 in Brazil, 35,384 in São Paulo state.",
+              "Building materials wholesale (4679-6/99): 8,941 in Brazil, 1,851 in São Paulo state.",
+            ],
+          },
+          {
+            heading: "Hospitalar: who buys in healthcare",
+            paragraphs: [],
+            bullets: [
+              "Outpatient medical clinics (8630-5/03): 226,132 in Brazil, 71,384 in São Paulo state.",
+              "Hospitals (8610-1/01): 29,435 in Brazil, 4,064 in São Paulo state.",
+              "Medical and hospital supplies wholesale (4645-1/01): 10,986 in Brazil, 3,225 in São Paulo state.",
+            ],
+          },
+          {
+            heading: "Fispal Tecnologia: who buys in food and beverages",
+            paragraphs: [],
+            bullets: [
+              "Food manufacturing (CNAE division 10, all codes): 403,111 in Brazil, 101,061 in São Paulo state.",
+              "Dairy (1052-0/00): 8,785 in Brazil, 954 in São Paulo state.",
+              "Beverage manufacturing (division 11): 9,724 in Brazil, 1,483 in São Paulo state.",
+            ],
+          },
+          {
+            heading: "Beauty Fair: who buys in beauty and cosmetics",
+            paragraphs: [],
+            bullets: [
+              "Cosmetics and fragrance wholesale (4646-0/01): 9,290 in Brazil, 3,363 in São Paulo state.",
+              "Cosmetics and fragrance retail (4772-5/00): 244,067 in Brazil, 67,579 in São Paulo state.",
+              "Hair and nail salons (9602-5/01): 942,603 in Brazil, 280,546 in São Paulo state.",
+            ],
+          },
+          {
+            heading: "What these numbers mean for exhibitors",
+            paragraphs: [],
+            bullets: [
+              "Large buyers are a minority. In cosmetics there are about 9,000 wholesalers for more than 240,000 stores. Wholesalers and distributors are usually the highest-value conversations — and the most contested during the show.",
+              "São Paulo matters, but it is not everything. Just over a third of Brazil's cosmetics wholesalers are in São Paulo state. Inviting only local buyers leaves most of the market out.",
+              "The work starts before the doors open. With the right CNAE, size and region filters, you can identify qualified buyers before the show, invite them and arrive with meetings booked.",
+            ],
+          },
+          {
+            heading: "Methodology",
+            paragraphs: [
+              "Dates and venues verified on the shows' official websites on 25 November 2026. Company figures: active establishments by primary CNAE code in Brazil's public Federal Revenue registry (October 2026 edition), processed by the DeepB2B platform. This is a count of companies, not an estimate of each show's attendance.",
+            ],
+          },
+        ],
+        sources: [
+          "FEICON official website (feicon.com.br), verified 25 Nov 2026",
+          "Hospitalar official website (hospitalar.com), verified 25 Nov 2026",
+          "Fispal Tecnologia official website (fispaltecnologia.com.br), verified 25 Nov 2026",
+          "Beauty Fair official website (beautyfair.com.br), verified 25 Nov 2026",
+          "Receita Federal — CNPJ Open Data, October 2026 edition, processed by DeepB2B",
+        ],
+      },
+    },
+  },
+  {
+    slug: "beauty-fair-2027-cosmetics-buyers",
+    publishedAt: "2026-11-25",
+    updatedAt: "2026-11-25",
+    localized: {
+      "pt-br": {
+        title: "Beauty Fair 2027: quem compra cosméticos no Brasil e como chegar à feira com reuniões marcadas",
+        metaTitle: "Beauty Fair 2027: compradores de cosméticos no Brasil | DeepB2B",
+        metaDescription:
+          "Beauty Fair 2027 acontece de 4 a 7 de setembro no Expo Center Norte. Veja o tamanho de cada elo da cadeia de cosméticos e um roteiro para expositores antes, durante e depois da feira.",
+        category: "Feiras e Eventos · Nov 2026",
+        summary:
+          "Para quem expõe na Beauty Fair, o desafio não é ser visto, é ser visto pelos compradores certos. Mostramos o tamanho de cada elo da cadeia de cosméticos e um roteiro em três etapas.",
+        readingMinutes: 5,
+        sections: [
+          {
+            heading: "Datas e local",
+            paragraphs: [
+              "A Beauty Fair 2027 acontece de 4 a 7 de setembro de 2027, no Expo Center Norte (Rua José Bernardo Pinto, 333, Vila Guilherme, São Paulo – SP), segundo o site oficial da feira, conferido em 25/11/2026.",
+            ],
+          },
+          {
+            heading: "A cadeia de cosméticos em números",
+            paragraphs: [
+              "A Beauty Fair reúne a cadeia inteira: indústria, distribuição, varejo e profissionais. Estabelecimentos ativos por CNAE principal na base pública da Receita Federal (edição de outubro de 2026):",
+            ],
+            bullets: [
+              "Fabricação de cosméticos e perfumaria (2063-1/00): 3.543 no Brasil, 1.364 em SP.",
+              "Atacado de cosméticos e perfumaria (4646-0/01): 9.290 no Brasil, 3.363 em SP.",
+              "Varejo de cosméticos e perfumaria (4772-5/00): 244.067 no Brasil, 67.579 em SP.",
+              "Cabeleireiros, manicure e pedicure (9602-5/01): 942.603 no Brasil, 280.546 em SP.",
+              "Estética e cuidados com a beleza (9602-5/02): 377.223 no Brasil, 113.139 em SP.",
+            ],
+          },
+          {
+            heading: "Duas leituras para quem expõe",
+            paragraphs: [],
+            bullets: [
+              "O funil se estreita no atacado. São cerca de 3,5 mil fabricantes para pouco mais de 9 mil atacadistas, que abastecem centenas de milhares de lojas e salões. Para a indústria, cada distribuidor bem escolhido equivale a muitos pontos de venda.",
+              "A maior parte do atacado não está em São Paulo. Cerca de 36% dos atacadistas de cosméticos estão no estado de SP; os outros 64% estão espalhados pelo país, e muitos só vão à feira com um motivo concreto: uma reunião marcada, um lançamento, uma condição comercial.",
+            ],
+          },
+          {
+            heading: "Antes da feira (60 dias)",
+            paragraphs: [],
+            bullets: [
+              "Defina o comprador: distribuidores, atacadistas, redes de perfumaria e farmácia, lojas de cosméticos ou salões. Cada um pede uma abordagem diferente.",
+              "Monte a lista com critério: CNAE, porte e região. Exclua quem já é cliente e quem é concorrente.",
+              "Identifique quem decide: em distribuidoras, geralmente a diretoria comercial ou de compras.",
+              "Convide com motivo: um lançamento, uma demonstração ou uma condição para quem agendar visita ao estande.",
+            ],
+          },
+          {
+            heading: "Durante e depois da feira",
+            paragraphs: [],
+            bullets: [
+              "Durante: deixe a agenda de reuniões visível para a equipe do estande e registre cada conversa com o perfil do comprador e o próximo passo.",
+              "Depois (30 dias): retome primeiro quem demonstrou interesse, inclusive quem foi convidado e não compareceu.",
+              "Meça o resultado: empresas abordadas, respostas, reuniões realizadas e oportunidades abertas.",
+            ],
+          },
+          {
+            heading: "Metodologia",
+            paragraphs: [
+              "Datas e local: site oficial da Beauty Fair, conferido em 25/11/2026. Números: estabelecimentos ativos por CNAE principal na base pública da Receita Federal (edição de outubro de 2026), processada pela plataforma DeepB2B. É uma contagem de empresas, não uma estimativa do público da feira.",
+            ],
+          },
+        ],
+        sources: [
+          "Site oficial da Beauty Fair (beautyfair.com.br), conferido em 25/11/2026",
+          "Receita Federal — Dados Abertos do CNPJ, edição de outubro de 2026, processados pela DeepB2B",
+        ],
+      },
+      en: {
+        title: "Beauty Fair 2027: Who Buys Cosmetics in Brazil and How to Arrive With Meetings Booked",
+        metaTitle: "Beauty Fair 2027: Cosmetics Buyers in Brazil | DeepB2B",
+        metaDescription:
+          "Beauty Fair 2027 runs 4–7 September at Expo Center Norte, São Paulo. See the size of each link in Brazil's cosmetics chain and a before-during-after playbook for exhibitors.",
+        category: "Trade Shows · Nov 2026",
+        summary:
+          "For Beauty Fair exhibitors, the challenge isn't being seen — it's being seen by the right buyers. We size each link of Brazil's cosmetics chain and lay out a three-stage playbook.",
+        readingMinutes: 5,
+        sections: [
+          {
+            heading: "Dates and venue",
+            paragraphs: [
+              "Beauty Fair 2027 runs from 4 to 7 September 2027 at Expo Center Norte (Rua José Bernardo Pinto, 333, Vila Guilherme, São Paulo – SP), according to the show's official website, verified on 25 November 2026.",
+            ],
+          },
+          {
+            heading: "Brazil's cosmetics chain in numbers",
+            paragraphs: [
+              "Beauty Fair brings the whole chain together: manufacturers, distribution, retail and professionals. Active establishments by primary CNAE code in Brazil's public Federal Revenue registry (October 2026 edition):",
+            ],
+            bullets: [
+              "Cosmetics and fragrance manufacturing (2063-1/00): 3,543 in Brazil, 1,364 in São Paulo state.",
+              "Cosmetics and fragrance wholesale (4646-0/01): 9,290 in Brazil, 3,363 in São Paulo state.",
+              "Cosmetics and fragrance retail (4772-5/00): 244,067 in Brazil, 67,579 in São Paulo state.",
+              "Hair and nail salons (9602-5/01): 942,603 in Brazil, 280,546 in São Paulo state.",
+              "Aesthetics and beauty care (9602-5/02): 377,223 in Brazil, 113,139 in São Paulo state.",
+            ],
+          },
+          {
+            heading: "Two takeaways for exhibitors",
+            paragraphs: [],
+            bullets: [
+              "The funnel narrows at wholesale. There are about 3,500 manufacturers and just over 9,000 wholesalers supplying hundreds of thousands of stores and salons. For a manufacturer, each well-chosen distributor stands for many points of sale.",
+              "Most wholesalers are outside São Paulo. About 36% of Brazil's cosmetics wholesalers are in São Paulo state; the other 64% are spread across the country, and many only travel to the show with a concrete reason: a booked meeting, a launch or a commercial offer.",
+            ],
+          },
+          {
+            heading: "Before the show (60 days)",
+            paragraphs: [],
+            bullets: [
+              "Define the buyer: distributors, wholesalers, perfumery and pharmacy chains, cosmetics stores or salons. Each needs a different approach.",
+              "Build the list with criteria: CNAE code, company size and region. Exclude existing customers and competitors.",
+              "Identify the decision-maker: in distributors, usually the commercial or purchasing director.",
+              "Invite with a reason: a launch, a demo or an offer for buyers who book a booth visit.",
+            ],
+          },
+          {
+            heading: "During and after the show",
+            paragraphs: [],
+            bullets: [
+              "During: keep the meeting schedule visible to the booth team and log every conversation with the buyer profile and next step.",
+              "After (30 days): follow up first with interested contacts, including those who were invited but didn't attend.",
+              "Measure results: companies contacted, replies, meetings held and opportunities opened.",
+            ],
+          },
+          {
+            heading: "Methodology",
+            paragraphs: [
+              "Dates and venue: Beauty Fair official website, verified on 25 November 2026. Figures: active establishments by primary CNAE code in Brazil's public Federal Revenue registry (October 2026 edition), processed by the DeepB2B platform. This is a count of companies, not an estimate of show attendance.",
+            ],
+          },
+        ],
+        sources: [
+          "Beauty Fair official website (beautyfair.com.br), verified 25 Nov 2026",
+          "Receita Federal — CNPJ Open Data, October 2026 edition, processed by DeepB2B",
+        ],
+      },
+    },
+  },
   {
     slug: "brazil-industrial-machinery-distribution-report-2026",
     publishedAt: "2026-11-23",
@@ -1186,6 +1512,14 @@ export const EDITORIAL_ARTICLES: readonly EditorialArticle[] = [
     },
   },
 ] as const;
+
+/** Artigos disponíveis num idioma, já com o conteúdo daquele idioma. */
+export function articlesFor(locale: Locale): { article: EditorialArticle; content: LocalizedArticleContent }[] {
+  return EDITORIAL_ARTICLES.filter((a) => articleAvailableIn(a.slug, locale) && a.localized[locale]).map((a) => ({
+    article: a,
+    content: a.localized[locale] as LocalizedArticleContent,
+  }));
+}
 
 export function getArticleBySlug(slug: string): EditorialArticle | undefined {
   return EDITORIAL_ARTICLES.find((a) => a.slug === slug);

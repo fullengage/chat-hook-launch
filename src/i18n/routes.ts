@@ -94,6 +94,8 @@ export const HREFLANG_BY_LOCALE: Record<Locale, "en" | "pt-BR" | "es" | "zh-CN">
 };
 
 export const ARTICLE_SLUGS = [
+  "sao-paulo-business-trade-shows-2027",
+  "beauty-fair-2027-cosmetics-buyers",
   "brazil-industrial-machinery-distribution-report-2026",
   "how-to-find-distributors-in-brazil",
   "understanding-brazilian-cnpj-data",
@@ -103,6 +105,17 @@ export const ARTICLE_SLUGS = [
 ] as const;
 
 export type ArticleSlug = (typeof ARTICLE_SLUGS)[number];
+
+/** Artigos publicados só em alguns idiomas. Os demais existem nos 4. */
+const PARTIAL_ARTICLE_LOCALES: Partial<Record<string, readonly Locale[]>> = {
+  "sao-paulo-business-trade-shows-2027": ["pt-br", "en"],
+  "beauty-fair-2027-cosmetics-buyers": ["pt-br", "en"],
+};
+
+export function articleAvailableIn(slug: string, locale: Locale): boolean {
+  const only = PARTIAL_ARTICLE_LOCALES[slug];
+  return !only || only.includes(locale);
+}
 
 export function normalizePathname(pathname: string): string {
   if (!pathname || pathname === "/") return "/";
@@ -175,7 +188,9 @@ export function extractTradeShowSlugFromPath(pathname: string): string | null {
 export function resolveAlternatePath(currentPathname: string, targetLocale: Locale): string {
   const articleSlug = extractArticleSlugFromPath(currentPathname);
   if (articleSlug) {
-    return getArticlePath(targetLocale, articleSlug);
+    return articleAvailableIn(articleSlug, targetLocale)
+      ? getArticlePath(targetLocale, articleSlug)
+      : getRoutePath(targetLocale, "resources");
   }
   const showSlug = extractTradeShowSlugFromPath(currentPathname);
   if (showSlug) {
@@ -191,8 +206,10 @@ export function resolveAlternatePath(currentPathname: string, targetLocale: Loca
 export function getAlternateLinks(
   currentPathname: string,
 ): { hreflang: "en" | "pt-BR" | "es" | "zh-CN" | "x-default"; href: string }[] {
+  const articleSlug = extractArticleSlugFromPath(currentPathname);
+  const locales = articleSlug ? SUPPORTED_LOCALES.filter((l) => articleAvailableIn(articleSlug, l)) : SUPPORTED_LOCALES;
   const links: { hreflang: "en" | "pt-BR" | "es" | "zh-CN" | "x-default"; href: string }[] =
-    SUPPORTED_LOCALES.map((loc) => ({
+    locales.map((loc) => ({
       hreflang: HREFLANG_BY_LOCALE[loc],
       href: `${SITE_ORIGIN}${resolveAlternatePath(currentPathname, loc)}`,
     }));
@@ -251,6 +268,7 @@ export function getAllIndexableRoutes(): {
       entries.push({ path: getTradeShowPath(locale, show.slug), locale, routeKey: "tradeShow" });
     }
     for (const slug of ARTICLE_SLUGS) {
+      if (!articleAvailableIn(slug, locale)) continue;
       entries.push({
         path: getArticlePath(locale, slug),
         locale,

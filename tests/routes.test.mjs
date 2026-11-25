@@ -52,3 +52,13 @@ test("trade show calendar and profiles are prerendered with Event schema and mar
   }
   assert.ok(fs.readFileSync("dist/sitemap.xml", "utf-8").includes("https://deepb2b.ai/pt-br/feiras/feicon"));
 });
+
+test("first Insights articles are published in pt-BR and EN only, with matching hreflang", () => {
+  const pt = fs.readFileSync("dist/pt-br/conteudos/sao-paulo-business-trade-shows-2027/index.html", "utf-8");
+  assert.ok(pt.includes("Feiras de negócios em São Paulo em 2027"));
+  assert.ok(pt.includes('hreflang="en" href="https://deepb2b.ai/en/resources/sao-paulo-business-trade-shows-2027"'));
+  assert.ok(!pt.includes('hreflang="es"'), "must not point to a Spanish version that doesn't exist");
+  assert.ok(fs.existsSync("dist/en/resources/beauty-fair-2027-cosmetics-buyers/index.html"));
+  assert.ok(!fs.existsSync("dist/es/recursos/beauty-fair-2027-cosmetics-buyers/index.html"));
+  assert.ok(!fs.readFileSync("dist/es/recursos/index.html", "utf-8").includes("beauty-fair-2027-cosmetics-buyers"));
+});

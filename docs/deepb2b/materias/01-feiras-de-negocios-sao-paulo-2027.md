@@ -1,5 +1,5 @@
 ---
-status: rascunho para revisão (não publicado)
+status: aprovado em 25/11/2026 e publicado no portal (pt-BR e EN)
 autoria: Redação DeepB2B Intelligence
 editoria: Feiras e Eventos
 palavra-chave principal: feiras em são paulo (≈720 buscas/mês, Semrush BR, 25/11/2026)
@@ -29,7 +29,7 @@ Dois pavilhões recebem a maior parte das feiras de negócios de grande porte da
 
 ## Quem compra em cada setor
 
-Uma feira vale pelo público comprador que atrai. Para dimensionar esse público, contamos os estabelecimentos registrados na base pública da Receita Federal (edição de outubro de 2026) com o CNAE principal de cada segmento comprador.
+Uma feira vale pelo público comprador que atrai. Para dimensionar esse público, contamos os estabelecimentos ativos na base pública da Receita Federal (edição de outubro de 2026) com o CNAE principal de cada segmento comprador.
 
 ### FEICON — construção civil
 Os compradores típicos são revendas de materiais, atacadistas e construtoras.
@@ -61,13 +61,13 @@ Os compradores típicos são revendas de materiais, atacadistas e construtoras.
 ## Metodologia
 
 - **Datas e locais:** conferidos nos sites oficiais das feiras em 25/11/2026: feicon.com.br, hospitalar.com, fispaltecnologia.com.br e beautyfair.com.br.
-- **Números de empresas:** contagem de estabelecimentos por CNAE principal na base pública da Receita Federal (edição de outubro de 2026), processada pela plataforma DeepB2B. São registros, não uma estimativa de compradores ativos de cada feira.
+- **Números de empresas:** contagem de estabelecimentos ativos por CNAE principal na base pública da Receita Federal (edição de outubro de 2026), processada pela plataforma DeepB2B. É uma contagem de empresas, não uma estimativa de compradores ativos de cada feira.
 
 ---
 *Quer saber quantos compradores do seu segmento existem na sua região? Fale com a DeepB2B.*
 
 <!-- Checklist de revisão antes de publicar:
 [ ] Conferir as datas de novo nos sites oficiais na semana da publicação
-[ ] Confirmar com o Rafael se a base de CNPJ contém só estabelecimentos ativos (se sim, trocar "estabelecimentos registrados" por "estabelecimentos ativos")
+[x] Base de CNPJ contém só estabelecimentos ativos (confirmado em 25/11/2026)
 [ ] Imagem de capa (licenciada ou própria)
 [ ] Versão em inglês (prioridade) -->

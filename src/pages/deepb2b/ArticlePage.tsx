@@ -14,11 +14,11 @@ export const ArticlePage: React.FC = () => {
   const { locale, dict, routeTo, articleTo, formatDate } = useLocale();
   const article = getArticleBySlug(slug);
 
-  if (!article) {
+  const content = article?.localized[locale];
+  if (!article || !content) {
     return <NotFound />;
   }
 
-  const content = article.localized[locale];
   const canonicalUrl = `${SITE_ORIGIN}${articleTo(article.slug)}`;
 
   const schemas: Record<string, unknown>[] = [
