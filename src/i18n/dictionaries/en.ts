@@ -17,10 +17,15 @@ export const enDictionary: TranslationDictionary = {
       "DeepB2B is the global intelligence brand operated by Deepson (DEEPSON - INTELIGENCIA DE DADOS E TECNOLOGIA LTDA, CNPJ 19.904.935/0001-20 · Grupo FullWeb).",
   },
   seo: {
-    home: {
-      title: "DeepB2B — Brazil's Business Intelligence, Powered by AI",
+    events: {
+      title: "Trade Show Intelligence for Exhibitors | DeepB2B",
       description:
-        "Discover Brazilian companies, understand industries, identify distributors and uncover commercial opportunities with AI-powered Brazilian business intelligence.",
+        "Turn every trade show into business opportunities: buyers identified before the event, invitation campaigns, meeting agendas and post-show follow-up in Brazil and abroad.",
+    },
+    home: {
+      title: "DeepB2B — Market Intelligence & Business Development",
+      description:
+        "Business intelligence that connects markets and creates business: market studies, trade show intelligence, buyer identification and expansion in Brazil and worldwide.",
     },
     businessData: {
       title: "Brazilian Business Data & CNPJ Intelligence | DeepB2B",
@@ -106,11 +111,12 @@ export const enDictionary: TranslationDictionary = {
     industryMapping: "Industry Mapping",
     brazilMarketEntry: "Brazil Market Entry",
     solutions: "Solutions",
-    resources: "Resources",
+    resources: "Insights",
+    events: "Trade Shows & Events",
     about: "About",
     contact: "Contact",
     login: "Platform Login",
-    primaryCta: "Request a Demo",
+    primaryCta: "Request a Presentation",
     secondaryCta: "Explore Brazilian Companies",
     languageLabel: "Language",
     openMenu: "Open menu",

@@ -83,14 +83,14 @@ test("Prerendered HTML files exist for EN, PT-BR, ES, ZH-CN with valid lang, can
 
 test("Spanish and Chinese prerendered pages contain authentic localized content and @deepb2b.ai branding", () => {
   const esHome = fs.readFileSync(path.join(DIST, "es/index.html"), "utf-8");
-  assert.ok(esHome.includes("Comprenda Brasil"), "es home must contain Spanish headline");
+  assert.ok(esHome.includes("Inteligencia que conecta mercados y genera negocios."), "es home must contain Spanish headline");
   assert.ok(esHome.includes("contact@deepb2b.ai"), "es footer must use contact@deepb2b.ai");
 
   const esSolutions = fs.readFileSync(path.join(DIST, "es/soluciones/index.html"), "utf-8");
   assert.ok(esSolutions.includes("Business Data") && esSolutions.includes("Enterprise Solutions"));
 
   const zhHome = fs.readFileSync(path.join(DIST, "zh-cn/index.html"), "utf-8");
-  assert.ok(zhHome.includes("巴西企业数据与商业情报平台"), "zh-cn home must contain Chinese positioning text");
+  assert.ok(zhHome.includes("连接市场、创造商机的商业情报。"), "zh-cn home must contain Chinese positioning text");
   assert.ok(/[\u4e00-\u9fff]{10,}/.test(zhHome), "zh-cn home must render Chinese characters");
 });
 

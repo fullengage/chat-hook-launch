@@ -15,7 +15,8 @@ export type RouteKey =
   | "privacy"
   | "terms"
   | "lgpd"
-  | "dataDeletion";
+  | "dataDeletion"
+  | "events";
 
 export type CapabilityKey =
   | "businessData"
@@ -101,6 +102,7 @@ export interface TranslationDictionary {
     brazilMarketEntry: string;
     solutions: string;
     resources: string;
+    events: string;
     about: string;
     contact: string;
     login: string;

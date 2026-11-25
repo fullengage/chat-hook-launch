@@ -23,6 +23,7 @@ export const ROUTES_BY_LOCALE: Record<Locale, Record<RouteKey, string>> = {
     terms: "/en/terms",
     lgpd: "/en/lgpd",
     dataDeletion: "/en/data-deletion",
+    events: "/en/trade-shows",
   },
   "pt-br": {
     home: "/pt-br",
@@ -40,6 +41,7 @@ export const ROUTES_BY_LOCALE: Record<Locale, Record<RouteKey, string>> = {
     terms: "/pt-br/termos-de-uso",
     lgpd: "/pt-br/lgpd",
     dataDeletion: "/pt-br/exclusao-de-dados",
+    events: "/pt-br/feiras-e-eventos",
   },
   es: {
     home: "/es",
@@ -57,6 +59,7 @@ export const ROUTES_BY_LOCALE: Record<Locale, Record<RouteKey, string>> = {
     terms: "/es/terminos-de-uso",
     lgpd: "/es/lgpd",
     dataDeletion: "/es/eliminacion-de-datos",
+    events: "/es/ferias-y-eventos",
   },
   "zh-cn": {
     home: "/zh-cn",
@@ -74,6 +77,7 @@ export const ROUTES_BY_LOCALE: Record<Locale, Record<RouteKey, string>> = {
     terms: "/zh-cn/terms",
     lgpd: "/zh-cn/lgpd",
     dataDeletion: "/zh-cn/data-deletion",
+    events: "/zh-cn/trade-shows",
   },
 };
 

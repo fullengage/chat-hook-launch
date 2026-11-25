@@ -26,3 +26,17 @@ test("free trial was removed: old URLs redirect to contact, nothing links to it"
     assert.ok(!html.includes("/teste-gratis") && !/teste grátis/i.test(html), `${f} still mentions the trial`);
   }
 });
+
+test("new positioning: home headline and Trade Shows page in all 4 languages", () => {
+  const pages = {
+    "dist/pt-br/index.html": "Inteligência que conecta mercados e gera negócios.",
+    "dist/en/index.html": "Intelligence that connects markets and creates business.",
+    "dist/pt-br/feiras-e-eventos/index.html": "Transforme sua participação em feiras em oportunidades de negócios.",
+    "dist/en/trade-shows/index.html": "Turn every trade show into real business opportunities.",
+    "dist/es/ferias-y-eventos/index.html": "Convierta su participación en ferias en oportunidades de negocio.",
+    "dist/zh-cn/trade-shows/index.html": "让每一次参展都转化为真正的商机。",
+  };
+  for (const [file, text] of Object.entries(pages)) {
+    assert.ok(fs.readFileSync(file, "utf-8").includes(text), `${file}: "${text}" not found`);
+  }
+});

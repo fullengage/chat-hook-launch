@@ -17,10 +17,15 @@ export const ptBrDictionary: TranslationDictionary = {
       "DeepB2B é a marca global de inteligência operada pela Deepson (DEEPSON - INTELIGENCIA DE DADOS E TECNOLOGIA LTDA, CNPJ 19.904.935/0001-20 · Grupo FullWeb).",
   },
   seo: {
-    home: {
-      title: "DeepB2B — Inteligência Empresarial Brasileira & Prospecção B2B com IA",
+    events: {
+      title: "Feiras e Eventos — Inteligência para Expositores | DeepB2B",
       description:
-        "Encontre as empresas certas no Brasil, analise mercados por CNAE, identifique decisores e transforme dados públicos em inteligência comercial.",
+        "Transforme sua participação em feiras em oportunidades de negócios: compradores identificados antes do evento, campanhas de convite, agendas comerciais e acompanhamento depois da feira.",
+    },
+    home: {
+      title: "DeepB2B — Inteligência de Mercado e Desenvolvimento de Negócios",
+      description:
+        "Inteligência empresarial que conecta mercados e gera negócios: estudos de mercado, inteligência para feiras e eventos, identificação de compradores e expansão no Brasil e no exterior.",
     },
     businessData: {
       title: "Dados Empresariais Brasileiros (CNPJ, CNAE e Sinais) | DeepB2B",
@@ -106,11 +111,12 @@ export const ptBrDictionary: TranslationDictionary = {
     industryMapping: "Mapeamento Setorial",
     brazilMarketEntry: "Mercado Brasileiro",
     solutions: "Soluções",
-    resources: "Conteúdos",
+    resources: "Insights",
+    events: "Feiras e Eventos",
     about: "Sobre",
     contact: "Contato",
     login: "Acessar Plataforma",
-    primaryCta: "Falar com Especialista",
+    primaryCta: "Solicitar apresentação",
     secondaryCta: "Solicitar Demonstração",
     languageLabel: "Idioma",
     openMenu: "Abrir menu",

@@ -24,6 +24,7 @@ export const SiteHeader: React.FC = () => {
   ];
 
   const mainLinks = [
+    { label: dict.nav.events, to: routeTo("events") },
     { label: dict.nav.solutions, to: routeTo("solutions") },
     { label: dict.nav.resources, to: routeTo("resources") },
     { label: dict.nav.about, to: routeTo("about") },
