@@ -62,3 +62,10 @@ test("first Insights articles are published in pt-BR and EN only, with matching 
   assert.ok(!fs.existsSync("dist/es/recursos/beauty-fair-2027-cosmetics-buyers/index.html"));
   assert.ok(!fs.readFileSync("dist/es/recursos/index.html", "utf-8").includes("beauty-fair-2027-cosmetics-buyers"));
 });
+
+test("Feiras e Eventos is a news front page: ticker, latest headlines and buyer-market box", () => {
+  const html = fs.readFileSync("dist/pt-br/feiras-e-eventos/index.html", "utf-8");
+  assert.ok(html.includes("ticker-track"), "ticker missing");
+  assert.ok(html.includes("FEICON 2027 acontece de 6 a 9 de abril no São Paulo Expo"), "verified headline missing");
+  assert.ok(html.includes("Mercado comprador") && html.includes("9.290"), "market box missing");
+});
