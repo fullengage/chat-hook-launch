@@ -130,7 +130,7 @@ export const ptBrDictionary: TranslationDictionary = {
     primaryCta: "Falar com Especialista",
     secondaryCta: "Solicitar Demonstração",
     trustItems: [
-      "7 dias grátis • 20 créditos • Sem cartão de crédito",
+      "Inteligência de mercado, eventos e empresas",
       "Fontes públicas oficiais (Receita Federal e PGFN)",
       "Separação clara entre dado oficial e estimativa de IA",
     ],

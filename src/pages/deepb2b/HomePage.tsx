@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, BookOpen, Check, Globe2 } from "lucide-react";
+import { ArrowRight, BookOpen, Check, CheckCircle2, Globe2 } from "lucide-react";
 import { useLocale } from "@/i18n/LocaleContext";
 import { SITE_ORIGIN } from "@/i18n/routes";
 import { EDITORIAL_ARTICLES } from "@/data/articles";
 import { trackCtaClick } from "@/services/analytics";
 import { SeoHead } from "@/components/seo/SeoHead";
 import { SiteLayout } from "@/components/layout/SiteLayout";
+import HeroRadar from "@/components/HeroRadar";
 import { homeCopy } from "./positioningCopy";
 
 const eyebrow = "inline-block text-xs font-extrabold uppercase tracking-[0.2em] text-[#ff6b00] mb-4";
@@ -15,6 +16,7 @@ export const HomePage: React.FC = () => {
   const { locale, dict, routeTo, articleTo } = useLocale();
   const c = homeCopy(locale);
   const contact = routeTo("contact");
+  const heroAnchorRef = useRef<HTMLDivElement>(null);
 
   const homeSchemas: Record<string, unknown>[] = [
     {
@@ -40,29 +42,39 @@ export const HomePage: React.FC = () => {
     <SiteLayout>
       <SeoHead title={dict.seo.home.title} description={dict.seo.home.description} jsonLd={homeSchemas} />
 
-      {/* 1. Hero */}
-      {/* ponytail: fundo em gradiente até existir fotografia editorial de feira (licenciada) para o hero */}
-      <section className="relative overflow-hidden bg-[#040f21] text-white">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,107,0,0.18),transparent_55%)]" aria-hidden="true" />
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 py-24 md:py-32">
-          <span className={eyebrow}>{c.eyebrow}</span>
-          <h1 className="max-w-4xl text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.05]">{c.h1}</h1>
-          <p className="mt-6 max-w-2xl text-lg md:text-xl text-slate-300 leading-relaxed">{c.subtitle}</p>
-          <div className="mt-10 flex flex-col sm:flex-row gap-4">
+      {/* 1. Hero com radar */}
+      <section className="relative overflow-hidden bg-[#f8fafc] pt-16 pb-20 md:pt-24 md:pb-28">
+        <HeroRadar anchor={heroAnchorRef} />
+        <div className="relative z-10 mx-auto max-w-5xl px-4 sm:px-6 text-center">
+          <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider text-[#040f21] shadow-sm mb-6">
+            <span className="h-2 w-2 rounded-full bg-[#ff6b00]" aria-hidden="true" />
+            <span>{c.eyebrow}</span>
+          </div>
+          <h1 className="mx-auto max-w-4xl text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#040f21] leading-[1.08] mb-6">{c.h1}</h1>
+          <p className="mx-auto max-w-2xl text-base sm:text-lg md:text-xl text-slate-600 leading-relaxed mb-10">{c.subtitle}</p>
+          <div ref={heroAnchorRef} className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
             <Link
               to={routeTo("solutions")}
               onClick={() => trackCtaClick("home_hero_solutions", locale, routeTo("solutions"))}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#ff6b00] px-7 py-4 text-sm font-bold text-white hover:bg-[#ea580c] transition-colors"
+              className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-[#ff6b00] px-8 py-4 text-sm font-bold text-white shadow-button hover:bg-[#ea580c] transition-all"
             >
               {c.ctaSolutions} <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
             <Link
               to={contact}
               onClick={() => trackCtaClick("home_hero_presentation", locale, contact)}
-              className="inline-flex items-center justify-center rounded-full border border-white/30 px-7 py-4 text-sm font-bold text-white hover:bg-white/10 transition-colors"
+              className="inline-flex w-full sm:w-auto items-center justify-center rounded-full border-2 border-[#040f21] bg-white px-8 py-3.5 text-sm font-bold text-[#040f21] hover:border-[#ff6b00] hover:text-[#ff6b00] transition-all"
             >
               {c.ctaPresentation}
             </Link>
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs font-semibold text-slate-600">
+            {dict.home.trustItems.map((item) => (
+              <div key={item} className="inline-flex items-center gap-1.5">
+                <CheckCircle2 className="h-4 w-4 text-[#ff6b00] shrink-0" aria-hidden="true" />
+                <span>{item}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
