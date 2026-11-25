@@ -16,6 +16,10 @@ export const zhCnDictionary: TranslationDictionary = {
       "DeepB2B 是巴西数据科技公司 Deepson（DEEPSON - INTELIGENCIA DE DADOS E TECNOLOGIA LTDA，CNPJ 19.904.935/0001-20 · Grupo FullWeb）面向全球市场推出的商业情报品牌。",
   },
   seo: {
+    freeTrial: {
+      title: "免费试用 7 天 — 巴西 B2B 企业数据 | DeepB2B",
+      description: "免费试用 DeepB2B 7 天，赠送 20 积分，无需信用卡。找到符合您理想客户画像的巴西企业，含联系方式和财务信号。需巴西 CNPJ。",
+    },
     home: {
       title: "DeepB2B — 巴西企业数据与商业情报平台 | 发现巴西经销商与B2B商机",
       description:
@@ -106,6 +110,7 @@ export const zhCnDictionary: TranslationDictionary = {
     about: "关于我们",
     contact: "商务咨询",
     login: "平台入口",
+    trialCta: "免费试用（巴西）",
     primaryCta: "预约产品演示",
     secondaryCta: "探索巴西企业",
     languageLabel: "语言",

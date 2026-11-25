@@ -17,6 +17,10 @@ export const esDictionary: TranslationDictionary = {
       "DeepB2B es la marca global de inteligencia operada por Deepson (DEEPSON - INTELIGENCIA DE DADOS E TECNOLOGIA LTDA, CNPJ 19.904.935/0001-20 · Grupo FullWeb).",
   },
   seo: {
+    freeTrial: {
+      title: "Prueba gratis de 7 días — Datos de empresas de Brasil | DeepB2B",
+      description: "Pruebe DeepB2B gratis por 7 días con 20 créditos, sin tarjeta. Encuentre empresas brasileñas compatibles con su cliente ideal, con contactos y señales financieras. Requiere CNPJ brasileño.",
+    },
     home: {
       title: "DeepB2B — Datos Empresariales e Inteligencia de Mercado de Brasil",
       description:
@@ -110,6 +114,7 @@ export const esDictionary: TranslationDictionary = {
     about: "Nosotros",
     contact: "Contacto",
     login: "Acceso a Plataforma",
+    trialCta: "Prueba gratis (Brasil)",
     primaryCta: "Solicitar Demo",
     secondaryCta: "Explorar Empresas de Brasil",
     languageLabel: "Idioma",

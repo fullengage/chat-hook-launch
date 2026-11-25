@@ -14,12 +14,18 @@ import {
 import TrialForm from "@/components/TrialForm";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
-import Footer from "@/components/Footer";
+import { Link } from "react-router-dom";
+import { SiteFooter } from "@/components/layout/SiteFooter";
+import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
+import { DeepB2BLogo } from "@/components/brand/DeepB2BLogo";
+import { SeoHead } from "@/components/seo/SeoHead";
+import { useLocale } from "@/i18n/LocaleContext";
+import { FREE_TRIAL_COPY } from "@/pages/freeTrialCopy";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 
 const FreeTrialPage = () => {
-   const navigate = useNavigate();
+   const { locale, dict, routeTo } = useLocale();
+   const c = FREE_TRIAL_COPY[locale];
    const [showExitPopup, setShowExitPopup] = useState(false);
    const [hasShownExit, setHasShownExit] = useState(false);
 
@@ -43,35 +49,34 @@ const FreeTrialPage = () => {
    };
 
    const handleOpenWhatsApp = () => {
-      window.open("https://wa.me/5511955501090?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Deepson.", "_blank", "noopener");
+      window.open("https://wa.me/5511955501090?text=" + encodeURIComponent(c.whatsappMsg), "_blank", "noopener");
    };
 
    return (
       <div className="min-h-screen bg-[#040f21] text-foreground font-sans selection:bg-primary/30 scroll-smooth">
+         <SeoHead title={dict.seo.freeTrial.title} description={dict.seo.freeTrial.description} />
          {/* Header / Logo */}
          <header className="py-3 lg:py-4 border-b border-white/10 bg-[#040f21]/95 backdrop-blur-md sticky top-0 z-50">
             <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
                <div className="flex items-center gap-3">
-                  <img
-                     src="/logo-deepai.png"
-                     alt="DeepAI — Inteligência de Dados B2B"
-                     className="h-12 md:h-14 w-auto object-contain cursor-pointer hover:scale-105 transition-transform"
-                     onClick={() => navigate("/")}
-                  />
+                  <Link to={routeTo("home")} aria-label={c.logoAlt}>
+                     <DeepB2BLogo variant="dark" showSubtitle subtitleText={dict.brand.subtitle} />
+                  </Link>
                </div>
                <div className="flex flex-wrap items-center justify-center md:justify-end gap-3 md:gap-6">
                   <div className="hidden sm:flex items-center gap-2 text-[10px] md:text-xs text-slate-300 bg-white/5 px-4 py-2 rounded-full border border-white/10">
                      <ShieldCheck className="w-4 h-4 text-primary" />
-                     <span className="font-bold uppercase tracking-wider leading-none">Fontes Públicas Oficiais</span>
+                     <span className="font-bold uppercase tracking-wider leading-none">{c.officialSources}</span>
                   </div>
                   <div className="flex items-center gap-2">
+                     <LanguageSwitcher compact />
                      <Button
                         variant="outline"
                         size="sm"
-                        className="rounded-full font-bold border-primary/30 text-white hover:bg-primary/10 transition-all text-sm h-11"
+                        className="rounded-full font-bold border-primary/30 bg-transparent text-white hover:bg-primary/10 transition-all text-sm h-11"
                         onClick={handleOpenWhatsApp}
                      >
-                        Falar com Especialista
+                        {c.talkToExpert}
                      </Button>
                      <Button
                         variant="cta"
@@ -79,7 +84,7 @@ const FreeTrialPage = () => {
                         className="rounded-full font-bold text-sm h-11 px-6"
                         onClick={scrollToForm}
                      >
-                        Começar teste grátis sem cartão
+                        {c.startTrial}
                      </Button>
                   </div>
                </div>
@@ -95,19 +100,19 @@ const FreeTrialPage = () => {
                      <div className="lg:w-3/5 text-center lg:text-left space-y-6">
                         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/15 border border-primary/30 text-primary text-xs font-extrabold uppercase tracking-wider">
                            <Sparkles className="w-3.5 h-3.5" />
-                           Inteligência e Produtividade Comercial B2B
+                           {c.badge}
                         </div>
 
                         <h1 className="text-3xl md:text-5xl lg:text-[54px] font-black tracking-tight leading-[1.05] text-white mt-0 pt-0">
-                           Encontre empresas com <span className="text-primary italic text-shadow-glow">maior potencial</span> de comprar de você.
+                           {c.h1Before}<span className="text-primary italic text-shadow-glow">{c.h1Highlight}</span>{c.h1After}
                         </h1>
 
                         <p className="text-lg md:text-xl text-slate-200 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                           Informe o site da sua empresa. A IA do <strong>Deepson</strong> entende o que você vende, identifica seu cliente ideal e encontra empresas compatíveis, explicando por que cada uma merece a atenção do seu comercial.
+                           {c.lead.split("{brand}")[0]}<strong>{c.leadStrong}</strong>{c.lead.split("{brand}")[1]}
                         </p>
 
                         <p className="text-base md:text-lg text-slate-300 font-semibold max-w-2xl mx-auto lg:mx-0 border-l-4 border-primary pl-4 text-left">
-                           Seu vendedor passa menos tempo procurando clientes e mais tempo conversando com quem tem potencial de comprar.
+                           {c.pitch}
                         </p>
 
                         {/* Free Trial Value Breakdown */}
@@ -116,46 +121,46 @@ const FreeTrialPage = () => {
                               <div className="flex items-center gap-2">
                                  <CheckCircle2 className="w-5 h-5 text-primary shrink-0" />
                                  <span className="font-black text-white text-sm md:text-base">
-                                    7 dias grátis, sem cartão • Acesso imediato à plataforma
+                                    {c.valueTitle}
                                  </span>
                               </div>
                               <span className="text-[11px] font-bold uppercase tracking-wider bg-primary/15 text-primary px-3 py-1 rounded-full border border-primary/30">
-                                 CNPJ Brasileiro
+                                 {c.cnpjBadge}
                               </span>
                            </div>
 
                            <div className="grid sm:grid-cols-2 gap-3">
                               <div className="bg-white/5 rounded-2xl p-3.5 border border-white/10">
                                  <div className="flex items-center justify-between mb-1">
-                                    <span className="text-xs font-extrabold uppercase tracking-wider text-primary">Descoberta & Dados</span>
+                                    <span className="text-xs font-extrabold uppercase tracking-wider text-primary">{c.card1Title}</span>
                                  </div>
                                  <p className="text-xs text-slate-200 leading-relaxed">
-                                    <strong>Contato + sinais financeiros</strong> (telefone, e-mail, sócios, Receita Federal e dívida ativa PGFN).
+                                    <strong>{c.card1Strong}</strong>{c.card1Text}
                                  </p>
                               </div>
 
                               <div className="bg-white/5 rounded-2xl p-3.5 border border-white/10">
                                  <div className="flex items-center justify-between mb-1">
-                                    <span className="text-xs font-extrabold uppercase tracking-wider text-primary">Qualificação por IA</span>
+                                    <span className="text-xs font-extrabold uppercase tracking-wider text-primary">{c.card2Title}</span>
                                  </div>
                                  <p className="text-xs text-slate-200 leading-relaxed">
-                                    <strong>Enriquecimento completo</strong> (contato + decisor + análise de aderência e abordagem comercial por IA).
+                                    <strong>{c.card2Strong}</strong>{c.card2Text}
                                  </p>
                               </div>
                            </div>
 
                            <p className="text-[11px] text-slate-400 flex items-center gap-1.5">
                               <Info className="w-3.5 h-3.5 text-primary shrink-0" />
-                              Os planos e a tabela detalhada de consumo de créditos ficam disponíveis dentro da plataforma após o login. Se uma consulta não localizar contato válido, o crédito não é consumido.
+                              {c.creditsNote}
                            </p>
                         </div>
 
                         <div className="flex flex-col sm:flex-row items-center gap-4 lg:hidden">
                            <Button variant="cta" size="lg" className="w-full h-14 rounded-2xl font-bold" onClick={scrollToForm}>
-                              Começar teste grátis sem cartão
+                              {c.startTrial}
                            </Button>
-                           <Button variant="outline" size="lg" className="w-full h-14 rounded-2xl font-bold" onClick={handleOpenWhatsApp}>
-                              Falar com Especialista
+                           <Button variant="outline" size="lg" className="w-full h-14 rounded-2xl font-bold bg-transparent text-white" onClick={handleOpenWhatsApp}>
+                              {c.talkToExpert}
                            </Button>
                         </div>
                      </div>
@@ -169,7 +174,7 @@ const FreeTrialPage = () => {
                         </div>
                         <div className="mt-4 flex flex-col items-center gap-1 text-center">
                            <p className="text-xs text-slate-300 leading-relaxed">
-                              Cadastro imediato — seu acesso de teste é liberado assim que sua conta é criada.
+                              {c.formNote}
                            </p>
                         </div>
                      </div>
@@ -185,40 +190,19 @@ const FreeTrialPage = () => {
                <div className="container mx-auto px-4">
                   <div className="text-center mb-14">
                      <span className="text-xs font-black uppercase tracking-widest text-primary block mb-2">
-                        Jornada Prática na Plataforma
+                        {c.stepsEyebrow}
                      </span>
                      <h2 className="text-3xl md:text-5xl font-black tracking-tight mb-4 text-white">
-                        Do seu site à abordagem comercial em <span className="text-primary italic">4 passos</span>
+                        {c.stepsTitleBefore}<span className="text-primary italic">{c.stepsTitleHighlight}</span>
                      </h2>
                      <p className="text-slate-300 text-lg max-w-2xl mx-auto">
-                        Sem precisar adivinhar códigos CNAE ou cruzar planilhas manualmente: a IA guia cada etapa da sua prospecção.
+                        {c.stepsLead}
                      </p>
                   </div>
 
                   <div className="grid md:grid-cols-4 gap-6 relative">
                      <div className="hidden md:block absolute top-1/2 left-0 right-0 h-0.5 bg-primary/20 -z-10" />
-                     {[
-                        {
-                           step: "①",
-                           t: "Sua Empresa (Briefing)",
-                           d: "Informe o seu site, o que você vende, para quem e em qual região. A IA interpreta sua oferta comercial."
-                        },
-                        {
-                           step: "②",
-                           t: "Seu Cliente Ideal (ICP)",
-                           d: "A IA sugere o perfil de comprador ideal e seleciona automaticamente os CNAEs, portes e estados mais aderentes."
-                        },
-                        {
-                           step: "③",
-                           t: "Empresas Compatíveis",
-                           d: "Receba as empresas ordenadas por nota de aderência ao seu ICP, com a explicação clara do motivo para abordar cada uma."
-                        },
-                        {
-                           step: "④",
-                           t: "Funil e Enriquecimento",
-                           d: "Salve no funil e escolha o que liberar sob demanda: contatos, sinais financeiros, enriquecimento completo por IA ou exportação em planilha."
-                        }
-                     ].map((s, i) => (
+                     {c.steps.map((st, i) => ({ step: String(i + 1), t: st.t, d: st.d })).map((s, i) => (
                         <div key={i} className="bg-[#040f21] p-7 rounded-[28px] border border-white/10 text-left relative group hover:border-primary/50 transition-colors">
                            <div className="w-11 h-11 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-black mb-5 shadow-lg shadow-primary/20 text-base">
                               {s.step}
@@ -237,21 +221,16 @@ const FreeTrialPage = () => {
                   <div className="flex flex-col lg:flex-row items-center gap-14 mb-20">
                      <div className="lg:w-1/2 space-y-6">
                         <div className="bg-primary/15 text-primary px-4 py-1.5 rounded-full w-fit font-bold text-xs uppercase tracking-widest border border-primary/25">
-                           Por Dentro do Produto
+                           {c.productEyebrow}
                         </div>
                         <h2 className="text-3xl md:text-4xl font-black leading-tight text-white">
-                           Qualificação com motivo claro, decisores e sinais financeiros de fontes públicas
+                           {c.productTitle}
                         </h2>
                         <p className="text-slate-300 text-base md:text-lg leading-relaxed">
-                           Em vez de entregar apenas uma lista fria de CNPJs, o Deepson cruza a base oficial de empresas ativas com o seu ICP para priorizar quem realmente tem perfil para comprar sua solução.
+                           {c.productLead}
                         </p>
                         <ul className="space-y-3.5">
-                           {[
-                              "Nota de aderência (0 a 100) calculada por IA com justificativa em linguagem comercial",
-                              "Identificação de contatos corporativos, quadro societário e decisores no LinkedIn",
-                              "Sinais financeiros objetivos (Receita Federal, dívida ativa PGFN e cartórios) com fonte e data",
-                              "Funil comercial em Kanban e exportação de listas qualificadas em planilha"
-                           ].map((item, i) => (
+                           {c.productBullets.map((item, i) => (
                               <li key={i} className="flex items-start gap-3 text-slate-200 text-sm md:text-base">
                                  <Check className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                                  <span className="font-medium">{item}</span>
@@ -260,7 +239,7 @@ const FreeTrialPage = () => {
                         </ul>
                         <div className="pt-2">
                            <Button variant="cta" size="lg" className="h-13 px-8 rounded-full font-black" onClick={scrollToForm}>
-                              Experimentar grátis por 7 dias
+                              {c.tryFree}
                            </Button>
                         </div>
                      </div>
@@ -270,12 +249,12 @@ const FreeTrialPage = () => {
                         <div className="relative z-10 rounded-[28px] border border-white/15 bg-[#07152e] p-3 shadow-2xl">
                            <img
                               src="/dashboard-deepson.jpg"
-                              alt="Ilustração do painel Deepson — Inteligência de Mercado B2B"
+                              alt={c.imageAlt}
                               className="rounded-[20px] w-full h-auto"
                               loading="lazy"
                            />
                            <p className="text-[11px] text-slate-400 text-center mt-3 px-2">
-                              * Imagem meramente ilustrativa da interface do painel (números demonstrativos). Na plataforma, o volume de empresas e oportunidades reflete os filtros de CNAE, porte e região do seu ICP sobre a base pública da Receita Federal.
+                              {c.imageNote}
                            </p>
                         </div>
                      </div>
@@ -286,14 +265,14 @@ const FreeTrialPage = () => {
                      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 mb-6 border-b border-white/10">
                         <div>
                            <span className="text-xs font-black uppercase tracking-widest text-primary block mb-1">
-                              Aplicação Real em Operações B2B
+                              {c.casesEyebrow}
                            </span>
                            <h3 className="text-2xl font-black text-white">
-                              Como empresas B2B utilizam a inteligência do Deepson na prática
+                              {c.casesTitle}
                            </h3>
                         </div>
                         <span className="text-xs font-bold bg-white/5 border border-white/10 text-slate-300 px-4 py-2 rounded-full w-fit">
-                           Grupo FullWeb • Metodologia Aplicada
+                           {c.casesBadge}
                         </span>
                      </div>
 
@@ -302,9 +281,9 @@ const FreeTrialPage = () => {
                            <div className="w-10 h-10 rounded-xl bg-primary/15 flex items-center justify-center">
                               <Building2 className="w-5 h-5 text-primary" />
                            </div>
-                           <h4 className="font-bold text-white text-base">Outsourcing de TI & Impressão (Case MGITECH)</h4>
+                           <h4 className="font-bold text-white text-base">{c.cases[0].t}</h4>
                            <p className="text-xs text-slate-300 leading-relaxed">
-                              Mapeamento regional no estado de São Paulo cruzando porte empresarial, setores intensivos em documentação (saúde, logística, educação e indústria) e exclusão automática de concorrentes do mesmo CNAE.
+                              {c.cases[0].d}
                            </p>
                         </div>
 
@@ -312,9 +291,9 @@ const FreeTrialPage = () => {
                            <div className="w-10 h-10 rounded-xl bg-primary/15 flex items-center justify-center">
                               <SearchCheck className="w-5 h-5 text-primary" />
                            </div>
-                           <h4 className="font-bold text-white text-base">Engenharia & Saúde e Segurança do Trabalho (SST)</h4>
+                           <h4 className="font-bold text-white text-base">{c.cases[1].t}</h4>
                            <p className="text-xs text-slate-300 leading-relaxed">
-                              Identificação de indústrias e construtoras ativas com obrigação de PGR/PCMSO, liberando contato validado, situação cadastral na Receita Federal e decisores de RH/Operações.
+                              {c.cases[1].d}
                            </p>
                         </div>
 
@@ -322,9 +301,9 @@ const FreeTrialPage = () => {
                            <div className="w-10 h-10 rounded-xl bg-primary/15 flex items-center justify-center">
                               <UserCheck className="w-5 h-5 text-primary" />
                            </div>
-                           <h4 className="font-bold text-white text-base">Indústria de Embalagens & Insumos B2B</h4>
+                           <h4 className="font-bold text-white text-base">{c.cases[2].t}</h4>
                            <p className="text-xs text-slate-300 leading-relaxed">
-                              Seleção automática dos CNAEs compradores (indústrias de alimentos, cosméticos e centros de distribuição) separando fornecedores de matéria-prima dos reais compradores finais.
+                              {c.cases[2].d}
                            </p>
                         </div>
                      </div>
@@ -337,13 +316,13 @@ const FreeTrialPage = () => {
                <div className="container mx-auto px-4 max-w-4xl">
                   <div className="rounded-3xl border border-white/15 bg-[#07152e] p-8 text-center text-white space-y-3">
                      <span className="text-xs font-extrabold uppercase tracking-widest text-primary">
-                        Transparência na Plataforma
+                        {c.govEyebrow}
                      </span>
                      <h2 className="text-2xl font-black">
-                        Planos e tabela detalhada de créditos ficam disponíveis após o login
+                        {c.govTitle}
                      </h2>
                      <p className="text-sm text-slate-300 leading-relaxed">
-                        Dentro da plataforma autenticada você visualiza o custo em créditos antes de cada clique, consulta seu extrato em tempo real e escolhe o plano adequado à sua operação comercial.
+                        {c.govText}
                      </p>
                   </div>
                </div>
@@ -354,36 +333,15 @@ const FreeTrialPage = () => {
                <div className="container mx-auto px-4 max-w-3xl">
                   <div className="text-center mb-16">
                      <h2 className="text-3xl md:text-5xl font-black mb-4 tracking-tight text-white">
-                        Perguntas <span className="text-primary italic">Frequentes</span>
+                        {c.faqTitleBefore}<span className="text-primary italic">{c.faqTitleHighlight}</span>
                      </h2>
                      <p className="text-slate-300">
-                        Regras claras sobre o teste grátis de 7 dias, funcionamento da plataforma, exportação e LGPD.
+                        {c.faqLead}
                      </p>
                   </div>
 
                   <Accordion type="single" collapsible className="space-y-4">
-                     {[
-                        {
-                           q: "Como funciona o teste grátis de 7 dias?",
-                           a: "Ao criar sua conta gratuita (sem cartão de crédito) com o CNPJ da sua empresa, você recebe créditos de degustação válidos por 7 dias para testar a descoberta de empresas, consultar contatos, verificar sinais financeiros e testar o enriquecimento por IA. A tabela detalhada de consumo fica disponível dentro do painel."
-                        },
-                        {
-                           q: "Posso exportar listas durante o teste grátis? Os créditos expiram?",
-                           a: "Sim! Durante o teste grátis você pode exportar empresas do seu funil para planilha. Os créditos do período de avaliação valem pelos 7 dias do teste. Nos planos da plataforma, todas as regras de renovação e extrato ficam visíveis na sua área logada."
-                        },
-                        {
-                           q: "O que acontece quando uma consulta não encontra informações ou se eu clicar duas vezes na mesma empresa?",
-                           a: "Você não perde créditos: (1) se a pesquisa de contato não localizar telefone ou e-mail válido, o crédito não é cobrado (ou é estornado automaticamente no seu extrato); (2) uma ação já liberada para uma empresa fica salva na sua conta e nunca é cobrada duas vezes."
-                        },
-                        {
-                           q: "O que são os Sinais Financeiros?",
-                           a: "São dados objetivos consultados em fontes públicas oficiais (situação cadastral na Receita Federal, registros públicos de recuperação judicial/falência, dívida ativa na PGFN e, quando habilitado sob pedido, protestos em cartório), sempre acompanhados da fonte e data da consulta. Não representam score, nota ou recomendação de crédito."
-                        },
-                        {
-                           q: "Como o Deepson trata a LGPD e os dados de decisores?",
-                           a: "Os dados cadastrais de pessoas jurídicas provêm de bases públicas oficiais (Receita Federal e PGFN). Informações corporativas de contato e de decisores destinam-se exclusivamente à prospecção comercial B2B sob legítimo interesse e transparência (Lei nº 13.709/2018 — LGPD), contando com canal permanente e gratuito para revisão ou oposição/exclusão de dados pelo titular."
-                        }
-                     ].map((item, i) => (
+                     {c.faq.map((item, i) => (
                         <AccordionItem key={i} value={`item-${i}`} className="bg-[#040f21] border border-white/10 rounded-2xl px-6 py-2 overflow-hidden shadow-sm">
                            <AccordionTrigger className="hover:no-underline font-bold text-left text-base md:text-lg py-4 text-white">
                               {item.q}
@@ -398,10 +356,10 @@ const FreeTrialPage = () => {
                   <div className="mt-16 p-10 rounded-[40px] bg-primary text-primary-foreground text-center relative overflow-hidden group">
                      <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-20 transition-opacity" />
                      <h3 className="text-2xl md:text-3xl font-black mb-3 italic tracking-tight">
-                        Encontre empresas com maior potencial de comprar de você
+                        {c.ctaTitle}
                      </h3>
                      <p className="mb-8 text-primary-foreground/90 text-base md:text-lg">
-                        Teste grátis por 7 dias, sem cartão, com liberação imediata na plataforma.
+                        {c.ctaText}
                      </p>
                      <Button
                         size="lg"
@@ -409,7 +367,7 @@ const FreeTrialPage = () => {
                         className="h-14 px-10 rounded-full font-black text-base md:text-lg gap-2 shadow-xl hover:scale-105 transition-transform"
                         onClick={scrollToForm}
                      >
-                        Começar teste grátis sem cartão
+                        {c.startTrial}
                         <Zap className="w-5 h-5 fill-current" />
                      </Button>
                   </div>
@@ -417,7 +375,7 @@ const FreeTrialPage = () => {
             </section>
          </main>
 
-         <Footer />
+         <SiteFooter />
 
          <Dialog open={showExitPopup} onOpenChange={setShowExitPopup}>
             <DialogContent className="sm:max-w-[500px] border border-primary/30 bg-[#07152e] p-6 md:p-8 rounded-[32px] text-center space-y-6 text-white">
@@ -426,10 +384,10 @@ const FreeTrialPage = () => {
                      <Sparkles className="w-8 h-8 text-primary" />
                   </div>
                   <DialogTitle className="text-2xl font-black text-white tracking-tight text-center">
-                     Experimente o DeepB2B grátis por 7 dias
+                     {c.exitTitle}
                   </DialogTitle>
                   <DialogDescription className="text-slate-300 text-sm text-center leading-relaxed">
-                     Informe o site da sua empresa, descubra seu cliente ideal com IA e analise empresas compatíveis com contato e sinais financeiros por 7 dias sem cartão.
+                     {c.exitText}
                   </DialogDescription>
                </DialogHeader>
 
@@ -438,8 +396,8 @@ const FreeTrialPage = () => {
                      <FileSpreadsheet className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                     <p className="text-sm font-bold text-white">7 dias grátis • Sem cartão de crédito</p>
-                     <p className="text-xs text-slate-300">Transparência total dentro da plataforma e garantia contra cobrança em consulta sem dados.</p>
+                     <p className="text-sm font-bold text-white">{c.exitBoxTitle}</p>
+                     <p className="text-xs text-slate-300">{c.exitBoxText}</p>
                   </div>
                </div>
 
@@ -452,7 +410,7 @@ const FreeTrialPage = () => {
                         scrollToForm();
                      }}
                   >
-                     Liberar meu acesso grátis agora
+                     {c.exitCta}
                   </Button>
                </div>
             </DialogContent>

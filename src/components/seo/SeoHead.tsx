@@ -65,7 +65,7 @@ export const SeoHead: React.FC<SeoHeadProps> = ({
     name: "DeepB2B",
     alternateName: "Deepson",
     url: SITE_ORIGIN,
-    logo: `${SITE_ORIGIN}/logo-deepai.png`,
+    logo: `${SITE_ORIGIN}/logo-deepb2b.png`,
     description: dict.brand.valueProposition,
     parentOrganization: {
       "@type": "Organization",

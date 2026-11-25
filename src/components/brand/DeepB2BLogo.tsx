@@ -14,17 +14,17 @@ interface DeepB2BLogoProps {
  */
 export const DeepB2BLogo: React.FC<DeepB2BLogoProps> = ({
   variant = "dark",
-  subtitleText = "deepAI — Inteligência de Dados B2B",
+  subtitleText = "Inteligência de Dados B2B",
   className,
 }) => {
-  const src = variant === "dark" ? "/logo-deepai.png" : "/logo-deepai-light.png";
+  const src = variant === "dark" ? "/logo-deepb2b.png" : "/logo-deepb2b-light.png";
 
   return (
     <img
       src={src}
-      alt={`DeepB2B / ${subtitleText}`}
-      width={190}
-      height={52}
+      alt={`DeepB2B — ${subtitleText}`}
+      width={200}
+      height={48}
       className={cn("h-10 sm:h-11 w-auto object-contain select-none", className)}
     />
   );

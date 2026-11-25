@@ -16,33 +16,37 @@ import { toast } from "sonner";
 import { Loader2, Zap, Shield } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Link } from "react-router-dom";
+import { useLocale } from "@/i18n/LocaleContext";
+import { FREE_TRIAL_COPY, type FreeTrialCopy } from "@/pages/freeTrialCopy";
 
 // URL da Edge Function que registra o lead no Supabase
 const EDGE_FUNCTION_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/capture-lead`;
 // Cadastro do teste grátis da Deepson: cria a conta (7 dias, 20 créditos) e devolve o link de entrada já logado
 const CADASTRO_URL = "https://app.deepson.com.br/api/teste-gratis";
-const WHATSAPP_AJUDA =
-  "https://api.whatsapp.com/send?phone=5511955501090&text=" +
-  encodeURIComponent("Olá! Tentei criar minha conta de teste da Deepson e não consegui.");
 
 const digitos = (s: string) => s.replace(/\D/g, "");
-const formSchema = z.object({
-  name: z.string().min(2, "O nome deve ter pelo menos 2 caracteres."),
-  email: z.string().email("Informe um e-mail corporativo válido."),
-  whatsapp: z.string().refine((v) => digitos(v).length >= 10 && digitos(v).length <= 13, "Informe o WhatsApp com DDD."),
+const buildSchema = (f: FreeTrialCopy["form"]) => z.object({
+  name: z.string().min(2, f.errName),
+  email: z.string().email(f.errEmail),
+  whatsapp: z.string().refine((v) => digitos(v).length >= 10 && digitos(v).length <= 13, f.errWhatsapp),
   // ponytail: o servidor valida e consulta só CNPJ numérico; aceitar alfanumérico quando a base da Receita tiver
-  cnpj: z.string().refine((v) => digitos(v).length === 14, "Informe o CNPJ da empresa (14 números)."),
+  cnpj: z.string().refine((v) => digitos(v).length === 14, f.errCnpj),
   termsAccepted: z.boolean().refine((val) => val === true, {
-    message: "Você deve aceitar os Termos de Uso e Política de Privacidade.",
+    message: f.errTerms,
   }),
 });
 
+type FormValues = z.infer<ReturnType<typeof buildSchema>>;
+
 const TrialForm = () => {
+  const { locale, routeTo } = useLocale();
+  const f = FREE_TRIAL_COPY[locale].form;
+  const WHATSAPP_AJUDA = "https://api.whatsapp.com/send?phone=5511955501090&text=" + encodeURIComponent(f.helpMsg);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [honeypot, setHoneypot] = useState("");
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<FormValues>({
+    resolver: zodResolver(buildSchema(f)),
     defaultValues: {
       name: "",
       email: "",
@@ -52,7 +56,7 @@ const TrialForm = () => {
     },
   });
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+  const onSubmit = async (values: FormValues) => {
     setIsSubmitting(true);
     try {
       const params = new URLSearchParams(window.location.search);
@@ -70,7 +74,7 @@ const TrialForm = () => {
         }),
       });
       const result = (await res.json().catch(() => ({}))) as { url?: string; erro?: string };
-      if (!res.ok || !result.url) throw new Error(result.erro || "Não conseguimos criar sua conta agora.");
+      if (!res.ok || !result.url) throw new Error(result.erro || f.errGeneric);
 
       // 2) o lead continua indo para o Supabase/webhook (sem segurar a entrada)
       const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string;
@@ -91,14 +95,14 @@ const TrialForm = () => {
 
       const gtag = (window as unknown as { gtag?: (...a: unknown[]) => void }).gtag;
       if (typeof gtag === "function") gtag("event", "sign_up", { method: "teste_gratis_7_dias" });
-      toast.success("Conta criada! Entrando na plataforma…");
+      toast.success(f.success);
       setTimeout(() => {
         window.location.href = result.url!;
       }, 700);
     } catch (error) {
-      const texto = error instanceof Error && error.message ? error.message : "Não conseguimos criar sua conta agora.";
+      const texto = error instanceof Error && error.message ? error.message : f.errGeneric;
       toast.error(texto, {
-        action: { label: "Falar no WhatsApp", onClick: () => window.open(WHATSAPP_AJUDA, "_blank", "noopener") },
+        action: { label: f.whatsappHelp, onClick: () => window.open(WHATSAPP_AJUDA, "_blank", "noopener") },
         duration: 12000,
       });
       setIsSubmitting(false);
@@ -109,11 +113,11 @@ const TrialForm = () => {
     <div className="p-1">
       <div className="mb-6 relative">
         <div className="bg-primary/15 text-primary text-[10px] font-black px-3 py-1 rounded-full w-fit mb-4 uppercase tracking-wider border border-primary/25">
-           7 Dias Grátis • Sem Cartão de Crédito
+           {f.badge}
         </div>
-        <h3 className="text-3xl font-black text-foreground mb-3 tracking-tighter italic">Liberar meu <span className="text-primary">Acesso Grátis</span></h3>
+        <h3 className="text-3xl font-black text-white mb-3 tracking-tighter italic">{f.titleBefore}<span className="text-primary">{f.titleHighlight}</span></h3>
         <p className="text-sm text-slate-200 leading-relaxed font-semibold">
-          Crie sua conta gratuita por <span className="text-primary font-bold">7 dias</span> para analisar empresas compatíveis, acessar contatos, sinais financeiros e enriquecimento por IA. Os detalhes de planos e consumo ficam disponíveis dentro da plataforma.
+          {f.leadBefore}<span className="text-primary font-bold">{f.leadDays}</span>{f.leadAfter}
         </p>
       </div>
 
@@ -124,9 +128,9 @@ const TrialForm = () => {
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-xs font-black text-foreground uppercase tracking-wider">Nome Completo</FormLabel>
+                <FormLabel className="text-xs font-black text-slate-200 uppercase tracking-wider">{f.name}</FormLabel>
                 <FormControl>
-                  <Input placeholder="Seu nome" {...field} className="h-12 bg-background border-white/25 text-foreground placeholder:text-slate-400 focus:border-primary focus:ring-1 focus:ring-primary focus-visible:ring-primary/20 transition-all font-medium" />
+                  <Input placeholder={f.namePh} {...field} className="h-12 bg-background border-white/25 text-foreground placeholder:text-slate-400 focus:border-primary focus:ring-1 focus:ring-primary focus-visible:ring-primary/20 transition-all font-medium" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -137,9 +141,9 @@ const TrialForm = () => {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-xs font-black text-foreground uppercase tracking-wider">E-mail Corporativo</FormLabel>
+                <FormLabel className="text-xs font-black text-slate-200 uppercase tracking-wider">{f.email}</FormLabel>
                 <FormControl>
-                  <Input placeholder="voce@suaempresa.com.br" {...field} className="h-12 bg-background border-white/25 text-foreground placeholder:text-slate-400 focus:border-primary focus:ring-1 focus:ring-primary focus-visible:ring-primary/20 transition-all font-medium" />
+                  <Input placeholder={f.emailPh} {...field} className="h-12 bg-background border-white/25 text-foreground placeholder:text-slate-400 focus:border-primary focus:ring-1 focus:ring-primary focus-visible:ring-primary/20 transition-all font-medium" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -150,9 +154,9 @@ const TrialForm = () => {
             name="whatsapp"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-xs font-black text-foreground uppercase tracking-wider">WhatsApp com DDD</FormLabel>
+                <FormLabel className="text-xs font-black text-slate-200 uppercase tracking-wider">{f.whatsapp}</FormLabel>
                 <FormControl>
-                  <Input placeholder="(11) 99999-9999" {...field} className="h-12 bg-background border-white/25 text-foreground placeholder:text-slate-400 focus:border-primary focus:ring-1 focus:ring-primary focus-visible:ring-primary/20 transition-all font-medium" />
+                  <Input placeholder={f.whatsappPh} {...field} className="h-12 bg-background border-white/25 text-foreground placeholder:text-slate-400 focus:border-primary focus:ring-1 focus:ring-primary focus-visible:ring-primary/20 transition-all font-medium" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -165,8 +169,8 @@ const TrialForm = () => {
             render={({ field }) => (
               <FormItem>
                 <div className="flex items-center justify-between">
-                  <FormLabel className="text-xs font-black text-foreground uppercase tracking-wider">
-                    CNPJ da sua empresa
+                  <FormLabel className="text-xs font-black text-slate-200 uppercase tracking-wider">
+                    {f.cnpj}
                   </FormLabel>
                 </div>
                 <FormControl>
@@ -207,7 +211,7 @@ const TrialForm = () => {
                 </FormControl>
                 <div className="space-y-1 mt-1 leading-tight">
                   <FormLabel className="text-[12px] text-slate-300 font-semibold cursor-pointer">
-                    Li e aceito os <Link to="/termos-de-uso" className="text-primary hover:underline font-extrabold" target="_blank">Termos de Uso</Link> e a <Link to="/privacidade" className="text-primary hover:underline font-extrabold" target="_blank">Política de Privacidade</Link>.
+                    {f.termsBefore}<Link to={routeTo("terms")} className="text-primary hover:underline font-extrabold" target="_blank">{f.terms}</Link>{f.termsMid}<Link to={routeTo("privacy")} className="text-primary hover:underline font-extrabold" target="_blank">{f.privacy}</Link>.
                   </FormLabel>
                 </div>
               </FormItem>
@@ -217,10 +221,10 @@ const TrialForm = () => {
           <Button type="submit" variant="cta" className="w-full h-16 text-[13px] sm:text-base font-black mt-6 shadow-button group relative overflow-hidden rounded-2xl" disabled={isSubmitting}>
              <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-20 transition-opacity" />
             {isSubmitting ? (
-              <><Loader2 className="mr-2 h-6 w-6 animate-spin" /> Criando sua conta...</>
+              <><Loader2 className="mr-2 h-6 w-6 animate-spin" /> {f.submitting}</>
             ) : (
               <span className="flex items-center gap-2">
-                 COMEÇAR TESTE GRÁTIS SEM CARTÃO
+                 {f.submit}
                  <Zap className="w-5 h-5 fill-current" />
               </span>
             )}
@@ -228,7 +232,7 @@ const TrialForm = () => {
 
           <div className="flex items-center justify-center gap-4 mt-6 text-slate-300 opacity-90">
              <Shield className="w-4 h-4 text-primary" />
-             <span className="text-[10px] font-bold uppercase tracking-widest">Ambiente Seguro • Sem Cartão de Crédito</span>
+             <span className="text-[10px] font-bold uppercase tracking-widest">{f.secure}</span>
           </div>
         </form>
       </Form>

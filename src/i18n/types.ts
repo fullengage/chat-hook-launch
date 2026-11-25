@@ -15,7 +15,8 @@ export type RouteKey =
   | "privacy"
   | "terms"
   | "lgpd"
-  | "dataDeletion";
+  | "dataDeletion"
+  | "freeTrial";
 
 export type CapabilityKey =
   | "businessData"
@@ -104,6 +105,7 @@ export interface TranslationDictionary {
     about: string;
     contact: string;
     login: string;
+    trialCta: string;
     primaryCta: string;
     secondaryCta: string;
     languageLabel: string;

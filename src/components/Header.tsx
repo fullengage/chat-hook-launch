@@ -16,7 +16,7 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center">
-            <img src="/logo-deepai.png" alt="DeepAI Logo" className="h-11 w-auto object-contain cursor-pointer" onClick={() => navigate("/")} />
+            <img src="/logo-deepb2b.png" alt="DeepB2B" className="h-11 w-auto object-contain cursor-pointer" onClick={() => navigate("/")} />
           </div>
 
           {/* Navigation */}

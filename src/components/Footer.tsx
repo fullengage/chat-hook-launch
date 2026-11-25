@@ -13,7 +13,7 @@ const Footer = () => {
           <div className="md:col-span-1">
             <div className="flex items-center mb-5">
               <Link to="/">
-                <img src="/logo-deepai.png" alt="DeepAI — Inteligência de Dados B2B" className="h-11 w-auto object-contain" />
+                <img src="/logo-deepb2b.png" alt="DeepB2B — Inteligência de Dados B2B" className="h-11 w-auto object-contain" />
               </Link>
             </div>
             <p className="text-slate-300 mb-6 text-sm leading-relaxed">
