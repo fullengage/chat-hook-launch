@@ -2,19 +2,91 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/en/pricing", "destination": "/en/solutions", "permanent": true },
-    { "source": "/pt-br/planos", "destination": "/pt-br/solucoes", "permanent": true },
-    { "source": "/es/precios", "destination": "/es/soluciones", "permanent": true },
-    { "source": "/es/pricing", "destination": "/es/soluciones", "permanent": true },
-    { "source": "/zh-cn/pricing", "destination": "/zh-cn/solutions", "permanent": true },
-    { "source": "/conversations", "destination": "/pt-br", "permanent": true },
-    { "source": "/conversations/", "destination": "/pt-br", "permanent": true },
-    { "source": "/campaigns", "destination": "/pt-br", "permanent": true },
-    { "source": "/campaigns/", "destination": "/pt-br", "permanent": true },
-    { "source": "/quick-start", "destination": "/pt-br", "permanent": true },
-    { "source": "/quick-start/", "destination": "/pt-br", "permanent": true },
-    { "source": "/stage", "destination": "/pt-br", "permanent": true },
-    { "source": "/stage/", "destination": "/pt-br", "permanent": true }
+    {
+      "source": "/en/pricing",
+      "destination": "/en/solutions",
+      "permanent": true
+    },
+    {
+      "source": "/pt-br/planos",
+      "destination": "/pt-br/solucoes",
+      "permanent": true
+    },
+    {
+      "source": "/es/precios",
+      "destination": "/es/soluciones",
+      "permanent": true
+    },
+    {
+      "source": "/es/pricing",
+      "destination": "/es/soluciones",
+      "permanent": true
+    },
+    {
+      "source": "/zh-cn/pricing",
+      "destination": "/zh-cn/solutions",
+      "permanent": true
+    },
+    {
+      "source": "/conversations",
+      "destination": "/pt-br",
+      "permanent": true
+    },
+    {
+      "source": "/conversations/",
+      "destination": "/pt-br",
+      "permanent": true
+    },
+    {
+      "source": "/campaigns",
+      "destination": "/pt-br",
+      "permanent": true
+    },
+    {
+      "source": "/campaigns/",
+      "destination": "/pt-br",
+      "permanent": true
+    },
+    {
+      "source": "/quick-start",
+      "destination": "/pt-br",
+      "permanent": true
+    },
+    {
+      "source": "/quick-start/",
+      "destination": "/pt-br",
+      "permanent": true
+    },
+    {
+      "source": "/stage",
+      "destination": "/pt-br",
+      "permanent": true
+    },
+    {
+      "source": "/stage/",
+      "destination": "/pt-br",
+      "permanent": true
+    },
+    {
+      "source": "/teste-gratis",
+      "destination": "/pt-br/contato",
+      "permanent": true
+    },
+    {
+      "source": "/en/free-trial",
+      "destination": "/en/contact",
+      "permanent": true
+    },
+    {
+      "source": "/es/prueba-gratis",
+      "destination": "/es/contacto",
+      "permanent": true
+    },
+    {
+      "source": "/zh-cn/free-trial",
+      "destination": "/zh-cn/contact",
+      "permanent": true
+    }
   ],
   "rewrites": [
     {

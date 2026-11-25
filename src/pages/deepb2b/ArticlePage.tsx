@@ -129,7 +129,7 @@ export const ArticlePage: React.FC = () => {
               <p className="text-sm text-slate-300">{dict.resources.articleCtaSubtitle}</p>
             </div>
             <Link
-              to={locale === "pt-br" ? "/teste-gratis" : routeTo("contact")}
+              to={routeTo("contact")}
               className="inline-flex items-center justify-center gap-2 rounded-full bg-[#ff6b00] px-6 py-3.5 text-sm font-bold text-white hover:bg-[#ea580c] shrink-0"
             >
               <span>{dict.nav.primaryCta}</span>

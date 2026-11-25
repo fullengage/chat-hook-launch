@@ -33,7 +33,7 @@ export const SolutionsPage: React.FC = () => {
   const { locale, dict, routeTo } = useLocale();
   const isBr = locale === "pt-br";
   const demoHref = routeTo("contact");
-  const primaryHref = isBr ? "/teste-gratis" : demoHref;
+  const primaryHref = demoHref;
 
   return (
     <SiteLayout>
@@ -211,7 +211,7 @@ export const SolutionsPage: React.FC = () => {
 
           {/* Platform Governance & Brazil Trial Split (Zero Public Pricing) */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-            <div className="lg:col-span-7 rounded-3xl border border-slate-200 bg-white p-7 flex items-start gap-4">
+            <div className="lg:col-span-12 rounded-3xl border border-slate-200 bg-white p-7 flex items-start gap-4">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-[#040f21]">
                 <Lock className="h-5 w-5" aria-hidden="true" />
               </div>
@@ -225,27 +225,6 @@ export const SolutionsPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="lg:col-span-5 rounded-3xl border border-emerald-200 bg-emerald-50/70 p-7 flex flex-col justify-between gap-4">
-              <div className="space-y-1.5">
-                <span className="inline-flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wider text-emerald-800">
-                  <Info className="h-3.5 w-3.5" aria-hidden="true" />
-                  Brasil · CNPJ
-                </span>
-                <h3 className="text-lg font-extrabold text-[#0f172a]">
-                  {dict.solutions.trialCardTitle}
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-700">
-                  {dict.solutions.trialCardSubtitle}
-                </p>
-              </div>
-              <Link
-                to="/teste-gratis"
-                className="inline-flex w-fit items-center gap-2 rounded-full bg-[#040f21] px-5 py-2.5 text-xs font-bold text-white hover:bg-[#07152e]"
-              >
-                <span>{dict.solutions.trialCardCta}</span>
-                <ArrowRight className="h-3.5 w-3.5 text-[#ff6b00]" aria-hidden="true" />
-              </Link>
-            </div>
           </div>
 
           {/* Final Commercial CTA */}

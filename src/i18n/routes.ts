@@ -1,4 +1,5 @@
 import type { Locale, RouteKey } from "./types";
+import { TRADE_SHOWS } from "@/data/tradeShows";
 
 export const SITE_ORIGIN = "https://deepb2b.ai";
 
@@ -23,7 +24,8 @@ export const ROUTES_BY_LOCALE: Record<Locale, Record<RouteKey, string>> = {
     terms: "/en/terms",
     lgpd: "/en/lgpd",
     dataDeletion: "/en/data-deletion",
-    freeTrial: "/en/free-trial",
+    events: "/en/trade-shows",
+    calendar: "/en/trade-show-calendar",
   },
   "pt-br": {
     home: "/pt-br",
@@ -41,7 +43,8 @@ export const ROUTES_BY_LOCALE: Record<Locale, Record<RouteKey, string>> = {
     terms: "/pt-br/termos-de-uso",
     lgpd: "/pt-br/lgpd",
     dataDeletion: "/pt-br/exclusao-de-dados",
-    freeTrial: "/teste-gratis",
+    events: "/pt-br/feiras-e-eventos",
+    calendar: "/pt-br/feiras",
   },
   es: {
     home: "/es",
@@ -59,7 +62,8 @@ export const ROUTES_BY_LOCALE: Record<Locale, Record<RouteKey, string>> = {
     terms: "/es/terminos-de-uso",
     lgpd: "/es/lgpd",
     dataDeletion: "/es/eliminacion-de-datos",
-    freeTrial: "/es/prueba-gratis",
+    events: "/es/ferias-y-eventos",
+    calendar: "/es/ferias",
   },
   "zh-cn": {
     home: "/zh-cn",
@@ -77,7 +81,8 @@ export const ROUTES_BY_LOCALE: Record<Locale, Record<RouteKey, string>> = {
     terms: "/zh-cn/terms",
     lgpd: "/zh-cn/lgpd",
     dataDeletion: "/zh-cn/data-deletion",
-    freeTrial: "/zh-cn/free-trial",
+    events: "/zh-cn/trade-shows",
+    calendar: "/zh-cn/trade-show-calendar",
   },
 };
 
@@ -110,7 +115,6 @@ export function detectLocaleFromPath(pathname: string): Locale {
   if (norm === "/es" || norm.startsWith("/es/")) return "es";
   if (norm === "/zh-cn" || norm.startsWith("/zh-cn/")) return "zh-cn";
   if (
-    norm === "/teste-gratis" ||
     norm === "/obrigado" ||
     norm === "/contato" ||
     norm === "/privacidade" ||
@@ -155,10 +159,27 @@ export function extractArticleSlugFromPath(pathname: string): string | null {
   return null;
 }
 
+export function getTradeShowPath(locale: Locale, slug: string): string {
+  return `${ROUTES_BY_LOCALE[locale].calendar}/${slug}`;
+}
+
+export function extractTradeShowSlugFromPath(pathname: string): string | null {
+  const norm = normalizePathname(pathname);
+  for (const locale of SUPPORTED_LOCALES) {
+    const prefix = `${ROUTES_BY_LOCALE[locale].calendar}/`;
+    if (norm.startsWith(prefix)) return norm.slice(prefix.length);
+  }
+  return null;
+}
+
 export function resolveAlternatePath(currentPathname: string, targetLocale: Locale): string {
   const articleSlug = extractArticleSlugFromPath(currentPathname);
   if (articleSlug) {
     return getArticlePath(targetLocale, articleSlug);
+  }
+  const showSlug = extractTradeShowSlugFromPath(currentPathname);
+  if (showSlug) {
+    return getTradeShowPath(targetLocale, showSlug);
   }
   const routeKey = findRouteKeyFromPath(currentPathname);
   if (routeKey) {
@@ -193,6 +214,10 @@ export function getCanonicalUrl(currentPathname: string, currentLocale: Locale):
   if (articleSlug) {
     return `${SITE_ORIGIN}${getArticlePath(currentLocale, articleSlug)}`;
   }
+  const showSlug = extractTradeShowSlugFromPath(norm);
+  if (showSlug) {
+    return `${SITE_ORIGIN}${getTradeShowPath(currentLocale, showSlug)}`;
+  }
   const routeKey = findRouteKeyFromPath(norm);
   if (routeKey) {
     return `${SITE_ORIGIN}${getRoutePath(currentLocale, routeKey)}`;
@@ -203,13 +228,13 @@ export function getCanonicalUrl(currentPathname: string, currentLocale: Locale):
 export function getAllIndexableRoutes(): {
   path: string;
   locale: Locale;
-  routeKey: RouteKey | "article";
+  routeKey: RouteKey | "article" | "tradeShow";
   articleSlug?: ArticleSlug;
 }[] {
   const entries: {
     path: string;
     locale: Locale;
-    routeKey: RouteKey | "article";
+    routeKey: RouteKey | "article" | "tradeShow";
     articleSlug?: ArticleSlug;
   }[] = [];
 
@@ -221,6 +246,9 @@ export function getAllIndexableRoutes(): {
         locale,
         routeKey: key,
       });
+    }
+    for (const show of TRADE_SHOWS) {
+      entries.push({ path: getTradeShowPath(locale, show.slug), locale, routeKey: "tradeShow" });
     }
     for (const slug of ARTICLE_SLUGS) {
       entries.push({

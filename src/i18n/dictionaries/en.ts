@@ -17,14 +17,20 @@ export const enDictionary: TranslationDictionary = {
       "DeepB2B is the global intelligence brand operated by Deepson (DEEPSON - INTELIGENCIA DE DADOS E TECNOLOGIA LTDA, CNPJ 19.904.935/0001-20 · Grupo FullWeb).",
   },
   seo: {
-    freeTrial: {
-      title: "Free 7-Day Trial — Brazilian B2B Company Data | DeepB2B",
-      description: "Try DeepB2B free for 7 days with 20 credits, no credit card. Find Brazilian companies that match your ideal customer, with contacts and financial signals. Requires a Brazilian CNPJ.",
+    calendar: {
+      title: "2027 Brazil Trade Show Calendar — São Paulo | DeepB2B",
+      description:
+        "Dates, venues and organizers of Brazil's leading 2027 business trade shows, verified on official websites, with exhibitor and buyer profiles for each sector.",
+    },
+    events: {
+      title: "Trade Show Intelligence for Exhibitors | DeepB2B",
+      description:
+        "Turn every trade show into business opportunities: buyers identified before the event, invitation campaigns, meeting agendas and post-show follow-up in Brazil and abroad.",
     },
     home: {
-      title: "DeepB2B — Brazil's Business Intelligence, Powered by AI",
+      title: "DeepB2B — Market Intelligence & Business Development",
       description:
-        "Discover Brazilian companies, understand industries, identify distributors and uncover commercial opportunities with AI-powered Brazilian business intelligence.",
+        "Business intelligence that connects markets and creates business: market studies, trade show intelligence, buyer identification and expansion in Brazil and worldwide.",
     },
     businessData: {
       title: "Brazilian Business Data & CNPJ Intelligence | DeepB2B",
@@ -74,7 +80,7 @@ export const enDictionary: TranslationDictionary = {
     login: {
       title: "Platform Access & Onboarding | DeepB2B",
       description:
-        "Sign in to the DeepB2B / Deepson platform, launch a Brazil trial, or request international onboarding.",
+        "Sign in to the DeepB2B / Deepson platform or request international onboarding.",
     },
     privacy: {
       title: "Privacy Policy & International Data Governance | DeepB2B",
@@ -110,12 +116,13 @@ export const enDictionary: TranslationDictionary = {
     industryMapping: "Industry Mapping",
     brazilMarketEntry: "Brazil Market Entry",
     solutions: "Solutions",
-    resources: "Resources",
+    resources: "Insights",
+    events: "Trade Shows & Events",
+    calendar: "Trade show calendar",
     about: "About",
     contact: "Contact",
     login: "Platform Login",
-    trialCta: "Free trial (Brazil)",
-    primaryCta: "Request a Demo",
+    primaryCta: "Request a Presentation",
     secondaryCta: "Explore Brazilian Companies",
     languageLabel: "Language",
     openMenu: "Open menu",
@@ -573,9 +580,6 @@ export const enDictionary: TranslationDictionary = {
     platformGovernanceTitle: "Plans, Credits & Consumption Details Inside the Platform",
     platformGovernanceBody:
       "DeepB2B does not publish standard pricing on public pages. International Enterprise proposals are tailored after a commercial demonstration, while active plan options and the detailed credit-consumption table remain available inside the authenticated platform (app.deepson.com.br).",
-    trialCardTitle: "Operating with a Brazilian CNPJ?",
-    trialCardSubtitle: "Companies registered in Brazil can access our 7-day free trial directly on the Brazil trial portal.",
-    trialCardCta: "Start Brazil Free Trial",
     ctaTitle: "See how DeepB2B fits your organization",
     ctaSubtitle: "Book a live walkthrough focused on your target Brazilian sectors, buyers, or distribution channels.",
     primaryCta: "Request a Demo",
@@ -633,7 +637,7 @@ export const enDictionary: TranslationDictionary = {
     channels: [
       { title: "International Demos", description: "Tailored walkthroughs for foreign exporters, manufacturers, and market-entry teams." },
       { title: "Enterprise & Custom Data", description: "Discuss multi-user workspaces, distributor mapping, or custom commercial proposals." },
-      { title: "Brazil Commercial Desk", description: "Direct support for Brazilian sales teams, agencies, and trial accounts." },
+      { title: "Brazil Commercial Desk", description: "Direct support for Brazilian sales teams and agencies." },
       { title: "Privacy & Governance", description: "Dedicated support for LGPD inquiries, compliance documentation, and opt-out requests." },
     ],
     formTitle: "Request a Demo or Commercial Inquiry",
@@ -642,7 +646,7 @@ export const enDictionary: TranslationDictionary = {
     faqs: [
       {
         question: "Do I need a Brazilian CNPJ to request a demo or work with DeepB2B?",
-        answer: "No. While the automated 7-day domestic self-service trial validates a Brazilian CNPJ, international companies without a local entity can request a guided demo and enterprise onboarding through this form.",
+        answer: "No. International companies without a local entity can request a guided demo and enterprise onboarding through this form.",
       },
       {
         question: "Where does DeepB2B source Brazilian company data?",
@@ -713,9 +717,6 @@ export const enDictionary: TranslationDictionary = {
     existingDescription: "Sign in directly to your live workspace, ICP radar, saved companies, and credit ledger.",
     existingCta: "Go to Platform (app.deepson.com.br)",
     existingNotice: "Note: The authenticated workspace interface currently operates in Brazilian Portuguese (pt-BR).",
-    trialTitle: "Companies with a Brazilian CNPJ",
-    trialDescription: "Create an instant 7-day trial account with 20 free credits and no credit card required.",
-    trialCta: "Start Brazil Free Trial",
     intlTitle: "International Teams & Global Enterprises",
     intlDescription: "No Brazilian CNPJ? Request guided onboarding, distributor discovery, and custom international billing.",
     intlCta: "Request International Demo",

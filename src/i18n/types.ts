@@ -16,7 +16,8 @@ export type RouteKey =
   | "terms"
   | "lgpd"
   | "dataDeletion"
-  | "freeTrial";
+  | "events"
+  | "calendar";
 
 export type CapabilityKey =
   | "businessData"
@@ -102,10 +103,11 @@ export interface TranslationDictionary {
     brazilMarketEntry: string;
     solutions: string;
     resources: string;
+    events: string;
+    calendar: string;
     about: string;
     contact: string;
     login: string;
-    trialCta: string;
     primaryCta: string;
     secondaryCta: string;
     languageLabel: string;
@@ -213,9 +215,6 @@ export interface TranslationDictionary {
     enterpriseCases: { tag: string; title: string; flow: string }[];
     platformGovernanceTitle: string;
     platformGovernanceBody: string;
-    trialCardTitle: string;
-    trialCardSubtitle: string;
-    trialCardCta: string;
     ctaTitle: string;
     ctaSubtitle: string;
     primaryCta: string;
@@ -299,9 +298,6 @@ export interface TranslationDictionary {
     existingDescription: string;
     existingCta: string;
     existingNotice: string;
-    trialTitle: string;
-    trialDescription: string;
-    trialCta: string;
     intlTitle: string;
     intlDescription: string;
     intlCta: string;

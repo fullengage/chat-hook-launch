@@ -1,16 +1,6 @@
 import React, { useRef } from "react";
 import { Link } from "react-router-dom";
-import {
-  ArrowRight,
-  Building2,
-  Compass,
-  Database,
-  LineChart,
-  Network,
-  Sparkles,
-  CheckCircle2,
-  BookOpen,
-} from "lucide-react";
+import { ArrowRight, BookOpen, CalendarDays, Check, CheckCircle2, Globe2, Handshake, LineChart, Megaphone } from "lucide-react";
 import { useLocale } from "@/i18n/LocaleContext";
 import { SITE_ORIGIN } from "@/i18n/routes";
 import { EDITORIAL_ARTICLES } from "@/data/articles";
@@ -18,27 +8,23 @@ import { trackCtaClick } from "@/services/analytics";
 import { SeoHead } from "@/components/seo/SeoHead";
 import { SiteLayout } from "@/components/layout/SiteLayout";
 import HeroRadar from "@/components/HeroRadar";
-import { CompanyDiscoveryExperience } from "@/components/discovery/CompanyDiscoveryExperience";
-import { BrazilOpportunityDemo } from "@/components/discovery/BrazilOpportunityDemo";
-import { BrazilMarketSnapshot } from "@/components/visualizations/BrazilMarketSnapshot";
-import { Card } from "@/components/ui/card";
+import { homeCopy } from "./positioningCopy";
 
-const PILLAR_ICONS = {
-  "company-data": Database,
-  "market-intelligence": LineChart,
-  "business-discovery": Compass,
-  "ai-research": Sparkles,
-  "sales-intelligence": Building2,
-  "industry-mapping": Network,
-} as const;
+// Ícone e página de destino de cada uma das 4 áreas (mesma ordem de homeCopy().areas)
+const AREAS = [
+  { Icon: LineChart, to: "marketIntelligence" },
+  { Icon: CalendarDays, to: "events" },
+  { Icon: Handshake, to: "leadGeneration" },
+  { Icon: Megaphone, to: "contact" },
+] as const;
+
+const eyebrow = "inline-block text-xs font-extrabold uppercase tracking-[0.2em] text-[#ff6b00] mb-4";
 
 export const HomePage: React.FC = () => {
   const { locale, dict, routeTo, articleTo } = useLocale();
+  const c = homeCopy(locale);
+  const contact = routeTo("contact");
   const heroAnchorRef = useRef<HTMLDivElement>(null);
-
-  const primaryCtaTarget =
-    locale === "pt-br" ? "/teste-gratis" : "#company-discovery";
-  const secondaryCtaTarget = routeTo("contact");
 
   const homeSchemas: Record<string, unknown>[] = [
     {
@@ -51,78 +37,45 @@ export const HomePage: React.FC = () => {
     },
     {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "ProfessionalService",
       name: "DeepB2B",
-      applicationCategory: "BusinessApplication",
-      operatingSystem: "Web",
       url: `${SITE_ORIGIN}${routeTo("home")}`,
-      description: dict.brand.valueProposition,
-      provider: {
-        "@type": "Organization",
-        name: "Deepson",
-      },
+      description: c.subtitle,
+      areaServed: ["BR", "Worldwide"],
+      knowsAbout: c.areas.map((a) => a.title),
     },
   ];
 
   return (
     <SiteLayout>
-      <SeoHead
-        title={dict.seo.home.title}
-        description={dict.seo.home.description}
-        jsonLd={homeSchemas}
-      />
+      <SeoHead title={dict.seo.home.title} description={dict.seo.home.description} jsonLd={homeSchemas} />
 
-      {/* Hero Section */}
+      {/* 1. Hero com radar */}
       <section className="relative overflow-hidden bg-[#f8fafc] pt-16 pb-20 md:pt-24 md:pb-28">
         <HeroRadar anchor={heroAnchorRef} />
         <div className="relative z-10 mx-auto max-w-5xl px-4 sm:px-6 text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider text-[#040f21] shadow-sm mb-6">
             <span className="h-2 w-2 rounded-full bg-[#ff6b00]" aria-hidden="true" />
-            <span>{dict.home.badge}</span>
+            <span>{c.eyebrow}</span>
           </div>
-
-          <h1 className="mx-auto max-w-4xl text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#040f21] leading-[1.08] mb-6">
-            {dict.home.h1}
-          </h1>
-
-          <p className="mx-auto max-w-2xl text-base sm:text-lg md:text-xl text-slate-600 leading-relaxed mb-10">
-            {dict.home.subtitle}
-          </p>
-
-          <div
-            ref={heroAnchorRef}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10"
-          >
-            {primaryCtaTarget.startsWith("#") ? (
-              <a
-                href={primaryCtaTarget}
-                onClick={() => trackCtaClick("hero_primary", locale, primaryCtaTarget)}
-                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-[#ff6b00] px-8 py-4 text-sm font-bold text-white shadow-button hover:bg-[#ea580c] transition-all"
-              >
-                <span>{dict.home.primaryCta}</span>
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </a>
-            ) : (
-              <Link
-                to={primaryCtaTarget}
-                onClick={() => trackCtaClick("hero_primary", locale, primaryCtaTarget)}
-                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-[#ff6b00] px-8 py-4 text-sm font-bold text-white shadow-button hover:bg-[#ea580c] transition-all"
-              >
-                <span>{dict.home.primaryCta}</span>
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </Link>
-            )}
-
+          <h1 className="mx-auto max-w-4xl text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#040f21] leading-[1.08] mb-6">{c.h1}</h1>
+          <p className="mx-auto max-w-2xl text-base sm:text-lg md:text-xl text-slate-600 leading-relaxed mb-10">{c.subtitle}</p>
+          <div ref={heroAnchorRef} className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
             <Link
-              to={secondaryCtaTarget}
-              onClick={() => trackCtaClick("hero_secondary", locale, secondaryCtaTarget)}
-              className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full border-2 border-[#040f21] bg-white px-8 py-3.5 text-sm font-bold text-[#040f21] hover:border-[#ff6b00] hover:text-[#ff6b00] transition-all"
+              to={routeTo("solutions")}
+              onClick={() => trackCtaClick("home_hero_solutions", locale, routeTo("solutions"))}
+              className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-[#ff6b00] px-8 py-4 text-sm font-bold text-white shadow-button hover:bg-[#ea580c] transition-all"
             >
-              <span>{dict.home.secondaryCta}</span>
+              {c.ctaSolutions} <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+            <Link
+              to={contact}
+              onClick={() => trackCtaClick("home_hero_presentation", locale, contact)}
+              className="inline-flex w-full sm:w-auto items-center justify-center rounded-full border-2 border-[#040f21] bg-white px-8 py-3.5 text-sm font-bold text-[#040f21] hover:border-[#ff6b00] hover:text-[#ff6b00] transition-all"
+            >
+              {c.ctaPresentation}
             </Link>
           </div>
-
-          {/* Trust Bar */}
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs font-semibold text-slate-600">
             {dict.home.trustItems.map((item) => (
               <div key={item} className="inline-flex items-center gap-1.5">
@@ -134,168 +87,35 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Six Core Pillars */}
-      <section className="py-20 bg-[#040f21] text-white">
+      {/* 2. O que fazemos */}
+      <section className="py-24 bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <div className="max-w-3xl mb-12">
-            <span className="inline-block text-xs font-extrabold uppercase tracking-widest text-[#ff6b00] mb-3">
-              {dict.home.pillarsEyebrow}
-            </span>
-            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-4">
-              {dict.home.pillarsTitle}
-            </h2>
-            <p className="text-base text-slate-300 leading-relaxed">
-              {dict.home.pillarsSubtitle}
-            </p>
+          <div className="max-w-3xl">
+            <span className={eyebrow}>{c.whatEyebrow}</span>
+            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-[#0f172a]">{c.whatTitle}</h2>
+            <p className="mt-5 text-lg text-slate-600 leading-relaxed">{c.whatLead}</p>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {dict.home.pillars.map((pillar) => {
-              const Icon =
-                PILLAR_ICONS[pillar.id as keyof typeof PILLAR_ICONS] ?? Database;
-              return (
-                <Card
-                  key={pillar.id}
-                  className="rounded-3xl border border-white/10 bg-[#07152e] p-7 text-white hover:border-[#ff6b00]/60 transition-colors"
-                >
-                  <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#ff6b00]/15 text-[#ff6b00] border border-[#ff6b00]/30">
-                    <Icon className="h-6 w-6" aria-hidden="true" />
-                  </div>
-                  <h3 className="text-lg font-extrabold mb-2">{pillar.title}</h3>
-                  <p className="text-sm text-slate-300 leading-relaxed">
-                    {pillar.description}
-                  </p>
-                </Card>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Interactive Company Discovery Preview */}
-      <CompanyDiscoveryExperience />
-
-      {/* Public Brazil Opportunity Intelligence Walkthrough (No CNPJ Required) */}
-      <BrazilOpportunityDemo />
-
-      {/* Target Market Use Cases */}
-      <section className="py-20 bg-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <div className="max-w-3xl mb-12">
-            <span className="inline-block text-xs font-extrabold uppercase tracking-widest text-[#ff6b00] mb-3">
-              {dict.home.useCasesEyebrow}
-            </span>
-            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#0f172a] mb-4">
-              {dict.home.useCasesTitle}
-            </h2>
-            <p className="text-base text-slate-600 leading-relaxed">
-              {dict.home.useCasesSubtitle}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {dict.home.useCases.map((uc) => (
-              <div
-                key={uc.title}
-                className="rounded-3xl border border-slate-200 bg-[#f8fafc] p-7 space-y-3"
-              >
-                <span className="inline-block rounded-full bg-[#fff7ed] border border-orange-200 px-3 py-1 text-[11px] font-bold text-[#c2410c]">
-                  {uc.tag}
-                </span>
-                <h3 className="text-xl font-extrabold text-[#0f172a]">{uc.title}</h3>
-                <p className="text-sm text-slate-600 leading-relaxed">{uc.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Multi-Layer Architecture & Macro-Regions */}
-      <BrazilMarketSnapshot />
-
-      {/* 4-Step Workflow */}
-      <section className="py-20 bg-white border-t border-slate-200">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <div className="max-w-3xl mb-12">
-            <span className="inline-block text-xs font-extrabold uppercase tracking-widest text-[#ff6b00] mb-3">
-              {dict.home.howItWorksEyebrow}
-            </span>
-            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#0f172a]">
-              {dict.home.howItWorksTitle}
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {dict.home.steps.map((step) => (
-              <div
-                key={step.step}
-                className="rounded-3xl border border-slate-200 bg-[#f8fafc] p-7"
-              >
-                <span className="block font-mono text-xs font-extrabold text-[#ff6b00] mb-3">
-                  STEP {step.step}
-                </span>
-                <h3 className="text-lg font-extrabold text-[#0f172a] mb-2">
-                  {step.title}
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed">
-                  {step.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Brazil Guides */}
-      <section className="py-20 bg-[#f8fafc] border-t border-slate-200">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
-            <div className="max-w-2xl">
-              <span className="inline-block text-xs font-extrabold uppercase tracking-widest text-[#ff6b00] mb-3">
-                {dict.home.resourcesEyebrow}
-              </span>
-              <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#0f172a] mb-3">
-                {dict.home.resourcesTitle}
-              </h2>
-              <p className="text-sm md:text-base text-slate-600">
-                {dict.home.resourcesSubtitle}
-              </p>
-            </div>
-            <Link
-              to={routeTo("resources")}
-              className="inline-flex items-center gap-1.5 text-sm font-bold text-[#ff6b00] hover:underline shrink-0"
-            >
-              <span>{dict.home.viewAllResources}</span>
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {EDITORIAL_ARTICLES.slice(0, 3).map((article) => {
-              const content = article.localized[locale];
+          <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {c.areas.map((a, i) => {
+              const { Icon, to } = AREAS[i];
+              const href = routeTo(to);
               return (
                 <Link
-                  key={article.slug}
-                  to={articleTo(article.slug)}
-                  className="group rounded-3xl border border-slate-200 bg-white p-7 shadow-sm hover:border-[#ff6b00] transition-all flex flex-col justify-between gap-4"
+                  key={a.title}
+                  to={href}
+                  onClick={() => trackCtaClick(`home_area_${i + 1}`, locale, href)}
+                  className="group relative flex flex-col rounded-2xl border border-slate-200 bg-white p-7 transition-all hover:-translate-y-1 hover:border-[#ff6b00]/40 hover:shadow-xl hover:shadow-slate-200/70"
                 >
-                  <div>
-                    <div className="flex items-center justify-between gap-2 text-xs text-slate-500 mb-3">
-                      <span className="font-bold text-[#ff6b00]">{content.category}</span>
-                      <span className="inline-flex items-center gap-1">
-                        <BookOpen className="h-3.5 w-3.5" aria-hidden="true" />
-                        {content.readingMinutes} {dict.resources.readingTimeLabel}
-                      </span>
-                    </div>
-                    <h3 className="text-lg font-extrabold text-[#0f172a] group-hover:text-[#ff6b00] transition-colors mb-2">
-                      {content.title}
-                    </h3>
-                    <p className="text-sm text-slate-600 leading-relaxed">{content.summary}</p>
+                  <span className="absolute inset-x-7 top-0 h-0.5 bg-[#ff6b00] scale-x-0 group-hover:scale-x-100 transition-transform origin-left" aria-hidden="true" />
+                  <div className="flex items-center justify-between">
+                    <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#040f21] text-[#ff6b00]">
+                      <Icon className="h-6 w-6" aria-hidden="true" />
+                    </span>
+                    <span className="font-mono text-xs font-bold text-slate-300">0{i + 1}</span>
                   </div>
-                  <span className="inline-flex items-center gap-1.5 text-xs font-bold text-[#040f21]">
-                    <span>{dict.resources.readGuide}</span>
-                    <ArrowRight className="h-3.5 w-3.5 text-[#ff6b00]" aria-hidden="true" />
-                  </span>
+                  <h3 className="mt-6 text-lg font-extrabold text-[#040f21]">{a.title}</h3>
+                  <p className="mt-3 flex-1 text-sm text-slate-600 leading-relaxed">{a.text}</p>
+                  <ArrowRight className="mt-6 h-5 w-5 text-slate-300 transition-all group-hover:translate-x-1 group-hover:text-[#ff6b00]" aria-hidden="true" />
                 </Link>
               );
             })}
@@ -303,40 +123,104 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Final CTA Banner */}
-      <section className="py-20 bg-[#040f21] text-white border-t-4 border-[#ff6b00]">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 text-center">
-          <span className="inline-block text-xs font-extrabold uppercase tracking-widest text-[#ff6b00] mb-3">
-            {dict.home.finalCtaEyebrow}
-          </span>
-          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-4">
-            {dict.home.finalCtaTitle}
-          </h2>
-          <p className="text-base md:text-lg text-slate-300 mb-8 leading-relaxed">
-            {dict.home.finalCtaSubtitle}
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              to={locale === "pt-br" ? "/teste-gratis" : routeTo("contact")}
-              onClick={() =>
-                trackCtaClick(
-                  "footer_banner_primary",
-                  locale,
-                  locale === "pt-br" ? "/teste-gratis" : routeTo("contact"),
-                )
-              }
-              className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-[#ff6b00] px-8 py-4 text-sm font-bold text-white hover:bg-[#ea580c] transition-colors"
-            >
-              <span>{dict.nav.primaryCta}</span>
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
-            <Link
-              to={routeTo("solutions")}
-              className="inline-flex w-full sm:w-auto items-center justify-center rounded-full border border-white/25 px-8 py-4 text-sm font-bold text-white hover:border-[#ff6b00] hover:text-[#ff6b00] transition-colors"
-            >
-              {dict.nav.solutions}
+      {/* 3. Ecossistema de eventos */}
+      <section className="py-24 bg-[#f8fafc] border-t border-slate-200">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-14">
+          <div>
+            <span className={eyebrow}>{c.eventsEyebrow}</span>
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#0f172a]">{c.eventsTitle}</h2>
+            <p className="mt-5 text-lg text-slate-600">{c.eventsLead}</p>
+            <p className="mt-6 text-base text-slate-700 leading-relaxed border-l-4 border-[#ff6b00] pl-4">{c.eventsClosing}</p>
+            <Link to={routeTo("events")} className="mt-8 inline-flex items-center gap-2 text-sm font-bold text-[#040f21] hover:text-[#ff6b00]">
+              {c.eventsCta} <ArrowRight className="h-4 w-4 text-[#ff6b00]" aria-hidden="true" />
             </Link>
           </div>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-slate-200 rounded-2xl overflow-hidden self-start">
+            {c.eventsBullets.map((b) => (
+              <li key={b} className="bg-white p-6 flex gap-3 text-sm font-semibold text-[#0f172a]">
+                <Check className="h-5 w-5 shrink-0 text-[#ff6b00]" aria-hidden="true" />
+                {b}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* 4. Inteligência global */}
+      <section className="py-24 bg-[#040f21] text-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+          <div>
+            <span className={eyebrow}>{c.globalEyebrow}</span>
+            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight">{c.globalTitle}</h2>
+            <p className="mt-5 text-lg text-slate-300 leading-relaxed">{c.globalLead}</p>
+            <Link to={routeTo("brazilMarketEntry")} className="mt-8 inline-flex items-center gap-2 text-sm font-bold text-white hover:text-[#ff6b00]">
+              {c.globalCta} <ArrowRight className="h-4 w-4 text-[#ff6b00]" aria-hidden="true" />
+            </Link>
+          </div>
+          <ol className="space-y-4">
+            {c.globalFronts.map((f, i) => (
+              <li key={f} className="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/5 p-6">
+                <Globe2 className="h-6 w-6 shrink-0 text-[#ff6b00]" aria-hidden="true" />
+                <span className="text-base font-semibold">
+                  <span className="mr-2 font-mono text-xs text-slate-400">0{i + 1}</span>
+                  {f}
+                </span>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* 5. Portal de inteligência */}
+      <section className="py-24 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+            <div className="max-w-3xl">
+              <span className={eyebrow}>{c.portalEyebrow}</span>
+              <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#0f172a]">{c.portalTitle}</h2>
+              <div className="mt-5 flex flex-wrap gap-2">
+                {c.portalTopics.map((t) => (
+                  <span key={t} className="rounded-full border border-slate-200 px-3 py-1 text-xs font-semibold text-slate-600">{t}</span>
+                ))}
+              </div>
+            </div>
+            <Link to={routeTo("resources")} className="inline-flex items-center gap-1.5 text-sm font-bold text-[#ff6b00] hover:underline shrink-0">
+              {c.portalAll} <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {EDITORIAL_ARTICLES.slice(0, 3).map((article) => {
+              const content = article.localized[locale];
+              return (
+                <Link key={article.slug} to={articleTo(article.slug)} className="group border-t-2 border-[#040f21] pt-5">
+                  <div className="flex items-center justify-between text-xs text-slate-500 mb-3">
+                    <span className="font-bold uppercase tracking-wider text-[#ff6b00]">{content.category}</span>
+                    <span className="inline-flex items-center gap-1">
+                      <BookOpen className="h-3.5 w-3.5" aria-hidden="true" />
+                      {content.readingMinutes} {dict.resources.readingTimeLabel}
+                    </span>
+                  </div>
+                  <h3 className="text-xl font-extrabold text-[#0f172a] group-hover:text-[#ff6b00] transition-colors">{content.title}</h3>
+                  <p className="mt-2 text-sm text-slate-600 leading-relaxed">{content.summary}</p>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* 6. CTA institucional */}
+      <section className="py-24 bg-[#f8fafc] border-t border-slate-200">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 text-center">
+          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-[#0f172a]">{c.finalTitle}</h2>
+          <p className="mt-5 text-lg text-slate-600">{c.finalText}</p>
+          <Link
+            to={contact}
+            onClick={() => trackCtaClick("home_final_presentation", locale, contact)}
+            className="mt-10 inline-flex items-center gap-2 rounded-full bg-[#040f21] px-8 py-4 text-sm font-bold text-white hover:bg-[#07152e]"
+          >
+            {c.finalCta} <ArrowRight className="h-4 w-4 text-[#ff6b00]" aria-hidden="true" />
+          </Link>
         </div>
       </section>
     </SiteLayout>

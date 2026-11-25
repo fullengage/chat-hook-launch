@@ -42,7 +42,11 @@ const HeroRadar = ({ anchor }: { anchor: RefObject<HTMLElement> }) => {
     };
 
     const draw = (now: number) => {
-      ctx.clearRect(0, 0, w, h);
+      // limpa o bitmap inteiro (sem a escala): se sobrar área sem limpar, o feixe acumula e vira mancha laranja
+      ctx.save();
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.restore();
 
       // anéis
       ctx.strokeStyle = "rgba(15, 23, 42, 0.06)";
@@ -107,10 +111,13 @@ const HeroRadar = ({ anchor }: { anchor: RefObject<HTMLElement> }) => {
       layout();
       if (reduce) draw(0);
     };
-    window.addEventListener("resize", onResize);
+    // a altura do hero muda depois do carregamento (fontes, quebra de linha, zoom): recalcula sempre que a área mudar
+    const ro = new ResizeObserver(onResize);
+    ro.observe(canvas);
+    if (anchor.current) ro.observe(anchor.current);
     return () => {
       cancelAnimationFrame(raf);
-      window.removeEventListener("resize", onResize);
+      ro.disconnect();
     };
   }, [anchor]);
 

@@ -17,14 +17,20 @@ export const ptBrDictionary: TranslationDictionary = {
       "DeepB2B é a marca global de inteligência operada pela Deepson (DEEPSON - INTELIGENCIA DE DADOS E TECNOLOGIA LTDA, CNPJ 19.904.935/0001-20 · Grupo FullWeb).",
   },
   seo: {
-    freeTrial: {
-      title: "Teste grátis de 7 dias — Inteligência B2B | DeepB2B",
-      description: "Teste o DeepB2B grátis por 7 dias com 20 créditos, sem cartão. Encontre empresas com perfil para comprar de você, com contatos e sinais financeiros de fontes públicas.",
+    calendar: {
+      title: "Calendário de feiras de negócios 2027 em São Paulo | DeepB2B",
+      description:
+        "Datas, local e organizadora das principais feiras de negócios de 2027, conferidas nos sites oficiais, com o perfil de expositores e compradores de cada setor.",
+    },
+    events: {
+      title: "Feiras e Eventos — Inteligência para Expositores | DeepB2B",
+      description:
+        "Transforme sua participação em feiras em oportunidades de negócios: compradores identificados antes do evento, campanhas de convite, agendas comerciais e acompanhamento depois da feira.",
     },
     home: {
-      title: "DeepB2B — Inteligência Empresarial Brasileira & Prospecção B2B com IA",
+      title: "DeepB2B — Inteligência de Mercado e Desenvolvimento de Negócios",
       description:
-        "Encontre as empresas certas no Brasil, analise mercados por CNAE, identifique decisores e transforme dados públicos em inteligência comercial.",
+        "Inteligência empresarial que conecta mercados e gera negócios: estudos de mercado, inteligência para feiras e eventos, identificação de compradores e expansão no Brasil e no exterior.",
     },
     businessData: {
       title: "Dados Empresariais Brasileiros (CNPJ, CNAE e Sinais) | DeepB2B",
@@ -72,9 +78,9 @@ export const ptBrDictionary: TranslationDictionary = {
         "Converse com nosso time comercial sobre prospecção B2B, inteligência de mercado ou projetos Enterprise no Brasil.",
     },
     login: {
-      title: "Acesso à Plataforma e Teste Grátis | DeepB2B",
+      title: "Acesso à Plataforma | DeepB2B",
       description:
-        "Acesse sua conta em app.deepson.com.br, inicie seu teste grátis de 7 dias com 20 créditos ou agende uma demonstração.",
+        "Acesse sua conta em app.deepson.com.br ou fale com nosso time para montar um projeto de inteligência comercial.",
     },
     privacy: {
       title: "Política de Privacidade e Governança de Dados | DeepB2B",
@@ -110,12 +116,13 @@ export const ptBrDictionary: TranslationDictionary = {
     industryMapping: "Mapeamento Setorial",
     brazilMarketEntry: "Mercado Brasileiro",
     solutions: "Soluções",
-    resources: "Conteúdos",
+    resources: "Insights",
+    events: "Feiras e Eventos",
+    calendar: "Calendário de feiras",
     about: "Sobre",
     contact: "Contato",
     login: "Acessar Plataforma",
-    trialCta: "Teste grátis",
-    primaryCta: "Testar a Plataforma",
+    primaryCta: "Solicitar apresentação",
     secondaryCta: "Solicitar Demonstração",
     languageLabel: "Idioma",
     openMenu: "Abrir menu",
@@ -126,10 +133,10 @@ export const ptBrDictionary: TranslationDictionary = {
     h1: "Encontre as empresas certas. Transforme dados em oportunidades de negócio.",
     subtitle:
       "Encontre empresas, identifique oportunidades e transforme dados brasileiros em inteligência comercial com transparência de origem e IA.",
-    primaryCta: "Testar a Plataforma",
+    primaryCta: "Falar com Especialista",
     secondaryCta: "Solicitar Demonstração",
     trustItems: [
-      "7 dias grátis • 20 créditos • Sem cartão de crédito",
+      "Inteligência de mercado, eventos e empresas",
       "Fontes públicas oficiais (Receita Federal e PGFN)",
       "Separação clara entre dado oficial e estimativa de IA",
     ],
@@ -233,9 +240,9 @@ export const ptBrDictionary: TranslationDictionary = {
       "Documentação prática sobre CNPJ, CNAE, busca de canais B2B e os limites reais das bases públicas.",
     viewAllResources: "Ver todos os guias",
     finalCtaEyebrow: "Comece Hoje Mesmo",
-    finalCtaTitle: "Teste a plataforma com 20 créditos grátis por 7 dias",
+    finalCtaTitle: "Vamos encontrar seus próximos compradores",
     finalCtaSubtitle:
-      "Sem cartão de crédito. Crie sua conta com o CNPJ da sua empresa ou solicite uma demonstração guiada com nosso time.",
+      "Conte o que você vende e para quem. Nosso time monta uma proposta de inteligência comercial sob medida para sua empresa.",
   },
   discovery: {
     eyebrow: "Experiência Interativa de Busca Empresarial",
@@ -298,7 +305,7 @@ export const ptBrDictionary: TranslationDictionary = {
       { field: "Filtros de ICP e Nota de Compatibilidade", support: "Score de 0 a 100 gerado por IA com motivo explícito", source: "ai" },
       { field: "Evidências de Qualificação e Sinais Financeiros", support: "Receita, dívida ativa PGFN e protesto em cartório (sob pedido)", source: "ondemand" },
     ],
-    exploreCta: "Testar na Plataforma (20 créditos grátis)",
+    exploreCta: "Falar com Especialista",
   },
   marketSnapshot: {
     eyebrow: "Arquitetura de Dados & Polos Econômicos",
@@ -345,7 +352,7 @@ export const ptBrDictionary: TranslationDictionary = {
       eyebrow: "Dados Empresariais Brasileiros",
       h1: "Dados cadastrais do Brasil estruturados com origem e data transparentes",
       lead: "Consulte CNPJ, CNAE, porte, localização, quadro societário (QSA) e sinais financeiros públicos sem depender de planilhas obsoletas ou dados sem rastreabilidade.",
-      primaryCta: "Testar a Plataforma",
+      primaryCta: "Falar com Especialista",
       secondaryCta: "Solicitar Demonstração",
       highlightsTitle: "Capacidades Principais",
       highlights: [
@@ -371,7 +378,7 @@ export const ptBrDictionary: TranslationDictionary = {
       eyebrow: "Inteligência de Mercado",
       h1: "Entenda segmentos, territórios e potencial de compra no Brasil",
       lead: "A DeepB2B cruza o perfil da sua oferta com a estrutura econômica brasileira para revelar onde estão seus melhores segmentos e contas.",
-      primaryCta: "Testar a Plataforma",
+      primaryCta: "Falar com Especialista",
       secondaryCta: "Ver Soluções",
       highlightsTitle: "Recursos de Inteligência",
       highlights: [
@@ -395,7 +402,7 @@ export const ptBrDictionary: TranslationDictionary = {
       eyebrow: "Prospecção B2B",
       h1: "Menos tempo montando lista. Mais tempo com quem decide.",
       lead: "Receba uma fila priorizada de empresas brasileiras com alto encaixe ao seu ICP, decisores identificados e abordagem assistida por IA.",
-      primaryCta: "Testar Grátis (7 dias)",
+      primaryCta: "Falar com Especialista",
       secondaryCta: "Conhecer Nossas Soluções",
       highlightsTitle: "Fluxo de Prospecção",
       highlights: [
@@ -419,7 +426,7 @@ export const ptBrDictionary: TranslationDictionary = {
       eyebrow: "Mapeamento Setorial",
       h1: "Mapeie cadeias de fornecedores e compradores por CNAE",
       lead: "Separe com precisão quem fabrica, quem importa, quem distribui e quem compra insumos no mercado brasileiro.",
-      primaryCta: "Testar a Plataforma",
+      primaryCta: "Falar com Especialista",
       secondaryCta: "Ler Guia de CNAE",
       highlightsTitle: "Precisão Setorial",
       highlights: [
@@ -572,12 +579,9 @@ export const ptBrDictionary: TranslationDictionary = {
     ],
     platformGovernanceTitle: "Planos e tabela detalhada de créditos dentro da plataforma",
     platformGovernanceBody:
-      "Não exibimos tabelas públicas de preços nesta página. Clientes brasileiros podem experimentar a plataforma no teste gratuito, e toda a gestão de planos, cobrança e tabela detalhada de consumo de créditos permanece disponível dentro da plataforma autenticada (app.deepson.com.br). Para operações internacionais ou Enterprise, atendemos sob demonstração.",
-    trialCardTitle: "Empresas brasileiras com CNPJ ativo",
-    trialCardSubtitle: "Inicie o teste gratuito de 7 dias sem cartão de crédito e conheça a plataforma na prática.",
-    trialCardCta: "Testar a Plataforma Grátis",
+      "Não exibimos tabelas públicas de preços nesta página. Toda a gestão de planos, cobrança e tabela detalhada de consumo de créditos permanece disponível dentro da plataforma autenticada (app.deepson.com.br). Para operações internacionais ou Enterprise, atendemos sob demonstração.",
     ctaTitle: "Quer ver a plataforma aplicada ao seu segmento?",
-    ctaSubtitle: "Inicie seu teste grátis no Brasil ou solicite uma demonstração personalizada com nosso time.",
+    ctaSubtitle: "Solicite uma demonstração ou uma proposta personalizada com nosso time.",
     primaryCta: "Solicitar Demonstração",
     secondaryCta: "Falar com Nossa Equipe",
     discoverCta: "Conhecer Nossas Soluções",
@@ -591,7 +595,7 @@ export const ptBrDictionary: TranslationDictionary = {
     sourcesTitle: "Fontes Oficiais e Referências Técnicas",
     backToResources: "Voltar para Conteúdos",
     articleCtaTitle: "Aplique esse conhecimento na sua prospecção",
-    articleCtaSubtitle: "Teste a plataforma gratuitamente por 7 dias ou fale com nosso time sobre o seu segmento.",
+    articleCtaSubtitle: "Fale com nosso time sobre o seu segmento e os mercados que você quer conquistar.",
   },
   about: {
     eyebrow: "Sobre a DeepB2B",
@@ -619,7 +623,7 @@ export const ptBrDictionary: TranslationDictionary = {
     statusItems: [
       { capability: "Definição de ICP por IA e descoberta de empresas brasileiras", status: "production", detail: "Operacional em app.deepson.com.br" },
       { capability: "Filtros CNPJ, CNAE, porte, QSA e sinais PGFN", status: "production", detail: "Ativo com custo transparente por crédito" },
-      { capability: "Funil Kanban, decisores e exportação CSV/Excel", status: "production", detail: "Disponível para contas ativas e teste grátis" },
+      { capability: "Funil Kanban, decisores e exportação CSV/Excel", status: "production", detail: "Disponível para contas ativas" },
       { capability: "Onboarding internacional e contratos Enterprise", status: "consultative", detail: "Atendimento direto via Solicitar Demonstração" },
       { capability: "Interface autenticada da plataforma em Inglês e Chinês", status: "roadmap", detail: "Atualmente em PT-BR no app; onboarding guiado para equipes globais" },
       { capability: "Checkout self-service em USD/CNY e API pública", status: "roadmap", detail: "Escopo avaliado sob demanda comercial" },
@@ -640,10 +644,6 @@ export const ptBrDictionary: TranslationDictionary = {
     formSubtitle: "Preencha os campos abaixo para encaminhamento imediato ao nosso time.",
     faqTitle: "Perguntas Frequentes",
     faqs: [
-      {
-        question: "Como funciona o teste grátis de 7 dias?",
-        answer: "Empresas com CNPJ brasileiro ativo podem criar conta gratuita imediata em /teste-gratis e receber 20 créditos válidos por 7 dias, sem cartão de crédito.",
-      },
       {
         question: "De onde vêm os dados das empresas exibidas?",
         answer: "Dados cadastrais e fiscais vêm de fontes públicas oficiais (Receita Federal, PGFN e cartórios sob pedido), combinados com canais corporativos públicos e qualificação por IA devidamente identificada.",
@@ -707,15 +707,12 @@ export const ptBrDictionary: TranslationDictionary = {
   },
   login: {
     eyebrow: "Acesso à Plataforma",
-    h1: "Entre na plataforma ou comece seu teste",
+    h1: "Entre na plataforma ou fale com nosso time",
     lead: "Escolha a opção adequada ao seu momento de uso.",
     existingTitle: "Já tenho conta Deepson / DeepB2B",
     existingDescription: "Acesse diretamente o painel autenticado com seus perfis de ICP, radar de mercado, funil e saldo de créditos.",
     existingCta: "Entrar em app.deepson.com.br",
     existingNotice: "Seus dados, créditos e histórico permanecem intactos durante a evolução da marca para DeepB2B.",
-    trialTitle: "Novo no Brasil? Teste grátis de 7 dias",
-    trialDescription: "Libere 20 créditos sem cartão de crédito informando o CNPJ da sua empresa.",
-    trialCta: "Criar Conta de Teste Grátis",
     intlTitle: "Operações Internacionais ou Enterprise",
     intlDescription: "Precisa de demonstração guiada, múltiplos assentos ou atendimento sem CNPJ brasileiro?",
     intlCta: "Solicitar Demonstração",
@@ -728,7 +725,7 @@ export const ptBrDictionary: TranslationDictionary = {
         heading: "1. Controladora e Escopo",
         body: [
           "Este site e a plataforma DeepB2B são operados por DEEPSON - INTELIGENCIA DE DADOS E TECNOLOGIA LTDA, inscrita no CNPJ nº 19.904.935/0001-20, com sede em Mogi das Cruzes/SP (Grupo FullWeb).",
-          "Coletamos dados fornecidos voluntariamente em formulários de teste grátis, demonstração e contato para atendimento comercial e provisionamento de acesso.",
+          "Coletamos dados fornecidos voluntariamente em formulários de demonstração e contato para atendimento comercial e provisionamento de acesso.",
         ],
       },
       {

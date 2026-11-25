@@ -83,18 +83,18 @@ test("Prerendered HTML files exist for EN, PT-BR, ES, ZH-CN with valid lang, can
 
 test("Spanish and Chinese prerendered pages contain authentic localized content and @deepb2b.ai branding", () => {
   const esHome = fs.readFileSync(path.join(DIST, "es/index.html"), "utf-8");
-  assert.ok(esHome.includes("Comprenda Brasil"), "es home must contain Spanish headline");
+  assert.ok(esHome.includes("Inteligencia que conecta mercados y genera negocios."), "es home must contain Spanish headline");
   assert.ok(esHome.includes("contact@deepb2b.ai"), "es footer must use contact@deepb2b.ai");
 
   const esSolutions = fs.readFileSync(path.join(DIST, "es/soluciones/index.html"), "utf-8");
   assert.ok(esSolutions.includes("Business Data") && esSolutions.includes("Enterprise Solutions"));
 
   const zhHome = fs.readFileSync(path.join(DIST, "zh-cn/index.html"), "utf-8");
-  assert.ok(zhHome.includes("巴西企业数据与商业情报平台"), "zh-cn home must contain Chinese positioning text");
+  assert.ok(zhHome.includes("连接市场、创造商机的商业情报。"), "zh-cn home must contain Chinese positioning text");
   assert.ok(/[\u4e00-\u9fff]{10,}/.test(zhHome), "zh-cn home must render Chinese characters");
 });
 
-test("Zero public pricing, extra credit values, or lead-cost calculator appear in prerendered site or /teste-gratis", () => {
+test("Zero public pricing, extra credit values, or lead-cost calculator appear in prerendered site", () => {
   const forbiddenPricePatterns = [
     /R\$\s*497/,
     /R\$\s*997/,
@@ -116,12 +116,6 @@ test("Zero public pricing, extra credit values, or lead-cost calculator appear i
     for (const pattern of forbiddenPricePatterns) {
       assert.ok(!pattern.test(html), `Forbidden public pricing match ${pattern} found in ${file}`);
     }
-  }
-
-  const freeTrialSrc = fs.readFileSync(path.join(ROOT, "src/pages/FreeTrialPage.tsx"), "utf-8");
-  assert.ok(!freeTrialSrc.includes("PlansSection"), "FreeTrialPage must not render PlansSection");
-  for (const pattern of forbiddenPricePatterns) {
-    assert.ok(!pattern.test(freeTrialSrc), `Forbidden pricing pattern ${pattern} in FreeTrialPage.tsx`);
   }
 });
 
@@ -161,15 +155,10 @@ test("Consent-gated analytics: index.html does not unconditionally inject GTM or
   assert.ok(!srcIndex.includes("connect.facebook.net/en_US/fbevents.js"), "Meta Pixel must be loaded conditionally via analytics.ts");
 });
 
-test("Legacy Brazilian conversion flows and Supabase integrations remain intact", () => {
-  const trialForm = fs.readFileSync(path.join(ROOT, "src/components/TrialForm.tsx"), "utf-8");
-  assert.ok(trialForm.includes("https://app.deepson.com.br/api/teste-gratis"));
-  assert.ok(trialForm.includes("/functions/v1/capture-lead"));
-
+test("Contact flows and Supabase lead capture remain intact", () => {
   const appRoutes = fs.readFileSync(path.join(ROOT, "src/AppRoutes.tsx"), "utf-8");
-  assert.ok(fs.readFileSync(path.join(ROOT, "src/i18n/routes.ts"), "utf-8").includes('freeTrial: "/teste-gratis"'));
-  assert.ok(appRoutes.includes("paths.freeTrial"));
   assert.ok(appRoutes.includes('path="/obrigado"'));
+  assert.ok(fs.existsSync(path.join(ROOT, "supabase/functions/capture-lead/index.ts")));
 });
 
 test("DeepB2B pages contain zero ChatHook brand leaks", () => {

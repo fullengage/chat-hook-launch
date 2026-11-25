@@ -42,7 +42,7 @@ export const LoginAccessPage: React.FC = () => {
       </section>
 
       <section className="py-16 bg-[#f8fafc]">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Existing Platform Account */}
           <div className="rounded-3xl border-2 border-[#040f21] bg-[#040f21] p-7 text-white flex flex-col justify-between gap-6">
             <div className="space-y-3">
@@ -65,24 +65,6 @@ export const LoginAccessPage: React.FC = () => {
             </a>
           </div>
 
-          {/* Brazil CNPJ Free Trial */}
-          <div className="rounded-3xl border border-slate-200 bg-white p-7 flex flex-col justify-between gap-6 shadow-sm">
-            <div className="space-y-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#fff7ed] text-[#ff6b00]">
-                <Sparkles className="h-5 w-5" aria-hidden="true" />
-              </div>
-              <h2 className="text-xl font-extrabold text-[#0f172a]">{dict.login.trialTitle}</h2>
-              <p className="text-sm text-slate-600 leading-relaxed">{dict.login.trialDescription}</p>
-            </div>
-            <Link
-              to="/teste-gratis"
-              onClick={() => trackCtaClick("login_brazil_trial", locale, "/teste-gratis")}
-              className="inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-[#040f21] px-5 py-3 text-sm font-bold text-[#040f21] hover:bg-[#040f21] hover:text-white transition-colors"
-            >
-              <span>{dict.login.trialCta}</span>
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
-          </div>
 
           {/* International Demo Onboarding */}
           <div className="rounded-3xl border border-slate-200 bg-white p-7 flex flex-col justify-between gap-6 shadow-sm">

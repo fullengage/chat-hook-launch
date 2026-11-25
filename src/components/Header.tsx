@@ -47,7 +47,7 @@ const Header = () => {
             <Button variant="outline-primary" size="sm" className="hidden sm:flex" onClick={() => scrollToSection('plans-section')}>
               Ver planos
             </Button>
-            <Button variant="cta" size="sm" onClick={() => navigate("/teste-gratis")}>
+            <Button variant="cta" size="sm" onClick={() => navigate("/pt-br/contato")}>
               Agendar Demo
             </Button>
           </div>

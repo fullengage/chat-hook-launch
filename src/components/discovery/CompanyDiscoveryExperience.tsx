@@ -48,7 +48,7 @@ export const CompanyDiscoveryExperience: React.FC<CompanyDiscoveryExperienceProp
     trackCompanySearch(sample, locale, interpreted.cnaeScope);
   };
 
-  const ctaTarget = locale === "pt-br" ? "/teste-gratis" : routeTo("contact");
+  const ctaTarget = routeTo("contact");
 
   return (
     <section id="company-discovery" className="py-20 bg-white border-y border-slate-200">
