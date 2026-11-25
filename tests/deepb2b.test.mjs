@@ -167,7 +167,8 @@ test("Legacy Brazilian conversion flows and Supabase integrations remain intact"
   assert.ok(trialForm.includes("/functions/v1/capture-lead"));
 
   const appRoutes = fs.readFileSync(path.join(ROOT, "src/AppRoutes.tsx"), "utf-8");
-  assert.ok(appRoutes.includes('path="/teste-gratis"'));
+  assert.ok(fs.readFileSync(path.join(ROOT, "src/i18n/routes.ts"), "utf-8").includes('freeTrial: "/teste-gratis"'));
+  assert.ok(appRoutes.includes("paths.freeTrial"));
   assert.ok(appRoutes.includes('path="/obrigado"'));
 });
 
