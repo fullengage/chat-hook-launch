@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, BookOpen, Check, CheckCircle2, Globe2 } from "lucide-react";
+import { ArrowRight, BookOpen, CalendarDays, Check, CheckCircle2, Globe2, Handshake, LineChart, Megaphone } from "lucide-react";
 import { useLocale } from "@/i18n/LocaleContext";
 import { SITE_ORIGIN } from "@/i18n/routes";
 import { EDITORIAL_ARTICLES } from "@/data/articles";
@@ -9,6 +9,14 @@ import { SeoHead } from "@/components/seo/SeoHead";
 import { SiteLayout } from "@/components/layout/SiteLayout";
 import HeroRadar from "@/components/HeroRadar";
 import { homeCopy } from "./positioningCopy";
+
+// Ícone e página de destino de cada uma das 4 áreas (mesma ordem de homeCopy().areas)
+const AREAS = [
+  { Icon: LineChart, to: "marketIntelligence" },
+  { Icon: CalendarDays, to: "events" },
+  { Icon: Handshake, to: "leadGeneration" },
+  { Icon: Megaphone, to: "contact" },
+] as const;
 
 const eyebrow = "inline-block text-xs font-extrabold uppercase tracking-[0.2em] text-[#ff6b00] mb-4";
 
@@ -87,14 +95,30 @@ export const HomePage: React.FC = () => {
             <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-[#0f172a]">{c.whatTitle}</h2>
             <p className="mt-5 text-lg text-slate-600 leading-relaxed">{c.whatLead}</p>
           </div>
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-t border-slate-200">
-            {c.areas.map((a, i) => (
-              <div key={a.title} className="py-8 pr-8 lg:border-r border-slate-200 last:border-r-0">
-                <span className="font-mono text-xs text-slate-400">0{i + 1}</span>
-                <h3 className="mt-3 text-xl font-extrabold text-[#040f21]">{a.title}</h3>
-                <p className="mt-3 text-sm text-slate-600 leading-relaxed">{a.text}</p>
-              </div>
-            ))}
+          <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {c.areas.map((a, i) => {
+              const { Icon, to } = AREAS[i];
+              const href = routeTo(to);
+              return (
+                <Link
+                  key={a.title}
+                  to={href}
+                  onClick={() => trackCtaClick(`home_area_${i + 1}`, locale, href)}
+                  className="group relative flex flex-col rounded-2xl border border-slate-200 bg-white p-7 transition-all hover:-translate-y-1 hover:border-[#ff6b00]/40 hover:shadow-xl hover:shadow-slate-200/70"
+                >
+                  <span className="absolute inset-x-7 top-0 h-0.5 bg-[#ff6b00] scale-x-0 group-hover:scale-x-100 transition-transform origin-left" aria-hidden="true" />
+                  <div className="flex items-center justify-between">
+                    <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#040f21] text-[#ff6b00]">
+                      <Icon className="h-6 w-6" aria-hidden="true" />
+                    </span>
+                    <span className="font-mono text-xs font-bold text-slate-300">0{i + 1}</span>
+                  </div>
+                  <h3 className="mt-6 text-lg font-extrabold text-[#040f21]">{a.title}</h3>
+                  <p className="mt-3 flex-1 text-sm text-slate-600 leading-relaxed">{a.text}</p>
+                  <ArrowRight className="mt-6 h-5 w-5 text-slate-300 transition-all group-hover:translate-x-1 group-hover:text-[#ff6b00]" aria-hidden="true" />
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
