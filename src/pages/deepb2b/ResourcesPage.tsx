@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, BookOpen } from "lucide-react";
 import { useLocale } from "@/i18n/LocaleContext";
-import { EDITORIAL_ARTICLES } from "@/data/articles";
+import { articlesFor } from "@/data/articles";
 import { SITE_ORIGIN } from "@/i18n/routes";
 import { SeoHead } from "@/components/seo/SeoHead";
 import { SiteLayout } from "@/components/layout/SiteLayout";
@@ -43,8 +43,7 @@ export const ResourcesPage: React.FC = () => {
 
       <section className="py-16 bg-[#f8fafc]">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 space-y-8">
-          {EDITORIAL_ARTICLES.filter((a) => a.featuredReport).map((article) => {
-            const content = article.localized[locale];
+          {articlesFor(locale).filter(({ article }) => article.featuredReport).map(({ article, content }) => {
             return (
               <Link
                 key={article.slug}
@@ -76,8 +75,7 @@ export const ResourcesPage: React.FC = () => {
           })}
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {EDITORIAL_ARTICLES.filter((a) => !a.featuredReport).map((article) => {
-              const content = article.localized[locale];
+            {articlesFor(locale).filter(({ article }) => !article.featuredReport).map(({ article, content }) => {
               return (
                 <Link
                   key={article.slug}

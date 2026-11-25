@@ -3,7 +3,7 @@ import type { Locale } from "@/i18n/types";
 /**
  * Calendário de feiras (Event Intelligence).
  * Regra editorial: só entra o que foi conferido no site oficial (source + checkedAt).
- * Números de mercado: contagem de estabelecimentos por CNAE principal na base pública da Receita Federal
+ * Números de mercado: contagem de estabelecimentos ATIVOS (a base só carrega ativos, confirmado em 25/11/2026) por CNAE principal na base pública da Receita Federal
  * usada pela plataforma DeepB2B (edição out/2026). São contagens de registros, não estimativa de compradores.
  * ponytail: lista estática até a base consolidada do app existir; depois o build lê da API e gera as páginas.
  */

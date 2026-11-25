@@ -1,5 +1,5 @@
 ---
-status: rascunho para revisão (não publicado)
+status: aprovado em 25/11/2026 e publicado no portal (pt-BR e EN)
 autoria: Redação DeepB2B Intelligence
 editoria: Feiras e Eventos / Inteligência Industrial
 palavra-chave principal: beauty fair 2027 (≈110 buscas/mês, Semrush BR, 25/11/2026)
@@ -20,7 +20,7 @@ fontes conferidas em: 25/11/2026
 
 ## A cadeia de cosméticos em números
 
-A Beauty Fair reúne a cadeia inteira: indústria, distribuição, varejo e profissionais. Na base pública da Receita Federal (edição de outubro de 2026), os estabelecimentos com o CNAE principal de cada elo são:
+A Beauty Fair reúne a cadeia inteira: indústria, distribuição, varejo e profissionais. Na base pública da Receita Federal (edição de outubro de 2026), os estabelecimentos ativos com o CNAE principal de cada elo são:
 
 | Elo da cadeia | CNAE | Brasil | Estado de SP |
 |---|---|---|---|
@@ -54,7 +54,7 @@ Duas leituras importam para quem expõe:
 ## Metodologia
 
 - **Datas e local:** site oficial da Beauty Fair, conferido em 25/11/2026.
-- **Números:** contagem de estabelecimentos por CNAE principal na base pública da Receita Federal (edição de outubro de 2026), processada pela plataforma DeepB2B. São registros, não uma estimativa do público da feira.
+- **Números:** contagem de estabelecimentos ativos por CNAE principal na base pública da Receita Federal (edição de outubro de 2026), processada pela plataforma DeepB2B. É uma contagem de empresas, não uma estimativa do público da feira.
 
 ---
 *A DeepB2B mapeia compradores, identifica decisores e organiza campanhas de convite para expositores de feiras. Solicite uma apresentação.*
@@ -62,6 +62,6 @@ Duas leituras importam para quem expõe:
 <!-- Checklist de revisão antes de publicar:
 [ ] Não citar a Repós nem nenhum cliente sem autorização por escrito
 [ ] Conferir datas de novo na semana da publicação
-[ ] Confirmar com o Rafael se a base contém só estabelecimentos ativos
+[x] Base contém só estabelecimentos ativos (confirmado em 25/11/2026)
 [ ] Imagem de capa (licenciada ou própria)
 [ ] Versão em inglês (expositores estrangeiros) -->
