@@ -12,7 +12,7 @@ export const ptBrDictionary: TranslationDictionary = {
     tagline: "Inteligência Empresarial Brasileira, Potencializada por IA.",
     subtitle: "BRAZIL BUSINESS DATA & MARKET INTELLIGENCE",
     valueProposition:
-      "Encontre empresas, identifique oportunidades e transforme dados brasileiros em inteligência comercial.",
+      "Inteligência de mercado e desenvolvimento de negócios: inteligência para feiras e eventos, identificação de compradores e expansão comercial no Brasil e no exterior.",
     legacyEntityNotice:
       "DeepB2B é a marca global de inteligência operada pela Deepson (DEEPSON - INTELIGENCIA DE DADOS E TECNOLOGIA LTDA, CNPJ 19.904.935/0001-20 · Grupo FullWeb).",
   },

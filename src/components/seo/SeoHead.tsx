@@ -63,7 +63,6 @@ export const SeoHead: React.FC<SeoHeadProps> = ({
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "DeepB2B",
-    alternateName: "Deepson",
     url: SITE_ORIGIN,
     logo: `${SITE_ORIGIN}/logo-deepb2b.png`,
     description: dict.brand.valueProposition,

@@ -5,7 +5,7 @@ import { useLocale } from "@/i18n/LocaleContext";
 import type { Locale } from "@/i18n/types";
 import { SITE_ORIGIN, getTradeShowPath } from "@/i18n/routes";
 import { articlesFor } from "@/data/articles";
-import { TRADE_SHOWS, MARKET_DATA_EDITION } from "@/data/tradeShows";
+import { TRADE_SHOWS, MARKET_DATA_EDITION, marketCount } from "@/data/tradeShows";
 import { trackCtaClick } from "@/services/analytics";
 import { SeoHead } from "@/components/seo/SeoHead";
 import { SiteLayout } from "@/components/layout/SiteLayout";
@@ -82,14 +82,19 @@ export const EventsPage: React.FC = () => {
     return JOIN[locale] ? r.replace(/\s*–\s*/, JOIN[locale] as string) : r;
   };
   // um segmento comprador por feira: a 1ª linha de atacado, senão a 1ª da tabela
-  const marketRows = shows.map((s) => ({ show: s, row: s.market.find((m) => /atacado/i.test(m.label["pt-br"])) ?? s.market[0] }));
+  // números vêm de marketCounts.json (gerado da base); feira sem contagem fica fora do quadro e da faixa
+  const marketRows = shows.flatMap((s) => {
+    const row = s.market.find((m) => /atacado/i.test(m.label["pt-br"])) ?? s.market[0];
+    const n = row && marketCount(row.q);
+    return n ? [{ show: s, row, br: n.br }] : [];
+  });
 
   const ticker: TickerItem[] = [
     ...shows.map((s) => {
       const d = daysTo(s.start);
       return { label: `${s.name} 2027`, value: d > 0 ? fill(t.daysLeft, { n: nf.format(d) }) : t.today, href: getTradeShowPath(locale, s.slug) };
     }),
-    ...marketRows.map(({ row }) => ({ label: row.label[locale], value: fill(t.companies, { n: nf.format(row.br) }) })),
+    ...marketRows.map(({ row, br }) => ({ label: row.label[locale], value: fill(t.companies, { n: nf.format(br) }) })),
   ];
 
   const [lead, ...more] = articlesFor(locale);
@@ -219,13 +224,13 @@ export const EventsPage: React.FC = () => {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100">
-                  {marketRows.map(({ show, row }) => (
+                  {marketRows.map(({ show, row, br }) => (
                     <tr key={show.slug} className="odd:bg-slate-50">
                       <td className="py-2 pr-2">
                         <span className="block font-semibold text-[#0f172a] leading-tight">{row.label[locale]}</span>
                         <span className="font-mono text-[10px] text-slate-400">{row.cnae}</span>
                       </td>
-                      <td className="py-2 text-right font-mono font-bold text-[#0f172a]">{nf.format(row.br)}</td>
+                      <td className="py-2 text-right font-mono font-bold text-[#0f172a]">{nf.format(br)}</td>
                     </tr>
                   ))}
                 </tbody>

@@ -5,6 +5,7 @@ export interface TickerItem {
   value: string;
   change?: number; // % (positivo = verde, negativo = vermelho)
   href?: string;
+  note?: string; // texto pequeno (ex.: fonte e horário da cotação)
 }
 
 const FX_URL = "https://economia.awesomeapi.com.br/json/last/USD-BRL,EUR-BRL";
@@ -16,11 +17,16 @@ function useFx(intlLocale: string, labels: { usd: string; eur: string }): Ticker
     let alive = true;
     fetch(FX_URL)
       .then((r) => (r.ok ? r.json() : Promise.reject()))
-      .then((d: Record<string, { bid: string; pctChange: string }>) => {
+      .then((d: Record<string, { bid: string; pctChange: string; create_date: string }>) => {
         if (!alive) return;
         const brl = new Intl.NumberFormat(intlLocale, { style: "currency", currency: "BRL", minimumFractionDigits: 2, maximumFractionDigits: 4 });
-        const row = (k: string, label: string): TickerItem | null =>
-          d[k] ? { label, value: brl.format(Number(d[k].bid)), change: Number(d[k].pctChange) } : null;
+        // create_date vem em horário de Brasília ("2026-11-25 14:32:30"): mostra só HH:MM e a fonte
+        const row = (k: string, label: string): TickerItem | null => {
+          const q = d[k];
+          const bid = Number(q?.bid);
+          if (!q || !Number.isFinite(bid)) return null;
+          return { label, value: brl.format(bid), change: Number(q.pctChange), note: `AwesomeAPI · ${q.create_date?.slice(11, 16) ?? ""}` };
+        };
         setItems([row("USDBRL", labels.usd), row("EURBRL", labels.eur)].filter(Boolean) as TickerItem[]);
       })
       .catch(() => undefined);
@@ -53,10 +59,11 @@ export const TickerTape: React.FC<{ items: TickerItem[]; intlLocale: string; fxL
                 {it.change >= 0 ? "▲" : "▼"} {pct.format(it.change)}%
               </span>
             )}
+            {it.note && <span className="text-[10px] text-slate-500">{it.note}</span>}
           </>
         );
         return (
-          <li key={`${hidden}-${i}`} className="flex items-center gap-2 border-r border-white/10 px-5 py-2.5 text-xs whitespace-nowrap">
+          <li key={`${hidden}-${i}`} title={it.note} className="flex items-center gap-2 border-r border-white/10 px-5 py-2.5 text-xs whitespace-nowrap">
             {it.href ? (
               <a href={it.href} tabIndex={hidden ? -1 : undefined} className="flex items-center gap-2 hover:underline">
                 {inner}

@@ -1,4 +1,5 @@
 import type { Locale } from "@/i18n/types";
+import marketCounts from "./marketCounts.json";
 
 /**
  * Calendário de feiras (Event Intelligence).
@@ -9,10 +10,16 @@ import type { Locale } from "@/i18n/types";
  */
 
 export interface MarketRow {
-  cnae: string; // "4646-0/01" ou "Divisão 10"
+  cnae: string; // como aparece na página: "4646-0/01", "Grupo 22.2", "Divisão 10"
+  q: string; // prefixo de CNAE consultado na base (scripts/market-counts.mjs)
   label: Record<Locale, string>;
+}
+
+export interface MarketCount {
   br: number;
+  brMei: number;
   sp: number;
+  spMei: number;
 }
 
 export interface TradeShowCopy {
@@ -34,16 +41,151 @@ export interface TradeShow {
   organizer?: string; // só quando confirmado no site oficial
   officialUrl: string;
   sourceUrl: string;
-  checkedAt: string; // data em que conferimos no site oficial
+  checkedAt?: string; // data em que conferimos no site oficial; sem ela a página mostra "Datas a confirmar"
+  exhibitors?: { confirmed: number; verified: number; updatedAt: string }; // só quando houver lista com fonte
   copy: Record<Locale, TradeShowCopy>;
   market: MarketRow[];
 }
 
-export const MARKET_DATA_EDITION = "2026-10";
+export const MARKET_DATA_EDITION: string = marketCounts.edition;
+
+/** Contagem da base (gerada por script, nunca digitada). Sem dado, a linha não aparece. */
+export function marketCount(q: string): MarketCount | undefined {
+  return (marketCounts.counts as Record<string, MarketCount>)[q];
+}
 
 const SAO_PAULO_EXPO = { venue: "São Paulo Expo", address: "Rodovia dos Imigrantes, km 1,5 – Vila Água Funda, São Paulo – SP" };
 
 export const TRADE_SHOWS: TradeShow[] = [
+  {
+    slug: "plastico-brasil",
+    name: "Plástico Brasil",
+    start: "2027-03-15",
+    end: "2027-03-19",
+    ...SAO_PAULO_EXPO,
+    city: "São Paulo",
+    uf: "SP",
+    organizer: "Informa Markets",
+    officialUrl: "https://www.plasticobrasil.com.br",
+    sourceUrl: "https://www.plasticobrasil.com.br",
+    checkedAt: "2026-11-25",
+    copy: {
+      "pt-br": {
+        sector: "Indústria do plástico e da borracha",
+        summary: "A Plástico Brasil reúne a cadeia do plástico em São Paulo: máquinas e equipamentos de transformação, moldes, matérias-primas, aditivos, reciclagem e automação, com visitação de indústrias transformadoras.",
+        exhibitors: "Fabricantes de injetoras, extrusoras e sopradoras, moldes e ferramentaria, resinas e aditivos, periféricos, automação e soluções de reciclagem.",
+        buyers: "Indústrias transformadoras de plástico (embalagens, peças técnicas, filmes, utilidades), donos de fábrica, engenharia de produção, manutenção e compras industriais.",
+      },
+      en: {
+        sector: "Plastics and rubber industry",
+        summary: "Plástico Brasil brings Brazil's plastics value chain together in São Paulo: processing machinery and equipment, molds, raw materials, additives, recycling and automation, visited by plastics converters.",
+        exhibitors: "Manufacturers of injection, extrusion and blow-molding machines, molds and tooling, resins and additives, auxiliaries, automation and recycling solutions.",
+        buyers: "Plastics converters (packaging, technical parts, films, housewares), plant owners, production engineering, maintenance and industrial procurement.",
+      },
+      es: {
+        sector: "Industria del plástico y del caucho",
+        summary: "Plástico Brasil reúne en São Paulo la cadena del plástico: máquinas y equipos de transformación, moldes, materias primas, aditivos, reciclaje y automatización, con visitas de la industria transformadora.",
+        exhibitors: "Fabricantes de inyectoras, extrusoras y sopladoras, moldes y matricería, resinas y aditivos, periféricos, automatización y soluciones de reciclaje.",
+        buyers: "Transformadores de plástico (envases, piezas técnicas, films, artículos de hogar), dueños de planta, ingeniería de producción, mantenimiento y compras industriales.",
+      },
+      "zh-cn": {
+        sector: "塑料与橡胶工业",
+        summary: "Plástico Brasil 在圣保罗汇聚巴西塑料产业链：加工机械与设备、模具、原材料、添加剂、回收与自动化，观众以塑料加工企业为主。",
+        exhibitors: "注塑机、挤出机和吹塑机、模具与工装、树脂与添加剂、辅机、自动化及回收解决方案制造商。",
+        buyers: "塑料加工企业（包装、技术零件、薄膜、日用品）、工厂负责人、生产工程、维护和工业采购部门。",
+      },
+    },
+    market: [
+      { cnae: "Grupo 22.2", q: "222", label: { "pt-br": "Fabricação de produtos de material plástico", en: "Plastic products manufacturing", es: "Fabricación de productos de plástico", "zh-cn": "塑料制品制造" } },
+    ],
+  },
+  {
+    slug: "anuga-select-brazil",
+    name: "Anuga Select Brazil",
+    start: "2027-04-06",
+    end: "2027-04-08",
+    venue: "Distrito Anhembi",
+    address: "Av. Olavo Fontoura, 1209 – Santana, São Paulo – SP",
+    city: "São Paulo",
+    uf: "SP",
+    organizer: "Koelnmesse Brasil",
+    officialUrl: "https://anuga-brazil.com.br",
+    sourceUrl: "https://anuga-brazil.com.br",
+    checkedAt: "2026-11-25",
+    copy: {
+      "pt-br": {
+        sector: "Alimentos e bebidas",
+        summary: "A Anuga Select Brazil é a feira de alimentos e bebidas da Koelnmesse no Brasil, voltada exclusivamente a profissionais do setor: indústria, distribuição, varejo e food service.",
+        exhibitors: "Indústrias de alimentos e bebidas, marcas nacionais e internacionais, importadores e fornecedores de ingredientes e produtos para o varejo e o food service.",
+        buyers: "Atacadistas e distribuidores de alimentos, redes de supermercados, importadores, compradores de food service e de varejo.",
+      },
+      en: {
+        sector: "Food and beverages",
+        summary: "Anuga Select Brazil is Koelnmesse's food and beverage trade show in Brazil, open exclusively to industry professionals: manufacturers, distribution, retail and food service.",
+        exhibitors: "Food and beverage manufacturers, national and international brands, importers and suppliers of ingredients and products for retail and food service.",
+        buyers: "Food wholesalers and distributors, supermarket chains, importers, food-service and retail buyers.",
+      },
+      es: {
+        sector: "Alimentos y bebidas",
+        summary: "Anuga Select Brazil es la feria de alimentos y bebidas de Koelnmesse en Brasil, exclusiva para profesionales del sector: industria, distribución, retail y food service.",
+        exhibitors: "Industrias de alimentos y bebidas, marcas nacionales e internacionales, importadores y proveedores de ingredientes y productos para retail y food service.",
+        buyers: "Mayoristas y distribuidores de alimentos, cadenas de supermercados, importadores, compradores de food service y retail.",
+      },
+      "zh-cn": {
+        sector: "食品与饮料",
+        summary: "Anuga Select Brazil 是科隆展览公司在巴西举办的食品饮料展会，仅面向行业专业人士：制造商、分销、零售和餐饮服务。",
+        exhibitors: "食品饮料制造商、国内外品牌、进口商，以及面向零售和餐饮服务的配料与产品供应商。",
+        buyers: "食品批发商与分销商、超市连锁、进口商、餐饮服务和零售采购。",
+      },
+    },
+    market: [
+      { cnae: "Grupo 46.39", q: "4639", label: { "pt-br": "Atacado de produtos alimentícios em geral", en: "Food wholesale (general)", es: "Mayoristas de alimentos en general", "zh-cn": "食品综合批发" } },
+      { cnae: "Grupo 47.11", q: "4711", label: { "pt-br": "Supermercados e hipermercados", en: "Supermarkets and hypermarkets", es: "Supermercados e hipermercados", "zh-cn": "超市与大卖场" } },
+    ],
+  },
+  {
+    slug: "automec",
+    name: "Automec",
+    start: "2027-04-20",
+    end: "2027-04-24",
+    ...SAO_PAULO_EXPO,
+    city: "São Paulo",
+    uf: "SP",
+    organizer: "RX",
+    officialUrl: "https://www.automecfeira.com.br",
+    sourceUrl: "https://www.automecfeira.com.br/pt-br/visitar/visite-a-automec.html",
+    checkedAt: "2026-11-25",
+    copy: {
+      "pt-br": {
+        sector: "Autopeças, equipamentos e serviços automotivos",
+        summary: "A Automec é a feira de autopeças, equipamentos e serviços para reparação de veículos leves, pesados e comerciais, realizada no São Paulo Expo.",
+        exhibitors: "Fabricantes e importadores de autopeças, equipamentos e ferramentas para oficinas, lubrificantes, pneus, diagnóstico e soluções para reparação automotiva.",
+        buyers: "Distribuidores e varejistas de autopeças, oficinas mecânicas e centros automotivos, frotistas e retíficas.",
+      },
+      en: {
+        sector: "Auto parts, equipment and automotive services",
+        summary: "Automec is the trade show for auto parts, equipment and repair services for light, heavy and commercial vehicles, held at São Paulo Expo.",
+        exhibitors: "Auto parts manufacturers and importers, workshop equipment and tools, lubricants, tires, diagnostics and automotive repair solutions.",
+        buyers: "Auto parts distributors and retailers, repair shops and service centers, fleet operators and engine rebuilders.",
+      },
+      es: {
+        sector: "Autopartes, equipos y servicios automotrices",
+        summary: "Automec es la feria de autopartes, equipos y servicios de reparación para vehículos livianos, pesados y comerciales, en el São Paulo Expo.",
+        exhibitors: "Fabricantes e importadores de autopartes, equipos y herramientas para talleres, lubricantes, neumáticos, diagnóstico y soluciones de reparación automotriz.",
+        buyers: "Distribuidores y minoristas de autopartes, talleres mecánicos y centros de servicio, flotas y rectificadoras.",
+      },
+      "zh-cn": {
+        sector: "汽车零部件、设备与服务",
+        summary: "Automec 是面向轻型、重型和商用车辆的汽车零部件、设备与维修服务展会，在圣保罗博览中心举行。",
+        exhibitors: "汽车零部件制造商和进口商、修理厂设备与工具、润滑油、轮胎、诊断及汽车维修解决方案。",
+        buyers: "汽车零部件分销商和零售商、修理厂与汽车服务中心、车队运营商和发动机翻修厂。",
+      },
+    },
+    market: [
+      { cnae: "Grupo 45.30", q: "4530", label: { "pt-br": "Comércio de peças e acessórios para veículos", en: "Auto parts and accessories trade", es: "Comercio de autopartes y accesorios", "zh-cn": "汽车零配件贸易" } },
+      { cnae: "Grupo 45.20", q: "4520", label: { "pt-br": "Manutenção e reparação de veículos", en: "Vehicle maintenance and repair", es: "Mantenimiento y reparación de vehículos", "zh-cn": "汽车维修保养" } },
+    ],
+  },
   {
     slug: "feicon",
     name: "FEICON",
@@ -83,10 +225,10 @@ export const TRADE_SHOWS: TradeShow[] = [
       },
     },
     market: [
-      { cnae: "4679-6/99", label: { "pt-br": "Atacado de materiais de construção em geral", en: "Building materials wholesale", es: "Mayoristas de materiales de construcción", "zh-cn": "建材批发" }, br: 8941, sp: 1851 },
-      { cnae: "4744-0/99", label: { "pt-br": "Varejo de materiais de construção em geral", en: "Building materials retail", es: "Minoristas de materiales de construcción", "zh-cn": "建材零售" }, br: 185333, sp: 33802 },
-      { cnae: "4744-0/01", label: { "pt-br": "Varejo de ferragens e ferramentas", en: "Hardware and tools retail", es: "Ferreterías y herramientas", "zh-cn": "五金工具零售" }, br: 74574, sp: 22965 },
-      { cnae: "4120-4/00", label: { "pt-br": "Construção de edifícios", en: "Building construction companies", es: "Construcción de edificios", "zh-cn": "房屋建筑" }, br: 181848, sp: 35384 },
+      { cnae: "4679-6/99", q: "4679699", label: { "pt-br": "Atacado de materiais de construção em geral", en: "Building materials wholesale", es: "Mayoristas de materiales de construcción", "zh-cn": "建材批发" } },
+      { cnae: "4744-0/99", q: "4744099", label: { "pt-br": "Varejo de materiais de construção em geral", en: "Building materials retail", es: "Minoristas de materiales de construcción", "zh-cn": "建材零售" } },
+      { cnae: "4744-0/01", q: "4744001", label: { "pt-br": "Varejo de ferragens e ferramentas", en: "Hardware and tools retail", es: "Ferreterías y herramientas", "zh-cn": "五金工具零售" } },
+      { cnae: "4120-4/00", q: "4120400", label: { "pt-br": "Construção de edifícios", en: "Building construction companies", es: "Construcción de edificios", "zh-cn": "房屋建筑" } },
     ],
   },
   {
@@ -128,11 +270,11 @@ export const TRADE_SHOWS: TradeShow[] = [
       },
     },
     market: [
-      { cnae: "8610-1/01", label: { "pt-br": "Atendimento hospitalar", en: "Hospitals", es: "Atención hospitalaria", "zh-cn": "医院" }, br: 29435, sp: 4064 },
-      { cnae: "8610-1/02", label: { "pt-br": "Pronto-socorro e unidades de urgência", en: "Emergency and urgent-care units", es: "Urgencias y unidades de emergencia", "zh-cn": "急诊与急救单位" }, br: 49348, sp: 10440 },
-      { cnae: "8630-5/03", label: { "pt-br": "Clínicas médicas ambulatoriais", en: "Outpatient medical clinics", es: "Clínicas médicas ambulatorias", "zh-cn": "门诊诊所" }, br: 226132, sp: 71384 },
-      { cnae: "4645-1/01", label: { "pt-br": "Atacado de materiais médico-hospitalares", en: "Medical and hospital supplies wholesale", es: "Mayoristas de insumos médico-hospitalarios", "zh-cn": "医疗用品批发" }, br: 10986, sp: 3225 },
-      { cnae: "4664-8/00", label: { "pt-br": "Atacado de equipamentos odonto-médico-hospitalares", en: "Medical and dental equipment wholesale", es: "Mayoristas de equipos médicos y odontológicos", "zh-cn": "医疗与牙科设备批发" }, br: 2525, sp: 1003 },
+      { cnae: "8610-1/01", q: "8610101", label: { "pt-br": "Atendimento hospitalar", en: "Hospitals", es: "Atención hospitalaria", "zh-cn": "医院" } },
+      { cnae: "8610-1/02", q: "8610102", label: { "pt-br": "Pronto-socorro e unidades de urgência", en: "Emergency and urgent-care units", es: "Urgencias y unidades de emergencia", "zh-cn": "急诊与急救单位" } },
+      { cnae: "8630-5/03", q: "8630503", label: { "pt-br": "Clínicas médicas ambulatoriais", en: "Outpatient medical clinics", es: "Clínicas médicas ambulatorias", "zh-cn": "门诊诊所" } },
+      { cnae: "4645-1/01", q: "4645101", label: { "pt-br": "Atacado de materiais médico-hospitalares", en: "Medical and hospital supplies wholesale", es: "Mayoristas de insumos médico-hospitalarios", "zh-cn": "医疗用品批发" } },
+      { cnae: "4664-8/00", q: "4664800", label: { "pt-br": "Atacado de equipamentos odonto-médico-hospitalares", en: "Medical and dental equipment wholesale", es: "Mayoristas de equipos médicos y odontológicos", "zh-cn": "医疗与牙科设备批发" } },
     ],
   },
   {
@@ -174,11 +316,11 @@ export const TRADE_SHOWS: TradeShow[] = [
       },
     },
     market: [
-      { cnae: "Divisão 10", label: { "pt-br": "Fabricação de produtos alimentícios (todos os CNAEs)", en: "Food manufacturing (all codes)", es: "Fabricación de alimentos (todos los códigos)", "zh-cn": "食品制造（全部代码）" }, br: 403111, sp: 101061 },
-      { cnae: "Divisão 11", label: { "pt-br": "Fabricação de bebidas (todos os CNAEs)", en: "Beverage manufacturing (all codes)", es: "Fabricación de bebidas (todos los códigos)", "zh-cn": "饮料制造（全部代码）" }, br: 9724, sp: 1483 },
-      { cnae: "1052-0/00", label: { "pt-br": "Laticínios", en: "Dairy", es: "Lácteos", "zh-cn": "乳制品" }, br: 8785, sp: 954 },
-      { cnae: "1013-9/01", label: { "pt-br": "Produtos de carne", en: "Meat products", es: "Productos cárnicos", "zh-cn": "肉制品" }, br: 8200, sp: 1332 },
-      { cnae: "1091-1/01", label: { "pt-br": "Panificação industrial", en: "Industrial bakery", es: "Panificación industrial", "zh-cn": "工业烘焙" }, br: 41341, sp: 8012 },
+      { cnae: "Divisão 10", q: "10", label: { "pt-br": "Fabricação de produtos alimentícios (todos os CNAEs)", en: "Food manufacturing (all codes)", es: "Fabricación de alimentos (todos los códigos)", "zh-cn": "食品制造（全部代码）" } },
+      { cnae: "Divisão 11", q: "11", label: { "pt-br": "Fabricação de bebidas (todos os CNAEs)", en: "Beverage manufacturing (all codes)", es: "Fabricación de bebidas (todos los códigos)", "zh-cn": "饮料制造（全部代码）" } },
+      { cnae: "1052-0/00", q: "1052000", label: { "pt-br": "Laticínios", en: "Dairy", es: "Lácteos", "zh-cn": "乳制品" } },
+      { cnae: "1013-9/01", q: "1013901", label: { "pt-br": "Produtos de carne", en: "Meat products", es: "Productos cárnicos", "zh-cn": "肉制品" } },
+      { cnae: "1091-1/01", q: "1091101", label: { "pt-br": "Panificação industrial", en: "Industrial bakery", es: "Panificación industrial", "zh-cn": "工业烘焙" } },
     ],
   },
   {
@@ -220,11 +362,11 @@ export const TRADE_SHOWS: TradeShow[] = [
       },
     },
     market: [
-      { cnae: "2063-1/00", label: { "pt-br": "Fabricação de cosméticos e perfumaria", en: "Cosmetics and fragrance manufacturing", es: "Fabricación de cosméticos y perfumería", "zh-cn": "化妆品与香水制造" }, br: 3543, sp: 1364 },
-      { cnae: "4646-0/01", label: { "pt-br": "Atacado de cosméticos e perfumaria", en: "Cosmetics and fragrance wholesale", es: "Mayoristas de cosméticos y perfumería", "zh-cn": "化妆品与香水批发" }, br: 9290, sp: 3363 },
-      { cnae: "4772-5/00", label: { "pt-br": "Varejo de cosméticos e perfumaria", en: "Cosmetics and fragrance retail", es: "Minoristas de cosméticos y perfumería", "zh-cn": "化妆品与香水零售" }, br: 244067, sp: 67579 },
-      { cnae: "9602-5/01", label: { "pt-br": "Cabeleireiros, manicure e pedicure", en: "Hair and nail salons", es: "Peluquerías y manicura", "zh-cn": "美发与美甲" }, br: 942603, sp: 280546 },
-      { cnae: "9602-5/02", label: { "pt-br": "Estética e cuidados com a beleza", en: "Aesthetics and beauty care", es: "Estética y cuidado de la belleza", "zh-cn": "美学与美容护理" }, br: 377223, sp: 113139 },
+      { cnae: "2063-1/00", q: "2063100", label: { "pt-br": "Fabricação de cosméticos e perfumaria", en: "Cosmetics and fragrance manufacturing", es: "Fabricación de cosméticos y perfumería", "zh-cn": "化妆品与香水制造" } },
+      { cnae: "4646-0/01", q: "4646001", label: { "pt-br": "Atacado de cosméticos e perfumaria", en: "Cosmetics and fragrance wholesale", es: "Mayoristas de cosméticos y perfumería", "zh-cn": "化妆品与香水批发" } },
+      { cnae: "4772-5/00", q: "4772500", label: { "pt-br": "Varejo de cosméticos e perfumaria", en: "Cosmetics and fragrance retail", es: "Minoristas de cosméticos y perfumería", "zh-cn": "化妆品与香水零售" } },
+      { cnae: "9602-5/01", q: "9602501", label: { "pt-br": "Cabeleireiros, manicure e pedicure", en: "Hair and nail salons", es: "Peluquerías y manicura", "zh-cn": "美发与美甲" } },
+      { cnae: "9602-5/02", q: "9602502", label: { "pt-br": "Estética e cuidados com a beleza", en: "Aesthetics and beauty care", es: "Estética y cuidado de la belleza", "zh-cn": "美学与美容护理" } },
     ],
   },
 ];
