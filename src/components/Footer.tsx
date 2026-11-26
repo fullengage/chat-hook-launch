@@ -24,12 +24,12 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-slate-300">
                 <Mail className="w-4 h-4 text-primary shrink-0" />
-                <span className="text-sm">contato@deepson.com.br</span>
+                <span className="text-sm">contato@deepb2b.ai</span>
               </div>
               <div className="flex items-center gap-3 text-slate-300">
                 <Phone className="w-4 h-4 text-primary shrink-0" />
                 <a
-                  href="https://wa.me/5511955501090?text=Ol%C3%A1!%20Gostaria%20de%20conversar%20sobre%20o%20Deepson."
+                  href="https://wa.me/5511955501090?text=Ol%C3%A1!%20Gostaria%20de%20conversar%20sobre%20a%20DeepB2B."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm hover:text-primary transition-colors"
@@ -45,7 +45,7 @@ const Footer = () => {
             <h3 className="font-bold text-white mb-4 text-sm uppercase tracking-wider">Plataforma</h3>
             <ul className="space-y-3">
               <li>
-                <a href="https://app.deepson.com.br/" target="_blank" rel="noopener noreferrer" className="text-sm text-slate-300 hover:text-primary transition-colors duration-200 inline-flex items-center gap-1.5">
+                <a href="https://app.deepb2b.ai/" target="_blank" rel="noopener noreferrer" className="text-sm text-slate-300 hover:text-primary transition-colors duration-200 inline-flex items-center gap-1.5">
                   Acessar Plataforma <ExternalLink className="w-3.5 h-3.5" />
                 </a>
               </li>
@@ -125,7 +125,7 @@ const Footer = () => {
           </div>
           
           <div className="flex flex-col sm:flex-row sm:items-center gap-4 xl:gap-6 w-full lg:w-auto justify-between shrink-0">
-            <span>© {new Date().getFullYear()} Deepson. Todos os direitos reservados.</span>
+            <span>© {new Date().getFullYear()} DeepB2B. Todos os direitos reservados.</span>
           </div>
         </div>
       </div>

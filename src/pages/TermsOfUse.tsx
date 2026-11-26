@@ -21,20 +21,20 @@ const TermsOfUse = () => {
         
         <div className="space-y-6 text-muted-foreground leading-relaxed">
           <p>
-            Bem-vindo à Deepson. Ao utilizar nosso site e serviços, você concorda em cumprir estes Termos de Uso.
+            Bem-vindo à DeepB2B. Ao utilizar nosso site e serviços, você concorda em cumprir estes Termos de Uso.
           </p>
 
           <section className="space-y-4">
             <h2 className="text-2xl font-bold text-foreground">1. Descrição do Serviço</h2>
             <p>
-              A Deepson fornece uma plataforma de inteligência de dados B2B, prospecção comercial, enriquecimento de empresas, funil comercial (Kanban) e inteligência artificial para empresas. O acesso ao teste gratuito de 7 dias (com 20 créditos inclusos, limitado a um teste por CNPJ) é disponibilizado para avaliação da plataforma.
+              A DeepB2B fornece uma plataforma de inteligência de dados B2B, prospecção comercial, enriquecimento de empresas, funil comercial (Kanban) e inteligência artificial para empresas. O acesso ao teste gratuito de 7 dias (com 20 créditos inclusos, limitado a um teste por CNPJ) é disponibilizado para avaliação da plataforma.
             </p>
           </section>
 
           <section className="space-y-4">
             <h2 className="text-2xl font-bold text-foreground">2. Sinais Financeiros e Dados de Fontes Públicas</h2>
             <p>
-              As informações exibidas na seção "Sinais financeiros" e nas fichas de empresas são obtidas de fontes públicas oficiais (como Receita Federal, PGFN e cartórios de protesto) na data da consulta, sendo apresentadas exclusivamente em caráter informativo. A Deepson não realiza análise, concessão ou recomendação de crédito, cabendo exclusivamente ao usuário e à sua equipe a avaliação de risco comercial, não se responsabilizando a Deepson por eventual inadimplência ou decisão de negócio tomada com base nos dados consultados.
+              As informações exibidas na seção "Sinais financeiros" e nas fichas de empresas são obtidas de fontes públicas oficiais (como Receita Federal, PGFN e cartórios de protesto) na data da consulta, sendo apresentadas exclusivamente em caráter informativo. A DeepB2B não realiza análise, concessão ou recomendação de crédito, cabendo exclusivamente ao usuário e à sua equipe a avaliação de risco comercial, não se responsabilizando a DeepB2B por eventual inadimplência ou decisão de negócio tomada com base nos dados consultados.
             </p>
           </section>
 
@@ -48,14 +48,14 @@ const TermsOfUse = () => {
           <section className="space-y-4">
             <h2 className="text-2xl font-bold text-foreground">3. Responsabilidades</h2>
             <p>
-              Você é responsável por todas as informações fornecidas e pelas mensagens enviadas através de sua conta conectada ao Deepson CRM. Recomendamos que o uso observe as políticas de uso do WhatsApp.
+              Você é responsável por todas as informações fornecidas e pelas mensagens enviadas através de sua conta conectada aa DeepB2B CRM. Recomendamos que o uso observe as políticas de uso do WhatsApp.
             </p>
           </section>
 
           <section className="space-y-4">
             <h2 className="text-2xl font-bold text-foreground">4. Propriedade Intelectual</h2>
             <p>
-              Todo o conteúdo, logotipo e tecnologia associada ao Deepson CRM são de nossa propriedade intelectual e não podem ser reproduzidos sem autorização prévia.
+              Todo o conteúdo, logotipo e tecnologia associada aa DeepB2B CRM são de nossa propriedade intelectual e não podem ser reproduzidos sem autorização prévia.
             </p>
           </section>
 
@@ -69,7 +69,7 @@ const TermsOfUse = () => {
           <section className="space-y-4">
             <h2 className="text-2xl font-bold text-foreground">6. Contato</h2>
             <p>
-              Para dúvidas sobre nossos termos, entre em contato através do e-mail: contato@deepson.com.br
+              Para dúvidas sobre nossos termos, entre em contato através do e-mail: contato@deepb2b.ai
             </p>
           </section>
         </div>

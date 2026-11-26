@@ -133,12 +133,12 @@ export const SiteFooter: React.FC = () => {
               </li>
               <li>
                 <a
-                  href="https://app.deepson.com.br/"
+                  href="https://app.deepb2b.ai/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 hover:text-[#ff6b00] transition-colors"
                 >
-                  <span>app.deepson.com.br</span>
+                  <span>app.deepb2b.ai</span>
                   <ExternalLink className="h-3 w-3" aria-hidden="true" />
                 </a>
               </li>

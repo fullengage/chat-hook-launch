@@ -23,10 +23,10 @@ const Bonus = () => {
     window.scrollTo(0, 0);
     
     // Set document title and meta description dynamically
-    document.title = "Bônus Exclusivos - Deepson";
+    document.title = "Bônus Exclusivos - DeepB2B";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute("content", "Aproveite seus bônus exclusivos da Deepson: treinamento individual de IA, ferramentas e templates, comunidade VIP e o Guia Completo do CRM WhatsApp.");
+      metaDescription.setAttribute("content", "Aproveite seus bônus exclusivos da DeepB2B: treinamento individual de IA, ferramentas e templates, comunidade VIP e o Guia Completo do CRM WhatsApp.");
     }
   }, []);
 
@@ -76,7 +76,7 @@ const Bonus = () => {
               Seu Pacote de <span className="text-primary text-shadow-glow">Bônus Exclusivos</span>
             </h1>
             <p className="text-muted-foreground text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
-              Parabéns! Por ter iniciado seu período de teste da Deepson, você acaba de liberar acesso a um conjunto de ferramentas e recursos estratégicos para impulsionar suas conversões no WhatsApp.
+              Parabéns! Por ter iniciado seu período de teste da DeepB2B, você acaba de liberar acesso a um conjunto de ferramentas e recursos estratégicos para impulsionar suas conversões no WhatsApp.
             </p>
           </div>
 
@@ -121,7 +121,7 @@ const Bonus = () => {
                   </div>
                   <h3 className="text-xl font-bold mt-2 text-foreground">Guia Completo CRM WhatsApp</h3>
                   <p className="text-muted-foreground text-xs md:text-sm leading-relaxed mt-2">
-                    O manual prático definitivo que ensina como organizar equipes de atendimento, criar métricas de performance comercial, reduzir o tempo de resposta inicial e estruturar um funil de vendas à prova de falhas utilizando a Deepson.
+                    O manual prático definitivo que ensina como organizar equipes de atendimento, criar métricas de performance comercial, reduzir o tempo de resposta inicial e estruturar um funil de vendas à prova de falhas utilizando a DeepB2B.
                   </p>
                 </div>
               </div>

@@ -228,7 +228,7 @@ const Obrigado = () => {
                 <span>🎁 Seu Bônus Especial Liberado!</span>
               </div>
               <p className="text-muted-foreground text-xs leading-relaxed">
-                Aqui está o seu <strong>Guia Completo CRM Deepson WhatsApp</strong> para acelerar seus resultados comerciais. Clique no botão abaixo para baixar agora:
+                Aqui está o seu <strong>Guia Completo CRM DeepB2B WhatsApp</strong> para acelerar seus resultados comerciais. Clique no botão abaixo para baixar agora:
               </p>
               <Button 
                 variant="outline" 

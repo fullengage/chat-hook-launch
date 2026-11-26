@@ -14,7 +14,7 @@ export const enDictionary: TranslationDictionary = {
     valueProposition:
       "Event Intelligence & B2B Business Development: an AI-native platform specialized in event intelligence and B2B business development, in Brazil and worldwide.",
     legacyEntityNotice:
-      "DeepB2B is the global intelligence brand operated by Deepson (DEEPSON - INTELIGENCIA DE DADOS E TECNOLOGIA LTDA, CNPJ 19.904.935/0001-20 · Grupo FullWeb).",
+      "DeepB2B is a Grupo FullWeb company, operated by DEEPSON - INTELIGENCIA DE DADOS E TECNOLOGIA LTDA (CNPJ 19.904.935/0001-20).",
   },
   seo: {
     platform: {
@@ -93,7 +93,7 @@ export const enDictionary: TranslationDictionary = {
         "In-depth technical and commercial guides on CNPJ registries, CNAE sectors, finding distributors in Brazil, and data limitations.",
     },
     about: {
-      title: "About DeepB2B — Built by Deepson & Grupo FullWeb",
+      title: "About DeepB2B — Event Intelligence by Grupo FullWeb",
       description:
         "Learn how DeepB2B brings transparent Brazilian corporate intelligence, AI research, and verifiable public sources to global B2B teams.",
     },
@@ -105,7 +105,7 @@ export const enDictionary: TranslationDictionary = {
     login: {
       title: "Platform Access & Onboarding | DeepB2B",
       description:
-        "Sign in to the DeepB2B / Deepson platform or request international onboarding.",
+        "Sign in to the DeepB2B platform or request international onboarding.",
     },
     privacy: {
       title: "Privacy Policy & International Data Governance | DeepB2B",
@@ -125,7 +125,7 @@ export const enDictionary: TranslationDictionary = {
     dataDeletion: {
       title: "Data Deletion & Opt-Out Request | DeepB2B",
       description:
-        "Exercise your privacy rights or request review and removal of personal contact information processed by DeepB2B / Deepson.",
+        "Exercise your privacy rights or request review and removal of personal contact information processed by DeepB2B.",
     },
   },
   localeNotice: {
@@ -313,7 +313,7 @@ export const enDictionary: TranslationDictionary = {
       externalSection: "External Web & Corporate Signals",
       aiSection: "AI Qualification Rationale",
       ondemandSection: "On-Demand Verification (Authenticated Platform)",
-      ondemandPlaceholder: "Decision-maker contacts, QSA details & live fiscal check available inside app.deepson.com.br",
+      ondemandPlaceholder: "Decision-maker contacts, QSA details & live fiscal check available inside app.deepb2b.ai",
       sourceAndDate: "Reference model",
     },
     fieldSupportTitle: "Supported Data Attributes & Provenance Matrix",
@@ -609,7 +609,7 @@ export const enDictionary: TranslationDictionary = {
     ],
     platformGovernanceTitle: "Plans, Credits & Consumption Details Inside the Platform",
     platformGovernanceBody:
-      "DeepB2B does not publish standard pricing on public pages. International Enterprise proposals are tailored after a commercial demonstration, while active plan options and the detailed credit-consumption table remain available inside the authenticated platform (app.deepson.com.br).",
+      "DeepB2B does not publish standard pricing on public pages. International Enterprise proposals are tailored after a commercial demonstration, while active plan options and the detailed credit-consumption table remain available inside the authenticated platform (app.deepb2b.ai).",
     ctaTitle: "See how DeepB2B fits your organization",
     ctaSubtitle: "Book a live walkthrough focused on your target Brazilian sectors, buyers, or distribution channels.",
     primaryCta: "Request a Demo",
@@ -629,13 +629,13 @@ export const enDictionary: TranslationDictionary = {
   },
   about: {
     eyebrow: "About DeepB2B",
-    h1: "Transforming Deepson's Brazilian data engine into global market intelligence",
-    lead: "DeepB2B is the international brand of Deepson (Grupo FullWeb), built to help both Brazilian commercial teams and global organizations understand Brazil with verifiable data.",
+    h1: "From Grupo FullWeb engineering to global event and business intelligence",
+    lead: "DeepB2B is Grupo FullWeb's Event Intelligence & B2B Business Development company, combining verifiable Brazilian public data with AI applied to business.",
     storyTitle: "Why DeepB2B Exists",
     storyParagraphs: [
       "Researching companies in Brazil is uniquely challenging for outsiders: corporate registries rely on 14-digit CNPJs, 7-digit CNAE sector codes, Portuguese-only tax filings, and fragmented regional hubs.",
-      "Operating as Deepson in Brazil, our engineering team built an AI-assisted intelligence platform anchored in official public registries (Receita Federal and PGFN) and structured commercial workflows.",
-      "DeepB2B brings this proven Brazilian intelligence engine to international manufacturers, exporters, market-entry advisors, and global B2B teams — while preserving full operational continuity for existing Deepson users in Brazil.",
+      "In Brazil, our engineering team built an AI-assisted intelligence platform anchored in official public registries (Receita Federal and PGFN) and structured commercial workflows.",
+      "DeepB2B brings this proven Brazilian intelligence engine to international manufacturers, exporters, market-entry advisors, and global B2B teams — while preserving full operational continuity for existing platform users in Brazil.",
     ],
     principlesTitle: "Our Intelligence Principles",
     principles: [
@@ -651,7 +651,7 @@ export const enDictionary: TranslationDictionary = {
       roadmap: "Planned Roadmap",
     },
     statusItems: [
-      { capability: "AI ICP modeling & Brazilian company discovery", status: "production", detail: "Active at app.deepson.com.br" },
+      { capability: "AI ICP modeling & Brazilian company discovery", status: "production", detail: "Active at app.deepb2b.ai" },
       { capability: "CNPJ, CNAE, QSA & PGFN public signal checks", status: "production", detail: "Active with transparent credit cost" },
       { capability: "Kanban pipeline, decision-maker lookup & CSV export", status: "production", detail: "Active for platform accounts" },
       { capability: "International market entry demos & USD/enterprise billing", status: "consultative", detail: "Handled via Request a Demo" },
@@ -687,8 +687,8 @@ export const enDictionary: TranslationDictionary = {
         answer: "No. We never fabricate contacts, revenue figures, or employee counts. If a contact lookup returns no valid record, credits are not consumed.",
       },
       {
-        question: "How is DeepB2B connected to Deepson?",
-        answer: "DeepB2B is the global brand and international storefront for Deepson (DEEPSON - INTELIGENCIA DE DADOS E TECNOLOGIA LTDA). Existing Deepson platform accounts continue operating normally at app.deepson.com.br.",
+        question: "Who operates DeepB2B?",
+        answer: "DeepB2B is a Grupo FullWeb company operated by DEEPSON - INTELIGENCIA DE DADOS E TECNOLOGIA LTDA. Existing platform accounts continue operating normally at app.deepb2b.ai.",
       },
     ],
   },
@@ -723,7 +723,7 @@ export const enDictionary: TranslationDictionary = {
     messageLabel: "Target Sector or Commercial Need",
     messagePlaceholder: "Describe the industries, Brazilian regions, or company profiles you want to analyze...",
     consentLabel:
-      "I agree to the Privacy Policy and consent to the international processing of my inquiry data by DeepB2B / Deepson (Brazil) solely to respond to this commercial request.",
+      "I agree to the Privacy Policy and consent to the international processing of my inquiry data by DeepB2B (Brazil) solely to respond to this commercial request.",
     submitLabel: "Submit Request",
     submittingLabel: "Sending request...",
     successTitle: "Request received",
@@ -743,9 +743,9 @@ export const enDictionary: TranslationDictionary = {
     eyebrow: "Platform Access",
     h1: "Access the Intelligence Platform",
     lead: "Choose the path that matches your account status and location.",
-    existingTitle: "Existing Deepson / DeepB2B Customers",
+    existingTitle: "Existing DeepB2B Customers",
     existingDescription: "Sign in directly to your live workspace, ICP radar, saved companies, and credit ledger.",
-    existingCta: "Go to Platform (app.deepson.com.br)",
+    existingCta: "Go to Platform (app.deepb2b.ai)",
     existingNotice: "Note: The authenticated workspace interface currently operates in Brazilian Portuguese (pt-BR).",
     intlTitle: "International Teams & Global Enterprises",
     intlDescription: "No Brazilian CNPJ? Request guided onboarding, distributor discovery, and custom international billing.",
@@ -787,7 +787,7 @@ export const enDictionary: TranslationDictionary = {
       {
         heading: "1. Service Scope",
         body: [
-          "DeepB2B provides B2B business data intelligence, Brazilian company discovery, industry mapping, and commercial qualification tools operated by Deepson.",
+          "DeepB2B provides B2B business data intelligence, Brazilian company discovery, industry mapping, and commercial qualification tools operated by DeepB2B (Grupo FullWeb).",
         ],
       },
       {
@@ -828,7 +828,7 @@ export const enDictionary: TranslationDictionary = {
     ],
     deletionTitle: "Data Deletion & Opt-Out Request",
     deletionLead:
-      "Request review, correction, or removal of personal contact information stored by DeepB2B / Deepson.",
+      "Request review, correction, or removal of personal contact information stored by DeepB2B.",
     deletionTypes: [
       { title: "Account & Inquiry Removal", description: "Delete contact details submitted via demo, trial, or support forms." },
       { title: "B2B Contact Opt-Out", description: "Suppress a corporate email or executive profile from commercial discovery views." },
@@ -855,6 +855,6 @@ export const enDictionary: TranslationDictionary = {
     languagesGroup: "Languages",
     dataSourcesNote:
       "Official Brazilian registry data originates from public sources (Receita Federal, PGFN, and registry offices) displayed with source and query date.",
-    copyright: "DeepB2B (Deepson). All rights reserved.",
+    copyright: "DeepB2B · Grupo FullWeb. All rights reserved.",
   },
 };
