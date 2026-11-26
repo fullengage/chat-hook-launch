@@ -97,7 +97,8 @@ test("home institucional: hero mantido, seções novas, páginas novas nos 4 idi
   for (const f of ["dist/pt-br/ecossistema/index.html", "dist/en/deepclub/index.html", "dist/es/proyectos-empresariales/index.html", "dist/zh-cn/partners/index.html", "dist/pt-br/deepclub/index.html"])
     assert.ok(fs.existsSync(f), `${f} not prerendered`);
   const club = fs.readFileSync("dist/pt-br/deepclub/index.html", "utf-8");
-  assert.ok(club.includes("Lançamento em breve") && club.includes("Preços em definição."), "DeepClub must not look available");
+  assert.ok(club.includes("Lançamento em breve"), "DeepClub must not look available");
+  assert.ok(!club.includes("Preços em definição"), "price note removed on request (26/11/2026)");
 });
 
 test("DNA: Como funciona, Para quem, visão e 'Intelligence Beyond the Event.' publicados; módulos futuros marcados", () => {

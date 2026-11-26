@@ -259,7 +259,6 @@ export const DeepClubPage: React.FC = () => {
                     </li>
                   ))}
                 </ul>
-                <p className={`mt-6 text-sm font-semibold ${dark ? "text-slate-400" : "text-slate-500"}`}>{c.priceNote}</p>
               </div>
             ))}
           </div>
