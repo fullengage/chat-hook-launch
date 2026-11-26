@@ -67,7 +67,7 @@ const DataDeletion = () => {
         </div>
 
         <p className="text-lg text-muted-foreground mb-12 leading-relaxed">
-          Sua privacidade é importante para nós. Caso deseje excluir seus dados pessoais armazenados pela DeepB2B / Deepson, utilize o formulário abaixo.
+          Sua privacidade é importante para nós. Caso deseje excluir seus dados pessoais armazenados pela DeepB2B, utilize o formulário abaixo.
         </p>
 
         <div className="grid md:grid-cols-2 gap-12">
@@ -111,8 +111,8 @@ const DataDeletion = () => {
               <p className="text-sm text-muted-foreground mb-4">
                 Você também pode escrever diretamente para nossa equipe de privacidade:
               </p>
-              <a href="mailto:privacidade@deepson.com.br" className="text-primary font-bold hover:underline">
-                privacidade@deepson.com.br
+              <a href="mailto:privacidade@deepb2b.ai" className="text-primary font-bold hover:underline">
+                privacidade@deepb2b.ai
               </a>
             </section>
           </div>

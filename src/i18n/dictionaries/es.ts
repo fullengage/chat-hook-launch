@@ -14,7 +14,7 @@ export const esDictionary: TranslationDictionary = {
     valueProposition:
       "Event Intelligence & B2B Business Development: plataforma nativa de inteligencia artificial especializada en inteligencia de eventos y desarrollo de negocios B2B, en Brasil y en el exterior.",
     legacyEntityNotice:
-      "DeepB2B es la marca global de inteligencia operada por Deepson (DEEPSON - INTELIGENCIA DE DADOS E TECNOLOGIA LTDA, CNPJ 19.904.935/0001-20 · Grupo FullWeb).",
+      "DeepB2B es una empresa del Grupo FullWeb, operada por DEEPSON - INTELIGENCIA DE DADOS E TECNOLOGIA LTDA (CNPJ 19.904.935/0001-20).",
   },
   seo: {
     platform: {
@@ -95,7 +95,7 @@ export const esDictionary: TranslationDictionary = {
     about: {
       title: "Sobre DeepB2B — Inteligencia Empresarial sobre Brasil (Grupo FullWeb)",
       description:
-        "Conozca cómo DeepB2B lleva el motor brasileño de datos corporativos de Deepson a empresas de América Latina y el mundo.",
+        "Conozca cómo DeepB2B, del Grupo FullWeb, lleva la inteligencia de eventos y de datos corporativos de Brasil a empresas de América Latina y el mundo.",
     },
     contact: {
       title: "Solicitar Demostración y Contacto | DeepB2B",
@@ -105,7 +105,7 @@ export const esDictionary: TranslationDictionary = {
     login: {
       title: "Acceso a la Plataforma | DeepB2B",
       description:
-        "Inicie sesión en la plataforma operativa (app.deepson.com.br) o solicite una demo internacional.",
+        "Inicie sesión en la plataforma operativa (app.deepb2b.ai) o solicite una demo internacional.",
     },
     privacy: {
       title: "Política de Privacidad y Gobernanza Internacional | DeepB2B",
@@ -125,7 +125,7 @@ export const esDictionary: TranslationDictionary = {
     dataDeletion: {
       title: "Solicitud de Eliminación de Datos y Opt-Out | DeepB2B",
       description:
-        "Canal gratuito para solicitar revisión, oposición o eliminación de datos de contacto procesados por DeepB2B / Deepson.",
+        "Canal gratuito para solicitar revisión, oposición o eliminación de datos de contacto procesados por DeepB2B.",
     },
   },
   localeNotice: {
@@ -312,7 +312,7 @@ export const esDictionary: TranslationDictionary = {
       officialSection: "Capa Oficial (Receita Federal / PGFN)",
       externalSection: "Canales Web Externos",
       aiSection: "Justificación Comercial por IA",
-      ondemandSection: "Verificación Bajo Demanda (app.deepson.com.br)",
+      ondemandSection: "Verificación Bajo Demanda (app.deepb2b.ai)",
       ondemandPlaceholder: "Contactos validados, detalle completo QSA y verificación fiscal en tiempo real dentro de la plataforma",
       sourceAndDate: "Modelo de referencia",
     },
@@ -609,7 +609,7 @@ export const esDictionary: TranslationDictionary = {
     ],
     platformGovernanceTitle: "Planes, créditos y condiciones dentro de la plataforma",
     platformGovernanceBody:
-      "DeepB2B no publica precios estándar en el sitio público. Las propuestas Enterprise para equipos internacionales se diseñan según el alcance de la operación mediante demostración comercial; los detalles de planes locales y la tabla completa de consumo de créditos permanecen disponibles exclusivamente dentro de la plataforma autenticada (app.deepson.com.br).",
+      "DeepB2B no publica precios estándar en el sitio público. Las propuestas Enterprise para equipos internacionales se diseñan según el alcance de la operación mediante demostración comercial; los detalles de planes locales y la tabla completa de consumo de créditos permanecen disponibles exclusivamente dentro de la plataforma autenticada (app.deepb2b.ai).",
     ctaTitle: "Conozca cómo DeepB2B se adapta a su operación",
     ctaSubtitle: "Solicite una demostración guiada enfocada en su sector objetivo y regiones de Brasil.",
     primaryCta: "Request a Demo",
@@ -629,12 +629,12 @@ export const esDictionary: TranslationDictionary = {
   },
   about: {
     eyebrow: "Sobre DeepB2B",
-    h1: "Llevando el motor brasileño de datos corporativos de Deepson al mercado global",
-    lead: "DeepB2B es la marca global de Deepson (Grupo FullWeb), creada para ayudar a empresas internacionales y equipos locales a comprender Brasil con datos verificables.",
+    h1: "De la ingeniería del Grupo FullWeb a la inteligencia global de eventos y negocios",
+    lead: "DeepB2B es la empresa de Event Intelligence & B2B Business Development del Grupo FullWeb, que une datos públicos brasileños verificables e inteligencia artificial aplicada a los negocios.",
     storyTitle: "Por Qué Existe DeepB2B",
     storyParagraphs: [
       "Investigar empresas en Brasil presenta barreras prácticas para equipos extranjeros: los registros utilizan códigos CNPJ de 14 dígitos, clasificaciones CNAE en portugués y concentraciones industriales regionales muy marcadas.",
-      "Operando como Deepson en Brasil, nuestro equipo de ingeniería desarrolló una plataforma en producción basada en registros públicos oficiales (Receita Federal y PGFN) y flujos comerciales asistidos por IA.",
+      "En Brasil, nuestro equipo de ingeniería desarrolló una plataforma en producción basada en registros públicos oficiales (Receita Federal y PGFN) y flujos comerciales asistidos por IA.",
       "DeepB2B extiende esa especialización a fabricantes, exportadores y consultoras de América Latina y el mundo, preservando la continuidad operativa total para nuestros clientes actuales en Brasil.",
     ],
     principlesTitle: "Nuestros Principios",
@@ -651,7 +651,7 @@ export const esDictionary: TranslationDictionary = {
       roadmap: "En Hoja de Ruta",
     },
     statusItems: [
-      { capability: "Modelado ICP por IA y descubrimiento de empresas brasileñas", status: "production", detail: "Operativo en app.deepson.com.br" },
+      { capability: "Modelado ICP por IA y descubrimiento de empresas brasileñas", status: "production", detail: "Operativo en app.deepb2b.ai" },
       { capability: "Filtros CNPJ, CNAE, QSA y señales públicas PGFN", status: "production", detail: "Activo dentro de la plataforma autenticada" },
       { capability: "Embudo Kanban, verificación de decisores y exportación CSV/Excel", status: "production", detail: "Disponible para cuentas activas" },
       { capability: "Demostraciones de entrada a Brasil y propuestas Enterprise", status: "consultative", detail: "Atendido mediante Solicitar Demo" },
@@ -687,8 +687,8 @@ export const esDictionary: TranslationDictionary = {
         answer: "Para clientes internacionales preparamos propuestas Enterprise a medida tras la demostración. Los planes locales y la tabla detallada de consumo de créditos están disponibles dentro de la plataforma autenticada.",
       },
       {
-        question: "¿Qué relación existe entre DeepB2B y Deepson?",
-        answer: "DeepB2B es la marca global operada por DEEPSON - INTELIGENCIA DE DADOS E TECNOLOGIA LTDA. Las cuentas actuales siguen operando con normalidad en app.deepson.com.br.",
+        question: "¿Quién opera DeepB2B?",
+        answer: "DeepB2B es una empresa del Grupo FullWeb operada por DEEPSON - INTELIGENCIA DE DADOS E TECNOLOGIA LTDA. Las cuentas existentes siguen funcionando con normalidad en app.deepb2b.ai.",
       },
     ],
   },
@@ -723,7 +723,7 @@ export const esDictionary: TranslationDictionary = {
     messageLabel: "Necesidad comercial o sector de interés",
     messagePlaceholder: "Describa las industrias, estados de Brasil o perfiles de empresa que desea analizar...",
     consentLabel:
-      "Acepto la Política de Privacidad y autorizo el tratamiento internacional de mis datos por DeepB2B / Deepson (Brasil) únicamente para responder esta solicitud comercial.",
+      "Acepto la Política de Privacidad y autorizo el tratamiento internacional de mis datos por DeepB2B (Brasil) únicamente para responder esta solicitud comercial.",
     submitLabel: "Enviar Solicitud",
     submittingLabel: "Enviando solicitud...",
     successTitle: "Solicitud recibida",
@@ -743,9 +743,9 @@ export const esDictionary: TranslationDictionary = {
     eyebrow: "Acceso a la Plataforma",
     h1: "Acceda a la plataforma o solicite una demostración",
     lead: "Elija la opción que corresponde a su operación y ubicación.",
-    existingTitle: "Clientes Actuales Deepson / DeepB2B",
+    existingTitle: "Clientes Actuales DeepB2B",
     existingDescription: "Inicie sesión directamente en su espacio de trabajo para acceder a su radar ICP, empresas guardadas y detalle de créditos.",
-    existingCta: "Ir a la Plataforma (app.deepson.com.br)",
+    existingCta: "Ir a la Plataforma (app.deepb2b.ai)",
     existingNotice: "Nota: Actualmente la interfaz operativa autenticada funciona en portugués (pt-BR).",
     intlTitle: "Equipos de LATAM y Empresas Internacionales",
     intlDescription: "¿No cuenta con CNPJ en Brasil? Solicite una demostración guiada y propuesta Enterprise personalizada.",
@@ -787,7 +787,7 @@ export const esDictionary: TranslationDictionary = {
       {
         heading: "1. Alcance del Servicio",
         body: [
-          "DeepB2B ofrece herramientas de inteligencia empresarial B2B sobre Brasil, descubrimiento de empresas, mapeo sectorial y calificación comercial operadas por Deepson.",
+          "DeepB2B ofrece herramientas de inteligencia empresarial B2B sobre Brasil, descubrimiento de empresas, mapeo sectorial y calificación comercial operadas por DeepB2B (Grupo FullWeb).",
         ],
       },
       {
@@ -828,7 +828,7 @@ export const esDictionary: TranslationDictionary = {
     ],
     deletionTitle: "Solicitud de Eliminación de Datos y Opt-Out",
     deletionLead:
-      "Solicite revisión, rectificación o eliminación de datos de contacto personales almacenados por DeepB2B / Deepson.",
+      "Solicite revisión, rectificación o eliminación de datos de contacto personales almacenados por DeepB2B.",
     deletionTypes: [
       { title: "Eliminación de Solicitudes y Cuenta", description: "Borrado de datos enviados mediante formularios de contacto o demostración." },
       { title: "Opt-Out de Contacto B2B", description: "Exclusión de un perfil o correo ejecutivo de las vistas comerciales." },
@@ -855,6 +855,6 @@ export const esDictionary: TranslationDictionary = {
     languagesGroup: "Idiomas",
     dataSourcesNote:
       "Los datos registrales oficiales de Brasil provienen de fuentes públicas (Receita Federal, PGFN y notarías) mostrados con origen y fecha.",
-    copyright: "DeepB2B (Deepson). Todos los derechos reservados.",
+    copyright: "DeepB2B · Grupo FullWeb. Todos los derechos reservados.",
   },
 };

@@ -14,7 +14,7 @@ export const ptBrDictionary: TranslationDictionary = {
     valueProposition:
       "Event Intelligence & B2B Business Development: plataforma nativa de inteligência artificial especializada em inteligência de eventos e desenvolvimento de negócios B2B, no Brasil e no exterior.",
     legacyEntityNotice:
-      "DeepB2B é a marca global de inteligência operada pela Deepson (DEEPSON - INTELIGENCIA DE DADOS E TECNOLOGIA LTDA, CNPJ 19.904.935/0001-20 · Grupo FullWeb).",
+      "DeepB2B é uma empresa do Grupo FullWeb, operada pela DEEPSON - INTELIGENCIA DE DADOS E TECNOLOGIA LTDA (CNPJ 19.904.935/0001-20).",
   },
   seo: {
     platform: {
@@ -93,7 +93,7 @@ export const ptBrDictionary: TranslationDictionary = {
         "Artigos técnicos sobre dados de CNPJ, estrutura CNAE, prospecção de distribuidores e limites reais das bases públicas no Brasil.",
     },
     about: {
-      title: "Sobre a DeepB2B — Evolução Global da Deepson (Grupo FullWeb)",
+      title: "Sobre a DeepB2B — Event Intelligence do Grupo FullWeb",
       description:
         "Conheça a história, os princípios de transparência de dados, conformidade LGPD e o que já está ativo em produção na plataforma.",
     },
@@ -105,12 +105,12 @@ export const ptBrDictionary: TranslationDictionary = {
     login: {
       title: "Acesso à Plataforma | DeepB2B",
       description:
-        "Acesse sua conta em app.deepson.com.br ou fale com nosso time para montar um projeto de inteligência comercial.",
+        "Acesse sua conta em app.deepb2b.ai ou fale com nosso time para montar um projeto de inteligência comercial.",
     },
     privacy: {
       title: "Política de Privacidade e Governança de Dados | DeepB2B",
       description:
-        "Como a DeepB2B / Deepson coleta, utiliza e protege dados cadastrais e solicitações comerciais conforme a LGPD.",
+        "Como a DeepB2B coleta, utiliza e protege dados cadastrais e solicitações comerciais conforme a LGPD.",
     },
     terms: {
       title: "Termos de Uso da Plataforma | DeepB2B",
@@ -125,7 +125,7 @@ export const ptBrDictionary: TranslationDictionary = {
     dataDeletion: {
       title: "Solicitação de Exclusão de Dados e Opt-Out | DeepB2B",
       description:
-        "Canal gratuito para titulares solicitarem revisão, oposição ou exclusão de dados pessoais tratados pela DeepB2B / Deepson.",
+        "Canal gratuito para titulares solicitarem revisão, oposição ou exclusão de dados pessoais tratados pela DeepB2B.",
     },
   },
   localeNotice: {
@@ -159,7 +159,7 @@ export const ptBrDictionary: TranslationDictionary = {
     closeMenu: "Fechar menu",
   },
   home: {
-    badge: "Inteligência de Dados B2B no Brasil · Marca Global da Deepson",
+    badge: "Inteligência de Dados B2B no Brasil · Grupo FullWeb",
     h1: "Encontre as empresas certas. Transforme dados em oportunidades de negócio.",
     subtitle:
       "Encontre empresas, identifique oportunidades e transforme dados brasileiros em inteligência comercial com transparência de origem e IA.",
@@ -313,12 +313,12 @@ export const ptBrDictionary: TranslationDictionary = {
       externalSection: "Canais Externos Públicos",
       aiSection: "Justificativa Comercial por IA",
       ondemandSection: "Dados Liberados sob Demanda na Plataforma",
-      ondemandPlaceholder: "Contatos validados, QSA completo e consulta fiscal ao vivo em app.deepson.com.br",
+      ondemandPlaceholder: "Contatos validados, QSA completo e consulta fiscal ao vivo em app.deepb2b.ai",
       sourceAndDate: "Modelo de referência",
     },
     fieldSupportTitle: "Campos Suportados na Plataforma & Origem",
     fieldSupportSubtitle:
-      "Transparência sobre cada atributo disponível hoje na operação da DeepB2B / Deepson.",
+      "Transparência sobre cada atributo disponível hoje na operação da DeepB2B.",
     fieldSupportColumns: {
       field: "Atributo / Critério",
       support: "Suporte Atual na Plataforma",
@@ -609,7 +609,7 @@ export const ptBrDictionary: TranslationDictionary = {
     ],
     platformGovernanceTitle: "Planos e tabela detalhada de créditos dentro da plataforma",
     platformGovernanceBody:
-      "Não exibimos tabelas públicas de preços nesta página. Toda a gestão de planos, cobrança e tabela detalhada de consumo de créditos permanece disponível dentro da plataforma autenticada (app.deepson.com.br). Para operações internacionais ou Enterprise, atendemos sob demonstração.",
+      "Não exibimos tabelas públicas de preços nesta página. Toda a gestão de planos, cobrança e tabela detalhada de consumo de créditos permanece disponível dentro da plataforma autenticada (app.deepb2b.ai). Para operações internacionais ou Enterprise, atendemos sob demonstração.",
     ctaTitle: "Quer ver a plataforma aplicada ao seu segmento?",
     ctaSubtitle: "Solicite uma demonstração ou uma proposta personalizada com nosso time.",
     primaryCta: "Solicitar Demonstração",
@@ -629,12 +629,12 @@ export const ptBrDictionary: TranslationDictionary = {
   },
   about: {
     eyebrow: "Sobre a DeepB2B",
-    h1: "Da engenharia da Deepson para a inteligência empresarial global sobre o Brasil",
-    lead: "A DeepB2B é a marca global da Deepson (Grupo FullWeb), criada para unir rigor de dados públicos brasileiros e IA aplicada a negócios.",
+    h1: "Da engenharia do Grupo FullWeb para a inteligência de eventos e negócios",
+    lead: "A DeepB2B é a empresa de Event Intelligence & B2B Business Development do Grupo FullWeb, que une dados públicos brasileiros verificáveis e inteligência artificial aplicada a negócios.",
     storyTitle: "Nossa Evolução",
     storyParagraphs: [
       "O mercado B2B brasileiro possui uma base pública rica em torno do CNPJ e da classificação CNAE, mas interpretar esses dados para tomar decisões comerciais sempre exigiu conhecimento técnico local e horas de cruzamento manual.",
-      "Na Deepson, construímos uma plataforma em produção que transforma URLs e objetivos comerciais em perfis de cliente ideal (ICP), listas priorizadas, quadro societário, sinais fiscais e funil comercial.",
+      "Na DeepB2B, construímos uma plataforma em produção que transforma URLs e objetivos comerciais em perfis de cliente ideal (ICP), listas priorizadas, quadro societário, sinais fiscais e funil comercial.",
       "Com o lançamento da DeepB2B, levamos essa especialização ao mercado internacional — atendendo empresas brasileiras com excelência e abrindo portas para fabricantes, exportadores e consultorias globais.",
     ],
     principlesTitle: "Nossos Princípios",
@@ -651,7 +651,7 @@ export const ptBrDictionary: TranslationDictionary = {
       roadmap: "Em Evolução",
     },
     statusItems: [
-      { capability: "Definição de ICP por IA e descoberta de empresas brasileiras", status: "production", detail: "Operacional em app.deepson.com.br" },
+      { capability: "Definição de ICP por IA e descoberta de empresas brasileiras", status: "production", detail: "Operacional em app.deepb2b.ai" },
       { capability: "Filtros CNPJ, CNAE, porte, QSA e sinais PGFN", status: "production", detail: "Ativo com custo transparente por crédito" },
       { capability: "Funil Kanban, decisores e exportação CSV/Excel", status: "production", detail: "Disponível para contas ativas" },
       { capability: "Onboarding internacional e contratos Enterprise", status: "consultative", detail: "Atendimento direto via Solicitar Demonstração" },
@@ -683,8 +683,8 @@ export const ptBrDictionary: TranslationDictionary = {
         answer: "Sim, mediante contato comercial e demonstração guiada com nossa equipe para faturamento corporativo internacional.",
       },
       {
-        question: "O sistema antigo da Deepson continua funcionando?",
-        answer: "Sim. Clientes ativos continuam acessando normalmente em app.deepson.com.br com todas as contas, créditos e histórico preservados.",
+        question: "Quem já usava a plataforma continua com acesso?",
+        answer: "Sim. Clientes ativos acessam normalmente em app.deepb2b.ai, com contas, créditos e histórico preservados.",
       },
     ],
   },
@@ -719,7 +719,7 @@ export const ptBrDictionary: TranslationDictionary = {
     messageLabel: "Mensagem ou necessidade comercial",
     messagePlaceholder: "Conte brevemente qual setor, região ou perfil de empresa deseja analisar...",
     consentLabel:
-      "Li e concordo com a Política de Privacidade e autorizo o contato da equipe DeepB2B / Deepson para responder a esta solicitação.",
+      "Li e concordo com a Política de Privacidade e autorizo o contato da equipe DeepB2B para responder a esta solicitação.",
     submitLabel: "Enviar Solicitação",
     submittingLabel: "Enviando solicitação...",
     successTitle: "Solicitação recebida com sucesso",
@@ -739,9 +739,9 @@ export const ptBrDictionary: TranslationDictionary = {
     eyebrow: "Acesso à Plataforma",
     h1: "Entre na plataforma ou fale com nosso time",
     lead: "Escolha a opção adequada ao seu momento de uso.",
-    existingTitle: "Já tenho conta Deepson / DeepB2B",
+    existingTitle: "Já tenho conta DeepB2B",
     existingDescription: "Acesse diretamente o painel autenticado com seus perfis de ICP, radar de mercado, funil e saldo de créditos.",
-    existingCta: "Entrar em app.deepson.com.br",
+    existingCta: "Entrar em app.deepb2b.ai",
     existingNotice: "Seus dados, créditos e histórico permanecem intactos durante a evolução da marca para DeepB2B.",
     intlTitle: "Operações Internacionais ou Enterprise",
     intlDescription: "Precisa de demonstração guiada, múltiplos assentos ou atendimento sem CNPJ brasileiro?",
@@ -780,7 +780,7 @@ export const ptBrDictionary: TranslationDictionary = {
       {
         heading: "1. Objeto do Serviço",
         body: [
-          "A DeepB2B (Deepson) disponibiliza plataforma de inteligência de dados B2B, descoberta de empresas por ICP/CNAE, enriquecimento sob créditos e funil comercial.",
+          "A DeepB2B disponibiliza plataforma de inteligência de dados B2B, descoberta de empresas por ICP/CNAE, enriquecimento sob créditos e funil comercial.",
         ],
       },
       {
@@ -792,7 +792,7 @@ export const ptBrDictionary: TranslationDictionary = {
       {
         heading: "3. Uso Lícito e Propriedade Intelectual",
         body: [
-          "É vedado utilizar a plataforma para spam, fraude ou violação à LGPD. Marca, interface e motores de software pertencem à Deepson.",
+          "É vedado utilizar a plataforma para spam, fraude ou violação à LGPD. Marca, interface e motores de software pertencem à DEEPSON - INTELIGENCIA DE DADOS E TECNOLOGIA LTDA (DeepB2B · Grupo FullWeb).",
         ],
       },
     ],
@@ -846,6 +846,6 @@ export const ptBrDictionary: TranslationDictionary = {
     languagesGroup: "Idiomas",
     dataSourcesNote:
       "Dados empresariais de fontes públicas oficiais (Receita Federal, PGFN e cartórios), exibidos com origem e data.",
-    copyright: "DeepB2B (Deepson). Todos os direitos reservados.",
+    copyright: "DeepB2B · Grupo FullWeb. Todos os direitos reservados.",
   },
 };

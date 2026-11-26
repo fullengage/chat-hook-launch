@@ -144,3 +144,13 @@ test("validação final dos 4 idiomas: páginas novas completas, hreflang, sem v
   // hero preservado
   assert.ok(home.includes("Inteligência que conecta mercados e gera negócios.") && home.includes("Conheça nossas soluções") && home.includes("Solicite uma apresentação"), "hero changed");
 });
+
+test("marca: só DeepB2B (Grupo FullWeb); 'Deepson' só na razão social; nenhum link para app.deepson.com.br", () => {
+  const walk = (d) => fs.readdirSync(d, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? (e.name === "nexlead-premium" ? [] : walk(`${d}/${e.name}`)) : e.name.endsWith(".html") ? [`${d}/${e.name}`] : []));
+  for (const f of walk("dist")) {
+    const html = fs.readFileSync(f, "utf-8").replaceAll("DEEPSON - INTELIGENCIA DE DADOS E TECNOLOGIA LTDA", "");
+    assert.ok(!/deepson/i.test(html), `${f}: still mentions Deepson / deepson.com.br`);
+  }
+  const login = fs.readFileSync("dist/pt-br/acesso/index.html", "utf-8");
+  assert.ok(login.includes("Entrar em app.deepb2b.ai") && login.includes('href="https://app.deepb2b.ai/"'), "login CTA must point to app.deepb2b.ai");
+});

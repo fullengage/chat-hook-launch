@@ -21,7 +21,7 @@ const PrivacyPolicy = () => {
         
         <div className="space-y-6 text-muted-foreground leading-relaxed">
           <p>
-            Esta Política de Privacidade descreve como o Deepson CRM ("nós", "nosso") coleta, usa e protege suas informações pessoais ao utilizar nosso site e serviços.
+            Esta Política de Privacidade descreve como a DeepB2B CRM ("nós", "nosso") coleta, usa e protege suas informações pessoais ao utilizar nosso site e serviços.
           </p>
 
           <section className="space-y-4">
@@ -61,7 +61,7 @@ const PrivacyPolicy = () => {
           <section className="space-y-4">
             <h2 className="text-2xl font-bold text-foreground">5. Contato</h2>
             <p>
-              Para dúvidas sobre esta política, entre em contato através do e-mail: contato@deepson.com.br
+              Para dúvidas sobre esta política, entre em contato através do e-mail: contato@deepb2b.ai
             </p>
           </section>
         </div>

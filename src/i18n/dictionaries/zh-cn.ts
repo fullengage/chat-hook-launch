@@ -13,7 +13,7 @@ export const zhCnDictionary: TranslationDictionary = {
     subtitle: "BRAZIL BUSINESS DATA & MARKET INTELLIGENCE",
     valueProposition: "展会情报与 B2B 业务拓展：专注于展会情报和 B2B 业务拓展的 AI 原生平台，服务巴西及全球市场。",
     legacyEntityNotice:
-      "DeepB2B 是巴西数据科技公司 Deepson（DEEPSON - INTELIGENCIA DE DADOS E TECNOLOGIA LTDA，CNPJ 19.904.935/0001-20 · Grupo FullWeb）面向全球市场推出的商业情报品牌。",
+      "DeepB2B 是 Grupo FullWeb 旗下企业，由 DEEPSON - INTELIGENCIA DE DADOS E TECNOLOGIA LTDA（CNPJ 19.904.935/0001-20）运营。",
   },
   seo: {
     platform: {
@@ -92,9 +92,9 @@ export const zhCnDictionary: TranslationDictionary = {
         "深度解读巴西 CNPJ 企业编号、CNAE 行业分类、如何寻找当地经销商，以及巴西公开企业数据的真实来源与使用边界。",
     },
     about: {
-      title: "关于 DeepB2B — Deepson 集团旗下全球巴西数据品牌",
+      title: "关于 DeepB2B — Grupo FullWeb 旗下展会情报品牌",
       description:
-        "了解 DeepB2B 如何依托 Deepson 在巴西本土成熟的官方数据引擎与 LGPD 合规体系，服务中国及全球企业。",
+        "了解 DeepB2B 如何依托巴西官方数据引擎与 LGPD 合规体系，服务中国及全球企业。",
     },
     contact: {
       title: "预约产品演示与商务咨询 | DeepB2B",
@@ -104,7 +104,7 @@ export const zhCnDictionary: TranslationDictionary = {
     login: {
       title: "平台登录与国际客户引导 | DeepB2B",
       description:
-        "登录现有 Deepson / DeepB2B 工作台，或为无巴西本地税号（CNPJ）的海外团队预约国际引导演示。",
+        "登录现有 DeepB2B 工作台，或为无巴西本地税号（CNPJ）的海外团队预约国际引导演示。",
     },
     privacy: {
       title: "隐私政策与跨境数据合规说明 | DeepB2B",
@@ -121,7 +121,7 @@ export const zhCnDictionary: TranslationDictionary = {
     },
     dataDeletion: {
       title: "数据删除与信息退出（Opt-Out）申请 | DeepB2B",
-      description: "提交个人联系信息查询、更正或从 DeepB2B / Deepson 商业系统中删除的正式申请。",
+      description: "提交个人联系信息查询、更正或从 DeepB2B 商业系统中删除的正式申请。",
     },
   },
   localeNotice: {
@@ -298,7 +298,7 @@ export const zhCnDictionary: TranslationDictionary = {
       officialSection: "官方注册信息层（Receita Federal / PGFN 架构）",
       externalSection: "外部企业公开渠道",
       aiSection: "AI 匹配理由说明",
-      ondemandSection: "平台工作台按需核验（app.deepson.com.br）",
+      ondemandSection: "平台工作台按需核验（app.deepb2b.ai）",
       ondemandPlaceholder: "有效联系方式、完整股东结构（QSA）及实时公共税务信号可在正式平台按需解锁",
       sourceAndDate: "数据参考模型",
     },
@@ -595,7 +595,7 @@ export const zhCnDictionary: TranslationDictionary = {
     ],
     platformGovernanceTitle: "方案配置与点数消耗明细说明",
     platformGovernanceBody:
-      "DeepB2B 不在公开网页展示标准价目表。中国及国际企业方案均在商务演示后按需定制；巴西本地账户方案及详细点数消耗规则仅在登录正式平台工作台（app.deepson.com.br）后查看。",
+      "DeepB2B 不在公开网页展示标准价目表。中国及国际企业方案均在商务演示后按需定制；巴西本地账户方案及详细点数消耗规则仅在登录正式平台工作台（app.deepb2b.ai）后查看。",
     ctaTitle: "想了解 DeepB2B 如何适配您的巴西业务？",
     ctaSubtitle: "欢迎预约一对一商业情报演示，由团队结合您的目标行业现场讲解。",
     primaryCta: "预约产品演示 (Request a Demo)",
@@ -616,11 +616,11 @@ export const zhCnDictionary: TranslationDictionary = {
   about: {
     eyebrow: "关于 DeepB2B",
     h1: "将成熟的巴西本地数据引擎，打造为服务全球的巴西商业情报品牌",
-    lead: "DeepB2B 隶属于巴西数据科技企业 Deepson（Grupo FullWeb），专注用可验证的公开数据与 AI 助力企业看清巴西市场。",
+    lead: "DeepB2B 是 Grupo FullWeb 旗下专注展会情报与 B2B 业务拓展的企业，用可验证的公开数据与 AI 助力企业看清巴西市场。",
     storyTitle: "品牌起源与升级",
     storyParagraphs: [
       "尽管巴西是拉美最大的 B2B 市场，但海外企业往往因葡萄牙语障碍、复杂的税号分类与真假难辨的第三方名单而难以高效切入。",
-      "Deepson 团队在巴西本土长期深耕，构建了直连巴西官方公开企业注册体系、结合 AI 图像与语义筛选的生产级平台（app.deepson.com.br）。",
+      "我们的团队在巴西本土长期深耕，构建了直连巴西官方公开企业注册体系、结合 AI 语义筛选的生产级平台（app.deepb2b.ai）。",
       "如今，我们以 DeepB2B 作为国际化品牌正式服务中国及全球企业，让海外制造商、出口商与咨询机构也能用透明、可靠的方式开展巴西商业情报调研。",
     ],
     principlesTitle: "我们的核心准则",
@@ -637,7 +637,7 @@ export const zhCnDictionary: TranslationDictionary = {
       roadmap: "规划演进中",
     },
     statusItems: [
-      { capability: "AI ICP 建模与巴西企业发现引擎", status: "production", detail: "已在 app.deepson.com.br 稳定运行" },
+      { capability: "AI ICP 建模与巴西企业发现引擎", status: "production", detail: "已在 app.deepb2b.ai 稳定运行" },
       { capability: "CNPJ、CNAE、股东（QSA）与 PGFN 信号核验", status: "production", detail: "按透明点数规则实时运行" },
       { capability: "看板销售漏斗与 CSV/Excel 导出", status: "production", detail: "正式账户均已支持" },
       { capability: "中国及海外企业专人演示与国际方案对接", status: "consultative", detail: "通过“预约演示”表单快速响应" },
@@ -673,8 +673,8 @@ export const zhCnDictionary: TranslationDictionary = {
         answer: "本官网已提供完整简体中文版以方便信息查阅与需求对接；登录后的生产级应用目前以葡萄牙语为主，海外团队在合作初期将获得我们的引导支持。",
       },
       {
-        question: "DeepB2B 与 Deepson 是什么关系？",
-        answer: "DeepB2B 是 Deepson（巴西合规注册科技企业）面向国际市场推出的全新全球品牌，底层共享同一套经过巴西市场验证的数据与 AI 引擎。",
+        question: "DeepB2B 由谁运营？",
+        answer: "DeepB2B 是 Grupo FullWeb 旗下企业，由 DEEPSON - INTELIGENCIA DE DADOS E TECNOLOGIA LTDA 运营，现有平台账户可在 app.deepb2b.ai 正常使用。",
       },
     ],
   },
@@ -709,7 +709,7 @@ export const zhCnDictionary: TranslationDictionary = {
     messageLabel: "目标行业或具体商务需求",
     messagePlaceholder: "请简述您的产品类别、目标巴西州别或希望了解的企业类型...",
     consentLabel:
-      "我已阅读并同意《隐私政策》，同意 DeepB2B / Deepson（巴西）仅就本次商务演示与咨询需求处理并联系我的信息。",
+      "我已阅读并同意《隐私政策》，同意 DeepB2B（巴西）仅就本次商务演示与咨询需求处理并联系我的信息。",
     submitLabel: "提交预约申请",
     submittingLabel: "正在提交...",
     successTitle: "申请已收到",
@@ -726,11 +726,11 @@ export const zhCnDictionary: TranslationDictionary = {
   },
   login: {
     eyebrow: "平台登录与入口引导",
-    h1: "进入 DeepB2B / Deepson 数据平台",
+    h1: "进入 DeepB2B 数据平台",
     lead: "请根据您的账户类型选择对应入口：",
-    existingTitle: "已有 Deepson / DeepB2B 账号",
+    existingTitle: "已有 DeepB2B 账号",
     existingDescription: "直接登录正式平台工作台，查看已保存的巴西企业、ICP 雷达与点数明细。",
-    existingCta: "前往平台 (app.deepson.com.br)",
+    existingCta: "前往平台 (app.deepb2b.ai)",
     existingNotice: "提示：当前登录后的平台操作界面默认语言为巴西葡萄牙语（pt-BR）。",
     intlTitle: "中国及海外企业（无巴西本地 CNPJ）",
     intlDescription: "请预约国际商务团队进行针对性演示，获取跨语种引导与定制开通支持。",
@@ -782,7 +782,7 @@ export const zhCnDictionary: TranslationDictionary = {
       },
     ],
     lgpdTitle: "巴西 LGPD 合规与数据溯源说明",
-    lgpdLead: "说明 Deepson / DeepB2B 如何严格遵循巴西《通用数据保护法》（第 13.709/2018 号法律）。",
+    lgpdLead: "说明 DeepB2B 如何严格遵循巴西《通用数据保护法》（第 13.709/2018 号法律）。",
     lgpdSections: [
       {
         heading: "控制者与处理者角色",
@@ -824,6 +824,6 @@ export const zhCnDictionary: TranslationDictionary = {
     legalGroup: "合规与法律",
     languagesGroup: "切换语言",
     dataSourcesNote: "巴西企业基础与财税数据源自官方公开来源（Receita Federal、PGFN 等），均附带出处与查询日期。",
-    copyright: "DeepB2B (Deepson). 保留所有权利。",
+    copyright: "DeepB2B. 保留所有权利。",
   },
 };

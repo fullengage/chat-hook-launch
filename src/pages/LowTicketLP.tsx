@@ -37,7 +37,7 @@ const LowTicketLP = () => {
             </h1>
             
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-12 max-w-2xl mx-auto">
-              Toda a potência do CRM Deepson por um valor menor que um cafezinho por dia. Kanban, multi-atendentes e IA configurada <span className="text-foreground font-bold underline decoration-primary">hoje mesmo</span>.
+              Toda a potência do CRM DeepB2B por um valor menor que um cafezinho por dia. Kanban, multi-atendentes e IA configurada <span className="text-foreground font-bold underline decoration-primary">hoje mesmo</span>.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

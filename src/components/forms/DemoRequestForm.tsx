@@ -393,7 +393,7 @@ export const DemoRequestForm: React.FC = () => {
 
         <div className="flex items-center justify-center gap-2 text-[11px] text-slate-500 pt-1">
           <ShieldCheck className="h-3.5 w-3.5 text-[#ff6b00]" aria-hidden="true" />
-          <span>LGPD Compliant · DeepB2B / Deepson</span>
+          <span>LGPD Compliant · DeepB2B</span>
         </div>
       </form>
     </Form>

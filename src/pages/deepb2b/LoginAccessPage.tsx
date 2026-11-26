@@ -54,10 +54,10 @@ export const LoginAccessPage: React.FC = () => {
               <p className="text-xs text-amber-300">{dict.login.existingNotice}</p>
             </div>
             <a
-              href="https://app.deepson.com.br/"
+              href="https://app.deepb2b.ai/"
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => trackCtaClick("login_app_deepson", locale, "https://app.deepson.com.br/")}
+              onClick={() => trackCtaClick("login_app_deepb2b", locale, "https://app.deepb2b.ai/")}
               className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#ff6b00] px-5 py-3.5 text-sm font-bold text-white hover:bg-[#ea580c]"
             >
               <span>{dict.login.existingCta}</span>
