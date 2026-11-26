@@ -13,7 +13,7 @@ export const zhCnDictionary: TranslationDictionary = {
     subtitle: "BRAZIL BUSINESS DATA & MARKET INTELLIGENCE",
     valueProposition: "展会情报与 B2B 业务拓展：专注于展会情报和 B2B 业务拓展的 AI 原生平台，服务巴西及全球市场。",
     legacyEntityNotice:
-      "DeepB2B 是 Grupo FullWeb 旗下企业，由 DEEPSON - INTELIGENCIA DE DADOS E TECNOLOGIA LTDA（CNPJ 19.904.935/0001-20）运营。",
+      "DeepB2B 是 Grupo FullWeb 旗下企业 · CNPJ 19.904.935/0001-20。",
   },
   seo: {
     platform: {
