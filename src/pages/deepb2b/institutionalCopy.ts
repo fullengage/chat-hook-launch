@@ -238,7 +238,7 @@ const ECOSYSTEM: Record<Locale, InfoPage> = {
     lead: "O mercado está cheio de informações. O desafio é descobrir onde estão as oportunidades. A DeepB2B conecta essas informações.",
     sections: [
       { title: "Nossa visão", text: "Todos os dias, milhares de empresas procuram novos clientes, fornecedores, distribuidores e parceiros. Ao mesmo tempo, feiras e eventos aproximam empresas e criam oportunidades que muitas vezes não são aproveitadas. Combinamos dados empresariais, inteligência artificial, pesquisas de mercado e tecnologia para transformar informações dispersas em conhecimento útil e oportunidades de negócios." },
-      { title: "Quem faz parte", bullets: ["Organizadoras e promotoras de eventos", "Expositores, fabricantes e distribuidores", "Compradores e empresas que buscam fornecedores", "Visitantes e profissionais de mercado", "Fornecedores, prestadores de serviços e parceiros"] },
+      { title: "Quem faz parte", bullets: ["Organizadoras e promotoras de eventos", "Expositores, fabricantes e distribuidores", "Compradores e empresas que buscam fornecedores", "Visitantes e profissionais de mercado", "Fornecedores, prestadores de serviços e parceiros", "Serviços de apoio: hotéis, restaurantes, transportadoras, locadoras e fornecedores de serviços para eventos"] },
       { title: "Inteligência de Mercado", text: "Dados empresariais, pesquisas, análises setoriais e identificação de oportunidades para empresas que querem compreender e conquistar novos mercados." },
       { title: "Feiras & Eventos", text: "Inteligência sobre eventos, organizadoras, expositores, compradores e fornecedores, para aproveitar melhor cada oportunidade." },
       { title: "Conexões Empresariais", text: "Uma rede que aproxima compradores, fornecedores, fabricantes, distribuidores, prestadores de serviços e parceiros estratégicos." },
@@ -252,7 +252,7 @@ const ECOSYSTEM: Record<Locale, InfoPage> = {
     lead: "Markets are full of information. The challenge is finding where the opportunities are. DeepB2B connects that information.",
     sections: [
       { title: "Our vision", text: "Every day, thousands of companies look for new customers, suppliers, distributors and partners. Meanwhile, trade shows bring companies together and create opportunities that often go unused. We combine company data, artificial intelligence, market research and technology to turn scattered information into useful knowledge and business opportunities." },
-      { title: "Who is part of it", bullets: ["Event organizers and promoters", "Exhibitors, manufacturers and distributors", "Buyers and companies looking for suppliers", "Visitors and market professionals", "Suppliers, service providers and partners"] },
+      { title: "Who is part of it", bullets: ["Event organizers and promoters", "Exhibitors, manufacturers and distributors", "Buyers and companies looking for suppliers", "Visitors and market professionals", "Suppliers, service providers and partners", "Support services: hotels, restaurants, carriers, rental companies and event service providers"] },
       { title: "Market Intelligence", text: "Company data, research, sector analysis and opportunity identification for companies that want to understand and win new markets." },
       { title: "Trade Shows & Events", text: "Intelligence on events, organizers, exhibitors, buyers and suppliers, so every opportunity counts." },
       { title: "Business Connections", text: "A network that brings together buyers, suppliers, manufacturers, distributors, service providers and strategic partners." },
@@ -266,7 +266,7 @@ const ECOSYSTEM: Record<Locale, InfoPage> = {
     lead: "El mercado está lleno de información. El desafío es descubrir dónde están las oportunidades. DeepB2B conecta esa información.",
     sections: [
       { title: "Nuestra visión", text: "Cada día, miles de empresas buscan nuevos clientes, proveedores, distribuidores y socios. Al mismo tiempo, las ferias acercan empresas y crean oportunidades que muchas veces no se aprovechan. Combinamos datos empresariales, inteligencia artificial, investigación de mercado y tecnología para convertir información dispersa en conocimiento útil y oportunidades de negocio." },
-      { title: "Quiénes forman parte", bullets: ["Organizadores y promotores de eventos", "Expositores, fabricantes y distribuidores", "Compradores y empresas que buscan proveedores", "Visitantes y profesionales del mercado", "Proveedores, prestadores de servicios y socios"] },
+      { title: "Quiénes forman parte", bullets: ["Organizadores y promotores de eventos", "Expositores, fabricantes y distribuidores", "Compradores y empresas que buscan proveedores", "Visitantes y profesionales del mercado", "Proveedores, prestadores de servicios y socios", "Servicios de apoyo: hoteles, restaurantes, transportistas, rentadoras y proveedores de servicios para eventos"] },
       { title: "Inteligencia de Mercado", text: "Datos empresariales, investigaciones, análisis sectoriales e identificación de oportunidades para empresas que quieren entender y conquistar nuevos mercados." },
       { title: "Ferias y Eventos", text: "Inteligencia sobre eventos, organizadores, expositores, compradores y proveedores para aprovechar mejor cada oportunidad." },
       { title: "Conexiones Empresariales", text: "Una red que acerca compradores, proveedores, fabricantes, distribuidores, prestadores de servicios y socios estratégicos." },
@@ -280,7 +280,7 @@ const ECOSYSTEM: Record<Locale, InfoPage> = {
     lead: "市场充满信息，难点在于发现机会所在。DeepB2B 将这些信息连接起来。",
     sections: [
       { title: "我们的愿景", text: "每天都有成千上万的企业在寻找新客户、供应商、分销商和合作伙伴。与此同时，展会把企业聚集在一起，创造了许多常被错过的机会。我们结合企业数据、人工智能、市场研究和技术，把分散的信息转化为有用的知识和商机。" },
-      { title: "生态参与者", bullets: ["展会主办方与推广方", "参展商、制造商与分销商", "买家及寻找供应商的企业", "观众与市场专业人士", "供应商、服务商与合作伙伴"] },
+      { title: "生态参与者", bullets: ["展会主办方与推广方", "参展商、制造商与分销商", "买家及寻找供应商的企业", "观众与市场专业人士", "供应商、服务商与合作伙伴", "配套服务：酒店、餐厅、运输公司、租赁公司及展会服务供应商"] },
       { title: "市场情报", text: "为希望了解并开拓新市场的企业提供企业数据、研究、行业分析与商机识别。" },
       { title: "展会与活动", text: "关于展会、主办方、参展商、买家和供应商的情报，让每个机会都不被浪费。" },
       { title: "商业连接", text: "连接买家、供应商、制造商、分销商、服务商和战略伙伴的网络。" },

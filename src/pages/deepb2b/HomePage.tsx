@@ -11,7 +11,7 @@ import { SiteLayout } from "@/components/layout/SiteLayout";
 import HeroRadar from "@/components/HeroRadar";
 import { homeCopy } from "./positioningCopy";
 import { homeSections } from "./institutionalCopy";
-import { dnaCopy } from "./dnaCopy";
+import { dnaCopy, globalFronts } from "./dnaCopy";
 import { EcosystemDiagram } from "./InstitutionalPages";
 
 // Ícone e página de destino de cada pilar do ecossistema (mesma ordem de homeSections().pillars)
@@ -31,6 +31,7 @@ export const HomePage: React.FC = () => {
   const heroAnchorRef = useRef<HTMLDivElement>(null);
   const s = homeSections(locale);
   const d = dnaCopy(locale);
+  const fronts = globalFronts(locale);
   const nf = new Intl.NumberFormat(dict.htmlLang);
   const now = Date.now();
   const upcoming = [...TRADE_SHOWS].filter((t) => new Date(`${t.end}T23:59:59Z`).getTime() >= now).sort((a, b) => a.start.localeCompare(b.start)).slice(0, 5);
@@ -108,7 +109,7 @@ export const HomePage: React.FC = () => {
                 {s.ecoCta} <ArrowRight className="h-4 w-4 text-[#ff6b00]" aria-hidden="true" />
               </Link>
             </div>
-            <EcosystemDiagram actors={s.actors} hub={s.hub} />
+            <EcosystemDiagram actors={[...s.actors, fronts.supportActor]} hub={s.hub} note={fronts.supportNote} />
           </div>
           <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {s.pillars.map((a, i) => {
@@ -340,13 +341,24 @@ export const HomePage: React.FC = () => {
               {s.globalCta} <ArrowRight className="h-4 w-4 text-[#ff6b00]" aria-hidden="true" />
             </Link>
           </div>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {s.globalBullets.map((b) => (
-              <li key={b} className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-5 text-sm font-semibold">
-                <Globe2 className="h-5 w-5 shrink-0 text-[#ff6b00]" aria-hidden="true" /> {b}
-              </li>
+          {/* As duas frentes do DNA: estrangeiras -> Brasil e brasileiras -> exterior */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {[fronts.inbound, fronts.outbound].map((f, i) => (
+              <div key={f.title} className="rounded-2xl border border-white/10 bg-white/5 p-6">
+                <p className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[#ff6b00]">
+                  <Globe2 className="h-4 w-4" aria-hidden="true" /> {i === 0 ? "→ BR" : "BR →"}
+                </p>
+                <h3 className="mt-2 text-lg font-extrabold">{f.title}</h3>
+                <ul className="mt-4 space-y-2">
+                  {f.items.map((it) => (
+                    <li key={it} className="flex gap-2 text-sm text-slate-300">
+                      <Check className="h-4 w-4 shrink-0 text-[#ff6b00] mt-0.5" aria-hidden="true" /> {it}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       </section>
 

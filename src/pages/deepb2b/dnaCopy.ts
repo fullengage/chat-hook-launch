@@ -239,3 +239,40 @@ const DNA: Record<Locale, DnaCopy> = {
 };
 
 export const dnaCopy = (l: Locale) => DNA[l];
+
+/** Ecossistema: nó "Serviços de Apoio" + as duas frentes internacionais do DNA (seção 9). */
+export interface GlobalFronts {
+  supportActor: string;
+  supportNote: string;
+  inbound: { title: string; items: string[] };
+  outbound: { title: string; items: string[] };
+}
+
+const FRONTS: Record<Locale, GlobalFronts> = {
+  "pt-br": {
+    supportActor: "Serviços de Apoio",
+    supportNote: "Serviços de Apoio: hotéis, restaurantes, transportadoras, locadoras e fornecedores de serviços para eventos.",
+    inbound: { title: "Empresas estrangeiras que querem entrar no Brasil", items: ["Identificação de potenciais compradores", "Mapeamento de distribuidores e representantes", "Pesquisa de fabricantes e fornecedores", "Inteligência sobre segmentos econômicos", "Mapeamento de feiras e eventos relevantes", "Apoio ao desenvolvimento comercial no país"] },
+    outbound: { title: "Empresas brasileiras que querem expandir para o exterior", items: ["Pesquisa de mercados internacionais", "Identificação de potenciais parceiros", "Mapeamento de compradores e distribuidores", "Inteligência sobre feiras internacionais", "Identificação de oportunidades de expansão"] },
+  },
+  en: {
+    supportActor: "Support Services",
+    supportNote: "Support Services: hotels, restaurants, carriers, rental companies and event service providers.",
+    inbound: { title: "International companies entering Brazil", items: ["Potential buyer identification", "Distributor and sales-representative mapping", "Manufacturer and supplier research", "Intelligence on economic segments", "Mapping of relevant trade shows and events", "Support for commercial development in Brazil"] },
+    outbound: { title: "Brazilian companies expanding abroad", items: ["International market research", "Potential partner identification", "Buyer and distributor mapping", "Intelligence on international trade shows", "Expansion opportunity identification"] },
+  },
+  es: {
+    supportActor: "Servicios de Apoyo",
+    supportNote: "Servicios de Apoyo: hoteles, restaurantes, transportistas, rentadoras y proveedores de servicios para eventos.",
+    inbound: { title: "Empresas extranjeras que quieren entrar a Brasil", items: ["Identificación de compradores potenciales", "Mapeo de distribuidores y representantes", "Búsqueda de fabricantes y proveedores", "Inteligencia sobre segmentos económicos", "Mapeo de ferias y eventos relevantes", "Apoyo al desarrollo comercial en Brasil"] },
+    outbound: { title: "Empresas brasileñas que quieren expandirse al exterior", items: ["Investigación de mercados internacionales", "Identificación de socios potenciales", "Mapeo de compradores y distribuidores", "Inteligencia sobre ferias internacionales", "Identificación de oportunidades de expansión"] },
+  },
+  "zh-cn": {
+    supportActor: "配套服务",
+    supportNote: "配套服务：酒店、餐厅、运输公司、租赁公司及展会服务供应商。",
+    inbound: { title: "希望进入巴西市场的海外企业", items: ["识别潜在买家", "绘制分销商与代理商地图", "调研制造商与供应商", "经济细分领域情报", "绘制相关展会与活动地图", "支持在巴西的商业拓展"] },
+    outbound: { title: "希望拓展海外市场的巴西企业", items: ["国际市场调研", "识别潜在合作伙伴", "绘制买家与分销商地图", "国际展会情报", "识别扩张机会"] },
+  },
+};
+
+export const globalFronts = (l: Locale) => FRONTS[l];

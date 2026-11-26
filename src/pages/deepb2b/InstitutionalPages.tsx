@@ -9,15 +9,16 @@ import { SeoHead } from "@/components/seo/SeoHead";
 import { SiteLayout } from "@/components/layout/SiteLayout";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { clubCopy, ecosystemCopy, homeSections, partnersCopy, projectsCopy, type InfoPage } from "./institutionalCopy";
-import { dnaCopy } from "./dnaCopy";
+import { dnaCopy, globalFronts } from "./dnaCopy";
 
 const eyebrow = "inline-block text-xs font-extrabold uppercase tracking-[0.2em] text-[#ff6b00]";
 
 /** Diagrama: DeepB2B no centro ligada aos cinco participantes do mercado. Só CSS/SVG, sem imagem. */
-export const EcosystemDiagram: React.FC<{ actors: string[]; hub: string }> = ({ actors, hub }) => {
+export const EcosystemDiagram: React.FC<{ actors: string[]; hub: string; note?: string }> = ({ actors, hub, note }) => {
   const R = 38; // % do raio
   return (
-    <div className="relative mx-auto aspect-square w-full max-w-md" role="img" aria-label={`${hub}: ${actors.join(", ")}`}>
+    <figure className="mx-auto w-full max-w-md">
+    <div className="relative aspect-square w-full" role="img" aria-label={`${hub}: ${actors.join(", ")}`}>
       <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full" aria-hidden="true">
         <circle cx="50" cy="50" r={R} fill="none" stroke="#e2e8f0" strokeDasharray="1 1.5" strokeWidth="0.4" />
         <circle cx="50" cy="50" r={R / 2} fill="none" stroke="#e2e8f0" strokeWidth="0.3" />
@@ -42,6 +43,8 @@ export const EcosystemDiagram: React.FC<{ actors: string[]; hub: string }> = ({ 
         );
       })}
     </div>
+    {note && <figcaption className="mt-4 text-center text-xs text-slate-500">{note}</figcaption>}
+    </figure>
   );
 };
 
@@ -128,7 +131,7 @@ export const EcosystemPage: React.FC = () => {
     <InfoPageView copy={ecosystemCopy(locale)} seoKey="ecosystem" ctaTo="contact" heroImage="/images/ecossistema/corredor-feira-desfocado.jpg">
       <section className="py-16 bg-[#f8fafc] border-b border-slate-200">
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
-          <EcosystemDiagram actors={h.actors} hub={h.hub} />
+          <EcosystemDiagram actors={[...h.actors, globalFronts(locale).supportActor]} hub={h.hub} note={globalFronts(locale).supportNote} />
         </div>
       </section>
       <section className="bg-white">

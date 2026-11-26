@@ -111,3 +111,35 @@ test("DNA: Como funciona, Para quem, visão e 'Intelligence Beyond the Event.' p
   assert.ok(fs.readFileSync("dist/pt-br/projetos-empresariais/index.html", "utf-8").includes("Na prática: uma indústria numa feira de máquinas"), "7 steps missing");
   assert.ok(fs.readFileSync("dist/pt-br/deepclub/index.html", "utf-8").includes("Business Opportunities"), "DNA club pillars missing");
 });
+
+test("validação final dos 4 idiomas: páginas novas completas, hreflang, sem vazamento de português e hero preservado", () => {
+  const pages = {
+    en: { lang: "en", paths: ["en", "en/ecosystem", "en/deepclub", "en/business-projects", "en/partners", "en/how-it-works", "en/about", "en/trade-shows"] },
+    "pt-br": { lang: "pt-BR", paths: ["pt-br", "pt-br/ecossistema", "pt-br/deepclub", "pt-br/projetos-empresariais", "pt-br/parceiros", "pt-br/como-funciona", "pt-br/sobre", "pt-br/feiras-e-eventos"] },
+    es: { lang: "es", paths: ["es", "es/ecosistema", "es/deepclub", "es/proyectos-empresariales", "es/socios", "es/como-funciona", "es/nosotros", "es/ferias-y-eventos"] },
+    "zh-cn": { lang: "zh-CN", paths: ["zh-cn", "zh-cn/ecosystem", "zh-cn/deepclub", "zh-cn/business-projects", "zh-cn/partners", "zh-cn/how-it-works", "zh-cn/about", "zh-cn/trade-shows"] },
+  };
+  // frases que só existem em português: não podem aparecer nas outras versões
+  const ptOnly = ["Lançamento em breve", "Solicitar apresentação", "Serviços de Apoio", "Empresas estrangeiras que querem", "Quem faz parte", "Para quem", "Em desenvolvimento"];
+  for (const [loc, { lang, paths }] of Object.entries(pages)) {
+    for (const p of paths) {
+      const f = `dist/${p}/index.html`;
+      assert.ok(fs.existsSync(f), `${f} missing`);
+      const html = fs.readFileSync(f, "utf-8");
+      assert.ok(html.includes(`<html lang="${lang}"`), `${f}: lang`);
+      assert.ok(/<title>[^<]{10,}<\/title>/.test(html) && /<h1[^>]*>/.test(html), `${f}: title/h1`);
+      for (const h of ["en", "pt-BR", "es", "zh-CN", "x-default"]) assert.ok(html.includes(`hreflang="${h}"`), `${f}: hreflang ${h}`);
+      if (loc !== "pt-br") {
+        const body = html.slice(html.indexOf("<body"));
+        for (const t of ptOnly) assert.ok(!body.includes(t), `${f}: Portuguese text leaked: "${t}"`);
+      }
+    }
+  }
+  // Serviços de Apoio e as duas frentes internacionais
+  const home = fs.readFileSync("dist/pt-br/index.html", "utf-8");
+  assert.ok(home.includes("Serviços de Apoio") && home.includes("hotéis, restaurantes, transportadoras, locadoras"), "support services node");
+  assert.ok(home.includes("Empresas estrangeiras que querem entrar no Brasil") && home.includes("Empresas brasileiras que querem expandir para o exterior"), "two international fronts");
+  assert.ok(fs.readFileSync("dist/en/index.html", "utf-8").includes("International companies entering Brazil"), "EN fronts");
+  // hero preservado
+  assert.ok(home.includes("Inteligência que conecta mercados e gera negócios.") && home.includes("Conheça nossas soluções") && home.includes("Solicite uma apresentação"), "hero changed");
+});
