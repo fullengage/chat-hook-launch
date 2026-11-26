@@ -12,11 +12,36 @@ export const ptBrDictionary: TranslationDictionary = {
     tagline: "Inteligência Empresarial Brasileira, Potencializada por IA.",
     subtitle: "BRAZIL BUSINESS DATA & MARKET INTELLIGENCE",
     valueProposition:
-      "Inteligência de mercado e desenvolvimento de negócios: inteligência para feiras e eventos, identificação de compradores e expansão comercial no Brasil e no exterior.",
+      "Event Intelligence & B2B Business Development: plataforma nativa de inteligência artificial especializada em inteligência de eventos e desenvolvimento de negócios B2B, no Brasil e no exterior.",
     legacyEntityNotice:
       "DeepB2B é a marca global de inteligência operada pela Deepson (DEEPSON - INTELIGENCIA DE DADOS E TECNOLOGIA LTDA, CNPJ 19.904.935/0001-20 · Grupo FullWeb).",
   },
   seo: {
+    platform: {
+      title: "Como funciona a DeepB2B — Plataforma de Event Intelligence com IA",
+      description:
+        "Descoberta, mapeamento, qualificação pelo ICP, enriquecimento e ativação comercial: os módulos da plataforma nativa de IA da DeepB2B para inteligência de eventos.",
+    },
+    ecosystem: {
+      title: "Ecossistema DeepB2B — Inteligência, eventos e conexões empresariais",
+      description:
+        "Como a DeepB2B conecta organizadoras, expositores, compradores, visitantes e fornecedores com inteligência de eventos e desenvolvimento de negócios B2B.",
+    },
+    deepclub: {
+      title: "DeepClub — Clube empresarial da DeepB2B (lançamento em breve)",
+      description:
+        "DeepClub, o clube de negócios da DeepB2B: inteligência de mercado, Central de Demandas, conexões e benefícios. Planos Standard e Experience em breve.",
+    },
+    projects: {
+      title: "Projetos Empresariais de inteligência comercial | DeepB2B",
+      description:
+        "Projetos sob medida de inteligência comercial e desenvolvimento de negócios: mapeamento de mercado, compradores, decisores, campanhas e expansão nacional e internacional.",
+    },
+    partners: {
+      title: "Seja um parceiro DeepB2B",
+      description:
+        "Organizadoras, montadoras, hotéis, associações e fornecedores: conheça a rede de parceiros da DeepB2B no ecossistema de feiras e negócios.",
+    },
     calendar: {
       title: "Calendário de feiras de negócios 2027 em São Paulo | DeepB2B",
       description:
@@ -28,9 +53,9 @@ export const ptBrDictionary: TranslationDictionary = {
         "Transforme sua participação em feiras em oportunidades de negócios: compradores identificados antes do evento, campanhas de convite, agendas comerciais e acompanhamento depois da feira.",
     },
     home: {
-      title: "DeepB2B — Inteligência de Mercado e Desenvolvimento de Negócios",
+      title: "DeepB2B — Event Intelligence & Desenvolvimento de Negócios B2B",
       description:
-        "Inteligência empresarial que conecta mercados e gera negócios: estudos de mercado, inteligência para feiras e eventos, identificação de compradores e expansão no Brasil e no exterior.",
+        "Plataforma nativa de IA em inteligência de eventos: feiras, expositores, compradores e mercados transformados em oportunidades comerciais antes, durante e depois de cada evento.",
     },
     businessData: {
       title: "Dados Empresariais Brasileiros (CNPJ, CNAE e Sinais) | DeepB2B",
@@ -119,6 +144,11 @@ export const ptBrDictionary: TranslationDictionary = {
     resources: "Insights",
     events: "Feiras e Eventos",
     calendar: "Calendário de feiras",
+    ecosystem: "Ecossistema",
+    deepclub: "DeepClub",
+    projects: "Projetos Empresariais",
+    partners: "Seja um parceiro",
+    platform: "Como funciona",
     about: "Sobre",
     contact: "Contato",
     login: "Acessar Plataforma",
@@ -809,7 +839,7 @@ export const ptBrDictionary: TranslationDictionary = {
   },
   footer: {
     description:
-      "Inteligência Empresarial Brasileira com IA: dados cadastrais, mapeamento setorial e descoberta de oportunidades B2B com transparência.",
+      "Event Intelligence & B2B Business Development. Inteligência de eventos, inteligência de mercado e desenvolvimento de negócios.",
     platformGroup: "Inteligência",
     resourcesGroup: "Empresa & Conteúdos",
     legalGroup: "Governança & Legal",

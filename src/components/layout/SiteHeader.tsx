@@ -16,6 +16,7 @@ export const SiteHeader: React.FC = () => {
     routeTo("contact");
 
   const intelligenceLinks = [
+    { label: dict.nav.platform, to: routeTo("platform") },
     { label: dict.nav.businessData, to: routeTo("businessData") },
     { label: dict.nav.marketIntelligence, to: routeTo("marketIntelligence") },
     { label: dict.nav.leadGeneration, to: routeTo("leadGeneration") },
@@ -25,7 +26,8 @@ export const SiteHeader: React.FC = () => {
 
   const mainLinks = [
     { label: dict.nav.events, to: routeTo("events") },
-    { label: dict.nav.solutions, to: routeTo("solutions") },
+    { label: dict.nav.ecosystem, to: routeTo("ecosystem") },
+    { label: dict.nav.deepclub, to: routeTo("deepclub") },
     { label: dict.nav.resources, to: routeTo("resources") },
     { label: dict.nav.about, to: routeTo("about") },
   ];
@@ -85,7 +87,7 @@ export const SiteHeader: React.FC = () => {
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden xl:flex items-center gap-6 text-sm font-semibold text-slate-200">
+          <nav className="hidden xl:flex items-center gap-5 text-sm font-semibold text-slate-200">
             <div
               className="relative"
               onMouseEnter={() => setDropdownOpen(true)}

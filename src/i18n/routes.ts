@@ -26,6 +26,11 @@ export const ROUTES_BY_LOCALE: Record<Locale, Record<RouteKey, string>> = {
     dataDeletion: "/en/data-deletion",
     events: "/en/trade-shows",
     calendar: "/en/trade-show-calendar",
+    ecosystem: "/en/ecosystem",
+    deepclub: "/en/deepclub",
+    projects: "/en/business-projects",
+    partners: "/en/partners",
+    platform: "/en/how-it-works",
   },
   "pt-br": {
     home: "/pt-br",
@@ -45,6 +50,11 @@ export const ROUTES_BY_LOCALE: Record<Locale, Record<RouteKey, string>> = {
     dataDeletion: "/pt-br/exclusao-de-dados",
     events: "/pt-br/feiras-e-eventos",
     calendar: "/pt-br/feiras",
+    ecosystem: "/pt-br/ecossistema",
+    deepclub: "/pt-br/deepclub",
+    projects: "/pt-br/projetos-empresariais",
+    partners: "/pt-br/parceiros",
+    platform: "/pt-br/como-funciona",
   },
   es: {
     home: "/es",
@@ -64,6 +74,11 @@ export const ROUTES_BY_LOCALE: Record<Locale, Record<RouteKey, string>> = {
     dataDeletion: "/es/eliminacion-de-datos",
     events: "/es/ferias-y-eventos",
     calendar: "/es/ferias",
+    ecosystem: "/es/ecosistema",
+    deepclub: "/es/deepclub",
+    projects: "/es/proyectos-empresariales",
+    partners: "/es/socios",
+    platform: "/es/como-funciona",
   },
   "zh-cn": {
     home: "/zh-cn",
@@ -83,6 +98,11 @@ export const ROUTES_BY_LOCALE: Record<Locale, Record<RouteKey, string>> = {
     dataDeletion: "/zh-cn/data-deletion",
     events: "/zh-cn/trade-shows",
     calendar: "/zh-cn/trade-show-calendar",
+    ecosystem: "/zh-cn/ecosystem",
+    deepclub: "/zh-cn/deepclub",
+    projects: "/zh-cn/business-projects",
+    partners: "/zh-cn/partners",
+    platform: "/zh-cn/how-it-works",
   },
 };
 

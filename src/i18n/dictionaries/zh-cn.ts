@@ -11,11 +11,36 @@ export const zhCnDictionary: TranslationDictionary = {
     name: "DeepB2B",
     tagline: "巴西企业数据与商业情报平台 · AI 驱动",
     subtitle: "BRAZIL BUSINESS DATA & MARKET INTELLIGENCE",
-    valueProposition: "市场情报与业务拓展：展会与活动情报、买家识别，以及在巴西和海外的商业扩张。",
+    valueProposition: "展会情报与 B2B 业务拓展：专注于展会情报和 B2B 业务拓展的 AI 原生平台，服务巴西及全球市场。",
     legacyEntityNotice:
       "DeepB2B 是巴西数据科技公司 Deepson（DEEPSON - INTELIGENCIA DE DADOS E TECNOLOGIA LTDA，CNPJ 19.904.935/0001-20 · Grupo FullWeb）面向全球市场推出的商业情报品牌。",
   },
   seo: {
+    platform: {
+      title: "DeepB2B 运作方式 — AI 原生展会情报平台",
+      description:
+        "发现、绘制地图、ICP 资质评估、信息补全与商业激活：DeepB2B AI 原生展会情报平台的各个模块。",
+    },
+    ecosystem: {
+      title: "DeepB2B 生态系统 — 情报、展会与商业连接",
+      description:
+        "DeepB2B 如何通过展会情报与 B2B 业务拓展连接主办方、参展商、买家、观众和供应商。",
+    },
+    deepclub: {
+      title: "DeepClub — DeepB2B 商务俱乐部（即将推出）",
+      description:
+        "DeepB2B 商务俱乐部 DeepClub：市场情报、企业需求中心、商业连接与权益。Standard 与 Experience 会员即将推出。",
+    },
+    projects: {
+      title: "企业项目 — 商业情报定制服务 | DeepB2B",
+      description:
+        "定制化商业情报与业务拓展项目：市场地图、买家、决策人、营销活动以及国内和国际扩张。",
+    },
+    partners: {
+      title: "成为 DeepB2B 合作伙伴",
+      description:
+        "主办方、展台搭建商、酒店、协会和供应商：加入 DeepB2B 展会与商业生态的合作伙伴网络。",
+    },
     calendar: {
       title: "2027 巴西商务展会日历 — 圣保罗 | DeepB2B",
       description:
@@ -27,9 +52,9 @@ export const zhCnDictionary: TranslationDictionary = {
         "让每一次参展都转化为商机：展前识别买家、邀约营销、商务会议安排与展后跟进。",
     },
     home: {
-      title: "DeepB2B — 市场情报与业务拓展",
+      title: "DeepB2B — 展会情报与 B2B 业务拓展",
       description:
-        "连接市场、创造商机的商业情报：市场研究、展会情报、买家识别，以及巴西和全球市场拓展。",
+        "AI 原生展会情报平台：在每场展会前、中、后，将展会、参展商、买家和市场转化为商业机会。",
     },
     businessData: {
       title: "巴西企业数据查询（CNPJ 与官方注册信息）| DeepB2B",
@@ -115,6 +140,11 @@ export const zhCnDictionary: TranslationDictionary = {
     resources: "洞察",
     events: "展会与活动",
     calendar: "展会日历",
+    ecosystem: "生态系统",
+    deepclub: "DeepClub",
+    projects: "企业项目",
+    partners: "成为合作伙伴",
+    platform: "运作方式",
     about: "关于我们",
     contact: "商务咨询",
     login: "平台入口",
@@ -788,7 +818,7 @@ export const zhCnDictionary: TranslationDictionary = {
     preferences: "隐私政策",
   },
   footer: {
-    description: "巴西企业数据与商业情报平台（AI 驱动）：以透明可溯源的数据帮助全球企业发现巴西商业机会。",
+    description: "展会情报与 B2B 业务拓展。展会情报、市场情报与业务拓展。",
     platformGroup: "核心情报",
     resourcesGroup: "公司与指南",
     legalGroup: "合规与法律",

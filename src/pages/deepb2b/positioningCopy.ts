@@ -1,6 +1,6 @@
 import type { Locale } from "@/i18n/types";
 
-/** Textos do posicionamento 2027 (Market Intelligence & Business Development): home e Feiras e Eventos. */
+/** Textos do posicionamento (DNA: Event Intelligence & B2B Business Development): hero da home e Feiras e Eventos. */
 
 export interface HomeCopy {
   eyebrow: string;
@@ -48,7 +48,7 @@ export interface EventsCopy {
 
 const HOME: Record<Locale, HomeCopy> = {
   "pt-br": {
-    eyebrow: "Market Intelligence & Business Development",
+    eyebrow: "Event Intelligence & B2B Business Development",
     h1: "Inteligência que conecta mercados e gera negócios.",
     subtitle:
       "Transformamos dados empresariais, inteligência de mercado e informações sobre eventos em oportunidades comerciais para empresas que desejam expandir seus negócios no Brasil e no mundo.",
@@ -98,7 +98,7 @@ const HOME: Record<Locale, HomeCopy> = {
     finalCta: "Solicitar apresentação",
   },
   en: {
-    eyebrow: "Market Intelligence & Business Development",
+    eyebrow: "Event Intelligence & B2B Business Development",
     h1: "Intelligence that connects markets and creates business.",
     subtitle:
       "We turn company data, market intelligence and trade show insight into commercial opportunities for companies expanding in Brazil and around the world.",
@@ -148,7 +148,7 @@ const HOME: Record<Locale, HomeCopy> = {
     finalCta: "Request a presentation",
   },
   es: {
-    eyebrow: "Market Intelligence & Business Development",
+    eyebrow: "Event Intelligence & B2B Business Development",
     h1: "Inteligencia que conecta mercados y genera negocios.",
     subtitle:
       "Convertimos datos empresariales, inteligencia de mercado e información sobre ferias en oportunidades comerciales para empresas que quieren crecer en Brasil, en América Latina y en el mundo.",
@@ -198,7 +198,7 @@ const HOME: Record<Locale, HomeCopy> = {
     finalCta: "Solicitar presentación",
   },
   "zh-cn": {
-    eyebrow: "市场情报与业务拓展",
+    eyebrow: "展会情报与 B2B 业务拓展",
     h1: "连接市场、创造商机的商业情报。",
     subtitle: "我们将企业数据、市场情报和展会信息转化为商业机会，帮助企业拓展巴西及全球市场。",
     ctaSolutions: "了解解决方案",
