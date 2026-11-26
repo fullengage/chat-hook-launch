@@ -14,7 +14,7 @@ export const ptBrDictionary: TranslationDictionary = {
     valueProposition:
       "Event Intelligence & B2B Business Development: plataforma nativa de inteligência artificial especializada em inteligência de eventos e desenvolvimento de negócios B2B, no Brasil e no exterior.",
     legacyEntityNotice:
-      "DeepB2B é uma empresa do Grupo FullWeb, operada pela DEEPSON - INTELIGENCIA DE DADOS E TECNOLOGIA LTDA (CNPJ 19.904.935/0001-20).",
+      "DeepB2B é uma empresa do Grupo FullWeb · CNPJ 19.904.935/0001-20.",
   },
   seo: {
     platform: {
