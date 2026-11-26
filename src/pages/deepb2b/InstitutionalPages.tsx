@@ -44,7 +44,7 @@ export const EcosystemDiagram: React.FC<{ actors: string[]; hub: string }> = ({ 
   );
 };
 
-const InfoPageView: React.FC<{ copy: InfoPage; seoKey: RouteKey; ctaTo: RouteKey; children?: React.ReactNode }> = ({ copy, seoKey, ctaTo, children }) => {
+const InfoPageView: React.FC<{ copy: InfoPage; seoKey: RouteKey; ctaTo: RouteKey; heroImage?: string; children?: React.ReactNode }> = ({ copy, seoKey, ctaTo, heroImage, children }) => {
   const { locale, dict, routeTo } = useLocale();
   const seo = dict.seo[seoKey];
   const cta = routeTo(ctaTo);
@@ -55,8 +55,14 @@ const InfoPageView: React.FC<{ copy: InfoPage; seoKey: RouteKey; ctaTo: RouteKey
         description={seo.description}
         jsonLd={[{ "@context": "https://schema.org", "@type": "WebPage", name: copy.h1, url: `${SITE_ORIGIN}${routeTo(seoKey)}`, description: copy.lead }]}
       />
-      <section className="bg-[#040f21] text-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-16 md:py-24">
+      <section className="relative overflow-hidden bg-[#040f21] text-white">
+        {heroImage && (
+          <>
+            <img src={heroImage} alt="" aria-hidden="true" className="absolute inset-0 h-full w-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#040f21] via-[#040f21]/85 to-[#040f21]/40" aria-hidden="true" />
+          </>
+        )}
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 py-16 md:py-24">
           <Breadcrumbs dark items={[{ label: copy.eyebrow }]} />
           <span className={`mt-4 ${eyebrow}`}>{copy.eyebrow}</span>
           <h1 className="mt-3 max-w-4xl text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">{copy.h1}</h1>
@@ -100,14 +106,38 @@ const InfoPageView: React.FC<{ copy: InfoPage; seoKey: RouteKey; ctaTo: RouteKey
   );
 };
 
+// ponytail: fotos enviadas pelo Richard (26/11/2026); trocar por fotos próprias/licenciadas quando houver
+const ECO_PHOTOS = [
+  "/images/ecossistema/estande-internacional.jpg",
+  "/images/ecossistema/pavilhao-expositores.jpg",
+  "/images/ecossistema/visitantes-pavilhao.jpg",
+];
+const ECO_CAPTIONS: Record<string, string[]> = {
+  "pt-br": ["Feiras movimentam mercados e aproximam países", "Expositores apresentam soluções, produtos e marcas", "Visitantes e compradores circulam entre os setores"],
+  en: ["Trade shows move markets and bring countries together", "Exhibitors showcase solutions, products and brands", "Visitors and buyers move across every sector"],
+  es: ["Las ferias mueven mercados y acercan países", "Los expositores presentan soluciones, productos y marcas", "Visitantes y compradores recorren todos los sectores"],
+  "zh-cn": ["展会推动市场、连接各国", "参展商展示解决方案、产品与品牌", "观众与买家穿梭于各个行业"],
+};
+
 export const EcosystemPage: React.FC = () => {
   const { locale } = useLocale();
   const h = homeSections(locale);
+  const captions = ECO_CAPTIONS[locale];
   return (
-    <InfoPageView copy={ecosystemCopy(locale)} seoKey="ecosystem" ctaTo="contact">
+    <InfoPageView copy={ecosystemCopy(locale)} seoKey="ecosystem" ctaTo="contact" heroImage="/images/ecossistema/corredor-feira-desfocado.jpg">
       <section className="py-16 bg-[#f8fafc] border-b border-slate-200">
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <EcosystemDiagram actors={h.actors} hub={h.hub} />
+        </div>
+      </section>
+      <section className="bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 pt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
+          {ECO_PHOTOS.map((src, i) => (
+            <figure key={src} className="group overflow-hidden rounded-2xl bg-[#040f21]">
+              <img src={src} alt={captions[i]} loading="lazy" className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <figcaption className="px-5 py-4 text-sm font-semibold text-white">{captions[i]}</figcaption>
+            </figure>
+          ))}
         </div>
       </section>
     </InfoPageView>
@@ -116,12 +146,12 @@ export const EcosystemPage: React.FC = () => {
 
 export const ProjectsPage: React.FC = () => {
   const { locale } = useLocale();
-  return <InfoPageView copy={projectsCopy(locale)} seoKey="projects" ctaTo="contact" />;
+  return <InfoPageView copy={projectsCopy(locale)} seoKey="projects" ctaTo="contact" heroImage="/images/ecossistema/pavilhao-expositores.jpg" />;
 };
 
 export const PartnersPage: React.FC = () => {
   const { locale } = useLocale();
-  return <InfoPageView copy={partnersCopy(locale)} seoKey="partners" ctaTo="contact" />;
+  return <InfoPageView copy={partnersCopy(locale)} seoKey="partners" ctaTo="contact" heroImage="/images/ecossistema/estande-internacional.jpg" />;
 };
 
 export const DeepClubPage: React.FC = () => {
@@ -136,6 +166,8 @@ export const DeepClubPage: React.FC = () => {
         jsonLd={[{ "@context": "https://schema.org", "@type": "WebPage", name: "DeepClub", url: `${SITE_ORIGIN}${routeTo("deepclub")}`, description: c.lead }]}
       />
       <section className="relative overflow-hidden bg-[#040f21] text-white">
+        <img src="/images/ecossistema/visitantes-pavilhao.jpg" alt="" aria-hidden="true" className="absolute inset-0 h-full w-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#040f21] via-[#040f21]/90 to-[#1a1033]/60" aria-hidden="true" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,107,0,0.22),transparent_55%)]" aria-hidden="true" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 py-16 md:py-24">
           <Breadcrumbs dark items={[{ label: "DeepClub" }]} />

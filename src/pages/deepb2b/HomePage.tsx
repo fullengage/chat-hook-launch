@@ -160,6 +160,7 @@ export const HomePage: React.FC = () => {
             </div>
           </div>
           <aside className="lg:col-span-5">
+            <img src="/images/ecossistema/visitantes-pavilhao.jpg" alt={s.eventsEyebrow} loading="lazy" className="mb-8 aspect-[16/10] w-full rounded-2xl object-cover shadow-lg" />
             <h3 className="font-serif text-xl font-bold text-[#0f172a] border-b-2 border-[#040f21] pb-2">{s.upcomingTitle}</h3>
             <ul className="divide-y divide-slate-200">
               {upcoming.map((show) => {
@@ -220,6 +221,7 @@ export const HomePage: React.FC = () => {
             </Link>
           </div>
           <div>
+            <img src="/images/ecossistema/pavilhao-expositores.jpg" alt={s.projEyebrow} loading="lazy" className="mb-6 aspect-[16/9] w-full rounded-2xl object-cover opacity-90" />
             <p className="text-sm font-bold text-slate-300">{s.projListTitle}</p>
             <ul className="mt-4 space-y-3">
               {s.projBullets.map((b) => (
@@ -304,8 +306,10 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* 8. Mercado Internacional */}
-      <section className="py-24 bg-[#040f21] text-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+      <section className="relative overflow-hidden py-24 bg-[#040f21] text-white">
+        <img src="/images/ecossistema/estande-internacional.jpg" alt="" aria-hidden="true" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+        <div className="absolute inset-0 bg-[#040f21]/85" aria-hidden="true" />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
           <div>
             <span className={eyebrow}>{s.globalEyebrow}</span>
             <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight">{s.globalTitle}</h2>
