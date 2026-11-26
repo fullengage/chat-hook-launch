@@ -17,6 +17,26 @@ export const esDictionary: TranslationDictionary = {
       "DeepB2B es la marca global de inteligencia operada por Deepson (DEEPSON - INTELIGENCIA DE DADOS E TECNOLOGIA LTDA, CNPJ 19.904.935/0001-20 · Grupo FullWeb).",
   },
   seo: {
+    ecosystem: {
+      title: "Ecosistema DeepB2B — Inteligencia, eventos y conexiones empresariales",
+      description:
+        "Cómo DeepB2B conecta organizadores, expositores, compradores, visitantes y proveedores con inteligencia de mercado y desarrollo de negocios.",
+    },
+    deepclub: {
+      title: "DeepClub — El club empresarial de DeepB2B (lanzamiento próximo)",
+      description:
+        "DeepClub, el club de negocios de DeepB2B: inteligencia de mercado, central de demandas, conexiones y beneficios. Planes Standard y Experience muy pronto.",
+    },
+    projects: {
+      title: "Proyectos Empresariales de inteligencia comercial | DeepB2B",
+      description:
+        "Proyectos a medida de inteligencia comercial y desarrollo de negocios: mapeo de mercado, compradores, decisores, campañas y expansión nacional e internacional.",
+    },
+    partners: {
+      title: "Sea un socio de DeepB2B",
+      description:
+        "Organizadores, montadores, hoteles, asociaciones y proveedores: forme parte de la red de socios de DeepB2B en el ecosistema de ferias y negocios.",
+    },
     calendar: {
       title: "Calendario de ferias de negocios 2027 en Brasil | DeepB2B",
       description:
@@ -119,6 +139,10 @@ export const esDictionary: TranslationDictionary = {
     resources: "Insights",
     events: "Ferias y Eventos",
     calendar: "Calendario de ferias",
+    ecosystem: "Ecosistema",
+    deepclub: "DeepClub",
+    projects: "Proyectos Empresariales",
+    partners: "Sea un socio",
     about: "Nosotros",
     contact: "Contacto",
     login: "Acceso a Plataforma",
@@ -818,7 +842,7 @@ export const esDictionary: TranslationDictionary = {
   },
   footer: {
     description:
-      "Brazil Business Data & Market Intelligence. Datos empresariales brasileños, mapeo sectorial e inteligencia comercial con trazabilidad transparente.",
+      "Market Intelligence & Business Development. Inteligencia de mercado, ferias y conexiones empresariales para Brasil y el mundo.",
     platformGroup: "Inteligencia",
     resourcesGroup: "Empresa y Recursos",
     legalGroup: "Gobernanza y Legal",

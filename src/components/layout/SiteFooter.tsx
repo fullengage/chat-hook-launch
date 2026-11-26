@@ -82,6 +82,31 @@ export const SiteFooter: React.FC = () => {
             </h3>
             <ul className="space-y-2.5 text-xs">
               <li>
+                <Link to={routeTo("ecosystem")} className="hover:text-[#ff6b00] transition-colors">
+                  {dict.nav.ecosystem}
+                </Link>
+              </li>
+              <li>
+                <Link to={routeTo("deepclub")} className="hover:text-[#ff6b00] transition-colors">
+                  {dict.nav.deepclub}
+                </Link>
+              </li>
+              <li>
+                <Link to={routeTo("projects")} className="hover:text-[#ff6b00] transition-colors">
+                  {dict.nav.projects}
+                </Link>
+              </li>
+              <li>
+                <Link to={routeTo("events")} className="hover:text-[#ff6b00] transition-colors">
+                  {dict.nav.events}
+                </Link>
+              </li>
+              <li>
+                <Link to={routeTo("partners")} className="hover:text-[#ff6b00] transition-colors">
+                  {dict.nav.partners}
+                </Link>
+              </li>
+              <li>
                 <Link to={routeTo("solutions")} className="hover:text-[#ff6b00] transition-colors">
                   {dict.nav.solutions}
                 </Link>

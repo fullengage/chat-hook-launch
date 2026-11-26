@@ -17,6 +17,26 @@ export const ptBrDictionary: TranslationDictionary = {
       "DeepB2B é a marca global de inteligência operada pela Deepson (DEEPSON - INTELIGENCIA DE DADOS E TECNOLOGIA LTDA, CNPJ 19.904.935/0001-20 · Grupo FullWeb).",
   },
   seo: {
+    ecosystem: {
+      title: "Ecossistema DeepB2B — Inteligência, eventos e conexões empresariais",
+      description:
+        "Como a DeepB2B conecta organizadoras, expositores, compradores, visitantes e fornecedores com inteligência de mercado e desenvolvimento de negócios.",
+    },
+    deepclub: {
+      title: "DeepClub — Clube empresarial da DeepB2B (lançamento em breve)",
+      description:
+        "DeepClub, o clube de negócios da DeepB2B: inteligência de mercado, Central de Demandas, conexões e benefícios. Planos Standard e Experience em breve.",
+    },
+    projects: {
+      title: "Projetos Empresariais de inteligência comercial | DeepB2B",
+      description:
+        "Projetos sob medida de inteligência comercial e desenvolvimento de negócios: mapeamento de mercado, compradores, decisores, campanhas e expansão nacional e internacional.",
+    },
+    partners: {
+      title: "Seja um parceiro DeepB2B",
+      description:
+        "Organizadoras, montadoras, hotéis, associações e fornecedores: conheça a rede de parceiros da DeepB2B no ecossistema de feiras e negócios.",
+    },
     calendar: {
       title: "Calendário de feiras de negócios 2027 em São Paulo | DeepB2B",
       description:
@@ -119,6 +139,10 @@ export const ptBrDictionary: TranslationDictionary = {
     resources: "Insights",
     events: "Feiras e Eventos",
     calendar: "Calendário de feiras",
+    ecosystem: "Ecossistema",
+    deepclub: "DeepClub",
+    projects: "Projetos Empresariais",
+    partners: "Seja um parceiro",
     about: "Sobre",
     contact: "Contato",
     login: "Acessar Plataforma",
@@ -809,7 +833,7 @@ export const ptBrDictionary: TranslationDictionary = {
   },
   footer: {
     description:
-      "Inteligência Empresarial Brasileira com IA: dados cadastrais, mapeamento setorial e descoberta de oportunidades B2B com transparência.",
+      "Market Intelligence & Business Development. Inteligência de mercado, eventos e conexões empresariais para o Brasil e o mundo.",
     platformGroup: "Inteligência",
     resourcesGroup: "Empresa & Conteúdos",
     legalGroup: "Governança & Legal",

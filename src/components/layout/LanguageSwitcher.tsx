@@ -42,7 +42,7 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
   return (
     <div
       className={cn(
-        "inline-flex items-center gap-1 rounded-full border border-white/15 bg-white/5 p-1",
+        "inline-flex shrink-0 items-center gap-1 rounded-full border border-white/15 bg-white/5 p-1",
         className,
       )}
       role="group"
@@ -59,7 +59,7 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
             aria-label={LOCALE_ARIA_LABELS[loc]}
             aria-pressed={active}
             className={cn(
-              "rounded-full px-2.5 py-1 text-xs font-bold transition-colors",
+              "rounded-full px-2.5 py-1 text-xs font-bold whitespace-nowrap transition-colors",
               active
                 ? "bg-[#ff6b00] text-white shadow-sm"
                 : "text-slate-300 hover:bg-white/10 hover:text-white",

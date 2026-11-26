@@ -87,3 +87,15 @@ test("fase 1: 3 fichas novas, MEI sinalizado, formulário do comprador, organiza
   for (const slug of ["plastico-brasil", "anuga-select-brazil", "automec", "feicon", "beauty-fair"]) assert.ok(cal.includes(`/pt-br/feiras/${slug}`), slug);
   assert.ok(fs.readFileSync("dist/sitemap.xml", "utf-8").includes("https://deepb2b.ai/en/trade-show-calendar/automec"));
 });
+
+test("home institucional: hero mantido, seções novas, páginas novas nos 4 idiomas e sem preço público", () => {
+  const home = fs.readFileSync("dist/pt-br/index.html", "utf-8");
+  assert.ok(home.includes("Inteligência que conecta mercados e gera negócios."), "hero headline changed");
+  for (const t of ["Muito além dos dados. Muito além das conexões.", "Uma feira começa muito antes da abertura dos portões.", "Transformamos inteligência em oportunidades comerciais.", "Negócios crescem quando as conexões certas acontecem.", "Oportunidades de negócios não têm fronteiras."])
+    assert.ok(home.includes(t), `home section missing: ${t}`);
+  assert.ok(!/R\$\s*12/.test(home), "no public project price on home");
+  for (const f of ["dist/pt-br/ecossistema/index.html", "dist/en/deepclub/index.html", "dist/es/proyectos-empresariales/index.html", "dist/zh-cn/partners/index.html", "dist/pt-br/deepclub/index.html"])
+    assert.ok(fs.existsSync(f), `${f} not prerendered`);
+  const club = fs.readFileSync("dist/pt-br/deepclub/index.html", "utf-8");
+  assert.ok(club.includes("Lançamento em breve") && club.includes("Preços em definição."), "DeepClub must not look available");
+});

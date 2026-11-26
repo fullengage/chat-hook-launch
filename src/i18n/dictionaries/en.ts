@@ -17,6 +17,26 @@ export const enDictionary: TranslationDictionary = {
       "DeepB2B is the global intelligence brand operated by Deepson (DEEPSON - INTELIGENCIA DE DADOS E TECNOLOGIA LTDA, CNPJ 19.904.935/0001-20 · Grupo FullWeb).",
   },
   seo: {
+    ecosystem: {
+      title: "The DeepB2B Ecosystem — Intelligence, events and business connections",
+      description:
+        "How DeepB2B connects organizers, exhibitors, buyers, visitors and suppliers through market intelligence and business development.",
+    },
+    deepclub: {
+      title: "DeepClub — DeepB2B's business club (launching soon)",
+      description:
+        "DeepClub, DeepB2B's business club: market intelligence, a business demand center, connections and benefits. Standard and Experience plans coming soon.",
+    },
+    projects: {
+      title: "Business Projects in commercial intelligence | DeepB2B",
+      description:
+        "Tailored commercial-intelligence and business-development projects: market mapping, buyers, decision-makers, campaigns and national and international expansion.",
+    },
+    partners: {
+      title: "Become a DeepB2B partner",
+      description:
+        "Organizers, booth builders, hotels, associations and suppliers: join DeepB2B's partner network in the trade show and business ecosystem.",
+    },
     calendar: {
       title: "2027 Brazil Trade Show Calendar — São Paulo | DeepB2B",
       description:
@@ -119,6 +139,10 @@ export const enDictionary: TranslationDictionary = {
     resources: "Insights",
     events: "Trade Shows & Events",
     calendar: "Trade show calendar",
+    ecosystem: "Ecosystem",
+    deepclub: "DeepClub",
+    projects: "Business Projects",
+    partners: "Become a partner",
     about: "About",
     contact: "Contact",
     login: "Platform Login",
@@ -818,7 +842,7 @@ export const enDictionary: TranslationDictionary = {
   },
   footer: {
     description:
-      "Brazil's Business Intelligence, Powered by AI. Structured Brazilian company data, sector mapping, and commercial discovery for global and domestic B2B teams.",
+      "Market Intelligence & Business Development. Market intelligence, trade shows and business connections for Brazil and the world.",
     platformGroup: "Intelligence",
     resourcesGroup: "Company & Guides",
     legalGroup: "Governance & Legal",

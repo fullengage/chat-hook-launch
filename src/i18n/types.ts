@@ -17,7 +17,11 @@ export type RouteKey =
   | "lgpd"
   | "dataDeletion"
   | "events"
-  | "calendar";
+  | "calendar"
+  | "ecosystem"
+  | "deepclub"
+  | "projects"
+  | "partners";
 
 export type CapabilityKey =
   | "businessData"
@@ -105,6 +109,10 @@ export interface TranslationDictionary {
     resources: string;
     events: string;
     calendar: string;
+    ecosystem: string;
+    deepclub: string;
+    projects: string;
+    partners: string;
     about: string;
     contact: string;
     login: string;
