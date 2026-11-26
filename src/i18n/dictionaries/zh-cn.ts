@@ -11,7 +11,7 @@ export const zhCnDictionary: TranslationDictionary = {
     name: "DeepB2B",
     tagline: "巴西企业数据与商业情报平台 · AI 驱动",
     subtitle: "BRAZIL BUSINESS DATA & MARKET INTELLIGENCE",
-    valueProposition: "巴西企业数据与商业情报平台——助力中国企业精准发现巴西买家、经销商、供应商与商业合作伙伴。",
+    valueProposition: "市场情报与业务拓展：展会与活动情报、买家识别，以及在巴西和海外的商业扩张。",
     legacyEntityNotice:
       "DeepB2B 是巴西数据科技公司 Deepson（DEEPSON - INTELIGENCIA DE DADOS E TECNOLOGIA LTDA，CNPJ 19.904.935/0001-20 · Grupo FullWeb）面向全球市场推出的商业情报品牌。",
   },

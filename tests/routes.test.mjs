@@ -62,3 +62,28 @@ test("first Insights articles are published in pt-BR and EN only, with matching 
   assert.ok(!fs.existsSync("dist/es/recursos/beauty-fair-2027-cosmetics-buyers/index.html"));
   assert.ok(!fs.readFileSync("dist/es/recursos/index.html", "utf-8").includes("beauty-fair-2027-cosmetics-buyers"));
 });
+
+test("Feiras e Eventos is a news front page: ticker, latest headlines and buyer-market box", () => {
+  const html = fs.readFileSync("dist/pt-br/feiras-e-eventos/index.html", "utf-8");
+  assert.ok(html.includes("ticker-track"), "ticker missing");
+  assert.ok(html.includes("FEICON 2027 acontece de 6 a 9 de abril no São Paulo Expo"), "verified headline missing");
+  assert.ok(html.includes("Mercado comprador") && html.includes("9.290"), "market box missing");
+});
+
+test("fase 1: 3 fichas novas, MEI sinalizado, formulário do comprador, organizador e Organization sem Deepson", () => {
+  for (const f of [
+    "dist/pt-br/feiras/plastico-brasil/index.html", "dist/en/trade-show-calendar/anuga-select-brazil/index.html",
+    "dist/es/ferias/automec/index.html", "dist/zh-cn/trade-show-calendar/automec/index.html",
+  ]) assert.ok(fs.existsSync(f), `${f} not prerendered`);
+  const page = fs.readFileSync("dist/pt-br/feiras/automec/index.html", "utf-8");
+  assert.ok(page.includes('"startDate":"2027-04-20"') && page.includes('"@type":"Event"'));
+  assert.ok(page.includes("dos quais") && page.includes("Inclui MEI"), "MEI not flagged");
+  assert.ok(page.includes("Vai visitar a Automec? Diga o que procura."), "buyer block missing");
+  assert.ok(page.includes("Sou o organizador desta feira"), "organizer link missing");
+  assert.ok(!page.includes("expositores confirmados"), "exhibitors block must hide without data");
+  assert.ok(!page.includes('"alternateName":"Deepson"'), "Organization still has Deepson");
+  assert.ok(page.includes("Inteligência de mercado e desenvolvimento de negócios"), "Organization description not updated");
+  const cal = fs.readFileSync("dist/pt-br/feiras/index.html", "utf-8");
+  for (const slug of ["plastico-brasil", "anuga-select-brazil", "automec", "feicon", "beauty-fair"]) assert.ok(cal.includes(`/pt-br/feiras/${slug}`), slug);
+  assert.ok(fs.readFileSync("dist/sitemap.xml", "utf-8").includes("https://deepb2b.ai/en/trade-show-calendar/automec"));
+});
