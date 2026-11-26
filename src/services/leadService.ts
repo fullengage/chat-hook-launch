@@ -29,108 +29,54 @@ export interface LeadSubmissionResult {
   errorMessage?: string;
 }
 
-function getEdgeFunctionEndpoint(): string | null {
-  const baseUrl = import.meta.env.VITE_SUPABASE_URL as string | undefined;
-  const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined;
-  if (!baseUrl || !anonKey) return null;
-  return `${baseUrl}/functions/v1/capture-lead`;
-}
+/** Formulários institucionais gravam no banco do app (POST https://app.deepb2b.ai/api/site/contato -> tabela site_contatos).
+ * text/plain evita a pré-checagem de CORS; o servidor lê o JSON. Antes iam para chathook_trial_leads (Supabase legado). */
+const SITE_CONTATO_URL = "https://app.deepb2b.ai/api/site/contato";
 
-async function postToCaptureLead(body: {
-  name: string;
-  email: string;
-  whatsapp: string;
-  companySize: string;
-  source: string;
-  page: string;
-  userAgent: string;
-}): Promise<LeadSubmissionResult> {
-  const endpoint = getEdgeFunctionEndpoint();
-  const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined;
-
-  if (!endpoint || !anonKey) {
-    return {
-      ok: false,
-      errorMessage: "Lead service configuration is unavailable in this environment.",
-    };
-  }
-
+async function postToApp(body: Record<string, unknown>): Promise<LeadSubmissionResult> {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 12000);
-
   try {
-    const response = await fetch(endpoint, {
+    const r = await fetch(SITE_CONTATO_URL, {
       method: "POST",
       signal: controller.signal,
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${anonKey}`,
-        apikey: anonKey,
-      },
+      headers: { "Content-Type": "text/plain" },
       body: JSON.stringify(body),
     });
-
-    if (!response.ok) {
-      return {
-        ok: false,
-        errorMessage: `Request failed with status ${response.status}`,
-      };
-    }
-
-    return { ok: true };
-  } catch (err) {
-    return {
-      ok: false,
-      errorMessage: err instanceof Error ? err.message : "Network error",
-    };
+    return r.ok ? { ok: true } : { ok: false, errorMessage: `Request failed with status ${r.status}` };
+  } catch (error) {
+    return { ok: false, errorMessage: error instanceof Error ? error.message : "Network error" };
   } finally {
     clearTimeout(timeout);
   }
 }
 
 export async function submitDemoRequest(payload: DemoLeadPayload): Promise<LeadSubmissionResult> {
-  const normalizedPhone = payload.phone?.trim() || "international-no-whatsapp";
-  const structuredContext = [
-    `Company: ${payload.company.trim()}`,
-    `Country: ${payload.country.trim()}`,
-    `Locale: ${payload.locale}`,
-    `Purpose: ${payload.purpose}`,
-    payload.sector?.trim() ? `Sector: ${payload.sector.trim()}` : null,
-    payload.stage?.trim() ? `Stage: ${payload.stage.trim()}` : null,
-    `Need: ${payload.message.trim()}`,
-  ]
-    .filter(Boolean)
-    .join(" | ");
-
-  return postToCaptureLead({
+  return postToApp({
+    kind: "demo",
+    locale: payload.locale,
+    page: payload.page,
     name: payload.name.trim(),
     email: payload.email.trim(),
-    whatsapp: normalizedPhone,
-    companySize: structuredContext,
-    source: `deepb2b_demo_request_${payload.locale}`,
-    page: payload.page,
-    userAgent: typeof navigator !== "undefined" ? navigator.userAgent : "ssr",
+    company: payload.company.trim(),
+    country: payload.country.trim(),
+    phone: payload.phone?.trim() ?? "",
+    purpose: payload.purpose,
+    sector: payload.sector?.trim() ?? "",
+    stage: payload.stage?.trim() ?? "",
+    message: payload.message.trim(),
   });
 }
 
-export async function submitDataDeletionRequest(
-  payload: DataDeletionPayload,
-): Promise<LeadSubmissionResult> {
-  const normalizedPhone = payload.phone?.trim() || "privacy-optout-no-phone";
-  const structuredContext = [
-    `LGPD/Privacy Request`,
-    `Locale: ${payload.locale}`,
-    payload.company ? `Company: ${payload.company.trim()}` : "Company: N/A",
-    `Details: ${payload.details.trim()}`,
-  ].join(" | ");
-
-  return postToCaptureLead({
+export async function submitDataDeletionRequest(payload: DataDeletionPayload): Promise<LeadSubmissionResult> {
+  return postToApp({
+    kind: "deletion",
+    locale: payload.locale,
+    page: payload.page,
     name: payload.name.trim(),
     email: payload.email.trim(),
-    whatsapp: normalizedPhone,
-    companySize: structuredContext,
-    source: `deepb2b_lgpd_deletion_${payload.locale}`,
-    page: payload.page,
-    userAgent: typeof navigator !== "undefined" ? navigator.userAgent : "ssr",
+    company: payload.company?.trim() ?? "",
+    phone: payload.phone?.trim() ?? "",
+    message: payload.details.trim(),
   });
 }

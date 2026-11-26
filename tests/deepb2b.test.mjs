@@ -158,7 +158,9 @@ test("Consent-gated analytics: index.html does not unconditionally inject GTM or
 test("Contact flows and Supabase lead capture remain intact", () => {
   const appRoutes = fs.readFileSync(path.join(ROOT, "src/AppRoutes.tsx"), "utf-8");
   assert.ok(appRoutes.includes('path="/obrigado"'));
-  assert.ok(fs.existsSync(path.join(ROOT, "supabase/functions/capture-lead/index.ts")));
+  // apresentação e LGPD gravam no banco do app (site_contatos), não mais no Supabase legado do ChatHook
+  const leads = fs.readFileSync(path.join(ROOT, "src/services/leadService.ts"), "utf-8");
+  assert.ok(leads.includes("https://app.deepb2b.ai/api/site/contato") && !leads.includes("capture-lead"));
 });
 
 test("DeepB2B pages contain zero ChatHook brand leaks", () => {
