@@ -11,7 +11,7 @@ export const zhCnDictionary: TranslationDictionary = {
     name: "DeepB2B",
     tagline: "巴西企业数据与商业情报平台 · AI 驱动",
     subtitle: "BRAZIL BUSINESS DATA & MARKET INTELLIGENCE",
-    valueProposition: "市场情报与业务拓展：展会与活动情报、买家识别，以及在巴西和海外的商业扩张。",
+    valueProposition: "展会情报与 B2B 业务拓展：专注于展会情报和 B2B 业务拓展的 AI 原生平台，服务巴西及全球市场。",
     legacyEntityNotice:
       "DeepB2B 是巴西数据科技公司 Deepson（DEEPSON - INTELIGENCIA DE DADOS E TECNOLOGIA LTDA，CNPJ 19.904.935/0001-20 · Grupo FullWeb）面向全球市场推出的商业情报品牌。",
   },
@@ -19,7 +19,7 @@ export const zhCnDictionary: TranslationDictionary = {
     ecosystem: {
       title: "DeepB2B 生态系统 — 情报、展会与商业连接",
       description:
-        "DeepB2B 如何通过市场情报与业务拓展连接主办方、参展商、买家、观众和供应商。",
+        "DeepB2B 如何通过展会情报与 B2B 业务拓展连接主办方、参展商、买家、观众和供应商。",
     },
     deepclub: {
       title: "DeepClub — DeepB2B 商务俱乐部（即将推出）",
@@ -47,9 +47,9 @@ export const zhCnDictionary: TranslationDictionary = {
         "让每一次参展都转化为商机：展前识别买家、邀约营销、商务会议安排与展后跟进。",
     },
     home: {
-      title: "DeepB2B — 市场情报与业务拓展",
+      title: "DeepB2B — 展会情报与 B2B 业务拓展",
       description:
-        "连接市场、创造商机的商业情报：市场研究、展会情报、买家识别，以及巴西和全球市场拓展。",
+        "AI 原生展会情报平台：在每场展会前、中、后，将展会、参展商、买家和市场转化为商业机会。",
     },
     businessData: {
       title: "巴西企业数据查询（CNPJ 与官方注册信息）| DeepB2B",
@@ -812,7 +812,7 @@ export const zhCnDictionary: TranslationDictionary = {
     preferences: "隐私政策",
   },
   footer: {
-    description: "市场情报与业务拓展。面向巴西与全球的市场情报、展会与商业连接。",
+    description: "展会情报与 B2B 业务拓展。展会情报、市场情报与业务拓展。",
     platformGroup: "核心情报",
     resourcesGroup: "公司与指南",
     legalGroup: "合规与法律",

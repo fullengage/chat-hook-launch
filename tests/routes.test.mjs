@@ -82,7 +82,7 @@ test("fase 1: 3 fichas novas, MEI sinalizado, formulário do comprador, organiza
   assert.ok(page.includes("Sou o organizador desta feira"), "organizer link missing");
   assert.ok(!page.includes("expositores confirmados"), "exhibitors block must hide without data");
   assert.ok(!page.includes('"alternateName":"Deepson"'), "Organization still has Deepson");
-  assert.ok(page.includes("Inteligência de mercado e desenvolvimento de negócios"), "Organization description not updated");
+  assert.ok(page.includes("Event Intelligence & B2B Business Development: plataforma nativa de inteligência artificial"), "Organization description must follow the DNA");
   const cal = fs.readFileSync("dist/pt-br/feiras/index.html", "utf-8");
   for (const slug of ["plastico-brasil", "anuga-select-brazil", "automec", "feicon", "beauty-fair"]) assert.ok(cal.includes(`/pt-br/feiras/${slug}`), slug);
   assert.ok(fs.readFileSync("dist/sitemap.xml", "utf-8").includes("https://deepb2b.ai/en/trade-show-calendar/automec"));

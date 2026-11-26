@@ -12,7 +12,7 @@ export const esDictionary: TranslationDictionary = {
     tagline: "Inteligencia de Datos Empresariales de Brasil, Impulsada por IA.",
     subtitle: "BRAZIL BUSINESS DATA & MARKET INTELLIGENCE",
     valueProposition:
-      "Inteligencia de mercado y desarrollo de negocios: inteligencia para ferias y eventos, identificación de compradores y expansión comercial en Brasil y en el exterior.",
+      "Event Intelligence & B2B Business Development: plataforma nativa de inteligencia artificial especializada en inteligencia de eventos y desarrollo de negocios B2B, en Brasil y en el exterior.",
     legacyEntityNotice:
       "DeepB2B es la marca global de inteligencia operada por Deepson (DEEPSON - INTELIGENCIA DE DADOS E TECNOLOGIA LTDA, CNPJ 19.904.935/0001-20 · Grupo FullWeb).",
   },
@@ -20,7 +20,7 @@ export const esDictionary: TranslationDictionary = {
     ecosystem: {
       title: "Ecosistema DeepB2B — Inteligencia, eventos y conexiones empresariales",
       description:
-        "Cómo DeepB2B conecta organizadores, expositores, compradores, visitantes y proveedores con inteligencia de mercado y desarrollo de negocios.",
+        "Cómo DeepB2B conecta organizadores, expositores, compradores, visitantes y proveedores con inteligencia de eventos y desarrollo de negocios B2B.",
     },
     deepclub: {
       title: "DeepClub — El club empresarial de DeepB2B (lanzamiento próximo)",
@@ -48,9 +48,9 @@ export const esDictionary: TranslationDictionary = {
         "Convierta su participación en ferias en oportunidades de negocio: compradores identificados antes del evento, campañas de invitación, agendas comerciales y seguimiento posterior.",
     },
     home: {
-      title: "DeepB2B — Inteligencia de Mercado y Desarrollo de Negocios",
+      title: "DeepB2B — Event Intelligence y Desarrollo de Negocios B2B",
       description:
-        "Inteligencia empresarial que conecta mercados y genera negocios: estudios de mercado, inteligencia para ferias, identificación de compradores y expansión en Brasil y América Latina.",
+        "Plataforma nativa de IA en inteligencia de eventos: ferias, expositores, compradores y mercados convertidos en oportunidades comerciales antes, durante y después de cada evento.",
     },
     businessData: {
       title: "Datos Empresariales de Brasil (CNPJ y Registros Oficiales) | DeepB2B",
@@ -842,7 +842,7 @@ export const esDictionary: TranslationDictionary = {
   },
   footer: {
     description:
-      "Market Intelligence & Business Development. Inteligencia de mercado, ferias y conexiones empresariales para Brasil y el mundo.",
+      "Event Intelligence & B2B Business Development. Inteligencia de eventos, inteligencia de mercado y desarrollo de negocios.",
     platformGroup: "Inteligencia",
     resourcesGroup: "Empresa y Recursos",
     legalGroup: "Gobernanza y Legal",
