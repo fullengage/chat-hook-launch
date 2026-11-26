@@ -17,6 +17,11 @@ export const ptBrDictionary: TranslationDictionary = {
       "DeepB2B é a marca global de inteligência operada pela Deepson (DEEPSON - INTELIGENCIA DE DADOS E TECNOLOGIA LTDA, CNPJ 19.904.935/0001-20 · Grupo FullWeb).",
   },
   seo: {
+    platform: {
+      title: "Como funciona a DeepB2B — Plataforma de Event Intelligence com IA",
+      description:
+        "Descoberta, mapeamento, qualificação pelo ICP, enriquecimento e ativação comercial: os módulos da plataforma nativa de IA da DeepB2B para inteligência de eventos.",
+    },
     ecosystem: {
       title: "Ecossistema DeepB2B — Inteligência, eventos e conexões empresariais",
       description:
@@ -143,6 +148,7 @@ export const ptBrDictionary: TranslationDictionary = {
     deepclub: "DeepClub",
     projects: "Projetos Empresariais",
     partners: "Seja um parceiro",
+    platform: "Como funciona",
     about: "Sobre",
     contact: "Contato",
     login: "Acessar Plataforma",

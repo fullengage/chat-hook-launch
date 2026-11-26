@@ -11,6 +11,7 @@ import { SiteLayout } from "@/components/layout/SiteLayout";
 import HeroRadar from "@/components/HeroRadar";
 import { homeCopy } from "./positioningCopy";
 import { homeSections } from "./institutionalCopy";
+import { dnaCopy } from "./dnaCopy";
 import { EcosystemDiagram } from "./InstitutionalPages";
 
 // Ícone e página de destino de cada pilar do ecossistema (mesma ordem de homeSections().pillars)
@@ -29,6 +30,7 @@ export const HomePage: React.FC = () => {
   const contact = routeTo("contact");
   const heroAnchorRef = useRef<HTMLDivElement>(null);
   const s = homeSections(locale);
+  const d = dnaCopy(locale);
   const nf = new Intl.NumberFormat(dict.htmlLang);
   const now = Date.now();
   const upcoming = [...TRADE_SHOWS].filter((t) => new Date(`${t.end}T23:59:59Z`).getTime() >= now).sort((a, b) => a.start.localeCompare(b.start)).slice(0, 5);
@@ -132,6 +134,25 @@ export const HomePage: React.FC = () => {
                 </Link>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* 2b. Para quem (os 6 públicos do DNA) */}
+      <section className="py-24 bg-[#f8fafc] border-t border-slate-200">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <span className={eyebrow}>{d.audienceEyebrow}</span>
+          <h2 className="max-w-3xl text-3xl md:text-4xl font-extrabold tracking-tight text-[#0f172a]">{d.audienceTitle}</h2>
+          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {d.audiences.map((a) => (
+              <Link key={a.title} to={routeTo(a.to)} className="group rounded-2xl border border-slate-200 bg-white p-6 transition-all hover:-translate-y-0.5 hover:border-[#ff6b00]/40 hover:shadow-lg">
+                <h3 className="flex items-center justify-between gap-3 text-lg font-extrabold text-[#0f172a]">
+                  {a.title}
+                  <ArrowRight className="h-4 w-4 shrink-0 text-slate-300 transition-all group-hover:translate-x-1 group-hover:text-[#ff6b00]" aria-hidden="true" />
+                </h3>
+                <p className="mt-2 text-sm text-slate-600 leading-relaxed">{a.text}</p>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
@@ -248,7 +269,7 @@ export const HomePage: React.FC = () => {
                 <h2 className="mt-2 text-3xl md:text-4xl font-extrabold tracking-tight">{s.clubTitle}</h2>
                 <p className="mt-4 text-slate-300 leading-relaxed">{s.clubLead}</p>
                 <div className="mt-6 flex flex-wrap gap-2">
-                  {s.clubPillars.map((p) => (
+                  {d.clubPillars.map((p) => (
                     <span key={p.title} className="rounded-full border border-white/15 px-3 py-1 text-xs font-semibold text-slate-200">{p.title}</span>
                   ))}
                 </div>
@@ -332,6 +353,7 @@ export const HomePage: React.FC = () => {
       {/* 9. CTA final */}
       <section className="py-24 bg-[#f8fafc] border-t border-slate-200">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 text-center">
+          <p className="mb-4 font-serif text-xl italic text-[#ff6b00]">{d.tagline}</p>
           <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-[#0f172a]">{s.finalTitle}</h2>
           <p className="mt-5 text-lg text-slate-600">{s.finalText}</p>
           <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">

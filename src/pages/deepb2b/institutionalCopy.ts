@@ -386,7 +386,7 @@ const CLUB: Record<Locale, ClubPage> = {
     eyebrow: "DeepClub · Business Membership", h1: "Inteligência, conexões e oportunidades de negócios.",
     lead: "O clube empresarial que conecta empresas a novos mercados, fornecedores, compradores e oportunidades — com valor todos os meses, mesmo para quem nunca participa de uma feira.",
     soon: "Lançamento em breve",
-    pillarsTitle: "Os seis pilares do DeepClub",
+    pillarsTitle: "Os pilares do DeepClub",
     pillars: [
       { title: "Vender mais", text: "Encontrar potenciais clientes e novas oportunidades comerciais." },
       { title: "Comprar melhor", text: "Encontrar fabricantes e fornecedores e negociar condições." },
@@ -409,7 +409,7 @@ const CLUB: Record<Locale, ClubPage> = {
     eyebrow: "DeepClub · Business Membership", h1: "Intelligence, connections and business opportunities.",
     lead: "The business club that connects companies to new markets, suppliers, buyers and opportunities — with value every month, even for companies that never attend a trade show.",
     soon: "Launching soon",
-    pillarsTitle: "The six pillars of DeepClub",
+    pillarsTitle: "The pillars of DeepClub",
     pillars: [
       { title: "Sell more", text: "Find potential customers and new commercial opportunities." },
       { title: "Buy better", text: "Find manufacturers and suppliers and negotiate terms." },
@@ -432,7 +432,7 @@ const CLUB: Record<Locale, ClubPage> = {
     eyebrow: "DeepClub · Business Membership", h1: "Inteligencia, conexiones y oportunidades de negocio.",
     lead: "El club empresarial que conecta empresas con nuevos mercados, proveedores, compradores y oportunidades, con valor cada mes, incluso para quien nunca participa en una feria.",
     soon: "Lanzamiento próximo",
-    pillarsTitle: "Los seis pilares de DeepClub",
+    pillarsTitle: "Los pilares de DeepClub",
     pillars: [
       { title: "Vender más", text: "Encontrar clientes potenciales y nuevas oportunidades comerciales." },
       { title: "Comprar mejor", text: "Encontrar fabricantes y proveedores y negociar condiciones." },
@@ -455,7 +455,7 @@ const CLUB: Record<Locale, ClubPage> = {
     eyebrow: "DeepClub · 商务会员", h1: "情报、连接与商业机会。",
     lead: "连接企业与新市场、供应商、买家和机会的商务俱乐部——即使从不参加展会，每个月也能获得价值。",
     soon: "即将推出",
-    pillarsTitle: "DeepClub 六大支柱",
+    pillarsTitle: "DeepClub 核心支柱",
     pillars: [
       { title: "多销售", text: "寻找潜在客户和新的商业机会。" },
       { title: "更好采购", text: "寻找制造商和供应商并洽谈条件。" },

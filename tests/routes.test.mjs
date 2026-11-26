@@ -99,3 +99,15 @@ test("home institucional: hero mantido, seções novas, páginas novas nos 4 idi
   const club = fs.readFileSync("dist/pt-br/deepclub/index.html", "utf-8");
   assert.ok(club.includes("Lançamento em breve") && club.includes("Preços em definição."), "DeepClub must not look available");
 });
+
+test("DNA: Como funciona, Para quem, visão e 'Intelligence Beyond the Event.' publicados; módulos futuros marcados", () => {
+  const p = fs.readFileSync("dist/pt-br/como-funciona/index.html", "utf-8");
+  assert.ok(p.includes("Descoberta") && p.includes("Ativação comercial"), "flow missing");
+  assert.ok(p.includes("Event Footprint") && p.includes("Em desenvolvimento"), "future modules must be flagged");
+  for (const f of ["dist/en/how-it-works/index.html", "dist/es/como-funciona/index.html", "dist/zh-cn/how-it-works/index.html"]) assert.ok(fs.existsSync(f), f);
+  const home = fs.readFileSync("dist/pt-br/index.html", "utf-8");
+  assert.ok(home.includes("Times comerciais e líderes de receita") && home.includes("Intelligence Beyond the Event."), "home DNA blocks missing");
+  assert.ok(fs.readFileSync("dist/pt-br/sobre/index.html", "utf-8").includes("Transformar informação em inteligência"), "vision missing on About");
+  assert.ok(fs.readFileSync("dist/pt-br/projetos-empresariais/index.html", "utf-8").includes("Na prática: uma indústria numa feira de máquinas"), "7 steps missing");
+  assert.ok(fs.readFileSync("dist/pt-br/deepclub/index.html", "utf-8").includes("Business Opportunities"), "DNA club pillars missing");
+});

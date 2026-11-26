@@ -48,6 +48,11 @@ export const SiteFooter: React.FC = () => {
             </h3>
             <ul className="space-y-2.5 text-xs">
               <li>
+                <Link to={routeTo("platform")} className="hover:text-[#ff6b00] transition-colors">
+                  {dict.nav.platform}
+                </Link>
+              </li>
+              <li>
                 <Link to={routeTo("businessData")} className="hover:text-[#ff6b00] transition-colors">
                   {dict.nav.businessData}
                 </Link>

@@ -30,6 +30,7 @@ export const ROUTES_BY_LOCALE: Record<Locale, Record<RouteKey, string>> = {
     deepclub: "/en/deepclub",
     projects: "/en/business-projects",
     partners: "/en/partners",
+    platform: "/en/how-it-works",
   },
   "pt-br": {
     home: "/pt-br",
@@ -53,6 +54,7 @@ export const ROUTES_BY_LOCALE: Record<Locale, Record<RouteKey, string>> = {
     deepclub: "/pt-br/deepclub",
     projects: "/pt-br/projetos-empresariais",
     partners: "/pt-br/parceiros",
+    platform: "/pt-br/como-funciona",
   },
   es: {
     home: "/es",
@@ -76,6 +78,7 @@ export const ROUTES_BY_LOCALE: Record<Locale, Record<RouteKey, string>> = {
     deepclub: "/es/deepclub",
     projects: "/es/proyectos-empresariales",
     partners: "/es/socios",
+    platform: "/es/como-funciona",
   },
   "zh-cn": {
     home: "/zh-cn",
@@ -99,6 +102,7 @@ export const ROUTES_BY_LOCALE: Record<Locale, Record<RouteKey, string>> = {
     deepclub: "/zh-cn/deepclub",
     projects: "/zh-cn/business-projects",
     partners: "/zh-cn/partners",
+    platform: "/zh-cn/how-it-works",
   },
 };
 

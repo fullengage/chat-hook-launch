@@ -16,6 +16,11 @@ export const zhCnDictionary: TranslationDictionary = {
       "DeepB2B 是巴西数据科技公司 Deepson（DEEPSON - INTELIGENCIA DE DADOS E TECNOLOGIA LTDA，CNPJ 19.904.935/0001-20 · Grupo FullWeb）面向全球市场推出的商业情报品牌。",
   },
   seo: {
+    platform: {
+      title: "DeepB2B 运作方式 — AI 原生展会情报平台",
+      description:
+        "发现、绘制地图、ICP 资质评估、信息补全与商业激活：DeepB2B AI 原生展会情报平台的各个模块。",
+    },
     ecosystem: {
       title: "DeepB2B 生态系统 — 情报、展会与商业连接",
       description:
@@ -139,6 +144,7 @@ export const zhCnDictionary: TranslationDictionary = {
     deepclub: "DeepClub",
     projects: "企业项目",
     partners: "成为合作伙伴",
+    platform: "运作方式",
     about: "关于我们",
     contact: "商务咨询",
     login: "平台入口",

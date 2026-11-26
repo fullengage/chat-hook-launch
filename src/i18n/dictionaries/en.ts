@@ -17,6 +17,11 @@ export const enDictionary: TranslationDictionary = {
       "DeepB2B is the global intelligence brand operated by Deepson (DEEPSON - INTELIGENCIA DE DADOS E TECNOLOGIA LTDA, CNPJ 19.904.935/0001-20 · Grupo FullWeb).",
   },
   seo: {
+    platform: {
+      title: "How DeepB2B works — AI-native Event Intelligence platform",
+      description:
+        "Discovery, mapping, ICP qualification, enrichment and commercial activation: the modules of DeepB2B's AI-native event intelligence platform.",
+    },
     ecosystem: {
       title: "The DeepB2B Ecosystem — Intelligence, events and business connections",
       description:
@@ -143,6 +148,7 @@ export const enDictionary: TranslationDictionary = {
     deepclub: "DeepClub",
     projects: "Business Projects",
     partners: "Become a partner",
+    platform: "How it works",
     about: "About",
     contact: "Contact",
     login: "Platform Login",

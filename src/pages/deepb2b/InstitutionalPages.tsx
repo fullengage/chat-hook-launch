@@ -9,6 +9,7 @@ import { SeoHead } from "@/components/seo/SeoHead";
 import { SiteLayout } from "@/components/layout/SiteLayout";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { clubCopy, ecosystemCopy, homeSections, partnersCopy, projectsCopy, type InfoPage } from "./institutionalCopy";
+import { dnaCopy } from "./dnaCopy";
 
 const eyebrow = "inline-block text-xs font-extrabold uppercase tracking-[0.2em] text-[#ff6b00]";
 
@@ -146,7 +147,28 @@ export const EcosystemPage: React.FC = () => {
 
 export const ProjectsPage: React.FC = () => {
   const { locale } = useLocale();
-  return <InfoPageView copy={projectsCopy(locale)} seoKey="projects" ctaTo="contact" heroImage="/images/ecossistema/pavilhao-expositores.jpg" />;
+  const d = dnaCopy(locale);
+  return (
+    <InfoPageView copy={projectsCopy(locale)} seoKey="projects" ctaTo="contact" heroImage="/images/ecossistema/pavilhao-expositores.jpg">
+      <section className="py-16 bg-[#f8fafc] border-b border-slate-200">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-10">
+          <div>
+            <h2 className="text-3xl font-extrabold tracking-tight text-[#0f172a]">{d.stepsTitle}</h2>
+            <p className="mt-3 text-slate-600">{d.stepsIntro}</p>
+            <blockquote className="mt-8 border-l-4 border-[#ff6b00] pl-5 font-serif text-xl italic text-[#0f172a]">{d.stepsQuote}</blockquote>
+          </div>
+          <ol className="space-y-3">
+            {d.steps.map((st, i) => (
+              <li key={st} className="flex items-start gap-4 rounded-xl border border-slate-200 bg-white px-5 py-3.5 text-sm font-semibold text-[#0f172a]">
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#040f21] font-mono text-xs text-[#ff6b00]">{i + 1}</span>
+                {st}
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+    </InfoPageView>
+  );
 };
 
 export const PartnersPage: React.FC = () => {
@@ -184,7 +206,7 @@ export const DeepClubPage: React.FC = () => {
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <h2 className="text-3xl font-extrabold tracking-tight text-[#0f172a]">{c.pillarsTitle}</h2>
           <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {c.pillars.map((p, i) => (
+            {dnaCopy(locale).clubPillars.map((p, i) => (
               <div key={p.title} className="rounded-2xl border border-slate-200 p-6">
                 <span className="font-mono text-xs font-bold text-[#ff6b00]">0{i + 1}</span>
                 <h3 className="mt-2 text-xl font-extrabold text-[#0f172a]">{p.title}</h3>
@@ -252,6 +274,92 @@ export const DeepClubPage: React.FC = () => {
             className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#ff6b00] px-8 py-4 text-sm font-bold text-white hover:bg-[#ea580c]"
           >
             {c.ctaLabel} <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          </Link>
+        </div>
+      </section>
+    </SiteLayout>
+  );
+};
+
+export const PlatformPage: React.FC = () => {
+  const { locale, dict, routeTo } = useLocale();
+  const d = dnaCopy(locale);
+  const contact = routeTo("contact");
+  return (
+    <SiteLayout>
+      <SeoHead
+        title={dict.seo.platform.title}
+        description={dict.seo.platform.description}
+        jsonLd={[
+          {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            name: "DeepB2B",
+            applicationCategory: "BusinessApplication",
+            operatingSystem: "Web",
+            url: `${SITE_ORIGIN}${routeTo("platform")}`,
+            description: d.platformLead,
+          },
+        ]}
+      />
+      <section className="relative overflow-hidden bg-[#040f21] text-white">
+        <img src="/images/ecossistema/corredor-feira-desfocado.jpg" alt="" aria-hidden="true" className="absolute inset-0 h-full w-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#040f21] via-[#040f21]/85 to-[#040f21]/40" aria-hidden="true" />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 py-16 md:py-24">
+          <Breadcrumbs dark items={[{ label: d.platformEyebrow }]} />
+          <span className={`mt-4 ${eyebrow}`}>{d.platformEyebrow}</span>
+          <h1 className="mt-3 max-w-4xl text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">{d.platformH1}</h1>
+          <p className="mt-6 max-w-2xl text-lg text-slate-300">{d.platformLead}</p>
+        </div>
+      </section>
+
+      <section className="py-16 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <h2 className="text-3xl font-extrabold tracking-tight text-[#0f172a]">{d.flowTitle}</h2>
+          <ol className="mt-10 grid grid-cols-1 md:grid-cols-5 gap-4">
+            {d.flow.map((f, i) => (
+              <li key={f.step} className="relative rounded-2xl border border-slate-200 p-5">
+                <span className="font-mono text-xs font-bold text-[#ff6b00]">0{i + 1}</span>
+                <h3 className="mt-2 text-lg font-extrabold text-[#0f172a]">{f.step}</h3>
+                <p className="mt-2 text-sm text-slate-600">{f.text}</p>
+                {i < d.flow.length - 1 && <ArrowRight className="absolute -right-3 top-1/2 hidden h-5 w-5 -translate-y-1/2 text-[#ff6b00] md:block" aria-hidden="true" />}
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="py-16 bg-[#f8fafc] border-y border-slate-200">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <h2 className="text-3xl font-extrabold tracking-tight text-[#0f172a]">{d.modulesTitle}</h2>
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {d.modules.map((m) => (
+              <div key={m.name} className="rounded-2xl border border-slate-200 bg-white p-6">
+                <div className="flex items-center justify-between gap-3">
+                  <h3 className="text-lg font-extrabold text-[#0f172a]">{m.name}</h3>
+                  <span className={`shrink-0 rounded-full px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider ${m.status === "live" ? "bg-emerald-50 text-emerald-700" : "bg-[#ff6b00]/10 text-[#ff6b00]"}`}>
+                    {m.status === "live" ? d.live : d.soon}
+                  </span>
+                </div>
+                <p className="mt-2 text-sm text-slate-600">{m.text}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-8 max-w-3xl text-sm text-slate-500">{d.sourcesNote}</p>
+        </div>
+      </section>
+
+      <section className="py-16 bg-[#040f21] text-white text-center">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6">
+          <p className="font-serif text-xl italic text-[#ff6b00]">{d.tagline}</p>
+          <h2 className="mt-3 text-3xl md:text-4xl font-extrabold tracking-tight">{d.platformCtaTitle}</h2>
+          <p className="mt-4 text-slate-300">{d.platformCtaText}</p>
+          <Link
+            to={contact}
+            onClick={() => trackCtaClick("platform_cta", locale, contact)}
+            className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#ff6b00] px-8 py-4 text-sm font-bold text-white hover:bg-[#ea580c]"
+          >
+            {d.platformCta} <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
         </div>
       </section>

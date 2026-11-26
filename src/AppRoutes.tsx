@@ -14,7 +14,7 @@ import LegalPage from "@/pages/deepb2b/LegalPage";
 import CookieConsent from "@/components/CookieConsent";
 import NotFound from "@/pages/NotFound";
 import EventsPage from "@/pages/deepb2b/EventsPage";
-import { DeepClubPage, EcosystemPage, PartnersPage, ProjectsPage } from "@/pages/deepb2b/InstitutionalPages";
+import { DeepClubPage, EcosystemPage, PartnersPage, PlatformPage, ProjectsPage } from "@/pages/deepb2b/InstitutionalPages";
 import { TradeShowCalendarPage, TradeShowPage } from "@/pages/deepb2b/TradeShowPages";
 
 // Legacy operational routes preserved for production continuity
@@ -54,6 +54,7 @@ export const AppRoutes: React.FC = () => {
                 <Route path={paths.deepclub} element={<DeepClubPage />} />
                 <Route path={paths.projects} element={<ProjectsPage />} />
                 <Route path={paths.partners} element={<PartnersPage />} />
+                <Route path={paths.platform} element={<PlatformPage />} />
                 <Route path={paths.calendar} element={<TradeShowCalendarPage />} />
                 <Route path={`${paths.calendar}/:slug`} element={<TradeShowPage />} />
                 <Route path={paths.solutions} element={<SolutionsPage />} />

@@ -21,7 +21,8 @@ export type RouteKey =
   | "ecosystem"
   | "deepclub"
   | "projects"
-  | "partners";
+  | "partners"
+  | "platform";
 
 export type CapabilityKey =
   | "businessData"
@@ -113,6 +114,7 @@ export interface TranslationDictionary {
     deepclub: string;
     projects: string;
     partners: string;
+    platform: string;
     about: string;
     contact: string;
     login: string;

@@ -6,6 +6,7 @@ import { SeoHead } from "@/components/seo/SeoHead";
 import { SiteLayout } from "@/components/layout/SiteLayout";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { Badge } from "@/components/ui/badge";
+import { dnaCopy } from "./dnaCopy";
 
 const STATUS_STYLE = {
   production: "bg-emerald-50 text-emerald-800 border-emerald-200",
@@ -14,7 +15,7 @@ const STATUS_STYLE = {
 } as const;
 
 export const AboutPage: React.FC = () => {
-  const { dict, routeTo } = useLocale();
+  const { locale, dict, routeTo } = useLocale();
 
   return (
     <SiteLayout>
@@ -43,6 +44,18 @@ export const AboutPage: React.FC = () => {
             {dict.about.h1}
           </h1>
           <p className="max-w-2xl text-base md:text-lg text-slate-300">{dict.about.lead}</p>
+        </div>
+      </section>
+
+      {/* Visão do DNA da DeepB2B */}
+      <section className="py-16 bg-white border-b border-slate-200">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6">
+          <span className="text-xs font-extrabold uppercase tracking-[0.2em] text-[#ff6b00]">{dnaCopy(locale).visionEyebrow}</span>
+          <h2 className="mt-3 text-3xl md:text-4xl font-extrabold tracking-tight text-[#0f172a]">{dnaCopy(locale).visionTitle}</h2>
+          <div className="mt-6 space-y-4 text-lg text-slate-600 leading-relaxed">
+            {dnaCopy(locale).visionText.map((p) => <p key={p}>{p}</p>)}
+          </div>
+          <p className="mt-8 font-serif text-2xl italic text-[#ff6b00]">{dnaCopy(locale).tagline}</p>
         </div>
       </section>
 

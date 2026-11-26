@@ -16,6 +16,7 @@ export const SiteHeader: React.FC = () => {
     routeTo("contact");
 
   const intelligenceLinks = [
+    { label: dict.nav.platform, to: routeTo("platform") },
     { label: dict.nav.businessData, to: routeTo("businessData") },
     { label: dict.nav.marketIntelligence, to: routeTo("marketIntelligence") },
     { label: dict.nav.leadGeneration, to: routeTo("leadGeneration") },
