@@ -4,17 +4,12 @@ import { useLocale } from "@/i18n/LocaleContext";
 import type { Locale } from "@/i18n/types";
 import { isCorporateEmail, isValidCnpj } from "@/lib/cnpj";
 
-/** Envia para a Edge Function trade-show-request (tabela deepb2b_trade_show_requests). */
+/** Envia para o app (POST https://app.deepb2b.ai/api/feiras/pedido -> tabela feira_pedidos).
+ * text/plain evita a pré-checagem de CORS; o servidor lê o JSON do corpo (mesmo padrão do antigo teste grátis). */
+const PEDIDO_URL = "https://app.deepb2b.ai/api/feiras/pedido";
 async function sendRequest(body: Record<string, unknown>): Promise<boolean> {
-  const base = import.meta.env.VITE_SUPABASE_URL as string | undefined;
-  const key = import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined;
-  if (!base || !key) return false;
   try {
-    const r = await fetch(`${base}/functions/v1/trade-show-request`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Authorization: `Bearer ${key}`, apikey: key },
-      body: JSON.stringify(body),
-    });
+    const r = await fetch(PEDIDO_URL, { method: "POST", headers: { "Content-Type": "text/plain" }, body: JSON.stringify(body) });
     return r.ok;
   } catch {
     return false;
