@@ -110,6 +110,7 @@ export const ArticlePage: React.FC = () => {
         title={content.metaTitle}
         description={content.metaDescription}
         ogType="article"
+        ogImage={content.imageUrl || undefined}
         jsonLd={schemas}
       />
 

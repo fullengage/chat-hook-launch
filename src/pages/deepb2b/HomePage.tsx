@@ -313,6 +313,16 @@ export const HomePage: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {articlesForLocale(locale).slice(0, 3).map(({ article, content }) => (
               <Link key={article.slug} to={articleTo(article.slug)} className="group border-t-2 border-[#040f21] pt-5">
+                {content.imageUrl && (
+                  <div className="mb-4 aspect-[16/9] w-full overflow-hidden rounded-xl border border-slate-200 bg-slate-100">
+                    <img
+                      src={content.imageUrl}
+                      alt={content.imageAlt || content.title}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                    />
+                  </div>
+                )}
                 <div className="flex items-center justify-between text-xs text-slate-500 mb-3">
                   <span className="font-bold uppercase tracking-wider text-[#ff6b00]">{content.category}</span>
                   <span className="inline-flex items-center gap-1">

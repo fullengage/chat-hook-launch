@@ -259,6 +259,23 @@ export function mapApiNoticiasToArticles(rows: ApiNoticiaRecord[]): EditorialArt
 
   for (const art of bySlug.values()) {
     art.availableLocales = Object.keys(art.localized) as Locale[];
+    // Inherit cover image from a sibling locale when a translation has no image override yet.
+    const fallbackCover = LOCALES.map((loc) => art.localized[loc]).find(
+      (entry) => typeof entry?.imageUrl === "string" && entry.imageUrl.trim().length > 0,
+    );
+    if (fallbackCover?.imageUrl) {
+      const sharedUrl = fallbackCover.imageUrl.trim();
+      const sharedAlt = fallbackCover.imageAlt?.trim() || null;
+      for (const loc of art.availableLocales) {
+        const entry = art.localized[loc];
+        if (entry && !entry.imageUrl?.trim()) {
+          entry.imageUrl = sharedUrl;
+          if (!entry.imageAlt?.trim() && sharedAlt) {
+            entry.imageAlt = sharedAlt;
+          }
+        }
+      }
+    }
   }
   return [...bySlug.values()].sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
 }
