@@ -14,6 +14,7 @@ interface SeoHeadProps {
   title: string;
   description: string;
   ogType?: "website" | "article";
+  ogImage?: string;
   noindex?: boolean;
   jsonLd?: Record<string, unknown>[];
 }
@@ -49,6 +50,7 @@ export const SeoHead: React.FC<SeoHeadProps> = ({
   title,
   description,
   ogType = "website",
+  ogImage,
   noindex = false,
   jsonLd = [],
 }) => {
@@ -59,7 +61,7 @@ export const SeoHead: React.FC<SeoHeadProps> = ({
 
   const canonical = getCanonicalUrl(location.pathname, locale);
   const alternates = getAlternateLinks(location.pathname, articles);
-  const ogImage = `${SITE_ORIGIN}/og-image.jpg`;
+  const resolvedOgImage = ogImage || `${SITE_ORIGIN}/og-image.jpg`;
 
   const baseOrganizationSchema: Record<string, unknown> = {
     "@context": "https://schema.org",
@@ -89,7 +91,7 @@ export const SeoHead: React.FC<SeoHeadProps> = ({
     canonical,
     alternates,
     ogType,
-    ogImage,
+    ogImage: resolvedOgImage,
     noindex,
     jsonLd: fullSchemas,
   };
@@ -110,12 +112,12 @@ export const SeoHead: React.FC<SeoHeadProps> = ({
     upsertMeta("property", "og:description", description);
     upsertMeta("property", "og:type", ogType);
     upsertMeta("property", "og:url", canonical);
-    upsertMeta("property", "og:image", ogImage);
+    upsertMeta("property", "og:image", resolvedOgImage);
     upsertMeta("property", "og:site_name", "DeepB2B");
     upsertMeta("name", "twitter:card", "summary_large_image");
     upsertMeta("name", "twitter:title", title);
     upsertMeta("name", "twitter:description", description);
-    upsertMeta("name", "twitter:image", ogImage);
+    upsertMeta("name", "twitter:image", resolvedOgImage);
 
     upsertLink("canonical", canonical);
     alternates.forEach((alt) => upsertLink("alternate", alt.href, alt.hreflang));
@@ -133,7 +135,7 @@ export const SeoHead: React.FC<SeoHeadProps> = ({
     });
 
     trackPageView(location.pathname, locale, title);
-  }, [title, description, canonical, ogType, noindex, locale, dict.htmlLang, location.pathname]);
+  }, [title, description, canonical, ogType, resolvedOgImage, noindex, locale, dict.htmlLang, location.pathname]);
 
   return null;
 };

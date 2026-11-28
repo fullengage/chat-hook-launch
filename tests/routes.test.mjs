@@ -171,3 +171,22 @@ test("bootstrap editorial JSON uses safe element id without window named-access 
   }
 });
 
+test("cover images render on Events front page, Resources listing, and article og:image", () => {
+  const coverUrl = "https://minio.chathook.com.br/api/v1/buckets/imagem/objects/download?preview=true&prefix=56ccbb52-93ea-4b18-8506-f43fabf697eb.jpg&version_id=null";
+  const escapedCoverUrl = coverUrl.replace(/&/g, "&amp;");
+
+  for (const f of ["dist/en/trade-shows/index.html", "dist/pt-br/feiras-e-eventos/index.html"]) {
+    const html = fs.readFileSync(f, "utf-8");
+    assert.ok(html.includes("/images/ecossistema/pavilhao-expositores.jpg"), `${f}: missing lead cover image`);
+    assert.ok(html.includes(coverUrl) || html.includes(escapedCoverUrl), `${f}: missing propagated secondary cover image`);
+  }
+
+  for (const f of ["dist/en/resources/index.html", "dist/pt-br/conteudos/index.html"]) {
+    const html = fs.readFileSync(f, "utf-8");
+    assert.ok(html.includes(coverUrl) || html.includes(escapedCoverUrl), `${f}: missing featured report cover image`);
+  }
+
+  const artHtml = fs.readFileSync("dist/en/resources/brazil-industrial-machinery-distribution-report-2026/index.html", "utf-8");
+  assert.ok(artHtml.includes(`property="og:image" content="${escapedCoverUrl}"`), "article og:image should use cover image");
+});
+

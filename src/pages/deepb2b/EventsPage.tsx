@@ -60,6 +60,7 @@ const UI: Record<Locale, {
 };
 
 const fill = (s: string, v: Record<string, string>) => s.replace(/\{(\w+)\}/g, (_, k) => v[k] ?? "");
+const DEFAULT_LEAD_COVER = "/images/ecossistema/pavilhao-expositores.jpg";
 
 export const EventsPage: React.FC = () => {
   const { locale, dict, routeTo, articleTo } = useLocale();
@@ -150,6 +151,14 @@ export const EventsPage: React.FC = () => {
           <div className="lg:col-span-5 lg:border-r lg:border-slate-200 lg:pr-10">
             {lead ? (
               <Link to={articleTo(lead.article.slug)} className="group block">
+                <div className="mb-4 aspect-[16/10] w-full overflow-hidden rounded-xl border border-slate-200 bg-slate-100">
+                  <img
+                    src={lead.content.imageUrl || DEFAULT_LEAD_COVER}
+                    alt={lead.content.imageAlt || lead.content.title}
+                    loading="eager"
+                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                  />
+                </div>
                 <span className="text-sm font-semibold text-[#ff6b00]">{lead.content.category}</span>
                 <h2 className="mt-2 font-serif text-3xl md:text-[2.6rem] leading-[1.1] font-bold text-[#0f172a] group-hover:text-[#ff6b00] transition-colors">
                   {lead.content.title}
@@ -166,9 +175,24 @@ export const EventsPage: React.FC = () => {
               <ul className="mt-8 space-y-4 border-t border-slate-200 pt-6">
                 {more.slice(0, 3).map(({ article, content }) => (
                   <li key={article.slug}>
-                    <Link to={articleTo(article.slug)} className="group block">
-                      <span className="text-xs font-semibold text-[#ff6b00]">{content.category}</span>
-                      <p className="font-serif text-lg font-bold leading-snug text-[#0f172a] group-hover:text-[#ff6b00]">{content.title}</p>
+                    <Link
+                      to={articleTo(article.slug)}
+                      className={content.imageUrl ? "group flex items-start gap-3.5" : "group block"}
+                    >
+                      {content.imageUrl && (
+                        <div className="h-16 w-24 shrink-0 overflow-hidden rounded-lg border border-slate-200 bg-slate-100">
+                          <img
+                            src={content.imageUrl}
+                            alt={content.imageAlt || content.title}
+                            loading="lazy"
+                            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                          />
+                        </div>
+                      )}
+                      <div className="min-w-0 flex-1">
+                        <span className="text-xs font-semibold text-[#ff6b00]">{content.category}</span>
+                        <p className="font-serif text-lg font-bold leading-snug text-[#0f172a] group-hover:text-[#ff6b00]">{content.title}</p>
+                      </div>
                     </Link>
                   </li>
                 ))}

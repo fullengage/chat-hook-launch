@@ -49,32 +49,47 @@ export const ResourcesPage: React.FC = () => {
             <div className="py-12 text-center text-sm text-slate-500">Carregando conteúdos…</div>
           )}
           {list.filter(({ article }) => article.featuredReport).map(({ article, content }) => {
+            const hasCover = Boolean(content.imageUrl);
             return (
               <Link
                 key={article.slug}
                 to={articleTo(article.slug)}
                 className="group block rounded-3xl border-2 border-[#ff6b00] bg-[#040f21] p-8 md:p-10 text-white shadow-xl hover:bg-[#07152e] transition-all"
               >
-                <div className="flex flex-wrap items-center justify-between gap-3 text-xs mb-4">
-                  <span className="rounded-full bg-[#ff6b00] px-3.5 py-1 font-black uppercase tracking-wider text-white">
-                    {content.category}
-                  </span>
-                  <span className="inline-flex items-center gap-1.5 text-slate-300">
-                    <BookOpen className="h-3.5 w-3.5 text-[#ff6b00]" aria-hidden="true" />
-                    {content.readingMinutes} {dict.resources.readingTimeLabel} ·{" "}
-                    {formatDate(article.updatedAt)}
-                  </span>
+                <div className={hasCover ? "grid grid-cols-1 md:grid-cols-12 gap-6 items-center" : undefined}>
+                  <div className={hasCover ? "md:col-span-7" : undefined}>
+                    <div className="flex flex-wrap items-center justify-between gap-3 text-xs mb-4">
+                      <span className="rounded-full bg-[#ff6b00] px-3.5 py-1 font-black uppercase tracking-wider text-white">
+                        {content.category}
+                      </span>
+                      <span className="inline-flex items-center gap-1.5 text-slate-300">
+                        <BookOpen className="h-3.5 w-3.5 text-[#ff6b00]" aria-hidden="true" />
+                        {content.readingMinutes} {dict.resources.readingTimeLabel} ·{" "}
+                        {formatDate(article.updatedAt)}
+                      </span>
+                    </div>
+                    <h2 className="text-2xl md:text-3xl font-extrabold text-white group-hover:text-[#ff6b00] transition-colors mb-3">
+                      {content.title}
+                    </h2>
+                    <p className="text-sm md:text-base text-slate-300 leading-relaxed max-w-4xl mb-5">
+                      {content.summary}
+                    </p>
+                    <span className="inline-flex items-center gap-2 text-sm font-bold text-[#ff6b00]">
+                      <span>{dict.resources.readGuide}</span>
+                      <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                    </span>
+                  </div>
+                  {content.imageUrl && (
+                    <div className="md:col-span-5 aspect-[16/10] w-full overflow-hidden rounded-2xl border border-white/15 bg-white/5">
+                      <img
+                        src={content.imageUrl}
+                        alt={content.imageAlt || content.title}
+                        loading="eager"
+                        className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                      />
+                    </div>
+                  )}
                 </div>
-                <h2 className="text-2xl md:text-3xl font-extrabold text-white group-hover:text-[#ff6b00] transition-colors mb-3">
-                  {content.title}
-                </h2>
-                <p className="text-sm md:text-base text-slate-300 leading-relaxed max-w-4xl mb-5">
-                  {content.summary}
-                </p>
-                <span className="inline-flex items-center gap-2 text-sm font-bold text-[#ff6b00]">
-                  <span>{dict.resources.readGuide}</span>
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </span>
               </Link>
             );
           })}
@@ -88,6 +103,16 @@ export const ResourcesPage: React.FC = () => {
                   className="group rounded-3xl border border-slate-200 bg-white p-8 shadow-sm hover:border-[#ff6b00] transition-all flex flex-col justify-between gap-6"
                 >
                   <div className="space-y-3">
+                    {content.imageUrl && (
+                      <div className="mb-4 aspect-[16/9] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100">
+                        <img
+                          src={content.imageUrl}
+                          alt={content.imageAlt || content.title}
+                          loading="lazy"
+                          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                        />
+                      </div>
+                    )}
                     <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-500">
                       <span className="rounded-full bg-[#fff7ed] border border-orange-200 px-3 py-1 font-bold text-[#c2410c]">
                         {content.category}
