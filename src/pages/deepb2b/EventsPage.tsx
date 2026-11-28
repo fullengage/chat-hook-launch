@@ -5,6 +5,13 @@ import { useLocale } from "@/i18n/LocaleContext";
 import type { Locale } from "@/i18n/types";
 import { SITE_ORIGIN, getTradeShowPath } from "@/i18n/routes";
 import { useEditorial } from "@/context/EditorialContext";
+import {
+  daysUntilIsoDate,
+  formatEditionLabel,
+  isIsoDateOnOrAfter,
+  safeFormatDate,
+  safeFormatRange,
+} from "@/lib/dates";
 import { trackCtaClick } from "@/services/analytics";
 import { SeoHead } from "@/components/seo/SeoHead";
 import { SiteLayout } from "@/components/layout/SiteLayout";
@@ -53,7 +60,6 @@ const UI: Record<Locale, {
 };
 
 const fill = (s: string, v: Record<string, string>) => s.replace(/\{(\w+)\}/g, (_, k) => v[k] ?? "");
-const DAY = 86_400_000;
 
 export const EventsPage: React.FC = () => {
   const { locale, dict, routeTo, articleTo } = useLocale();
@@ -64,22 +70,22 @@ export const EventsPage: React.FC = () => {
   const contact = routeTo("contact");
 
   const nf = new Intl.NumberFormat(intl);
-  const dateF = new Intl.DateTimeFormat(intl, { day: "numeric", month: "short", timeZone: "UTC" });
-  const rangeF = new Intl.DateTimeFormat(intl, { day: "numeric", month: "long", timeZone: "UTC" }) as Intl.DateTimeFormat & {
-    formatRange(a: Date, b: Date): string;
-  };
-  const edition = new Intl.DateTimeFormat(intl, { month: "short", year: "numeric", timeZone: "UTC" }).format(new Date(`${marketDataEdition}-15T00:00:00Z`));
+  const edition = formatEditionLabel(marketDataEdition, intl, "short");
   const now = Date.now();
   const shows = [...allShows]
-    .filter((s) => s.end && new Date(`${s.end}T23:59:59Z`).getTime() >= now)
+    .filter((s) => isIsoDateOnOrAfter(s.end, now))
     .sort((a, b) => a.start.localeCompare(b.start));
-  const daysTo = (iso: string) => Math.ceil((new Date(`${iso}T00:00:00Z`).getTime() - now) / DAY);
+  const daysTo = (iso: string) => daysUntilIsoDate(iso, now);
   // em texto corrido: "de 6 a 9 de abril" (pt) / "del 6 al 9 de abril" (es), não "6 – 9"
   const JOIN: Partial<Record<Locale, string>> = { "pt-br": " a ", es: " al " };
-  const range = (s: (typeof shows)[number]) => {
-    const r = rangeF.formatRange(new Date(`${s.start}T00:00:00Z`), new Date(`${s.end}T00:00:00Z`));
-    return JOIN[locale] ? r.replace(/\s*–\s*/, JOIN[locale] as string) : r;
-  };
+  const range = (s: (typeof shows)[number]) =>
+    safeFormatRange(
+      s.start,
+      s.end,
+      intl,
+      { day: "numeric", month: "long", timeZone: "UTC" },
+      { join: JOIN[locale], fallback: `${s.start} – ${s.end}` },
+    );
   // um segmento comprador por feira: a 1ª linha de atacado, senão a 1ª da tabela
   const marketRows = shows.flatMap((s) => {
     const row =
@@ -92,7 +98,11 @@ export const EventsPage: React.FC = () => {
   const ticker: TickerItem[] = [
     ...shows.map((s) => {
       const d = daysTo(s.start);
-      return { label: `${s.name} ${s.editionYear}`, value: d > 0 ? fill(t.daysLeft, { n: nf.format(d) }) : t.today, href: getTradeShowPath(locale, s.slug) };
+      return {
+        label: `${s.name} ${s.editionYear}`,
+        value: d !== null && d > 0 ? fill(t.daysLeft, { n: nf.format(d) }) : t.today,
+        href: getTradeShowPath(locale, s.slug),
+      };
     }),
     ...marketRows.map(({ row, br }) => ({ label: row.label[locale], value: fill(t.companies, { n: nf.format(br) }) })),
   ];
@@ -129,7 +139,7 @@ export const EventsPage: React.FC = () => {
             <h1 className="font-serif text-4xl md:text-5xl font-bold text-[#0f172a]">{t.section}</h1>
           </div>
           <p className="text-sm text-slate-500 first-letter:uppercase">
-            {new Intl.DateTimeFormat(intl, { weekday: "long", day: "numeric", month: "long", year: "numeric" }).format(new Date(now))}
+            {safeFormatDate(new Date(now), intl, { weekday: "long", day: "numeric", month: "long", year: "numeric" })}
           </p>
         </div>
       </header>
@@ -194,16 +204,17 @@ export const EventsPage: React.FC = () => {
               <ul className="divide-y divide-slate-100">
                 {shows.map((s) => {
                   const d = daysTo(s.start);
+                  const dateText = safeFormatDate(s.start, intl, { day: "numeric", month: "short", timeZone: "UTC" });
                   return (
                     <li key={s.slug}>
                       <Link to={getTradeShowPath(locale, s.slug)} className="flex items-center justify-between gap-3 py-3 hover:bg-slate-50">
                         <span>
                           <span className="block text-sm font-bold text-[#0f172a]">{s.name}</span>
-                          <span className="text-xs text-slate-500">{dateF.format(new Date(`${s.start}T00:00:00Z`))}</span>
+                          <span className="text-xs text-slate-500">{dateText}</span>
                         </span>
                         <span className="inline-flex items-center gap-1 rounded-md bg-[#040f21] px-2 py-1 font-mono text-xs font-bold text-white">
                           <Clock className="h-3 w-3 text-[#ff6b00]" aria-hidden="true" />
-                          {d > 0 ? `${nf.format(d)} ${t.daysUnit}` : t.today}
+                          {d !== null && d > 0 ? `${nf.format(d)} ${t.daysUnit}` : t.today}
                         </span>
                       </Link>
                     </li>

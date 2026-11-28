@@ -4,6 +4,7 @@ import { ArrowRight, BookOpen, Briefcase, CalendarDays, Check, CheckCircle2, Glo
 import { useLocale } from "@/i18n/LocaleContext";
 import { SITE_ORIGIN, getTradeShowPath } from "@/i18n/routes";
 import { useEditorial } from "@/context/EditorialContext";
+import { daysUntilIsoDate, isIsoDateOnOrAfter } from "@/lib/dates";
 import { trackCtaClick } from "@/services/analytics";
 import { SeoHead } from "@/components/seo/SeoHead";
 import { SiteLayout } from "@/components/layout/SiteLayout";
@@ -34,7 +35,7 @@ export const HomePage: React.FC = () => {
   const fronts = globalFronts(locale);
   const nf = new Intl.NumberFormat(dict.htmlLang);
   const now = Date.now();
-  const upcoming = [...shows].filter((t) => t.end && new Date(`${t.end}T23:59:59Z`).getTime() >= now).sort((a, b) => a.start.localeCompare(b.start)).slice(0, 5);
+  const upcoming = [...shows].filter((t) => isIsoDateOnOrAfter(t.end, now)).sort((a, b) => a.start.localeCompare(b.start)).slice(0, 5);
 
   const homeSchemas: Record<string, unknown>[] = [
     {
@@ -186,7 +187,7 @@ export const HomePage: React.FC = () => {
             <h3 className="font-serif text-xl font-bold text-[#0f172a] border-b-2 border-[#040f21] pb-2">{s.upcomingTitle}</h3>
             <ul className="divide-y divide-slate-200">
               {upcoming.map((show) => {
-                const d = Math.ceil((new Date(`${show.start}T00:00:00Z`).getTime() - now) / 86_400_000);
+                const d = daysUntilIsoDate(show.start, now);
                 return (
                   <li key={show.slug}>
                     <Link to={getTradeShowPath(locale, show.slug)} className="flex items-center justify-between gap-3 py-3.5 hover:bg-white">
@@ -195,7 +196,7 @@ export const HomePage: React.FC = () => {
                         <span className="text-xs text-slate-500">{show.copy[locale].sector}</span>
                       </span>
                       <span className="shrink-0 rounded-md bg-[#040f21] px-2 py-1 font-mono text-xs font-bold text-white">
-                        {d > 0 ? s.daysLeft.replace("{n}", nf.format(d)) : "—"}
+                        {d !== null && d > 0 ? s.daysLeft.replace("{n}", nf.format(d)) : "—"}
                       </span>
                     </Link>
                   </li>

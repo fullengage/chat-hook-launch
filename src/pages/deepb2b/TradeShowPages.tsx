@@ -5,6 +5,7 @@ import { useLocale } from "@/i18n/LocaleContext";
 import type { Locale } from "@/i18n/types";
 import { SITE_ORIGIN, getTradeShowPath } from "@/i18n/routes";
 import { useEditorial } from "@/context/EditorialContext";
+import { formatEditionLabel, safeFormatDate, safeFormatRange } from "@/lib/dates";
 import { fetchSingleTradeShow, type TradeShow } from "@/services/editorialData";
 import { BuyerDemandForm, OrganizerContact } from "@/components/forms/TradeShowForms";
 import { trackCtaClick } from "@/services/analytics";
@@ -123,8 +124,12 @@ const UI: Record<Locale, {
 const INTL: Record<Locale, string> = { "pt-br": "pt-BR", en: "en-US", es: "es", "zh-cn": "zh-CN" };
 
 function formatRange(locale: Locale, start: string, end: string): string {
-  const f = new Intl.DateTimeFormat(INTL[locale], { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
-  return (f as Intl.DateTimeFormat & { formatRange(a: Date, b: Date): string }).formatRange(new Date(`${start}T00:00:00Z`), new Date(`${end}T00:00:00Z`));
+  return safeFormatRange(start, end, INTL[locale], {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  });
 }
 
 const num = (locale: Locale, n: number) => new Intl.NumberFormat(INTL[locale]).format(n);
@@ -156,8 +161,8 @@ export const TradeShowCalendarPage: React.FC = () => {
   const t = UI[locale];
   const all = [...allShows].sort((a, b) => a.start.localeCompare(b.start));
   const [fs, setFs] = useState({ sector: "", month: "", uf: "" });
-  const monthKey = (s: TradeShow) => s.start.slice(0, 7);
-  const monthLabel = (k: string) => new Intl.DateTimeFormat(INTL[locale], { month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(`${k}-15T00:00:00Z`));
+  const monthKey = (s: TradeShow) => (/^\d{4}-\d{2}/.test(s.start) ? s.start.slice(0, 7) : "");
+  const monthLabel = (k: string) => formatEditionLabel(k, INTL[locale], "long");
   const opts = {
     sector: [...new Set(all.map((s) => s.copy[locale].sector).filter(Boolean))].sort(),
     month: [...new Set(all.map(monthKey).filter(Boolean))].sort(),
@@ -214,7 +219,7 @@ export const TradeShowCalendarPage: React.FC = () => {
         <div className="mx-auto max-w-5xl px-4 sm:px-6 divide-y divide-slate-200 border-y border-slate-200">
           {shows.map((s) => (
             <Link key={s.slug} to={getTradeShowPath(locale, s.slug)} className="group grid grid-cols-1 md:grid-cols-[180px_1fr_auto] gap-4 py-8 items-center">
-              <div className="text-sm font-bold text-[#ff6b00]">{s.checkedAt && s.start && s.end ? formatRange(locale, s.start, s.end) : t.toConfirm}</div>
+              <div className="text-sm font-bold text-[#ff6b00]">{(s.checkedAt && s.start && s.end && formatRange(locale, s.start, s.end)) || t.toConfirm}</div>
               <div>
                 <h2 className="text-2xl font-extrabold text-[#0f172a] group-hover:text-[#ff6b00] transition-colors">{s.name} {s.editionYear}</h2>
                 <p className="mt-1 text-sm text-slate-600">{s.copy[locale].sector}</p>
@@ -285,9 +290,9 @@ export const TradeShowPage: React.FC = () => {
   const t = UI[locale];
   const c = show.copy[locale];
   const contact = routeTo("contact");
-  const longDate = (iso: string) => new Intl.DateTimeFormat(INTL[locale], { dateStyle: "long", timeZone: "UTC" }).format(new Date(`${iso}T00:00:00Z`));
-  const range = show.checkedAt && show.start && show.end ? formatRange(locale, show.start, show.end) : t.toConfirm;
-  const checked = show.checkedAt ? longDate(show.checkedAt) : null;
+  const longDate = (iso: string) => safeFormatDate(iso, INTL[locale], { dateStyle: "long", timeZone: "UTC" });
+  const range = (show.checkedAt && show.start && show.end && formatRange(locale, show.start, show.end)) || t.toConfirm;
+  const checked = show.checkedAt ? longDate(show.checkedAt) || null : null;
   const rows = show.market.flatMap((m) => (m.counts ? [{ m, n: m.counts }] : []));
   const edition = show.market.find((m) => m.edition)?.edition ?? marketDataEdition;
   const faqItems = show.faq?.[locale] ?? [];
@@ -420,7 +425,7 @@ export const TradeShowPage: React.FC = () => {
             <p className="mt-3 text-xs text-slate-500">{t.meiNote}</p>
             <p className="mt-1 text-xs text-slate-500">
               {fill(t.marketNote, {
-                edition: new Intl.DateTimeFormat(INTL[locale], { month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(`${edition}-15T00:00:00Z`)),
+                edition: formatEditionLabel(edition, INTL[locale], "long"),
               })}
             </p>
           </div>
