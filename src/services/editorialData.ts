@@ -1,4 +1,5 @@
 import type { Locale } from "@/i18n/types";
+import { DEFAULT_MARKET_EDITION, normalizeEditionMonth } from "@/lib/dates";
 
 export const EDITORIAL_API_ORIGIN = "https://app.deepb2b.ai";
 
@@ -265,10 +266,54 @@ export function mapApiNoticiasToArticles(rows: ApiNoticiaRecord[]): EditorialArt
 export function extractMarketEdition(shows: TradeShow[]): string {
   for (const s of shows) {
     for (const m of s.market) {
-      if (m.edition) return m.edition;
+      if (m.edition && /^\d{4}-\d{2}/.test(m.edition.trim())) {
+        return normalizeEditionMonth(m.edition);
+      }
     }
   }
-  return "2026-10";
+  return DEFAULT_MARKET_EDITION;
+}
+
+/**
+ * Validates and normalizes an EditorialPayload from SSR bootstrap or API responses.
+ */
+export function normalizeEditorialPayload(raw: unknown): EditorialPayload | null {
+  if (!raw || typeof raw !== "object") return null;
+  const candidate = raw as {
+    shows?: unknown;
+    articles?: unknown;
+    marketDataEdition?: unknown;
+  };
+  if (!Array.isArray(candidate.shows) || !Array.isArray(candidate.articles)) {
+    return null;
+  }
+
+  const shows: TradeShow[] = candidate.shows
+    .filter((item): item is TradeShow => Boolean(item && typeof item === "object"))
+    .map((show) => ({
+      ...show,
+      start: typeof show.start === "string" ? show.start : "",
+      end: typeof show.end === "string" ? show.end : "",
+      copy: normalizeCopy(show.copy),
+      market: Array.isArray(show.market)
+        ? show.market.map((row) => ({
+            ...row,
+            label: normalizeLabel(row.label),
+          }))
+        : [],
+    }));
+
+  const articles: EditorialArticle[] = candidate.articles.filter(
+    (item): item is EditorialArticle => Boolean(item && typeof item === "object"),
+  );
+
+  const fallbackEdition = extractMarketEdition(shows);
+  const marketDataEdition = normalizeEditionMonth(
+    typeof candidate.marketDataEdition === "string" ? candidate.marketDataEdition : undefined,
+    fallbackEdition,
+  );
+
+  return { shows, articles, marketDataEdition };
 }
 
 export function articlesFor(

@@ -198,7 +198,7 @@ async function run() {
   for (const loc of ["en", "pt-br", "es", "zh-cn"]) {
     const sliced = sliceEditorialForLocale(editorialData, loc);
     const serialized = JSON.stringify(sliced).replace(/</g, "\\u003c");
-    dataScriptByLocale.set(loc, `<script id="__DEEPB2B_DATA__" type="application/json">${serialized}</script>`);
+    dataScriptByLocale.set(loc, `<script id="deepb2b-initial-data" type="application/json">${serialized}</script>`);
   }
 
   for (const route of routesToRender) {

@@ -1,10 +1,12 @@
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import type { Locale } from "@/i18n/types";
+import { DEFAULT_MARKET_EDITION } from "@/lib/dates";
 import {
   articlesFor,
   fetchEditorialPayload,
   getArticleBySlug,
   getTradeShowBySlug,
+  normalizeEditorialPayload,
   type EditorialArticle,
   type EditorialPayload,
   type LocalizedArticleContent,
@@ -28,21 +30,28 @@ interface EditorialContextValue {
 
 const EditorialContext = createContext<EditorialContextValue | null>(null);
 
-declare global {
-  interface Window {
-    __DEEPB2B_DATA__?: EditorialPayload;
-  }
-}
+const EMPTY_PAYLOAD: EditorialPayload = {
+  shows: [],
+  articles: [],
+  marketDataEdition: DEFAULT_MARKET_EDITION,
+};
 
-function readWindowInitialData(): EditorialPayload | null {
-  if (typeof window === "undefined" || typeof document === "undefined") return null;
-  if (window.__DEEPB2B_DATA__) return window.__DEEPB2B_DATA__;
-  const el = document.getElementById("__DEEPB2B_DATA__");
+// Module-level cache avoids binding bootstrap data on `window`, preventing HTML5 named-element ID collisions.
+let cachedInitialPayload: EditorialPayload | null = null;
+
+function readInitialData(): EditorialPayload | null {
+  if (cachedInitialPayload) return cachedInitialPayload;
+  if (typeof document === "undefined") return null;
+  const el =
+    document.getElementById("deepb2b-initial-data") ??
+    document.getElementById("__DEEPB2B_DATA__");
   if (!el?.textContent) return null;
   try {
-    const parsed = JSON.parse(el.textContent) as EditorialPayload;
-    window.__DEEPB2B_DATA__ = parsed;
-    return parsed;
+    const parsed: unknown = JSON.parse(el.textContent);
+    const normalized = normalizeEditorialPayload(parsed);
+    if (!normalized) return null;
+    cachedInitialPayload = normalized;
+    return normalized;
   } catch {
     return null;
   }
@@ -52,9 +61,9 @@ export const EditorialProvider: React.FC<{
   children: React.ReactNode;
   initialData?: EditorialPayload;
 }> = ({ children, initialData }) => {
-  const bootstrap = initialData ?? readWindowInitialData();
+  const bootstrap = normalizeEditorialPayload(initialData) ?? readInitialData();
   const [payload, setPayload] = useState<EditorialPayload>(
-    () => bootstrap ?? { shows: [], articles: [], marketDataEdition: "2026-10" },
+    () => bootstrap ?? EMPTY_PAYLOAD,
   );
   const [loading, setLoading] = useState<boolean>(() => !bootstrap);
   const [error, setError] = useState<string | null>(null);
@@ -62,7 +71,8 @@ export const EditorialProvider: React.FC<{
   const refresh = useCallback(async () => {
     try {
       const next = await fetchEditorialPayload();
-      setPayload(next);
+      const normalized = normalizeEditorialPayload(next) ?? EMPTY_PAYLOAD;
+      setPayload(normalized);
       setError(null);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Erro ao carregar dados");
@@ -76,7 +86,10 @@ export const EditorialProvider: React.FC<{
     const controller = new AbortController();
     fetchEditorialPayload(controller.signal)
       .then((next) => {
-        setPayload(next);
+        const normalized = normalizeEditorialPayload(next);
+        if (normalized) {
+          setPayload(normalized);
+        }
         setError(null);
       })
       .catch((err) => {

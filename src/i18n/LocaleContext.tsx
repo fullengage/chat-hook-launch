@@ -9,6 +9,7 @@ import {
 } from "./routes";
 import { getDictionary } from "./dictionaries";
 import { useEditorial } from "@/context/EditorialContext";
+import { safeFormatDate } from "@/lib/dates";
 
 const LOCALE_STORAGE_KEY = "deepb2b_locale";
 
@@ -104,14 +105,12 @@ export const LocaleProvider: React.FC<LocaleProviderProps> = ({
           style: "currency",
           currency: overrideCurrency ?? dict.currencyCode,
         }).format(n),
-      formatDate: (d: Date | string) => {
-        const parsed = typeof d === "string" ? new Date(d) : d;
-        return new Intl.DateTimeFormat(dict.intlLocale, {
+      formatDate: (d: Date | string) =>
+        safeFormatDate(d, dict.intlLocale, {
           year: "numeric",
           month: "short",
           day: "numeric",
-        }).format(parsed);
-      },
+        }),
       suggestedBrowserLocale,
       dismissSuggestion,
     };

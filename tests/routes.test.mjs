@@ -154,3 +154,20 @@ test("marca: só DeepB2B (Grupo FullWeb); 'Deepson' só na razão social; nenhum
   const login = fs.readFileSync("dist/pt-br/acesso/index.html", "utf-8");
   assert.ok(login.includes("Entrar em app.deepb2b.ai") && login.includes('href="https://app.deepb2b.ai/"'), "login CTA must point to app.deepb2b.ai");
 });
+
+test("bootstrap editorial JSON uses safe element id without window named-access collision", () => {
+  const ctxSource = fs.readFileSync("src/context/EditorialContext.tsx", "utf-8");
+  assert.ok(!ctxSource.includes("window.__DEEPB2B_DATA__"), "EditorialContext must not read window.__DEEPB2B_DATA__");
+
+  for (const f of ["dist/en/trade-shows/index.html", "dist/pt-br/feiras-e-eventos/index.html", "dist/index.html"]) {
+    const html = fs.readFileSync(f, "utf-8");
+    assert.ok(!html.includes('id="__DEEPB2B_DATA__"'), `${f}: legacy __DEEPB2B_DATA__ id still present`);
+    const match = html.match(/<script id="deepb2b-initial-data" type="application\/json">([\s\S]*?)<\/script>/);
+    assert.ok(match, `${f}: deepb2b-initial-data script missing`);
+    const data = JSON.parse(match[1]);
+    assert.ok(Array.isArray(data.shows), `${f}: shows is not an array`);
+    assert.ok(Array.isArray(data.articles), `${f}: articles is not an array`);
+    assert.match(data.marketDataEdition, /^\d{4}-\d{2}$/, `${f}: invalid marketDataEdition`);
+  }
+});
+
