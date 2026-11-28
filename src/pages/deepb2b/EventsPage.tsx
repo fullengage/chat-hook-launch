@@ -4,8 +4,7 @@ import { ArrowRight, CalendarDays, Check, Clock, MapPin } from "lucide-react";
 import { useLocale } from "@/i18n/LocaleContext";
 import type { Locale } from "@/i18n/types";
 import { SITE_ORIGIN, getTradeShowPath } from "@/i18n/routes";
-import { articlesFor } from "@/data/articles";
-import { TRADE_SHOWS, MARKET_DATA_EDITION, marketCount } from "@/data/tradeShows";
+import { useEditorial } from "@/context/EditorialContext";
 import { trackCtaClick } from "@/services/analytics";
 import { SeoHead } from "@/components/seo/SeoHead";
 import { SiteLayout } from "@/components/layout/SiteLayout";
@@ -21,7 +20,7 @@ const UI: Record<Locale, {
 }> = {
   "pt-br": {
     section: "Feiras e Eventos", tagline: "DeepB2B Intelligence", ticker: "Indicadores de feiras e mercado",
-    usd: "Dólar", eur: "Euro", daysLeft: "faltam {n} dias", today: "acontece agora", companies: "{n} empresas",
+    usd: "Dólar", eur: "Euro", daysLeft: "faltam {n} dias", today: "acontece agora", companies: "{n} estabelecimentos ativos",
     latest: "Últimas", headline: "{name} 2027 acontece de {range} no {venue}",
     upcoming: "Próximas feiras", daysUnit: "dias", market: "Mercado comprador",
     marketNote: "Estabelecimentos ativos · Receita Federal · {edition}", segment: "Segmento", brazil: "Brasil",
@@ -29,7 +28,7 @@ const UI: Record<Locale, {
   },
   en: {
     section: "Trade Shows & Events", tagline: "DeepB2B Intelligence", ticker: "Trade show and market indicators",
-    usd: "USD", eur: "EUR", daysLeft: "{n} days to go", today: "happening now", companies: "{n} companies",
+    usd: "USD", eur: "EUR", daysLeft: "{n} days to go", today: "happening now", companies: "{n} active establishments",
     latest: "Latest", headline: "{name} 2027 runs {range} at {venue}",
     upcoming: "Upcoming shows", daysUnit: "days", market: "Buyer market",
     marketNote: "Active establishments · Federal Revenue · {edition}", segment: "Segment", brazil: "Brazil",
@@ -37,7 +36,7 @@ const UI: Record<Locale, {
   },
   es: {
     section: "Ferias y Eventos", tagline: "DeepB2B Intelligence", ticker: "Indicadores de ferias y mercado",
-    usd: "Dólar", eur: "Euro", daysLeft: "faltan {n} días", today: "en curso", companies: "{n} empresas",
+    usd: "Dólar", eur: "Euro", daysLeft: "faltan {n} días", today: "en curso", companies: "{n} establecimientos activos",
     latest: "Últimas", headline: "{name} 2027 se realiza del {range} en {venue}",
     upcoming: "Próximas ferias", daysUnit: "días", market: "Mercado comprador",
     marketNote: "Establecimientos activos · Receita Federal · {edition}", segment: "Segmento", brazil: "Brasil",
@@ -45,7 +44,7 @@ const UI: Record<Locale, {
   },
   "zh-cn": {
     section: "展会与活动", tagline: "DeepB2B Intelligence", ticker: "展会与市场指标",
-    usd: "美元", eur: "欧元", daysLeft: "还有 {n} 天", today: "正在举行", companies: "{n} 家企业",
+    usd: "美元", eur: "欧元", daysLeft: "还有 {n} 天", today: "正在举行", companies: "{n} 家在营场所",
     latest: "最新", headline: "{name} 2027 将于 {range} 在 {venue} 举行",
     upcoming: "即将举行的展会", daysUnit: "天", market: "买方市场",
     marketNote: "在营经营场所 · 联邦税务局 · {edition}", segment: "行业", brazil: "巴西",
@@ -58,6 +57,7 @@ const DAY = 86_400_000;
 
 export const EventsPage: React.FC = () => {
   const { locale, dict, routeTo, articleTo } = useLocale();
+  const { shows: allShows, marketDataEdition, articlesForLocale } = useEditorial();
   const t = UI[locale];
   const c = eventsCopy(locale);
   const intl = INTL[locale];
@@ -68,11 +68,10 @@ export const EventsPage: React.FC = () => {
   const rangeF = new Intl.DateTimeFormat(intl, { day: "numeric", month: "long", timeZone: "UTC" }) as Intl.DateTimeFormat & {
     formatRange(a: Date, b: Date): string;
   };
-  const edition = new Intl.DateTimeFormat(intl, { month: "short", year: "numeric", timeZone: "UTC" }).format(new Date(`${MARKET_DATA_EDITION}-15T00:00:00Z`));
-  // ponytail: a página é pré-gerada, mas o app monta tudo de novo no navegador (createRoot), então contagens e data são do dia da visita
+  const edition = new Intl.DateTimeFormat(intl, { month: "short", year: "numeric", timeZone: "UTC" }).format(new Date(`${marketDataEdition}-15T00:00:00Z`));
   const now = Date.now();
-  const shows = [...TRADE_SHOWS]
-    .filter((s) => new Date(`${s.end}T23:59:59Z`).getTime() >= now)
+  const shows = [...allShows]
+    .filter((s) => s.end && new Date(`${s.end}T23:59:59Z`).getTime() >= now)
     .sort((a, b) => a.start.localeCompare(b.start));
   const daysTo = (iso: string) => Math.ceil((new Date(`${iso}T00:00:00Z`).getTime() - now) / DAY);
   // em texto corrido: "de 6 a 9 de abril" (pt) / "del 6 al 9 de abril" (es), não "6 – 9"
@@ -82,22 +81,27 @@ export const EventsPage: React.FC = () => {
     return JOIN[locale] ? r.replace(/\s*–\s*/, JOIN[locale] as string) : r;
   };
   // um segmento comprador por feira: a 1ª linha de atacado, senão a 1ª da tabela
-  // números vêm de marketCounts.json (gerado da base); feira sem contagem fica fora do quadro e da faixa
   const marketRows = shows.flatMap((s) => {
-    const row = s.market.find((m) => /atacado/i.test(m.label["pt-br"])) ?? s.market[0];
-    const n = row && marketCount(row.q);
+    const row =
+      s.market.find((m) => m.q.startsWith("46") || /atacado|wholesale|mayorista|批发/i.test(m.label[locale] || "")) ??
+      s.market[0];
+    const n = row?.counts;
     return n ? [{ show: s, row, br: n.br }] : [];
   });
 
   const ticker: TickerItem[] = [
     ...shows.map((s) => {
       const d = daysTo(s.start);
-      return { label: `${s.name} 2027`, value: d > 0 ? fill(t.daysLeft, { n: nf.format(d) }) : t.today, href: getTradeShowPath(locale, s.slug) };
+      return { label: `${s.name} ${s.editionYear}`, value: d > 0 ? fill(t.daysLeft, { n: nf.format(d) }) : t.today, href: getTradeShowPath(locale, s.slug) };
     }),
     ...marketRows.map(({ row, br }) => ({ label: row.label[locale], value: fill(t.companies, { n: nf.format(br) }) })),
   ];
 
-  const [lead, ...more] = articlesFor(locale);
+  const feirasArticles = articlesForLocale(locale, { editoria: "feiras" });
+  const extraArticles = articlesForLocale(locale).filter(
+    (item) => !feirasArticles.some((f) => f.article.slug === item.article.slug),
+  );
+  const [lead, ...more] = [...feirasArticles, ...extraArticles];
 
   return (
     <SiteLayout>

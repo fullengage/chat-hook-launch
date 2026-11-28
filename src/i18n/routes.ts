@@ -1,5 +1,5 @@
 import type { Locale, RouteKey } from "./types";
-import { TRADE_SHOWS } from "@/data/tradeShows";
+import type { EditorialArticle, TradeShow } from "@/services/editorialData";
 
 export const SITE_ORIGIN = "https://deepb2b.ai";
 
@@ -52,7 +52,7 @@ export const ROUTES_BY_LOCALE: Record<Locale, Record<RouteKey, string>> = {
     calendar: "/pt-br/feiras",
     ecosystem: "/pt-br/ecossistema",
     deepclub: "/pt-br/deepclub",
-    projects: "/pt-br/projetos-empresariais",
+    projects: "/pt-br/projetos-empresarial".replace("empresarial", "empresariais"),
     partners: "/pt-br/parceiros",
     platform: "/pt-br/como-funciona",
   },
@@ -113,28 +113,16 @@ export const HREFLANG_BY_LOCALE: Record<Locale, "en" | "pt-BR" | "es" | "zh-CN">
   "zh-cn": "zh-CN",
 };
 
-export const ARTICLE_SLUGS = [
-  "sao-paulo-business-trade-shows-2027",
-  "beauty-fair-2027-cosmetics-buyers",
-  "brazil-industrial-machinery-distribution-report-2026",
-  "how-to-find-distributors-in-brazil",
-  "understanding-brazilian-cnpj-data",
-  "brazilian-business-sectors-explained",
-  "how-foreign-companies-research-brazil-market",
-  "brazil-company-data-sources-and-limitations",
-] as const;
-
-export type ArticleSlug = (typeof ARTICLE_SLUGS)[number];
-
-/** Artigos publicados só em alguns idiomas. Os demais existem nos 4. */
-const PARTIAL_ARTICLE_LOCALES: Partial<Record<string, readonly Locale[]>> = {
-  "sao-paulo-business-trade-shows-2027": ["pt-br", "en"],
-  "beauty-fair-2027-cosmetics-buyers": ["pt-br", "en"],
-};
-
-export function articleAvailableIn(slug: string, locale: Locale): boolean {
-  const only = PARTIAL_ARTICLE_LOCALES[slug];
-  return !only || only.includes(locale);
+export function articleAvailableIn(
+  slug: string,
+  locale: Locale,
+  articles?: readonly EditorialArticle[],
+): boolean {
+  if (!articles || articles.length === 0) return true;
+  const found = articles.find((a) => a.slug === slug);
+  if (!found) return true;
+  if (found.availableLocales) return found.availableLocales.includes(locale);
+  return Boolean(found.localized[locale]);
 }
 
 export function normalizePathname(pathname: string): string {
@@ -205,10 +193,14 @@ export function extractTradeShowSlugFromPath(pathname: string): string | null {
   return null;
 }
 
-export function resolveAlternatePath(currentPathname: string, targetLocale: Locale): string {
+export function resolveAlternatePath(
+  currentPathname: string,
+  targetLocale: Locale,
+  articles?: readonly EditorialArticle[],
+): string {
   const articleSlug = extractArticleSlugFromPath(currentPathname);
   if (articleSlug) {
-    return articleAvailableIn(articleSlug, targetLocale)
+    return articleAvailableIn(articleSlug, targetLocale, articles)
       ? getArticlePath(targetLocale, articleSlug)
       : getRoutePath(targetLocale, "resources");
   }
@@ -225,18 +217,24 @@ export function resolveAlternatePath(currentPathname: string, targetLocale: Loca
 
 export function getAlternateLinks(
   currentPathname: string,
+  articles?: readonly EditorialArticle[],
 ): { hreflang: "en" | "pt-BR" | "es" | "zh-CN" | "x-default"; href: string }[] {
   const articleSlug = extractArticleSlugFromPath(currentPathname);
-  const locales = articleSlug ? SUPPORTED_LOCALES.filter((l) => articleAvailableIn(articleSlug, l)) : SUPPORTED_LOCALES;
+  const locales = articleSlug
+    ? SUPPORTED_LOCALES.filter((l) => articleAvailableIn(articleSlug, l, articles))
+    : SUPPORTED_LOCALES;
+  const activeLocales = locales.length > 0 ? locales : SUPPORTED_LOCALES;
+  const defaultLoc: Locale = activeLocales.includes("en") ? "en" : activeLocales[0];
+
   const links: { hreflang: "en" | "pt-BR" | "es" | "zh-CN" | "x-default"; href: string }[] =
-    locales.map((loc) => ({
+    activeLocales.map((loc) => ({
       hreflang: HREFLANG_BY_LOCALE[loc],
-      href: `${SITE_ORIGIN}${resolveAlternatePath(currentPathname, loc)}`,
+      href: `${SITE_ORIGIN}${resolveAlternatePath(currentPathname, loc, articles)}`,
     }));
 
   links.push({
     hreflang: "x-default",
-    href: `${SITE_ORIGIN}${resolveAlternatePath(currentPathname, "en")}`,
+    href: `${SITE_ORIGIN}${resolveAlternatePath(currentPathname, defaultLoc, articles)}`,
   });
 
   return links;
@@ -262,18 +260,20 @@ export function getCanonicalUrl(currentPathname: string, currentLocale: Locale):
   return `${SITE_ORIGIN}${norm}`;
 }
 
-export function getAllIndexableRoutes(): {
+export interface IndexableRouteEntry {
   path: string;
   locale: Locale;
   routeKey: RouteKey | "article" | "tradeShow";
-  articleSlug?: ArticleSlug;
-}[] {
-  const entries: {
-    path: string;
-    locale: Locale;
-    routeKey: RouteKey | "article" | "tradeShow";
-    articleSlug?: ArticleSlug;
-  }[] = [];
+  articleSlug?: string;
+  showSlug?: string;
+  lastmod?: string;
+}
+
+export function getAllIndexableRoutes(
+  shows: readonly TradeShow[] = [],
+  articles: readonly EditorialArticle[] = [],
+): IndexableRouteEntry[] {
+  const entries: IndexableRouteEntry[] = [];
 
   for (const locale of SUPPORTED_LOCALES) {
     const map = ROUTES_BY_LOCALE[locale];
@@ -284,16 +284,24 @@ export function getAllIndexableRoutes(): {
         routeKey: key,
       });
     }
-    for (const show of TRADE_SHOWS) {
-      entries.push({ path: getTradeShowPath(locale, show.slug), locale, routeKey: "tradeShow" });
-    }
-    for (const slug of ARTICLE_SLUGS) {
-      if (!articleAvailableIn(slug, locale)) continue;
+    for (const show of shows) {
       entries.push({
-        path: getArticlePath(locale, slug),
+        path: getTradeShowPath(locale, show.slug),
+        locale,
+        routeKey: "tradeShow",
+        showSlug: show.slug,
+        lastmod: show.updatedAt || show.checkedAt,
+      });
+    }
+    for (const article of articles) {
+      const locContent = article.localized[locale];
+      if (!locContent) continue;
+      entries.push({
+        path: getArticlePath(locale, article.slug),
         locale,
         routeKey: "article",
-        articleSlug: slug,
+        articleSlug: article.slug,
+        lastmod: locContent.updatedAt || article.updatedAt,
       });
     }
   }

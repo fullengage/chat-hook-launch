@@ -1,19 +1,40 @@
 #!/usr/bin/env node
 /**
- * Gera src/data/marketCounts.json a partir da base pública da Receita Federal processada na VPS
- * (busca-AAAA-MM.db: só estabelecimentos ativos, com marcação de MEI).
+ * Atualiza `mercado_cnaes` na tabela `site_feiras` (PostgreSQL `deepson` na VPS) a partir da base
+ * pública da Receita Federal processada na VPS (busca-AAAA-MM.db: só estabelecimentos ativos, com marcação de MEI).
  *
  * Uso: node scripts/market-counts.mjs [edição]      ex.: node scripts/market-counts.mjs 2026-10
- * Lê os códigos `q: "..."` de src/data/tradeShows.ts (CNAE principal: código completo ou prefixo de grupo/divisão),
- * conta Brasil e SP (total e MEI) e grava o JSON. Só leitura na VPS (alias ssh `chathook-vps`).
  */
 import { execFileSync } from "node:child_process";
-import fs from "node:fs";
 
 const edition = process.argv[2] || "2026-10";
-const src = fs.readFileSync("src/data/tradeShows.ts", "utf-8");
-const codes = [...new Set([...src.matchAll(/\bq: "(\d+)"/g)].map((m) => m[1]))];
-if (!codes.length) throw new Error("nenhum q: \"...\" encontrado em tradeShows.ts");
+
+const readSql = "SELECT slug, mercado_cnaes::text FROM site_feiras WHERE jsonb_array_length(mercado_cnaes) > 0;";
+const feirasRaw = execFileSync(
+  "ssh",
+  [
+    "-o",
+    "BatchMode=yes",
+    "chathook-vps",
+    `PG=$(docker ps -qf name=postgree_postgres | head -n1); docker exec "$PG" psql -U postgres -d deepson -t -A -F $'\\t' -c ${JSON.stringify(readSql)}`,
+  ],
+  { encoding: "utf-8" },
+);
+
+const feiras = feirasRaw
+  .trim()
+  .split(/\r?\n/)
+  .filter(Boolean)
+  .map((line) => {
+    const [slug, jsonStr] = line.split("\t");
+    return { slug, cnaes: JSON.parse(jsonStr) };
+  });
+
+const codes = [...new Set(feiras.flatMap((f) => f.cnaes.map((c) => c.q).filter(Boolean)))];
+if (!codes.length) {
+  console.log("Nenhum código CNAE encontrado em site_feiras.");
+  process.exit(0);
+}
 
 const py = `
 import sqlite3, json
@@ -29,9 +50,33 @@ for p in codes:
 print(json.dumps(out))
 `;
 
-// o script vai pela entrada padrão (python3 -): sem problema de aspas no ssh
-const raw = execFileSync("ssh", ["-o", "BatchMode=yes", "chathook-vps", "python3", "-"], { input: py, encoding: "utf-8" });
-const counts = JSON.parse(raw);
-const out = { edition, generatedAt: new Date().toISOString().slice(0, 10), source: `busca-${edition}.db (Receita Federal, só ativos)`, counts };
-fs.writeFileSync("src/data/marketCounts.json", JSON.stringify(out, null, 2) + "\n");
-console.log(`marketCounts.json: ${codes.length} segmentos, edição ${edition}`);
+const countsRaw = execFileSync("ssh", ["-o", "BatchMode=yes", "chathook-vps", "python3", "-"], {
+  input: py,
+  encoding: "utf-8",
+});
+const counts = JSON.parse(countsRaw);
+
+const updates = feiras.map((f) => {
+  const nextCnaes = f.cnaes.map((c) => ({
+    ...c,
+    edition,
+    counts: counts[c.q] ?? c.counts ?? null,
+  }));
+  const jsonEscaped = JSON.stringify(nextCnaes).replace(/'/g, "''");
+  const slugEscaped = f.slug.replace(/'/g, "''");
+  return `UPDATE site_feiras SET mercado_cnaes = '${jsonEscaped}'::jsonb, atualizado_em = now() WHERE slug = '${slugEscaped}';`;
+});
+
+const sqlScript = `BEGIN;\n${updates.join("\n")}\nCOMMIT;\n`;
+execFileSync(
+  "ssh",
+  [
+    "-o",
+    "BatchMode=yes",
+    "chathook-vps",
+    `PG=$(docker ps -qf name=postgree_postgres | head -n1); docker exec -i "$PG" psql -U postgres -d deepson -v ON_ERROR_STOP=1`,
+  ],
+  { input: sqlScript, encoding: "utf-8" },
+);
+
+console.log(`site_feiras atualizado: ${feiras.length} feiras, ${codes.length} segmentos, edição ${edition}`);

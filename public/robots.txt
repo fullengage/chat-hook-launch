@@ -13,4 +13,40 @@ Disallow: /quick-start
 Disallow: /stage/
 Disallow: /stage
 
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /auth
+Disallow: /blog/dashboard
+Disallow: /webhooks/
+Disallow: /obrigado
+
+User-agent: GPTBot
+Allow: /
+Disallow: /auth
+Disallow: /blog/dashboard
+Disallow: /webhooks/
+Disallow: /obrigado
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /auth
+Disallow: /blog/dashboard
+Disallow: /webhooks/
+Disallow: /obrigado
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /auth
+Disallow: /blog/dashboard
+Disallow: /webhooks/
+Disallow: /obrigado
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /auth
+Disallow: /blog/dashboard
+Disallow: /webhooks/
+Disallow: /obrigado
+
 Sitemap: https://deepb2b.ai/sitemap.xml
+Sitemap: https://deepb2b.ai/news-sitemap.xml
