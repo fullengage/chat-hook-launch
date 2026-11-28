@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "next-themes";
+import { EditorialProvider } from "./context/EditorialContext";
 import AppRoutes from "./AppRoutes";
 
 const queryClient = new QueryClient();
@@ -14,14 +15,16 @@ const App = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <BrowserRouter
-          future={{
-            v7_startTransition: true,
-            v7_relativeSplatPath: true,
-          }}
-        >
-          <AppRoutes />
-        </BrowserRouter>
+        <EditorialProvider>
+          <BrowserRouter
+            future={{
+              v7_startTransition: true,
+              v7_relativeSplatPath: true,
+            }}
+          >
+            <AppRoutes />
+          </BrowserRouter>
+        </EditorialProvider>
       </TooltipProvider>
     </ThemeProvider>
   </QueryClientProvider>

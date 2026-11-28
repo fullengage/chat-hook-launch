@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, BookOpen, Briefcase, CalendarDays, Check, CheckCircle2, Globe2, Handshake, LineChart, Sparkles } from "lucide-react";
 import { useLocale } from "@/i18n/LocaleContext";
 import { SITE_ORIGIN, getTradeShowPath } from "@/i18n/routes";
-import { TRADE_SHOWS } from "@/data/tradeShows";
-import { articlesFor } from "@/data/articles";
+import { useEditorial } from "@/context/EditorialContext";
 import { trackCtaClick } from "@/services/analytics";
 import { SeoHead } from "@/components/seo/SeoHead";
 import { SiteLayout } from "@/components/layout/SiteLayout";
@@ -26,6 +25,7 @@ const eyebrow = "inline-block text-xs font-extrabold uppercase tracking-[0.2em] 
 
 export const HomePage: React.FC = () => {
   const { locale, dict, routeTo, articleTo } = useLocale();
+  const { shows, articlesForLocale } = useEditorial();
   const c = homeCopy(locale);
   const contact = routeTo("contact");
   const heroAnchorRef = useRef<HTMLDivElement>(null);
@@ -34,7 +34,7 @@ export const HomePage: React.FC = () => {
   const fronts = globalFronts(locale);
   const nf = new Intl.NumberFormat(dict.htmlLang);
   const now = Date.now();
-  const upcoming = [...TRADE_SHOWS].filter((t) => new Date(`${t.end}T23:59:59Z`).getTime() >= now).sort((a, b) => a.start.localeCompare(b.start)).slice(0, 5);
+  const upcoming = [...shows].filter((t) => t.end && new Date(`${t.end}T23:59:59Z`).getTime() >= now).sort((a, b) => a.start.localeCompare(b.start)).slice(0, 5);
 
   const homeSchemas: Record<string, unknown>[] = [
     {
@@ -310,7 +310,7 @@ export const HomePage: React.FC = () => {
             </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {articlesFor(locale).slice(0, 3).map(({ article, content }) => (
+            {articlesForLocale(locale).slice(0, 3).map(({ article, content }) => (
               <Link key={article.slug} to={articleTo(article.slug)} className="group border-t-2 border-[#040f21] pt-5">
                 <div className="flex items-center justify-between text-xs text-slate-500 mb-3">
                   <span className="font-bold uppercase tracking-wider text-[#ff6b00]">{content.category}</span>

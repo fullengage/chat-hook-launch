@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, BookOpen } from "lucide-react";
 import { useLocale } from "@/i18n/LocaleContext";
-import { articlesFor } from "@/data/articles";
+import { useEditorial } from "@/context/EditorialContext";
 import { SITE_ORIGIN } from "@/i18n/routes";
 import { SeoHead } from "@/components/seo/SeoHead";
 import { SiteLayout } from "@/components/layout/SiteLayout";
@@ -10,6 +10,8 @@ import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 
 export const ResourcesPage: React.FC = () => {
   const { locale, dict, routeTo, articleTo, formatDate } = useLocale();
+  const { articlesForLocale, loading } = useEditorial();
+  const list = articlesForLocale(locale);
 
   return (
     <SiteLayout>
@@ -43,7 +45,10 @@ export const ResourcesPage: React.FC = () => {
 
       <section className="py-16 bg-[#f8fafc]">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 space-y-8">
-          {articlesFor(locale).filter(({ article }) => article.featuredReport).map(({ article, content }) => {
+          {loading && list.length === 0 && (
+            <div className="py-12 text-center text-sm text-slate-500">Carregando conteúdos…</div>
+          )}
+          {list.filter(({ article }) => article.featuredReport).map(({ article, content }) => {
             return (
               <Link
                 key={article.slug}
@@ -75,7 +80,7 @@ export const ResourcesPage: React.FC = () => {
           })}
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {articlesFor(locale).filter(({ article }) => !article.featuredReport).map(({ article, content }) => {
+            {list.filter(({ article }) => !article.featuredReport).map(({ article, content }) => {
               return (
                 <Link
                   key={article.slug}

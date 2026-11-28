@@ -7,6 +7,7 @@ import {
   SITE_ORIGIN,
 } from "@/i18n/routes";
 import { trackPageView } from "@/services/analytics";
+import { useEditorial } from "@/context/EditorialContext";
 import { useSeoCollector, type SeoMetadata } from "./SeoContext";
 
 interface SeoHeadProps {
@@ -53,10 +54,11 @@ export const SeoHead: React.FC<SeoHeadProps> = ({
 }) => {
   const location = useLocation();
   const { locale, dict } = useLocale();
+  const { articles } = useEditorial();
   const collector = useSeoCollector();
 
   const canonical = getCanonicalUrl(location.pathname, locale);
-  const alternates = getAlternateLinks(location.pathname);
+  const alternates = getAlternateLinks(location.pathname, articles);
   const ogImage = `${SITE_ORIGIN}/og-image.jpg`;
 
   const baseOrganizationSchema: Record<string, unknown> = {
@@ -103,7 +105,7 @@ export const SeoHead: React.FC<SeoHeadProps> = ({
     document.title = title;
 
     upsertMeta("name", "description", description);
-    upsertMeta("name", "robots", noindex ? "noindex, nofollow" : "index, follow");
+    upsertMeta("name", "robots", noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large");
     upsertMeta("property", "og:title", title);
     upsertMeta("property", "og:description", description);
     upsertMeta("property", "og:type", ogType);

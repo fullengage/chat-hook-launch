@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ArrowRight, CalendarDays, ExternalLink, MapPin, ShieldCheck } from "lucide-react";
 import { useLocale } from "@/i18n/LocaleContext";
 import type { Locale } from "@/i18n/types";
 import { SITE_ORIGIN, getTradeShowPath } from "@/i18n/routes";
-import { TRADE_SHOWS, MARKET_DATA_EDITION, getTradeShow, marketCount, type TradeShow } from "@/data/tradeShows";
+import { useEditorial } from "@/context/EditorialContext";
+import { fetchSingleTradeShow, type TradeShow } from "@/services/editorialData";
 import { BuyerDemandForm, OrganizerContact } from "@/components/forms/TradeShowForms";
 import { trackCtaClick } from "@/services/analytics";
 import { SeoHead } from "@/components/seo/SeoHead";
@@ -19,6 +20,7 @@ const UI: Record<Locale, {
   toConfirm: string; filterSector: string; filterMonth: string; filterState: string; all: string; noResults: string;
   meiOf: string; meiNote: string; exhibitorsLine: string;
   titleTpl: string; ctaTitle: string; ctaText: string; ctaButton: string; sourceTitle: string; checked: string; seeCalendar: string;
+  faqTitle: string; relatedTitle: string; newsTitle: string;
 }> = {
   "pt-br": {
     eyebrow: "Calendário de feiras 2027", h1: "Feiras de negócios em 2027",
@@ -27,9 +29,9 @@ const UI: Record<Locale, {
     dates: "Datas", venue: "Local", organizer: "Organização", official: "Site oficial", about: "Sobre a feira",
     exhibitors: "Quem expõe", buyers: "Quem compra e visita",
     marketTitle: "O mercado comprador em números",
-    marketLead: "Quantas empresas existem nos segmentos que compram de quem expõe nesta feira.",
+    marketLead: "Quantos estabelecimentos ativos existem nos segmentos que compram de quem expõe nesta feira.",
     segment: "Segmento (CNAE principal)", brazil: "Brasil", sp: "Estado de SP",
-    marketNote: "Estabelecimentos ativos na base pública da Receita Federal (edição {edition}) com o CNAE principal indicado, processados pela plataforma DeepB2B. É uma contagem de empresas, não uma estimativa de compradores.",
+    marketNote: "Estabelecimentos ativos na base pública da Receita Federal (edição {edition}) com o CNAE principal indicado, processados pela plataforma DeepB2B. É uma contagem de estabelecimentos ativos, não uma estimativa de compradores.",
     toConfirm: "Datas a confirmar",
     filterSector: "Setor",
     filterMonth: "Mês",
@@ -42,6 +44,7 @@ const UI: Record<Locale, {
     titleTpl: "{name} 2027: datas, local, expositores e compradores",
     ctaTitle: "Vai expor na {name}?", ctaText: "Mapeamos compradores, identificamos decisores e organizamos campanhas e reuniões antes, durante e depois da feira.",
     ctaButton: "Solicitar apresentação", sourceTitle: "Fonte e verificação", checked: "Conferido em", seeCalendar: "Ver calendário completo",
+    faqTitle: "Perguntas frequentes", relatedTitle: "Feiras do mesmo setor", newsTitle: "Últimas matérias sobre esta feira",
   },
   en: {
     eyebrow: "2027 trade show calendar", h1: "Brazil business trade shows in 2027",
@@ -50,9 +53,9 @@ const UI: Record<Locale, {
     dates: "Dates", venue: "Venue", organizer: "Organizer", official: "Official website", about: "About the show",
     exhibitors: "Who exhibits", buyers: "Who buys and visits",
     marketTitle: "The buyer market in numbers",
-    marketLead: "How many companies operate in the segments that buy from this show's exhibitors.",
+    marketLead: "How many active establishments operate in the segments that buy from this show's exhibitors.",
     segment: "Segment (primary CNAE code)", brazil: "Brazil", sp: "São Paulo state",
-    marketNote: "Active establishments in Brazil's public Federal Revenue registry (edition {edition}) with the primary CNAE code shown, processed by the DeepB2B platform. This is a count of companies, not an estimate of buyers.",
+    marketNote: "Active establishments in Brazil's public Federal Revenue registry (edition {edition}) with the primary CNAE code shown, processed by the DeepB2B platform. This is a count of active establishments, not an estimate of buyers.",
     toConfirm: "Dates to be confirmed",
     filterSector: "Sector",
     filterMonth: "Month",
@@ -65,6 +68,7 @@ const UI: Record<Locale, {
     titleTpl: "{name} 2027: dates, venue, exhibitors and buyers",
     ctaTitle: "Exhibiting at {name}?", ctaText: "We map buyers, identify decision-makers and run campaigns and meetings before, during and after the show.",
     ctaButton: "Request a presentation", sourceTitle: "Source and verification", checked: "Verified on", seeCalendar: "See full calendar",
+    faqTitle: "Frequently asked questions", relatedTitle: "Shows in the same sector", newsTitle: "Latest coverage on this show",
   },
   es: {
     eyebrow: "Calendario de ferias 2027", h1: "Ferias de negocios en Brasil en 2027",
@@ -73,9 +77,9 @@ const UI: Record<Locale, {
     dates: "Fechas", venue: "Sede", organizer: "Organización", official: "Sitio oficial", about: "Sobre la feria",
     exhibitors: "Quién expone", buyers: "Quién compra y visita",
     marketTitle: "El mercado comprador en números",
-    marketLead: "Cuántas empresas existen en los segmentos que compran a los expositores de esta feria.",
+    marketLead: "Cuántos establecimientos activos existen en los segmentos que compran a los expositores de esta feria.",
     segment: "Segmento (CNAE principal)", brazil: "Brasil", sp: "Estado de São Paulo",
-    marketNote: "Establecimientos activos en el registro público de la Receita Federal de Brasil (edición {edition}) con el CNAE principal indicado, procesados por la plataforma DeepB2B. Es un recuento de empresas, no una estimación de compradores.",
+    marketNote: "Establecimientos activos en el registro público de la Receita Federal de Brasil (edición {edition}) con el CNAE principal indicado, procesados por la plataforma DeepB2B. Es un recuento de establecimientos activos, no una estimación de compradores.",
     toConfirm: "Fechas a confirmar",
     filterSector: "Sector",
     filterMonth: "Mes",
@@ -88,6 +92,7 @@ const UI: Record<Locale, {
     titleTpl: "{name} 2027: fechas, sede, expositores y compradores",
     ctaTitle: "¿Va a exponer en {name}?", ctaText: "Mapeamos compradores, identificamos decisores y organizamos campañas y reuniones antes, durante y después de la feria.",
     ctaButton: "Solicitar presentación", sourceTitle: "Fuente y verificación", checked: "Verificado el", seeCalendar: "Ver calendario completo",
+    faqTitle: "Preguntas frecuentes", relatedTitle: "Ferias del mismo sector", newsTitle: "Últimas notas sobre esta feria",
   },
   "zh-cn": {
     eyebrow: "2027 展会日历", h1: "2027 年巴西商务展会",
@@ -96,9 +101,9 @@ const UI: Record<Locale, {
     dates: "日期", venue: "场馆", organizer: "主办方", official: "官方网站", about: "展会简介",
     exhibitors: "参展商", buyers: "买家与观众",
     marketTitle: "买方市场数据",
-    marketLead: "向本展会参展商采购的行业中有多少家企业。",
+    marketLead: "向本展会参展商采购的行业中有多少家在营经营场所。",
     segment: "行业（主要 CNAE 代码）", brazil: "巴西", sp: "圣保罗州",
-    marketNote: "巴西联邦税务局公开登记库（{edition} 版）中主要 CNAE 代码为所示代码的在营经营场所数量，由 DeepB2B 平台处理。这是企业数量，而非买家数量估计。",
+    marketNote: "巴西联邦税务局公开登记库（{edition} 版）中主要 CNAE 代码为所示代码的在营经营场所数量，由 DeepB2B 平台处理。这是在营经营场所数量，而非买家数量估计。",
     toConfirm: "日期待确认",
     filterSector: "行业",
     filterMonth: "月份",
@@ -111,6 +116,7 @@ const UI: Record<Locale, {
     titleTpl: "{name} 2027：日期、场馆、参展商与买家",
     ctaTitle: "将参加 {name}？", ctaText: "我们在展前、展中和展后为您绘制买家地图、识别决策人，并组织营销活动和会议。",
     ctaButton: "预约演示", sourceTitle: "来源与核实", checked: "核实日期", seeCalendar: "查看完整日历",
+    faqTitle: "常见问题", relatedTitle: "同行业展会", newsTitle: "该展会最新报道",
   },
 };
 
@@ -118,7 +124,6 @@ const INTL: Record<Locale, string> = { "pt-br": "pt-BR", en: "en-US", es: "es", 
 
 function formatRange(locale: Locale, start: string, end: string): string {
   const f = new Intl.DateTimeFormat(INTL[locale], { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
-  // formatRange existe em todos os navegadores atuais e no Node; o lib ES2020 do TS só não declara
   return (f as Intl.DateTimeFormat & { formatRange(a: Date, b: Date): string }).formatRange(new Date(`${start}T00:00:00Z`), new Date(`${end}T00:00:00Z`));
 }
 
@@ -129,7 +134,7 @@ function eventSchema(show: TradeShow, locale: Locale) {
   return {
     "@context": "https://schema.org",
     "@type": "Event",
-    name: `${show.name} 2027`,
+    name: `${show.name} ${show.editionYear}`,
     startDate: show.start,
     endDate: show.end,
     eventStatus: "https://schema.org/EventScheduled",
@@ -147,15 +152,16 @@ function eventSchema(show: TradeShow, locale: Locale) {
 
 export const TradeShowCalendarPage: React.FC = () => {
   const { locale, dict, routeTo } = useLocale();
+  const { shows: allShows, loading } = useEditorial();
   const t = UI[locale];
-  const all = [...TRADE_SHOWS].sort((a, b) => a.start.localeCompare(b.start));
+  const all = [...allShows].sort((a, b) => a.start.localeCompare(b.start));
   const [fs, setFs] = useState({ sector: "", month: "", uf: "" });
   const monthKey = (s: TradeShow) => s.start.slice(0, 7);
   const monthLabel = (k: string) => new Intl.DateTimeFormat(INTL[locale], { month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(`${k}-15T00:00:00Z`));
   const opts = {
-    sector: [...new Set(all.map((s) => s.copy[locale].sector))].sort(),
-    month: [...new Set(all.map(monthKey))].sort(),
-    uf: [...new Set(all.map((s) => s.uf))].sort(),
+    sector: [...new Set(all.map((s) => s.copy[locale].sector).filter(Boolean))].sort(),
+    month: [...new Set(all.map(monthKey).filter(Boolean))].sort(),
+    uf: [...new Set(all.map((s) => s.uf).filter(Boolean))].sort(),
   };
   const shows = all.filter(
     (s) => (!fs.sector || s.copy[locale].sector === fs.sector) && (!fs.month || monthKey(s) === fs.month) && (!fs.uf || s.uf === fs.uf),
@@ -172,7 +178,7 @@ export const TradeShowCalendarPage: React.FC = () => {
             "@context": "https://schema.org",
             "@type": "ItemList",
             name: t.h1,
-            itemListElement: all.map((s, i) => ({ "@type": "ListItem", position: i + 1, url: `${SITE_ORIGIN}${getTradeShowPath(locale, s.slug)}`, name: `${s.name} 2027` })),
+            itemListElement: all.map((s, i) => ({ "@type": "ListItem", position: i + 1, url: `${SITE_ORIGIN}${getTradeShowPath(locale, s.slug)}`, name: `${s.name} ${s.editionYear}` })),
           },
           ...all.map((s) => eventSchema(s, locale)),
         ]}
@@ -200,13 +206,17 @@ export const TradeShowCalendarPage: React.FC = () => {
             </label>
           ))}
         </div>
-        {shows.length === 0 && <p className="mx-auto max-w-5xl px-4 sm:px-6 py-8 text-slate-500">{t.noResults}</p>}
+        {loading && all.length === 0 ? (
+          <p className="mx-auto max-w-5xl px-4 sm:px-6 py-8 text-slate-500">Carregando feiras…</p>
+        ) : (
+          shows.length === 0 && <p className="mx-auto max-w-5xl px-4 sm:px-6 py-8 text-slate-500">{t.noResults}</p>
+        )}
         <div className="mx-auto max-w-5xl px-4 sm:px-6 divide-y divide-slate-200 border-y border-slate-200">
           {shows.map((s) => (
             <Link key={s.slug} to={getTradeShowPath(locale, s.slug)} className="group grid grid-cols-1 md:grid-cols-[180px_1fr_auto] gap-4 py-8 items-center">
-              <div className="text-sm font-bold text-[#ff6b00]">{s.checkedAt ? formatRange(locale, s.start, s.end) : t.toConfirm}</div>
+              <div className="text-sm font-bold text-[#ff6b00]">{s.checkedAt && s.start && s.end ? formatRange(locale, s.start, s.end) : t.toConfirm}</div>
               <div>
-                <h2 className="text-2xl font-extrabold text-[#0f172a] group-hover:text-[#ff6b00] transition-colors">{s.name} 2027</h2>
+                <h2 className="text-2xl font-extrabold text-[#0f172a] group-hover:text-[#ff6b00] transition-colors">{s.name} {s.editionYear}</h2>
                 <p className="mt-1 text-sm text-slate-600">{s.copy[locale].sector}</p>
                 <p className="mt-2 inline-flex items-center gap-1.5 text-xs text-slate-500">
                   <MapPin className="h-3.5 w-3.5" aria-hidden="true" /> {s.venue} · {s.city} – {s.uf}
@@ -233,33 +243,94 @@ export const TradeShowCalendarPage: React.FC = () => {
 
 export const TradeShowPage: React.FC = () => {
   const { slug = "" } = useParams();
-  const { locale, dict, routeTo } = useLocale();
-  const show = getTradeShow(slug);
-  if (!show) return <NotFound />;
+  const { locale, dict, routeTo, articleTo } = useLocale();
+  const { shows, marketDataEdition, articlesForLocale, findShow, loading } = useEditorial();
+
+  const cached = findShow(slug);
+  const [remote, setRemote] = useState<TradeShow | null>(null);
+  const [fetching, setFetching] = useState(false);
+
+  useEffect(() => {
+    setRemote(null);
+    if (cached || !slug) return;
+    let active = true;
+    setFetching(true);
+    fetchSingleTradeShow(slug)
+      .then((res) => {
+        if (active) setRemote(res);
+      })
+      .catch(() => {})
+      .finally(() => {
+        if (active) setFetching(false);
+      });
+    return () => {
+      active = false;
+    };
+  }, [slug, cached]);
+
+  const show = cached ?? remote;
+  if (!show) {
+    if (loading || fetching) {
+      return (
+        <SiteLayout>
+          <div className="flex items-center justify-center min-h-[60vh] bg-white text-slate-600 text-sm">
+            Carregando ficha da feira…
+          </div>
+        </SiteLayout>
+      );
+    }
+    return <NotFound />;
+  }
+
   const t = UI[locale];
   const c = show.copy[locale];
   const contact = routeTo("contact");
   const longDate = (iso: string) => new Intl.DateTimeFormat(INTL[locale], { dateStyle: "long", timeZone: "UTC" }).format(new Date(`${iso}T00:00:00Z`));
-  const range = show.checkedAt ? formatRange(locale, show.start, show.end) : t.toConfirm;
+  const range = show.checkedAt && show.start && show.end ? formatRange(locale, show.start, show.end) : t.toConfirm;
   const checked = show.checkedAt ? longDate(show.checkedAt) : null;
-  // só linhas com contagem gerada pela base (scripts/market-counts.mjs); sem dado, a linha (ou a tabela) não aparece
-  const rows = show.market.flatMap((m) => {
-    const n = marketCount(m.q);
-    return n ? [{ m, n }] : [];
-  });
+  const rows = show.market.flatMap((m) => (m.counts ? [{ m, n: m.counts }] : []));
+  const edition = show.market.find((m) => m.edition)?.edition ?? marketDataEdition;
+  const faqItems = show.faq?.[locale] ?? [];
+  const relatedShows = shows.filter((s) => s.slug !== show.slug && s.sectorSlug === show.sectorSlug).slice(0, 4);
+  const showNews = articlesForLocale(locale).filter((item) => item.article.feiraSlug === show.slug).slice(0, 5);
+
+  const schemas: Record<string, unknown>[] = [
+    eventSchema(show, locale),
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "DeepB2B", item: `${SITE_ORIGIN}${routeTo("home")}` },
+        { "@type": "ListItem", position: 2, name: dict.nav.calendar, item: `${SITE_ORIGIN}${routeTo("calendar")}` },
+        { "@type": "ListItem", position: 3, name: `${show.name} ${show.editionYear}`, item: `${SITE_ORIGIN}${getTradeShowPath(locale, show.slug)}` },
+      ],
+    },
+  ];
+
+  if (faqItems.length > 0) {
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqItems.map((item) => ({
+        "@type": "Question",
+        name: item.pergunta,
+        acceptedAnswer: { "@type": "Answer", text: item.resposta },
+      })),
+    });
+  }
 
   return (
     <SiteLayout>
       <SeoHead
         title={`${fill(t.titleTpl, { name: show.name })} | DeepB2B`}
-        description={`${show.name} 2027 · ${range} · ${show.venue}, ${show.city}. ${c.summary}`.slice(0, 300)}
-        jsonLd={[eventSchema(show, locale)]}
+        description={`${show.name} ${show.editionYear} · ${range} · ${show.venue}, ${show.city}. ${c.summary}`.slice(0, 300)}
+        jsonLd={schemas}
       />
       <section className="bg-[#040f21] text-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 py-16 md:py-20">
           <Breadcrumbs dark items={[{ label: dict.nav.calendar, to: routeTo("calendar") }, { label: show.name }]} />
           <span className="mt-4 inline-block text-xs font-extrabold uppercase tracking-[0.2em] text-[#ff6b00]">{c.sector}</span>
-          <h1 className="mt-3 text-4xl md:text-6xl font-extrabold tracking-tight">{show.name} 2027</h1>
+          <h1 className="mt-3 text-4xl md:text-6xl font-extrabold tracking-tight">{show.name} {show.editionYear}</h1>
           <dl className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl">
             <div>
               <dt className="text-xs uppercase tracking-wider text-slate-400">{t.dates}</dt>
@@ -313,63 +384,118 @@ export const TradeShowPage: React.FC = () => {
       )}
 
       {rows.length > 0 && (
-      <section className="py-16 bg-[#f8fafc] border-t border-slate-200">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6">
-          <h2 className="text-2xl font-extrabold text-[#0f172a]">{t.marketTitle}</h2>
-          <p className="mt-2 text-slate-600">{t.marketLead}</p>
-          <div className="mt-6 overflow-x-auto rounded-2xl border border-slate-200 bg-white">
-            <table className="w-full text-sm">
-              <thead className="bg-slate-50 text-left text-xs uppercase tracking-wider text-slate-500">
-                <tr>
-                  <th className="px-5 py-3">{t.segment}</th>
-                  <th className="px-5 py-3 text-right">{t.brazil}</th>
-                  <th className="px-5 py-3 text-right">{t.sp}</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-100">
-                {rows.map(({ m, n }) => (
-                  <tr key={m.cnae}>
-                    <td className="px-5 py-3">
-                      <span className="font-semibold text-[#0f172a]">{m.label[locale]}</span>
-                      <span className="ml-2 font-mono text-xs text-slate-400">{m.cnae}</span>
-                    </td>
-                    <td className="px-5 py-3 text-right">
-                      <span className="block font-mono">{num(locale, n.br)}</span>
-                      <span className="block text-[11px] text-slate-400">{fill(t.meiOf, { n: num(locale, n.brMei) })}</span>
-                    </td>
-                    <td className="px-5 py-3 text-right">
-                      <span className="block font-mono">{num(locale, n.sp)}</span>
-                      <span className="block text-[11px] text-slate-400">{fill(t.meiOf, { n: num(locale, n.spMei) })}</span>
-                    </td>
+        <section className="py-16 bg-[#f8fafc] border-t border-slate-200">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6">
+            <h2 className="text-2xl font-extrabold text-[#0f172a]">{t.marketTitle}</h2>
+            <p className="mt-2 text-slate-600">{t.marketLead}</p>
+            <div className="mt-6 overflow-x-auto rounded-2xl border border-slate-200 bg-white">
+              <table className="w-full text-sm">
+                <thead className="bg-slate-50 text-left text-xs uppercase tracking-wider text-slate-500">
+                  <tr>
+                    <th className="px-5 py-3">{t.segment}</th>
+                    <th className="px-5 py-3 text-right">{t.brazil}</th>
+                    <th className="px-5 py-3 text-right">{t.sp}</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody className="divide-y divide-slate-100">
+                  {rows.map(({ m, n }) => (
+                    <tr key={m.cnae}>
+                      <td className="px-5 py-3">
+                        <span className="font-semibold text-[#0f172a]">{m.label[locale]}</span>
+                        <span className="ml-2 font-mono text-xs text-slate-400">{m.cnae}</span>
+                      </td>
+                      <td className="px-5 py-3 text-right">
+                        <span className="block font-mono">{num(locale, n.br)}</span>
+                        <span className="block text-[11px] text-slate-400">{fill(t.meiOf, { n: num(locale, n.brMei) })}</span>
+                      </td>
+                      <td className="px-5 py-3 text-right">
+                        <span className="block font-mono">{num(locale, n.sp)}</span>
+                        <span className="block text-[11px] text-slate-400">{fill(t.meiOf, { n: num(locale, n.spMei) })}</span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-3 text-xs text-slate-500">{t.meiNote}</p>
+            <p className="mt-1 text-xs text-slate-500">
+              {fill(t.marketNote, {
+                edition: new Intl.DateTimeFormat(INTL[locale], { month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(`${edition}-15T00:00:00Z`)),
+              })}
+            </p>
           </div>
-          <p className="mt-3 text-xs text-slate-500">{t.meiNote}</p>
-          <p className="mt-1 text-xs text-slate-500">{fill(t.marketNote, { edition: new Intl.DateTimeFormat(INTL[locale], { month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(`${MARKET_DATA_EDITION}-15T00:00:00Z`)) })}</p>
-        </div>
-      </section>
+        </section>
+      )}
+
+      {faqItems.length > 0 && (
+        <section className="py-14 bg-white border-t border-slate-200">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6 space-y-6">
+            <h2 className="text-2xl font-extrabold text-[#0f172a]">{t.faqTitle}</h2>
+            <div className="divide-y divide-slate-200 border-y border-slate-200">
+              {faqItems.map((item) => (
+                <div key={item.pergunta} className="py-5">
+                  <h3 className="text-base font-bold text-[#0f172a]">{item.pergunta}</h3>
+                  <p className="mt-2 text-sm text-slate-600 leading-relaxed">{item.resposta}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {(showNews.length > 0 || relatedShows.length > 0) && (
+        <section className="py-14 bg-[#f8fafc] border-t border-slate-200">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6 grid grid-cols-1 md:grid-cols-2 gap-10">
+            {showNews.length > 0 && (
+              <div>
+                <h2 className="text-lg font-extrabold text-[#0f172a] mb-4">{t.newsTitle}</h2>
+                <ul className="space-y-3">
+                  {showNews.map(({ article, content }) => (
+                    <li key={article.slug}>
+                      <Link to={articleTo(article.slug)} className="text-sm font-semibold text-[#040f21] hover:text-[#ff6b00]">
+                        {content.title} →
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {relatedShows.length > 0 && (
+              <div>
+                <h2 className="text-lg font-extrabold text-[#0f172a] mb-4">{t.relatedTitle}</h2>
+                <ul className="space-y-3">
+                  {relatedShows.map((rs) => (
+                    <li key={rs.slug}>
+                      <Link to={getTradeShowPath(locale, rs.slug)} className="text-sm font-semibold text-[#040f21] hover:text-[#ff6b00]">
+                        {rs.name} {rs.editionYear} ({rs.city} – {rs.uf}) →
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        </section>
       )}
 
       {/* Os dois lados da feira: quem expõe | quem compra */}
       <section className="py-16 bg-[#040f21]">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
           <div className="text-white">
-          <h2 className="text-3xl font-extrabold tracking-tight">{fill(t.ctaTitle, { name: show.name })}</h2>
-          <p className="mt-4 text-slate-300">{t.ctaText}</p>
-          <div className="mt-8 flex flex-col sm:flex-row gap-4">
-            <Link
-              to={contact}
-              onClick={() => trackCtaClick(`tradeshow_${show.slug}`, locale, contact)}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#ff6b00] px-8 py-4 text-sm font-bold text-white hover:bg-[#ea580c]"
-            >
-              {t.ctaButton} <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
-            <Link to={routeTo("events")} className="inline-flex items-center justify-center rounded-full border border-white/30 px-8 py-4 text-sm font-bold hover:bg-white/10">
-              {dict.nav.events}
-            </Link>
-          </div>
+            <h2 className="text-3xl font-extrabold tracking-tight">{fill(t.ctaTitle, { name: show.name })}</h2>
+            <p className="mt-4 text-slate-300">{t.ctaText}</p>
+            <div className="mt-8 flex flex-col sm:flex-row gap-4">
+              <Link
+                to={contact}
+                onClick={() => trackCtaClick(`tradeshow_${show.slug}`, locale, contact)}
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#ff6b00] px-8 py-4 text-sm font-bold text-white hover:bg-[#ea580c]"
+              >
+                {t.ctaButton} <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+              <Link to={routeTo("events")} className="inline-flex items-center justify-center rounded-full border border-white/30 px-8 py-4 text-sm font-bold hover:bg-white/10">
+                {dict.nav.events}
+              </Link>
+            </div>
           </div>
           <div className="rounded-2xl bg-white p-6 sm:p-8">
             <BuyerDemandForm showSlug={show.slug} showName={show.name} />

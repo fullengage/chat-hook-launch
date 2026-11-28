@@ -8,6 +8,7 @@ import {
   resolveAlternatePath,
 } from "./routes";
 import { getDictionary } from "./dictionaries";
+import { useEditorial } from "@/context/EditorialContext";
 
 const LOCALE_STORAGE_KEY = "deepb2b_locale";
 
@@ -37,6 +38,7 @@ export const LocaleProvider: React.FC<LocaleProviderProps> = ({
 }) => {
   const location = useLocation();
   const navigate = useNavigate();
+  const { articles } = useEditorial();
 
   const locale: Locale = forcedLocale ?? detectLocaleFromPath(location.pathname);
   const dict = useMemo(() => getDictionary(locale), [locale]);
@@ -78,7 +80,7 @@ export const LocaleProvider: React.FC<LocaleProviderProps> = ({
       window.localStorage.setItem(LOCALE_STORAGE_KEY, target);
     }
     setSuggestedBrowserLocale(null);
-    const nextPath = resolveAlternatePath(location.pathname, target);
+    const nextPath = resolveAlternatePath(location.pathname, target, articles);
     navigate(nextPath);
   };
 
